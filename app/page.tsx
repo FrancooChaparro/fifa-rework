@@ -1,5 +1,6 @@
 "use client";
 import Banner from " @/components/Banner/Banner";
+import TopPlayers from " @/components/Banner/Test";
 import ContainerGames from " @/components/ContainerGames/ContainerGames";
 import { News } from " @/components/News/News";
 import { Ranking } from " @/components/Ranking/Ranking";
@@ -31,8 +32,7 @@ export default function Home() {
       </div>
       <div className="md:h-20 h-10 w-full" id={"target-component"} />
       <Ranking />
-      <div className="w-full h-[350px] p-20"></div>
-      {/* <CarruselTeam /> */}
+      <TopPlayers />
     </main>
   );
 }

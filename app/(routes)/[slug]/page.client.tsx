@@ -38,7 +38,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
         {/* BACKGROUND */}
         <div className="absolute top-0 left-0 z-[-10] h-full w-full">
           <Image
-            src={playerStats.info.background_profile || "images/zlatan.webp"}
+            src={playerStats.info.background_profile || "/images/zlatan.webp"}
             alt="atl"
             fill
             placeholder="blur"

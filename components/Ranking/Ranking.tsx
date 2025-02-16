@@ -96,7 +96,7 @@ export const Ranking = () => {
         </div>
         <div className="w-full rounded-[4px]">
           {" "}
-          {data.ranking.slice(20, 32).map((team: Rank, index: number) => {
+          {data.ranking.slice(20, 30).map((team: Rank, index: number) => {
             return (
               <Link key={`${index} - b`} href={`/team/${team.name}`} prefetch={false}>
                 <div

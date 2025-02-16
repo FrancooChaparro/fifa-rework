@@ -8,7 +8,6 @@ import { data } from " @/models/db";
 import { Rank } from " @/types/types";
 import Image from "next/image";
 
-
 export default function Nav() {
   const router = useRouter();
   const namesArray = data.ranking;
@@ -199,12 +198,16 @@ export default function Nav() {
 
             {/* Menú desplegable */}
             <div
-              className={`absolute bottom-[-98px] left-[-12px] flex  px-4  flex-col gap-2 bg-black/95 min-h-10 min-w-[90px] py-2 transition-all duration-200 
-        ${
+              className={`absolute bottom-[-107px] left-[-12px] flex  px-4  flex-col gap-2 min-h-10 min-w-[90px] py-2 transition-all duration-200    ${
+                isBlurred
+                  ? "backdrop-blur-md bg-black/70"
+                  : "bg-black/95 select-none"
+              } ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        }`}
+        }
+      `}
             >
               {langs.slice(2, 5).map((item, index) => (
                 <Link

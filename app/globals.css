@@ -54,3 +54,9 @@ body {
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que se repita */
 }
+
+
+.custom-carousel-sustainability .slick-list {
+  overflow: visible !important;
+  color: #474747;
+}
