@@ -1,8 +1,38 @@
+"use client";
+import Banner from " @/components/Banner/Banner";
+import ContainerGames from " @/components/ContainerGames/ContainerGames";
+import { News } from " @/components/News/News";
+import { Ranking } from " @/components/Ranking/Ranking";
 
 export default function Home() {
+
+  const scrollToDetails = () => {
+    const target = document.getElementById('target-component');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>fifa project</h1>
+    <main className="relative min-h-screen bg-bgPrimary text-fontTitle">
+      <Banner />
+      <div className="hidden md:block md:absolute md:top-[64px] md:right-[5px]">
+        <ContainerGames scrollToDetails={scrollToDetails}/>
+      </div>
+      <div className="block md:hidden px-10 pt-10 lg:pt-20 lg:px-20">
+        <ContainerGames scrollToDetails={scrollToDetails}
+        />
+      </div>
+      <div className="px-10 lg:px-20 pt-10 lg:pt-20">
+        <p className="text-[38px] block md:hidden font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-4">
+          News
+        </p>
+        <News />
+      </div>
+      <div className="md:h-20 h-10 w-full" id={"target-component"} />
+      <Ranking />
+      <div className="w-full h-[350px] p-20"></div>
+      {/* <CarruselTeam /> */}
     </main>
   );
 }

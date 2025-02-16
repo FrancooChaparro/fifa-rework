@@ -1,0 +1,200 @@
+.containerAll {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    padding-top: 70px;
+    background-color: #1a1823;
+  }
+  
+  .containerBraket,
+  .octavosLeft,
+  .cuartosLeft,
+  .semifinalesLeft,
+  .FianalsLeft {
+    width: 10%;
+  }
+  
+  .diome {
+    width: 90%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .octavosLeft div,
+  .cuartosLeft div,
+  .semifinalesLeft div,
+  .FianalsLeft,
+  .FianalsLeft div,
+  .containerBraket div,
+  .top,
+  .champions,
+  .championsPicture,
+  .box,
+  .izq,
+  .box_top,
+  .box_bot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .octavosLeft div,
+  .cuartosLeft div,
+  .semifinalesLeft div,
+  .FianalsLeft div,
+  .containerBraket div {
+    width: 45%;
+    height: 47px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 3px;
+  }
+  
+  .octavosLeft div,
+  .cuartosLeft div,
+  .semifinalesLeft div {
+    margin-bottom: 45px;
+  }
+  
+  .FianalsLeft {
+    height: 100%;
+  }
+  
+  .btn {
+    font-size: 1.563rem;
+    width: 45%;
+    color: white;
+    height: 60px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  .btn:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .containerBraket div {
+    position: relative;
+    margin-bottom: 4px;
+  }
+  
+  .img {
+    width: 43px;
+    height: 43px;
+    transition: 3s;
+  }
+  
+  .arooba {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .top, .bot, .champions, .championsPicture, .box  {
+    width: 100%;
+  }
+  
+  .bot {
+    position: absolute;
+    top: 42%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .champions {
+    font-size: 1.563rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .championsPicture {
+    font-size: 1.125rem;
+    color: #1a1823;
+    font-weight: bold;
+  }
+  
+  .championsProfile {
+    width: 88%;
+    height: 4rem;
+    display: flex;
+    background-color: white;
+    border-radius: 4px;
+  }
+  
+  .izq {
+    width: 30%;
+  }
+  .der {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .box {
+    flex-direction: column;
+  }
+  
+  .box_bot,
+  .box_top {
+    width: 95%;
+    height: 6rem;
+    background-color: white;
+  }
+  .box_top {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .box_top img,
+  .box_bot img {
+    width: 80%;
+    height: 80%;
+  }
+  
+  .number_rank {
+    font-size: 0.625rem;
+    color: #1a1823;
+    position: absolute;
+    font-weight: bold;
+    top: 0;
+    right: 0;
+  }
+  @media screen and (max-width: 480px) {
+    .containerAll {
+      width: 100%;
+      height: 120vh;
+    }
+  
+    .top {
+      flex-direction: column;
+    }
+    .btn {
+      font-size: 0.75rem;
+      width: 60px;
+      height: 50px;
+    }
+    .champions {
+      font-size: 1.125rem;
+    }
+    .img {
+      width: 15px;
+      height: 18px;
+      margin: 0 auto;
+    }
+    .der {
+      display: none;
+    }
+    .izq {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .izq img {
+      width: 30px;
+      height: 30px;
+    }
+  }
