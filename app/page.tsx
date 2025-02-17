@@ -2,6 +2,7 @@
 import Banner from " @/components/Banner/Banner";
 import TopPlayers from " @/components/Banner/Test";
 import ContainerGames from " @/components/ContainerGames/ContainerGames";
+import ContactMeComponent from " @/components/Footer/Footer";
 import { News } from " @/components/News/News";
 import { Ranking } from " @/components/Ranking/Ranking";
 
@@ -33,6 +34,7 @@ export default function Home() {
       <div className="md:h-20 h-10 w-full" id={"target-component"} />
       <Ranking />
       <TopPlayers />
+      <ContactMeComponent />
     </main>
   );
 }
