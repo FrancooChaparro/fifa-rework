@@ -71,7 +71,6 @@ export default function TopPlayers() {
                             fill
                             placeholder="blur"
                             blurDataURL="/images/blur.png"
-                            priority
                             quality={100}
                             className="h-full w-full object-cover object-center"
                           />

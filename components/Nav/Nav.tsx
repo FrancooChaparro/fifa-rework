@@ -138,8 +138,6 @@ export default function Nav() {
                 blurDataURL="/images/blur.png"
                 alt="atl"
                 fill
-                priority
-                quality={100}
                 className="h-full w-full object-cover object-center"
               />
             </Link>

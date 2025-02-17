@@ -65,7 +65,7 @@ export const GameDetails = () => {
                 alt={detailsGame.LocalNombre}
                 width={150}
                 height={150}
-                priority
+                // priority
               />
            }
               <p className="font-geistBold">{detailsGame?.LocalNombre}</p>
@@ -93,7 +93,7 @@ export const GameDetails = () => {
                 alt={detailsGame.VisitanteNombre}
                 width={150}
                 height={150}
-                priority
+                // priority
               />
             }
               <p className="font-geistBold">{detailsGame?.VisitanteNombre}</p>
@@ -110,7 +110,7 @@ export const GameDetails = () => {
                   alt={detailsGame.VisitanteNombre}
                   width={60}
                   height={60}
-                  priority
+                  // priority
                   className="object-cover object-center"
                 />
             }
@@ -128,7 +128,7 @@ export const GameDetails = () => {
                   alt={detailsGame.VisitanteNombre}
                   width={60}
                   height={60}
-                  priority
+                  // priority
                   className="object-cover object-center"
                 />
               }

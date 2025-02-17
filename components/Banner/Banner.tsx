@@ -1,15 +1,17 @@
 import Image from 'next/image';
 import React from 'react';
-import img from "../../public/images/pogbaaa.jpg"
+
 
 const Banner = () => {
   return (
     <div className='w-full h-screen relative bg-no-repeat bg-center overflow-hidden'>
       <Image
-        src={img}
+        src={"/images/pogbaaa.jpg"}
         alt={"alt"}
+        fill
         loading="lazy"
         placeholder="blur" 
+        blurDataURL='/images/blur.png'
         className='w-full h-full object-cover 2xl:h-auto'
       />
        <div className="absolute md:w-full w-[385px] xs:w-[480px] bottom-[100px] left-[40px] lg:left-[100px] text-white">
