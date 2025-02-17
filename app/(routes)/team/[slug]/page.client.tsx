@@ -16,7 +16,7 @@ export default function UserPage({ data } : { data: any}) {
     <>
       {/* MAIN DATA */}
       <div
-        className={`relative w-full h-screen px-7 sm:px-10 lg:px-20 pt-16 flex flex-col gap-7 overflow-hidden`}
+        className={`relative w-full h-screen px-5 sm:px-10 lg:px-20 pt-16 flex flex-col gap-7 overflow-hidden`}
       >
         {/* BACKGROUND */}
         <div className="absolute top-0 left-0 z-[-10] h-full w-full">
@@ -60,20 +60,20 @@ export default function UserPage({ data } : { data: any}) {
         </div>
         <div className="w-full md:w-[700px] flex justify-between">
           <div className="border-b-[1px] border-white pb-2 w-full md:w-[480px] flex flex-col">
-            <p className="text-white font-geistBold text-[28px] tracking-[0.10px] ">
+            <p className="text-white font-geistBold text-[26px] tracking-[0.10px] ">
               {`Profile`}
             </p>
-            <p className="text-white font-geistBold text-[30px] xs:text-[38px] tracking-[0.10px]">
+            <p className="text-white font-geistBold text-[26px] xs:text-[38px] tracking-[0.10px]">
               {data.teamID.name}
             </p>
           </div>
-          <div className="flex gap-8 ml-[-20px] pb-6">
+          <div className="flex gap-2 lg:gap-8  ml-[-20px] pb-4 lg:pb-6">
             <div className="flex flex-col gap-3 justify-center items-center">
               <p className="text-white font-geistRegular text-base tracking-[0.10px]">
                 Finals
               </p>
-              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[80px] h-[80px]">
-                <p className=" font-geistBold text-[38px] text-white tracking-[0.10px]">
+              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[60px] h-[60px] lg:w-[80px] lg:h-[80px]">
+                <p className=" font-geistBold text-[30px] lg:text-[38px] text-white tracking-[0.10px]">
                   {data.finales?.length}
                 </p>
               </div>
@@ -82,8 +82,8 @@ export default function UserPage({ data } : { data: any}) {
               <p className="text-white font-geistRegular text-base tracking-[0.10px]">
                 Ganadas
               </p>
-              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[80px] h-[80px]">
-                <p className=" font-geistBold text-[38px] text-white tracking-[0.10px]">
+              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[60px] h-[60px] lg:w-[80px] lg:h-[80px]">
+                <p className=" font-geistBold text-[30px] lg:text-[38px] text-white tracking-[0.10px]">
                   {data.teamID.titles}
                 </p>
               </div>

@@ -106,7 +106,7 @@ export const GameDetails = () => {
               <div className="w-[60px] h-[60px] overflow-hidden rounded-full ">
             {detailsGame.Player1 &&
                 <Image
-                  src={detailsGame.Player1 === "M" ? "/images/marcos.jpg" : detailsGame.Player1 === "F" ? "/images/Franco.jpg" : "/images/flakk.jpg"}
+                  src={detailsGame.Player1 === "M" ? "/images/Marcos.jpg" : detailsGame.Player1 === "F" ? "/images/Franco.jpg" : "/images/flakk.jpg"}
                   alt={detailsGame.VisitanteNombre}
                   width={60}
                   height={60}
@@ -124,7 +124,7 @@ export const GameDetails = () => {
               <div className="w-[60px] h-[60px] overflow-hidden rounded-full">
               {detailsGame.Player2 &&
                 <Image
-                  src={detailsGame.Player2 === "M" ? "/images/marcos.jpg" : detailsGame.Player2 === "F" ? "/images/Franco.jpg" : "/images/flakk.jpg"}
+                  src={detailsGame.Player2 === "M" ? "/images/Marcos.jpg" : detailsGame.Player2 === "F" ? "/images/Franco.jpg" : "/images/flakk.jpg"}
                   alt={detailsGame.VisitanteNombre}
                   width={60}
                   height={60}

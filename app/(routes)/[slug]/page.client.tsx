@@ -84,13 +84,16 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
               {playerStats.info.team_profile}
             </p>
           </div>
-          <div className="flex gap-8 ml-[-20px] pb-6">
+
+
+
+          <div className="flex gap-4 lg:gap-8 ml-[-20px] pb-4 lg:pb-6">
             <div className="flex flex-col gap-3 justify-center items-center">
               <p className="text-white font-geistRegular text-base tracking-[0.10px]">
                 Finals
               </p>
-              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[80px] h-[80px]">
-                <p className=" font-geistBold text-[38px] text-white tracking-[0.10px]">
+              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[60px] h-[60px] lg:w-[80px] lg:h-[80px]">
+                <p className=" font-geistBold text-[30px] lg:text-[38px] text-white tracking-[0.10px]">
                   {playerStats.finals.matchs.length}
                 </p>
               </div>
@@ -99,13 +102,17 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
               <p className="text-white font-geistRegular text-base tracking-[0.10px]">
                 Clasics
               </p>
-              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[80px] h-[80px]">
-                <p className=" font-geistBold text-[38px] text-white tracking-[0.10px]">
+              <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[60px] h-[60px] lg:w-[80px] lg:h-[80px]">
+                <p className=" font-geistBold text-[30px] lg:text-[38px] text-white tracking-[0.10px]">
                   {playerStats.clasics.matchs.length}
                 </p>
               </div>
             </div>
           </div>
+
+
+
+          
         </div>
         <div className="w-full md:w-[700px] flex justify-between">
           <div className=" flex items-end">

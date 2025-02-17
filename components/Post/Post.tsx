@@ -101,7 +101,7 @@ useMemo(()=> {
                 alt={`Imagen ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-[100px] left-[75px] p-8">
+              <div className="absolute bottom-[50px] left-[12px] lg:bottom-[100px] lg:left-[75px] p-2 lg:p-8">
                 <div className=" flex flex-col justify-between h-full">
                   <div className="font-geistBold text-[30px] text-white">
                     {notice.title}
