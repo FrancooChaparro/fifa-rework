@@ -14,6 +14,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [isBlurred, setIsBlurred] = useState(false);
   const [showInput, setShowInput] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [filteredNames, setFilteredNames] = useState<Rank[]>([]);
@@ -22,6 +23,7 @@ export default function Nav() {
   useEffect(() => {
     setShowInput(false);
     setIsOpen(false);
+    setIsActive(false);
   }, [pathname]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,6 +84,20 @@ export default function Nav() {
     };
   }, []);
 
+
+  useEffect(() => {
+    if (isActive) {
+      document.body.style.overflow = "hidden"; // Desactivar scroll
+    } else {
+      document.body.style.overflow = ""; // Restaurar scroll
+    }
+  
+    return () => {
+      document.body.style.overflow = ""; // Asegurar que se restablezca al desmontar
+    };
+  }, [isActive]);
+  
+
   return (
     <div
       className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-10 transition-all ${
@@ -89,6 +105,61 @@ export default function Nav() {
       }`}
     >
       <div className="flex justify-between items-center relative h-full w-full px-6">
+
+        {/*HAMBURGER MENU*/}
+        <div className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-hidden bg-bgGames z-20 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+          <div className="w-full flex justify-end items-center h-[60px]">
+            <div
+              onClick={() => setIsActive(false)}
+              className="rounded-full bg-[#1a1a1a] hover:bg-hoverCard transition-all duration-150 cursor-pointer flex justify-center items-center h-[30px] w-[30px] z-10"
+            >
+              X
+            </div>
+          </div>
+          <div className="flex flex-col gap-5">
+            {langs.map((item, index) => (
+              <Link href={item.path} key={index} className="">
+                <p className="text-[24px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2">
+                  {item.label}
+                </p>
+              </Link>
+            ))}
+          </div>
+          <p className="text-[24px] font-geistBold text-white tracking-[0.10px] w-full text-center py-8">
+            Trend Teams
+          </p>
+          <div className="grid grid-cols-2 w-full gap-[10px] gap-y-[10px] ">
+            {
+             namesArray && namesArray.slice(16,22).map((team, index )=> (
+              <Link prefetch={false} href={`/team/${team.name}`} key={index} className="w-full h-[110px] bg-white relative">
+              <Image
+                src={team.cover || "/images/blur.png"}
+                placeholder="blur"
+                blurDataURL="/images/blur.png"
+                alt="atl"
+                fill
+                priority
+                quality={100}
+                className="h-full w-full object-cover object-center"
+              />
+            </Link>
+             ))
+            }
+          
+          </div>
+          <p className="text-[24px] font-geistBold text-white tracking-[0.10px] w-full text-center py-8">
+            Last Champions
+          </p>
+          <div className="w-full flex justify-center ">
+            <Image
+              src={"/images/Liverpool.png"}
+              alt="atl"
+              width={60}
+              height={60}
+            />
+          </div>
+        </div>
+
         {/*SEARCH MOBILE*/}
         <div
           className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-2  ${
@@ -142,9 +213,8 @@ export default function Nav() {
             </div>
           </div>
         </div>
-
         {/*LEFT CONTENT*/}
-        <div className="flex lg:hidden">
+        <div className="flex lg:hidden hover:cursor-pointer" onClick={()=> setIsActive(true)}>
           <HamburgerMenuIcon />
         </div>
         <span
@@ -203,10 +273,10 @@ export default function Nav() {
                   ? "backdrop-blur-md bg-black/70"
                   : "bg-black/95 select-none"
               } ${
-          isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }
+                isOpen
+                  ? "opacity-100 pointer-events-auto"
+                  : "opacity-0 pointer-events-none"
+              }
       `}
             >
               {langs.slice(2, 5).map((item, index) => (
