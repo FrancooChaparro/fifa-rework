@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const Ranking = () => {
   return (
-    <div className="px-10 lg:px-20 w-full select-none">
+    <div className="px-4 lg:px-20 w-full select-none">
       <p className="text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-4">
         Rankings
       </p>

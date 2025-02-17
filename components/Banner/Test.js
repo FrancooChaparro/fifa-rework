@@ -21,7 +21,7 @@ export default function TopPlayers() {
   };
 
   return (
-    <div className="px-10 lg:px-20 w-full overflow-hidden pb-20 pt-20">
+    <div className="px-4 lg:px-20 w-full overflow-hidden pb-20 pt-20">
       <p className="text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2">
         Top 20 Players
       </p>

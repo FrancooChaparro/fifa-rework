@@ -119,7 +119,7 @@ export default function Nav() {
           <div className="flex flex-col gap-3">
             {langs.map((item, index) => (
               <Link href={item.path} key={index} className="">
-                <p className="text-[22px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2">
+                <p className="text-[24px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2">
                   {item.label}
                 </p>
               </Link>
@@ -148,7 +148,7 @@ export default function Nav() {
           <p className="text-[24px] font-geistBold text-white tracking-[0.10px] w-full text-center pt-5 pb-3">
             Last Champions
           </p>
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center pb-8">
             <Image
               src={"/images/Liverpool.png"}
               alt="atl"
@@ -160,7 +160,7 @@ export default function Nav() {
 
         {/*SEARCH MOBILE*/}
         <div
-          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-2  ${
+          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-4  ${
             showInput
               ? "opacity-100 pointer-events-auto clip-path-none z-10"
               : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"

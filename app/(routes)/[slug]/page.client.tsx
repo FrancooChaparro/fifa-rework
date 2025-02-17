@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 
 export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisitanteFinals, golesFavorClasics, sumarGolesVisitanteClasics }  : { playerStats : any, golesFavorFinals: any,  sumarGolesVisitanteFinals: any, golesFavorClasics: any, sumarGolesVisitanteClasics: any }) {
 
-  const {  seterGame } = useMyContext();
+  const { seterGame } = useMyContext();
   const [isOn, setIsOn] = useState(false);
   const [variable, setVariable] = useState("finals");
 
@@ -33,7 +33,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
     <>
       {/* MAIN DATA */}
       <div
-        className={` relative w-full h-screen px-7 sm:px-10 lg:px-20 pt-28 flex flex-col gap-7 overflow-hidden`}
+        className={` relative w-full h-screen px-7 sm:px-10 lg:px-20 pt-16 flex flex-col gap-5 lg:gap-7 overflow-hidden`}
       >
         {/* BACKGROUND */}
         <div className="absolute top-0 left-0 z-[-10] h-full w-full">
@@ -54,7 +54,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
               Trophies
             </p>
           </div>
-          <p className="text-white font-geistBold text-[48px] tracking-[0.10px]">
+          <p className="text-white font-geistBold text-[39px] tracking-[0.10px]">
             {playerStats.info.trophies}
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
           </div>
         </div>
         <div className="w-full md:w-[530px] flex justify-center items-center">
-          <p className="text-white font-geistBold text-[65px] tracking-[0.24px]">
+          <p className="text-white font-geistBold text-[38px] lg:text-[65px] tracking-[0.24px]">
             {playerStats.info.surname_profile}
           </p>
         </div>

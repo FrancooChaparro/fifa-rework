@@ -21,11 +21,11 @@ export default function Home() {
       <div className="hidden md:block md:absolute md:top-[64px] md:right-[5px]">
         <ContainerGames scrollToDetails={scrollToDetails}/>
       </div>
-      <div className="block md:hidden px-10 pt-10 lg:pt-20 lg:px-20">
+      <div className="block md:hidden px-4 pt-10 lg:pt-20 lg:px-20">
         <ContainerGames scrollToDetails={scrollToDetails}
         />
       </div>
-      <div className="px-10 lg:px-20 pt-10 lg:pt-20">
+      <div className="px-4 lg:px-20 pt-10 lg:pt-20">
         <p className="text-[38px] block md:hidden font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-4">
           News
         </p>
