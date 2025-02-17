@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <div className='w-full h-screen relative bg-no-repeat bg-center overflow-hidden'>
       <Image
-        src={"/images/pogbaaa.jpg"}
+        src={"/images/pogbaaa.avif"}
         alt={"alt"}
         fill
         loading="lazy"
