@@ -107,7 +107,7 @@ export default function Nav() {
       <div className="flex justify-between items-center relative h-full w-full px-6">
 
         {/*HAMBURGER MENU*/}
-        <div className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-hidden bg-bgGames z-20 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+        <div className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-scroll overflow-y-scroll bg-bgGames z-20 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
           <div className="w-full flex justify-end items-center h-[60px]">
             <div
               onClick={() => setIsActive(false)}
@@ -116,10 +116,10 @@ export default function Nav() {
               X
             </div>
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3">
             {langs.map((item, index) => (
               <Link href={item.path} key={index} className="">
-                <p className="text-[24px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2">
+                <p className="text-[22px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2">
                   {item.label}
                 </p>
               </Link>
@@ -131,7 +131,7 @@ export default function Nav() {
           <div className="grid grid-cols-2 w-full gap-[10px] gap-y-[10px] ">
             {
              namesArray && namesArray.slice(16,22).map((team, index )=> (
-              <Link prefetch={false} href={`/team/${team.name}`} key={index} className="w-full h-[110px] bg-white relative">
+              <Link prefetch={false} href={`/team/${team.name}`} key={index} className="w-full h-[100px] bg-white relative">
               <Image
                 src={team.cover || "/images/blur.png"}
                 placeholder="blur"
@@ -147,15 +147,15 @@ export default function Nav() {
             }
           
           </div>
-          <p className="text-[24px] font-geistBold text-white tracking-[0.10px] w-full text-center py-8">
+          <p className="text-[24px] font-geistBold text-white tracking-[0.10px] w-full text-center pt-5 pb-3">
             Last Champions
           </p>
-          <div className="w-full flex justify-center ">
+          <div className="w-full flex justify-center">
             <Image
               src={"/images/Liverpool.png"}
               alt="atl"
-              width={60}
-              height={60}
+              width={55}
+              height={55}
             />
           </div>
         </div>
