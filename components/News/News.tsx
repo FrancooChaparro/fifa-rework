@@ -18,16 +18,7 @@ export const News = () => {
             alt="Imagen 1"
             className="w-full h-full object-cover object-top lg:object-center"
           />
-          <div className="container-overlay absolute top-0 left-0 w-full h-full p-8 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="container-overlay-split flex flex-col justify-between h-full">
-              <div className="guantes font-geistBold text-[18px] lg:text-[24px] text-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[0].title}
-              </div>
-              <div className="vermas font-geistLight text-[13px] lg:text-lg text-white transform translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[0].description}
-              </div>
-            </div>
-          </div>
+         <Description title={data.poster[0].title} description={data.poster[0].description}/>
         </div>
         <div onClick={() => setOpening(true, 1)} className="two relative overflow-hidden flex justify-center items-center col-span-1 row-span-2 lg:row-span-2 group hover:cursor-pointer rounded-md">
           <Image
@@ -36,16 +27,8 @@ export const News = () => {
             alt="Imagen 2"
             className="w-full h-full object-cover object-top lg:object-center"
           />
-          <div className="container-overlay absolute top-0 left-0 w-full h-full p-8 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="container-overlay-split flex flex-col justify-between h-full">
-              <div className="guantes  font-geistBold text-[18px] lg:text-[24px] text-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[1].title}
-              </div>
-              <div className="vermas font-geistLight text-white  text-[13px] lg:text-lg transform translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[1].description}
-              </div>
-            </div>
-          </div>
+           <Description title={data.poster[1].title} description={data.poster[1].description}/>
+      
         </div>
         <div onClick={() => setOpening(true, 2)} className="three relative overflow-hidden flex justify-center items-center col-span-1  row-span-2  lg:row-span-4 h-full group hover:cursor-pointer rounded-md">
           <Image
@@ -54,16 +37,8 @@ export const News = () => {
             alt="Imagen 3"
             className="w-full h-full object-cover "
           />
-          <div className="container-overlay absolute top-0 left-0 w-full h-full p-8 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="container-overlay-split flex flex-col justify-between h-full">
-              <div className="guantes  font-geistBold text-[18px] lg:text-[24px] text-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[2].title}
-              </div>
-              <div className="vermas font-geistLight text-white  text-[13px] lg:text-lg transform translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[2].description}
-              </div>
-            </div>
-          </div>
+           <Description title={data.poster[2].title} description={data.poster[2].description}/>
+    
         </div>
         <div onClick={() => setOpening(true, 3)} className="four relative overflow-hidden flex justify-center items-center col-span-1 row-span-2 lg:col-span-2 lg:row-span-2 group hover:cursor-pointer rounded-md">
           <Image
@@ -72,18 +47,26 @@ export const News = () => {
             alt="Imagen 4"
             className="w-full h-full object-cover"
           />
-          <div className="container-overlay absolute top-0 left-0 w-full h-full p-8 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="container-overlay-split flex flex-col justify-between h-full">
-              <div className="guantes  font-geistBold text-[18px] lg:text-[24px] text-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[3].title}
-              </div>
-              <div className="vermas font-geistLight text-white  text-[13px] lg:text-lg transform translate-x-full group-hover:translate-x-0 transition-transform duration-500">
-                {data.poster[3].description}
-              </div>
-            </div>
-          </div>
+           <Description title={data.poster[3].title} description={data.poster[3].description}/>
+      
         </div>
       </div>
     </div>
   );
 };
+
+
+const Description = ({title, description }: { title: string, description: string}) => {
+  return (
+    <div className="container-overlay absolute top-0 left-0 w-full h-full p-8 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div className="container-overlay-split flex flex-col justify-between h-full">
+      <div className="guantes font-geistBold text-[18px] lg:text-[24px] text-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+        {title}
+      </div>
+      <div className="vermas font-geistLight text-white text-[13px] lg:text-lg transform translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+        {description}
+      </div>
+    </div>
+  </div>
+  )
+}

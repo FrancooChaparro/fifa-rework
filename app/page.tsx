@@ -34,7 +34,6 @@ export default function Home() {
       <div className="md:h-20 h-10 w-full" id={"target-component"} />
       <Ranking />
       <TopPlayers />
-      <ContactMeComponent />
     </main>
   );
 }

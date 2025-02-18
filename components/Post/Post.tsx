@@ -5,14 +5,16 @@ import { useMyContext } from " @/context/ListContext";
 import { Poster } from " @/types/types";
 
 export const Post = () => {
-  const { isOpenPost, setOpening, indexPost, isOpenGame } = useMyContext();
+  const { isOpenPost, setOpening, indexPost } = useMyContext();
   const [currentIndex, setCurrentIndex] = useState<number>(indexPost);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
 useMemo(()=> {
   setCurrentIndex(indexPost)
 }, [indexPost])
 
   const infoNotice: Poster[] = data.poster
+
   // Función para moverte a la izquierda
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -25,6 +27,28 @@ useMemo(()=> {
     setCurrentIndex((prevIndex) =>
       prevIndex === infoNotice.length - 1 ? 0 : prevIndex + 1
     );
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  // Detectar el final del touch y decidir la dirección
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchDiff = touchStartX - touchEndX;
+
+    if (touchDiff > 50) {
+      // Swipe hacia la izquierda (siguiente imagen)
+      handleNext();
+    } else if (touchDiff < -50) {
+      // Swipe hacia la derecha (imagen anterior)
+      handlePrev();
+    }
+
+    setTouchStartX(null);
   };
 
   useEffect(() => {
@@ -90,6 +114,8 @@ useMemo(()=> {
             transform: `translateX(-${currentIndex * 100}vw)`,
             width: `${infoNotice.length * 100}vw`, // Ajusta el ancho del contenedor
           }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           {infoNotice.map((notice: Poster, index: number) => (
             <div

@@ -1,6 +1,7 @@
 .ContactMeComponent_container_all {
     width: 100%;
-    box-shadow: 0px 0px 50px rgb(46, 45, 45);
+    box-shadow: 0px 0px 20px rgb(36, 35, 35);
+    background-color: #0d0c14;
     padding: 30px 0px 30px 0px;
     overflow-x: hidden;
     overflow-y: hidden;

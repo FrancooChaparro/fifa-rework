@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import MyProvider from "../context/ListProvider";
 import { Post } from " @/components/Post/Post";
 import { GameDetails } from " @/components/GameDetails/GameDetails";
+import ContactMeComponent from " @/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,10 +46,11 @@ export default function RootLayout({
         <MyProvider>
           <Nav />
           <div className="relative">
-          <GameDetails />
-          <Post />
+            <GameDetails />
+            <Post />
           </div>
           {children}
+          <ContactMeComponent />
         </MyProvider>
       </body>
     </html>

@@ -24,6 +24,7 @@
 
 body {
   user-select: none;
+  background-color: #0d0c14;
 }
 
 .no-scrollbar::-webkit-scrollbar {
