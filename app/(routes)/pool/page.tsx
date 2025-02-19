@@ -212,8 +212,8 @@ export default function PoolPage() {
   );
 
   return (
-    <div className="min-h-screen w-full pt-[60px] bg-bgGames  pb-[80px]">
-      <div className="w-full grid grid-cols-8 gap-5 px-5 py-10">
+    <div className="min-h-screen w-full pt-[60px] bg-bgGames  pb-[80px] overflow-hidden">
+      <div className="w-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-5 px-5 py-10">
         {renderPool("Oficial Pool", bombo8)}
         {renderPool("Pool 1", equipos)}
         {renderPool("Pool 2", bombo2)}
@@ -236,10 +236,10 @@ export default function PoolPage() {
         </button>
       </div>
 
-      <div className="px-20 w-full select-none pt-10">
-           <div className="grid grid-cols-4 gap-20  font-geistRegular">
+      <div className=" px-5 lg:px-5 xl:px-14 w-full select-none pt-10">
+           <div className="grid grid-cols-4 gap-3 md:gap-10 xl:gap-20 font-geistRegular">
              <div className="w-full rounded-[4px] bg-bgPrimary">
-             <p className="font-geistBold text-[22px] text-fontTitle px-6 py-6">Franco</p>
+             <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">Franco</p>
 
                {FrancoBombo.length &&
               FrancoBombo.map((team: any, index: any) => {
@@ -266,7 +266,7 @@ export default function PoolPage() {
                        </div>
      
                        {/* Nombre */}
-                       <span className="group-hover:text-hoverText">
+                       <span className="group-hover:text-hoverText hidden md:block">
                          {team.nombre}
                        </span>
                      </div>
@@ -277,7 +277,7 @@ export default function PoolPage() {
                })}
              </div>
              <div className="w-full rounded-[4px] bg-bgPrimary">
-             <p className="font-geistBold text-[22px] text-fontTitle px-6  py-6">Gaston</p>
+             <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Gaston</p>
 
                {" "}
                {GastonBombo.length &&
@@ -305,7 +305,7 @@ export default function PoolPage() {
                        </div>
      
                        {/* Nombre */}
-                       <span className="group-hover:text-hoverText">
+                       <span className="group-hover:text-hoverText hidden md:block">
                          {team.nombre}
                        </span>
                      </div>
@@ -316,7 +316,7 @@ export default function PoolPage() {
                })}
              </div>
              <div className="w-full rounded-[4px] bg-bgPrimary">
-             <p className="font-geistBold text-[22px] text-fontTitle px-6  py-6">Marcos</p>
+             <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Marcos</p>
 
                {" "}
                {MarcosBombo.length &&
@@ -344,7 +344,7 @@ export default function PoolPage() {
                        </div>
      
                        {/* Nombre */}
-                       <span className="group-hover:text-hoverText">
+                       <span className="group-hover:text-hoverText hidden md:block">
                          {team.nombre}
                        </span>
                      </div>
@@ -355,7 +355,7 @@ export default function PoolPage() {
                })}
              </div>
              <div className="w-full rounded-[4px] bg-bgPrimary">
-             <p className="font-geistBold text-[22px] text-fontTitle px-6  py-6">Rodrigo</p>
+             <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Rodrigo</p>
 
                {RomaBombo.length &&
               RomaBombo.map((team: any, index: any) => {
@@ -382,7 +382,7 @@ export default function PoolPage() {
                        </div>
      
                        {/* Nombre */}
-                       <span className="group-hover:text-hoverText">
+                       <span className="group-hover:text-hoverText hidden md:block">
                          {team.nombre}
                        </span>
                      </div>
