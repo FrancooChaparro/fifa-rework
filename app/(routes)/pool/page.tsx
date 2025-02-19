@@ -249,7 +249,7 @@ export default function PoolPage() {
                      className="bg-bgPrimary group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
                    >
                      {/* Sección izquierda */}
-                     <div className="flex gap-3 items-center hover:cursor-pointer">
+                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">
                        {/* Rank */}
                        <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
                          <span className="text-lg">{team.rank}</span>
@@ -288,7 +288,7 @@ export default function PoolPage() {
                      className="bg-bgPrimary group w-full  hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
                    >
                      {/* Sección izquierda */}
-                     <div className="flex gap-3 items-center hover:cursor-pointer">
+                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">
                        {/* Rank */}
                        <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
                          <span className="text-lg">{team.rank}</span>
@@ -327,7 +327,7 @@ export default function PoolPage() {
                      className="bg-bgPrimary group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
                    >
                      {/* Sección izquierda */}
-                     <div className="flex gap-3 items-center hover:cursor-pointer">
+                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">
                        {/* Rank */}
                        <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
                          <span className="text-lg">{team.rank}</span>
@@ -365,7 +365,7 @@ export default function PoolPage() {
                      className="bg-bgPrimary group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
                    >
                      {/* Sección izquierda */}
-                     <div className="flex gap-3 items-center hover:cursor-pointer">
+                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">
                        {/* Rank */}
                        <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
                          <span className="text-lg">{team.rank}</span>

@@ -3,6 +3,7 @@ import Banner from " @/components/Banner/Banner";
 import TopPlayers from " @/components/Banner/Test";
 import ContainerGames from " @/components/ContainerGames/ContainerGames";
 import ContactMeComponent from " @/components/Footer/Footer";
+import Loader from " @/components/Loader/Loader";
 import { News } from " @/components/News/News";
 import { Ranking } from " @/components/Ranking/Ranking";
 

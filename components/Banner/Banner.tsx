@@ -11,7 +11,7 @@ const Banner = () => {
         fill
         loading="lazy"
         placeholder="blur" 
-        blurDataURL='/images/blur.png'
+        blurDataURL='/images/blur.webp'
         className='w-full h-full object-cover 2xl:h-auto'
       />
        <div className="absolute md:w-full w-[385px] xs:w-[480px] bottom-[100px] left-[40px] lg:left-[100px] text-white">

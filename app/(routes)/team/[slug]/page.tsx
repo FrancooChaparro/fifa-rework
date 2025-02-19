@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import UserPage from "./page.client";
 import { find_team_slug } from " @/utils/get_team_slug";
+import Loader from " @/components/Loader/Loader";
 
 
 
@@ -14,7 +15,7 @@ export default async function ServerPage({ params } : { params: { slug: string }
 
   
   return (
-    <Suspense key={null} fallback={<div>Lading...</div>}>
+    <Suspense key={null} fallback={<Loader />}>
         <UserPage data={data}/>
     </Suspense>
   )

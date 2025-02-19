@@ -23,7 +23,7 @@ export default function UserPage({ data } : { data: any}) {
           <Image
             src={data.teamID.cover}
             placeholder="blur" 
-            blurDataURL="/images/blur.png"
+            blurDataURL="/images/blur.webp"
             alt="atl"
             fill
             priority

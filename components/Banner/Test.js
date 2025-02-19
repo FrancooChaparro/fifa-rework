@@ -67,11 +67,11 @@ export default function TopPlayers() {
                           subtitulo
                         </div> */}
                           <Image
-                            src={data.image || "/images/blur.png"}
+                            src={data.image || "/images/blur.webp"}
                             alt="atl"
                             fill
                             placeholder="blur"
-                            blurDataURL="/images/blur.png"
+                            blurDataURL="/images/blur.webp"
                             quality={100}
                             className="h-full w-full object-cover object-center"
                           />

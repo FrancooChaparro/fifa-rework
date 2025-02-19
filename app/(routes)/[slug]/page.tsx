@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { find_user_slug } from " @/utils/get_team_slug";
 import UserPage from "./page.client";
+import Loader from " @/components/Loader/Loader";
 
 export default async function ServerPage({
   params,
@@ -18,7 +19,7 @@ export default async function ServerPage({
   const sumarGolesVisitanteClasics = data.sumarGolesVisitanteClasics;
 
   return (
-    <Suspense key={null} fallback={<div>Lading...</div>}>
+    <Suspense key={null} fallback={<Loader />}>
       <UserPage
         playerStats={data.playerStats}
         {...{

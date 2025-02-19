@@ -42,7 +42,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
             alt="atl"
             fill
             placeholder="blur"
-            blurDataURL="/images/blur.png"
+            blurDataURL="/images/blur.webp"
             priority
             quality={100}
             className="h-full w-full object-cover object-center"

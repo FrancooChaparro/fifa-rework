@@ -20,12 +20,20 @@ export default function Nav() {
   const [inputValue, setInputValue] = useState("");
   const [filteredNames, setFilteredNames] = useState<Rank[]>([]);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setShowInput(false);
     setIsOpen(false);
     setIsActive(false);
+    setFilteredNames([])
+    setInputValue("")
+    setSelectedIndex(-1)
   }, [pathname]);
+
+  useEffect(() => {
+    setSelectedIndex(-1)
+  }, [pathname, showInput]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toUpperCase().trimStart(); // Evita espacios al inicio
@@ -53,7 +61,11 @@ export default function Nav() {
       setFilteredNames([]); // Oculta la lista de sugerencias
       setShowInput(false);
     } else {
+      // setShowInput(true);
       setShowInput(true);
+      setTimeout(() => {
+        inputRef.current?.focus(); // Da focus después de mostrarlo
+      }, 10);
     }
   };
 
@@ -92,18 +104,64 @@ export default function Nav() {
     } else {
       document.body.style.overflow = ""; // Restaurar scroll
     }
-  
+
     return () => {
       document.body.style.overflow = ""; // Asegurar que se restablezca al desmontar
     };
   }, [isActive]);
-  
+
+
+  const [selectedIndex, setSelectedIndex] = useState(-1); // -1 significa que nada está seleccionado
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (filteredNames.length === 0) return;
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setSelectedIndex((prevIndex) =>
+        prevIndex < filteredNames.length - 1 ? prevIndex + 1 : 0
+      );
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setSelectedIndex((prevIndex) =>
+        prevIndex > 0 ? prevIndex - 1 : filteredNames.length - 1
+      );
+    }
+
+    if (event.key === "Enter" && selectedIndex !== -1) {
+      event.preventDefault();
+      const selectedTeam = filteredNames[selectedIndex];
+      router.push(`/team/${selectedTeam.name}`);
+    }
+  };
+
+
+  const inputContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (inputContainerRef.current && !inputContainerRef.current.contains(event.target as Node)) {
+        handleSearchClick(); // Cierra el input si se hace clic fuera
+      }
+    }
+
+    if (showInput) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showInput, handleSearchClick]);
 
   return (
     <div
-      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-10 transition-all ${
-        isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
-      }`}
+      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-10 transition-all ${isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
+        }`}
     >
       <div className="flex justify-between items-center relative h-full w-full px-6">
 
@@ -131,20 +189,20 @@ export default function Nav() {
           </p>
           <div className="grid grid-cols-2 w-full gap-[10px] gap-y-[10px] ">
             {
-             namesArray && namesArray.slice(16,22).map((team, index )=> (
-              <Link prefetch={false} href={`/team/${team.name}`} key={index} className="w-full h-[100px] bg-white relative">
-              <Image
-                src={team.cover || "/images/blur.png"}
-                placeholder="blur"
-                blurDataURL="/images/blur.png"
-                alt="atl"
-                fill
-                className="h-full w-full object-cover object-center"
-              />
-            </Link>
-             ))
+              namesArray && namesArray.slice(16, 22).map((team, index) => (
+                <Link prefetch={false} href={`/team/${team.name}`} key={index} className="w-full h-[100px] bg-white relative">
+                  <Image
+                    src={team.cover || "/images/blur.webp"}
+                    placeholder="blur"
+                    blurDataURL="/images/blur.webp"
+                    alt="atl"
+                    fill
+                    className="h-full w-full object-cover object-center"
+                  />
+                </Link>
+              ))
             }
-          
+
           </div>
           <p className="text-[24px] font-geistBold text-white tracking-[0.10px] w-full text-center pt-5 pb-3">
             Last Champions
@@ -161,11 +219,11 @@ export default function Nav() {
 
         {/*SEARCH MOBILE*/}
         <div
-          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-4  ${
-            showInput
-              ? "opacity-100 pointer-events-auto clip-path-none z-10"
-              : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-          }`}
+          ref={inputContainerRef}
+          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-4  ${showInput
+            ? "opacity-100 pointer-events-auto clip-path-none z-10"
+            : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+            }`}
         >
           <div className="block lg:hidden relative  transition-all duration-300 ">
             <input
@@ -177,11 +235,10 @@ export default function Nav() {
             />
             {filteredNames.length > 0 && (
               <ul
-                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300   ${
-                  showInput
-                    ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                    : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-                }`}
+                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300   ${showInput
+                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                  }`}
               >
                 {filteredNames.map((team, index) => (
                   <Link
@@ -213,7 +270,7 @@ export default function Nav() {
           </div>
         </div>
         {/*LEFT CONTENT*/}
-        <div className="flex lg:hidden hover:cursor-pointer" onClick={()=> setIsActive(true)}>
+        <div className="flex lg:hidden hover:cursor-pointer" onClick={() => setIsActive(true)}>
           <HamburgerMenuIcon />
         </div>
         <span
@@ -267,15 +324,13 @@ export default function Nav() {
 
             {/* Menú desplegable */}
             <div
-              className={`absolute bottom-[-107px] left-[-12px] flex  px-4  flex-col gap-2 min-h-10 min-w-[90px] py-2 transition-all duration-200    ${
-                isBlurred
-                  ? "backdrop-blur-md bg-black/70"
-                  : "bg-black/95 select-none"
-              } ${
-                isOpen
+              className={`absolute bottom-[-107px] left-[-12px] flex  px-4  flex-col gap-2 min-h-10 min-w-[90px] py-2 transition-all duration-200    ${isBlurred
+                ? "backdrop-blur-md bg-black/70"
+                : "bg-black/95 select-none"
+                } ${isOpen
                   ? "opacity-100 pointer-events-auto"
                   : "opacity-0 pointer-events-none"
-              }
+                }
       `}
             >
               {langs.slice(2, 5).map((item, index) => (
@@ -298,29 +353,33 @@ export default function Nav() {
             <input
               type="text"
               value={inputValue}
+              ref={inputRef}
+              onKeyDown={handleKeyDown}
               onChange={handleChange}
               placeholder="Escribe un nombre..."
-              className={`absolute -translate-y-1/2 w-[256px] h-[35px] placeholder:font-geistLight font-geistLight px-2 outline-none border-none focus:ring-0 focus:outline-none active:outline-none hover:outline-none bg-bgGames transition-all duration-300  ${
-                showInput
-                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-              }`}
+              className={`absolute -translate-y-1/2 w-[256px] h-[35px] placeholder:font-geistLight font-geistLight px-2 outline-none border-none focus:ring-0 focus:outline-none active:outline-none hover:outline-none bg-bgGames transition-all duration-300  ${showInput
+                ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                }`}
             />
             {filteredNames.length > 0 && (
               <ul
-                className={` absolute w-[256px] bg-bgGames  min-h-[90px] top-[21px] shadow-lg z-50 transition-all duration-300   ${
-                  showInput
-                    ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                    : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-                }`}
+                className={` absolute w-[256px] bg-bgGames  min-h-[90px] top-[21px] shadow-lg z-50 transition-all duration-300   ${showInput
+                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                  }`}
               >
                 {filteredNames.map((team, index) => (
                   <Link
                     key={index}
                     prefetch={false}
                     href={`/team/${team.name}`}
+                    onMouseEnter={() => setSelectedIndex(index)}
+                    onMouseLeave={() => setSelectedIndex(-1)}
                     onClick={() => handleSelect(team.name)}
-                    className="p-2 flex items-center gap-3 cursor-pointer hover:bg-hoverCard text-white"
+                    // className="p-2 flex items-center gap-3 cursor-pointer hover:bg-hoverCard text-white"
+                    className={`p-2 flex items-center gap-3 cursor-pointer ${selectedIndex === index ? "bg-hoverCard text-white" : "hover:bg-hoverCard"
+                      }`}
                   >
                     <Image
                       src={team.logo}
