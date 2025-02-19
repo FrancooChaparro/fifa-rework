@@ -8,9 +8,10 @@ import { data } from " @/models/db";
 import { Rank } from " @/types/types";
 import Image from "next/image";
 
+const namesArray = data.ranking;
+
 export default function Nav() {
   const router = useRouter();
-  const namesArray = data.ranking;
   const pathname = usePathname();
   const [isBlurred, setIsBlurred] = useState(false);
   const [showInput, setShowInput] = useState(false);

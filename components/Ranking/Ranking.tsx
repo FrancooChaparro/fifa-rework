@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Rank } from " @/types/types";
 import Link from "next/link";
 
+const rankTeams = data.ranking
+
 export const Ranking = () => {
   return (
     <div className="px-4 lg:px-20 w-full select-none">
@@ -12,7 +14,7 @@ export const Ranking = () => {
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 xl:gap-20  font-geistRegular">
         <div className="w-full rounded-[4px]">
-          {data.ranking.slice(0, 10).map((team: Rank, index: number) => {
+          {rankTeams.slice(0, 10).map((team: Rank, index: number) => {
             return (
               <Link  key={index} href={`/team/${team.name}`} prefetch={false}>
                 <div
@@ -54,7 +56,7 @@ export const Ranking = () => {
         </div>
         <div className="w-full rounded-[4px]">
           {" "}
-          {data.ranking.slice(10, 20).map((team: Rank, index: number) => {
+          {rankTeams.slice(10, 20).map((team: Rank, index: number) => {
             return (
               <Link  key={`${index} - a`} href={`/team/${team.name}`} prefetch={false}>
                 <div
@@ -96,7 +98,7 @@ export const Ranking = () => {
         </div>
         <div className="w-full rounded-[4px]">
           {" "}
-          {data.ranking.slice(20, 30).map((team: Rank, index: number) => {
+          {rankTeams.slice(20, 30).map((team: Rank, index: number) => {
             return (
               <Link key={`${index} - b`} href={`/team/${team.name}`} prefetch={false}>
                 <div

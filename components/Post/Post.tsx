@@ -4,6 +4,8 @@ import { data } from " @/models/db";
 import { useMyContext } from " @/context/ListContext";
 import { Poster } from " @/types/types";
 
+const infoNotice: Poster[] = data.poster
+
 export const Post = () => {
   const { isOpenPost, setOpening, indexPost } = useMyContext();
   const [currentIndex, setCurrentIndex] = useState<number>(indexPost);
@@ -13,7 +15,6 @@ useMemo(()=> {
   setCurrentIndex(indexPost)
 }, [indexPost])
 
-  const infoNotice: Poster[] = data.poster
 
   // Función para moverte a la izquierda
   const handlePrev = () => {

@@ -3,8 +3,10 @@ import { data } from " @/models/db";
 import { useMyContext } from " @/context/ListContext";
 import Image from "next/image";
 
+const info = data.poster
+
 export const News = () => {
-  const { isOpenPost, setOpening } = useMyContext();
+  const {  setOpening } = useMyContext();
   return (
     <div className="container-all w-full h-[calc(100vh-80px)]">
       {/* Título */}
@@ -13,41 +15,41 @@ export const News = () => {
         {/* Imágenes */}
         <div onClick={() => setOpening(true, 0)} className="one relative flex justify-center items-center col-span-1 row-span-2  lg:row-span-2 group hover:cursor-pointer rounded-md overflow-hidden">
           <Image
-            src={data.poster[0].image}
+            src={info[0].image}
             fill
             alt="Imagen 1"
             className="w-full h-full object-cover object-top lg:object-center"
           />
-         <Description title={data.poster[0].title} description={data.poster[0].description}/>
+         <Description title={info[0].title} description={info[0].description}/>
         </div>
         <div onClick={() => setOpening(true, 1)} className="two relative overflow-hidden flex justify-center items-center col-span-1 row-span-2 lg:row-span-2 group hover:cursor-pointer rounded-md">
           <Image
             fill
-            src={data.poster[1].image}
+            src={info[1].image}
             alt="Imagen 2"
             className="w-full h-full object-cover object-top lg:object-center"
           />
-           <Description title={data.poster[1].title} description={data.poster[1].description}/>
+           <Description title={info[1].title} description={info[1].description}/>
       
         </div>
         <div onClick={() => setOpening(true, 2)} className="three relative overflow-hidden flex justify-center items-center col-span-1  row-span-2  lg:row-span-4 h-full group hover:cursor-pointer rounded-md">
           <Image
             fill
-            src={data.poster[2].image}
+            src={info[2].image}
             alt="Imagen 3"
             className="w-full h-full object-cover "
           />
-           <Description title={data.poster[2].title} description={data.poster[2].description}/>
+           <Description title={info[2].title} description={info[2].description}/>
     
         </div>
         <div onClick={() => setOpening(true, 3)} className="four relative overflow-hidden flex justify-center items-center col-span-1 row-span-2 lg:col-span-2 lg:row-span-2 group hover:cursor-pointer rounded-md">
           <Image
             fill
-            src={data.poster[3].image}
+            src={info[3].image}
             alt="Imagen 4"
             className="w-full h-full object-cover"
           />
-           <Description title={data.poster[3].title} description={data.poster[3].description}/>
+           <Description title={info[3].title} description={info[3].description}/>
       
         </div>
       </div>

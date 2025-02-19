@@ -6,13 +6,15 @@ import { Match, Rank } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
 import Link from "next/link";
 
+const games = History.Games.slice(0, 5);
+const rank = data.ranking.slice(0, 5);
+
 const ContainerGames = ({
   scrollToDetails,
 }: {
   scrollToDetails: () => void;
 }) => {
-  const games = History.Games.slice(0, 5);
-  const rank = data.ranking.slice(0, 5);
+
   return (
     <div className="font-geistLight">
       <Games ultimateGames={games} />

@@ -6,9 +6,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { top20 } from " @/models/db";
 
+const players = top20.players;
+
 export default function TopPlayers() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const players = top20.players;
   const settings = {
     dots: false,
     infinite: false,
