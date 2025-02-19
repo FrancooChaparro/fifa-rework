@@ -792,8 +792,8 @@ export const History = {
 
 export const stats_marcos = {
   info: {
-    photo_profile: "/images/Marcos.jpg",
-    background_profile: "/images/chelsea_cover.jpg",
+    photo_profile: "/images/Marcos.webp",
+    background_profile: "/images/chelsea_cover.webp",
     rank_profile: "11",
     shield_profile: "/images/Chelsea.png",
     background_blur_profile: "/images/che_blur.webp",
@@ -2323,7 +2323,7 @@ export const stats_franco = {
 export const stats_gaston = {
   info: {
     photo_profile: "/images/gaston.jpg",
-    background_profile: "/images/juventus_cover.jpg",
+    background_profile: "/images/juventus_cover.webp",
     rank_profile: "17",
     shield_profile: "/images/da-removebg-preview.png",
     background_blur_profile: "/images/juv_blur.webp",
@@ -3199,28 +3199,28 @@ export const data = {
     },
     {
       logo: "/images/ManchesterUnited.png",
-      cover: "/images/manchesterunited_cover.jpg",
+      cover: "/images/manchesterunited_cover.webp",
       rank: 4,
       name: "MANCHESTER UNITED",
       titles: 3,
     },
     {
       logo: "/images/RealMadrid.png",
-      cover: "/images/realmadrid_cover.jpg",
+      cover: "/images/realmadrid_cover.webp",
       rank: 5,
       name: "REAL MADRID",
       titles: 3,
     },
     {
       logo: "/images/Internazionale.png",
-      cover: "/images/inter_cover.jpg",
+      cover: "/images/inter_cover.webp",
       rank: 6,
       name: "INTER",
       titles: 3,
     },
     {
       logo: "/images/Barcelona.webp",
-      cover: "/images/barcelona_cover.jpeg",
+      cover: "/images/barcelona_cover.webp",
       rank: 7,
       name: "BARCELONA",
       titles: 3,
@@ -3234,21 +3234,21 @@ export const data = {
     },
     {
       logo: "/images/newcastlee.png",
-      cover: "/images/newcastle_cover.jpg",
+      cover: "/images/newcastle_cover.webp",
       rank: 9,
       name: "NEWCASTLE",
       titles: 2,
     },
     {
       logo: "/images/oporto.png",
-      cover: "/images/porto_cover.jpg",
+      cover: "/images/porto_cover.webp",
       rank: 10,
       name: "PORTO",
       titles: 2,
     },
     {
       logo: "/images/Chelsea.png",
-      cover: "/images/chelsea_cover.jpg",
+      cover: "/images/chelsea_cover.webp",
       rank: 11,
       name: "CHELSEA",
       titles: 2,
@@ -3262,7 +3262,7 @@ export const data = {
     },
     {
       logo: "/images/arsenalfc.png",
-      cover: "/images/arsenal_cover.jpg",
+      cover: "/images/arsenal_cover.webp",
       rank: 13,
       name: "ARSENAL",
       titles: 2,
@@ -3283,14 +3283,14 @@ export const data = {
     },
     {
       logo: "/images/SSC_Neapel.svg.png",
-      cover: "/images/napoli_cover.jpg",
+      cover: "/images/napoli_cover.webp",
       rank: 16,
       name: "NAPOLI",
       titles: 1,
     },
     {
       logo: "/images/valenciafc.png",
-      cover: "/images/valencia_cover.jpg",
+      cover: "/images/valencia_cover.webp",
       rank: 17,
       name: "VALENCIA",
       titles: 1,
@@ -3298,14 +3298,14 @@ export const data = {
 
     {
       logo: "/images/da-removebg-preview.png",
-      cover: "/images/juventus_cover.jpg",
+      cover: "/images/juventus_cover.webp",
       rank: 18,
       name: "JUVENTUS",
       titles: 1,
     },
     {
       logo: "/images/villar.png",
-      cover: "/images/villareal_cover.jpg",
+      cover: "/images/villareal_cover.webp",
       rank: 19,
       name: "VILLA REAL",
       titles: 1,
@@ -3320,7 +3320,7 @@ export const data = {
     },
     {
       logo: "/images/bayern04.png",
-      cover: "/images/bayern04_cover.jpg",
+      cover: "/images/bayern04_cover.webp",
       rank: 21,
       name: "BAYERN 04 LEVERKUSEN",
       titles: 1,
@@ -3334,7 +3334,7 @@ export const data = {
     },
     {
       logo: "/images/Zenit.png",
-      cover: "/images/zenit_cover.jpg",
+      cover: "/images/zenit_cover.webp",
       rank: 23,
       name: "ZENIT",
       titles: 0,
@@ -3342,35 +3342,35 @@ export const data = {
 
     {
       logo: "/images/Milan.png",
-      cover: "/images/milan_cover.jpg",
+      cover: "/images/milan_cover.webp",
       rank: 24,
       name: "AC MILAN",
       titles: 0,
     },
     {
       logo: "/images/AtleticoMadrid.png",
-      cover: "/images/atleticomadrid_cover.jpg",
+      cover: "/images/atleticomadrid_cover.webp",
       rank: 25,
       name: "ATLETICO MADRID",
       titles: 0,
     },
     {
       logo: "/images/laziofc.png",
-      cover: "/images/lazio_cover.png",
+      cover: "/images/lazio_cover.webp",
       rank: 26,
       name: "LAZIO",
       titles: 0,
     },
     {
       logo: "/images/Benfica.png",
-      cover: "/images/benfica_cover.jpg",
+      cover: "/images/benfica_cover.webp",
       rank: 27,
       name: "BENFICA",
       titles: 0,
     },
     {
       logo: "/images/SportingLisboa.png",
-      cover: "/images/sporting_cover.jpg",
+      cover: "/images/sporting_cover.webp",
       rank: 28,
       name: "SPORTING LISBOA",
       titles: 0,
@@ -3385,7 +3385,7 @@ export const data = {
     },
     {
       logo: "/images/ASRoma.png",
-      cover: "/images/roma_cover.jpg",
+      cover: "/images/roma_cover.webp",
       rank: 30,
       name: "AS ROMA",
       titles: 0,
@@ -3393,14 +3393,14 @@ export const data = {
 
     {
       logo: "/images/wolfburgo.png",
-      cover: "/images/wolfburgo_cover.jpg",
+      cover: "/images/wolfburgo_cover.webp",
       rank: 31,
       name: "WOLFSBURGO",
       titles: 0,
     },
     {
       logo: "/images/Lyon.png",
-      cover: "/images/lyon_cover.jpg",
+      cover: "/images/lyon_cover.webp",
       rank: 32,
       name: "OLYMPIQUE LYON",
       titles: 0,
@@ -3470,7 +3470,7 @@ export const top20 = {
       rank: 2,
       name: "Arjen Robben",
       team: "Bayern Munich",
-      image: "/images/robben.jpg",
+      image: "/images/robben.webp",
     },
     {
       rank: 3,
@@ -3482,25 +3482,25 @@ export const top20 = {
       rank: 4,
       name: "Sergio Ramos",
       team: "Real Madrid",
-      image: "/images/ramos.jpg",
+      image: "/images/ramos.webp",
     },
     {
       rank: 5,
       name: "Robin van Persie",
       team: "Manchester United",
-      image: "/images/van persie.jpeg",
+      image: "/images/van persie.webp",
     },
     {
       rank: 6,
       name: "Erling Haaland",
       team: "Manchester City",
-      image: "/images/haaland.jpg",
+      image: "/images/haaland.webp",
     },
     {
       rank: 7,
       name: "Manuel Neuer",
       team: "Bayern Munich",
-      image: "/images/never.jpg",
+      image: "/images/never.webp",
     },
     {
       rank: 8,
@@ -3518,7 +3518,7 @@ export const top20 = {
       rank: 10,
       name: "Thomas Müller",
       team: "Bayern Munich",
-      image: "/images/muller.jpg",
+      image: "/images/muller.webp",
     },
     {
       rank: 11,
@@ -3530,7 +3530,7 @@ export const top20 = {
       rank: 12,
       name: "Carlos Tévez",
       team: "Juventus",
-      image: "/images/tevez.jpg",
+      image: "/images/tevez.webp",
     },
     {
       rank: 13,
@@ -3548,13 +3548,13 @@ export const top20 = {
       rank: 15,
       name: "Neymar",
       team: "Barcelona",
-      image: "/images/neymar.jpg",
+      image: "/images/neymar.webp",
     },
     {
       rank: 16,
       name: "Gerard Piqué",
       team: "Barcelona",
-      image: "/images/pique.jpg",
+      image: "/images/pique.webp",
     },
     {
       rank: 17,
@@ -3578,7 +3578,7 @@ export const top20 = {
       rank: 20,
       name: "Ramires",
       team: "Newcastle",
-      image: "/images/ramires.jpg",
+      image: "/images/ramires.webp",
     },
   ],
 };

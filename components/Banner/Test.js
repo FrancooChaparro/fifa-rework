@@ -94,16 +94,3 @@ export default function TopPlayers() {
     </div>
   );
 }
-
-//     "react-slick": "^0.30.2",
-//     "react-transition-group": "^4.4.5",
-//     "slick-carousel": "^1.8.1",
-
-//   "devDependencies": {
-//     "@types/react-slick": "^0.23.13",
-//     "@types/react-transition-group": "^4.4.10",
-//   },
-
-// .custom-carousel-sustainability .slick-list {
-//   overflow: visible !important;
-//   color: #474747;
