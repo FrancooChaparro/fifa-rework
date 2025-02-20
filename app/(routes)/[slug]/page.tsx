@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { find_user_slug } from " @/utils/get_team_slug";
 import UserPage from "./page.client";
 import Loader from " @/components/Loader/Loader";
+import NotFound from " @/app/not-found";
 
 export default async function ServerPage({
   params,
@@ -11,7 +12,7 @@ export default async function ServerPage({
   const data = await find_user_slug(params.slug);
 
   if (!data) {
-    return <div>Equipo no encontrado</div>;
+    return NotFound();
   }
   const golesFavorFinals = data.golesFavorFinals;
   const sumarGolesVisitanteFinals = data.sumarGolesVisitanteFinals;

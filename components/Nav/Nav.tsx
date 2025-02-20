@@ -21,20 +21,26 @@ export default function Nav() {
   const [filteredNames, setFilteredNames] = useState<Rank[]>([]);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const inputRefMobile = useRef<HTMLInputElement>(null);
+  const inputFocusDesktop = useRef<HTMLInputElement>(null);
+
 
   useEffect(() => {
+    //input
     setShowInput(false);
-    setIsOpen(false);
-    setIsActive(false);
     setFilteredNames([])
     setInputValue("")
-    setSelectedIndex(-1)
+    //playerslg
+    setIsOpen(false);
+    //hamburgermenu
+    setIsActive(false);
   }, [pathname]);
 
   useEffect(() => {
     setSelectedIndex(-1)
   }, [pathname, showInput]);
 
+  {/*GENERAL INPUT HANDLECHANGE*/ }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toUpperCase().trimStart(); // Evita espacios al inicio
     setInputValue(value);
@@ -50,10 +56,10 @@ export default function Nav() {
     }
   };
 
-  const handleSelect = (name: string) => {
-    setInputValue(""); // Rellena el input con el nombre seleccionado
-    setFilteredNames([]); // Oculta la lista de sugerencias
-  };
+  // const handleSelect = (name: string) => {
+  //   setInputValue(""); // Rellena el input con el nombre seleccionado
+  //   setFilteredNames([]); // Oculta la lista de sugerencias
+  // };
 
   const handleSearchClick = () => {
     if (showInput) {
@@ -64,11 +70,13 @@ export default function Nav() {
       // setShowInput(true);
       setShowInput(true);
       setTimeout(() => {
-        inputRef.current?.focus(); // Da focus después de mostrarlo
+        inputFocusDesktop.current?.focus(); // Da focus después de mostrarlo
+        inputRefMobile.current?.focus(); // Da focus después de mostrarlo
       }, 10);
     }
   };
 
+  {/*GENERAL-APLICA BLUR AL BACKGROUND NAV*/ }
   useEffect(() => {
     const handleScroll = () => {
       setIsBlurred(window.scrollY > 0); // Aplica blur si el scroll es mayor a 0
@@ -79,7 +87,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Detectar clic fuera del menú
+  {/*DESKTOP CLICKOUTSIDE-PLAYERS*/ }
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -97,7 +105,7 @@ export default function Nav() {
     };
   }, []);
 
-
+  {/*MOBILE BODY-NO-SCROLL-HAMBURGER-MENU*/ }
   useEffect(() => {
     if (isActive) {
       document.body.style.overflow = "hidden"; // Desactivar scroll
@@ -110,9 +118,8 @@ export default function Nav() {
     };
   }, [isActive]);
 
-
+  {/*DESKTOP FLECHAS PARA ABAJO, ARRIBA & ENTER*/ }
   const [selectedIndex, setSelectedIndex] = useState(-1); // -1 significa que nada está seleccionado
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (filteredNames.length === 0) return;
 
@@ -137,26 +144,31 @@ export default function Nav() {
     }
   };
 
-
+  {/*DESKTOP CIERRA EL INPUT CLICK OUTSIDE*/ }
   const inputContainerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (inputContainerRef.current && !inputContainerRef.current.contains(event.target as Node)) {
-        handleSearchClick(); // Cierra el input si se hace clic fuera
+      if (
+        inputContainerRef.current &&
+        !inputContainerRef.current.contains(event.target as Node) &&
+        inputRef.current &&
+        !inputRef.current.contains(event.target as Node)
+      ) {
+        setShowInput(false); // Cierra el input solo si se hace clic fuera
       }
     }
 
     if (showInput) {
       document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showInput, handleSearchClick]);
+  }, [showInput]);;
+
+
+
 
   return (
     <div
@@ -225,9 +237,10 @@ export default function Nav() {
             : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
             }`}
         >
-          <div className="block lg:hidden relative  transition-all duration-300 ">
+          <div className="block lg:hidden relative  transition-all duration-300">
             <input
               type="text"
+              ref={inputRefMobile}
               value={inputValue}
               onChange={handleChange}
               placeholder="Escribe un nombre..."
@@ -235,7 +248,7 @@ export default function Nav() {
             />
             {filteredNames.length > 0 && (
               <ul
-                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300   ${showInput
+                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300 ${showInput
                   ? "opacity-100 pointer-events-auto clip-path-none z-10"
                   : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
                   }`}
@@ -245,7 +258,7 @@ export default function Nav() {
                     key={index}
                     prefetch={false}
                     href={`/team/${team.name}`}
-                    onClick={() => handleSelect(team.name)}
+                    // onClick={() => handleSelect(team.name)}
                     className="p-2 flex items-center gap-3 cursor-pointer hover:bg-hoverCard text-white"
                   >
                     <Image
@@ -348,12 +361,14 @@ export default function Nav() {
         </div>
 
         {/*SEARCH DESKTOP*/}
-        <div className="absolute top-0 h-full right-0 flex gap-[20px] lg:gap-6 text-sm items-center justify-end">
+        <div className="absolute top-0 h-full right-0 flex gap-[20px] lg:gap-6 text-sm items-center justify-end"
+          ref={inputRef}
+        >
           <div className="hidden lg:flex relative w-64 bg-red-200 transition-all duration-300 ">
             <input
               type="text"
               value={inputValue}
-              ref={inputRef}
+              ref={inputFocusDesktop}
               onKeyDown={handleKeyDown}
               onChange={handleChange}
               placeholder="Escribe un nombre..."
@@ -376,9 +391,9 @@ export default function Nav() {
                     href={`/team/${team.name}`}
                     onMouseEnter={() => setSelectedIndex(index)}
                     onMouseLeave={() => setSelectedIndex(-1)}
-                    onClick={() => handleSelect(team.name)}
+                    // onClick={() => handleSelect(team.name)}
                     // className="p-2 flex items-center gap-3 cursor-pointer hover:bg-hoverCard text-white"
-                    className={`p-2 flex items-center gap-3 cursor-pointer ${selectedIndex === index ? "bg-hoverCard text-white" : "hover:bg-hoverCard"
+                    className={`p-2 flex items-center gap-3 cursor-pointer ${selectedIndex === index ? "bg-hoverCard text-white" : ""
                       }`}
                   >
                     <Image
