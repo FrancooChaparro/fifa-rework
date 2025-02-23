@@ -145,7 +145,7 @@ export default function ResultsPage() {
   }, [filtersMobile]);
 
   return (
-    <div className="w-full relative flex flex-col min-h-screen bg-bgGames text-white pt-[90px] px-10">
+    <div className="w-full relative flex flex-col min-h-screen bg-bgGames text-white pt-[90px]  px-10">
       <p className="text-[34px] lg:text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-4">
         Finals & PopularMatchs
       </p>

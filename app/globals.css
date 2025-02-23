@@ -69,6 +69,3 @@ body {
   clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
-.shadow-top {
-  box-shadow: 0 -20px 8px rgba(207, 24, 24, 0.2); /* Sombra hacia arriba */
-}
