@@ -86,10 +86,10 @@ const Games = ({ ultimateGames }: { ultimateGames: Match[] }) => {
         })}
       </div>
       <div className="bg-bgGames/95 flex justify-center items-center p-4 w-full">
-        <p className="text-[11px] cursor-pointer relative tracking-[0.48px] group p-1 font-geistRegular">
+        <Link prefetch={false} href={"/results"} className="text-[11px] cursor-pointer relative tracking-[0.48px] group p-1 font-geistRegular">
           VIEW ALL RESULTS
           <span className="absolute left-0 bottom-0 h-[3px] w-0 bg-hoverCard transition-all duration-200 group-hover:w-full"></span>
-        </p>
+        </Link>
       </div>
     </div>
   );

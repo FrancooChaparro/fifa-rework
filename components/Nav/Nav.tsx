@@ -172,13 +172,13 @@ export default function Nav() {
 
   return (
     <div
-      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-10 transition-all ${isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
+      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-20 transition-all ${isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
         }`}
     >
       <div className="flex justify-between items-center relative h-full w-full px-6">
 
         {/*HAMBURGER MENU*/}
-        <div className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-scroll overflow-y-scroll bg-bgGames z-20 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+        <div className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
           <div className="w-full flex justify-end items-center h-[60px]">
             <div
               onClick={() => setIsActive(false)}
