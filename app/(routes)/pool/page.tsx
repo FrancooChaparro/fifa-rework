@@ -257,14 +257,14 @@ export default function PoolPage() {
   return (
     <div className="min-h-screen w-full pt-[60px] bg-bgGames  pb-[80px] overflow-hidden">
       <div className="w-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-5 px-5 py-10">
-        {renderPool("Oficial Pool", bombo8)}
-        {renderPool("Pool 1", equipos)}
-        {renderPool("Pool 2", bombo2)}
-        {renderPool("Pool 3", bombo3)}
-        {renderPool("Pool 4", bombo4)}
-        {renderPool("Pool 5", bombo5)}
-        {renderPool("Pool 6", bombo6)}
-        {renderPool("Pool 7", bombo7)}
+        {renderPool("Oficial Pool", bombo8T)}
+        {renderPool("Pool 1", equiposT)}
+        {renderPool("Pool 2", bombo2T)}
+        {renderPool("Pool 3", bombo3T)}
+        {renderPool("Pool 4", bombo4T)}
+        {renderPool("Pool 5", bombo5T)}
+        {renderPool("Pool 6", bombo6T)}
+        {renderPool("Pool 7", bombo7T)}
       </div>
 
       <div className="w-full flex justify-center gap-6 py-5 text-lg text-white">
