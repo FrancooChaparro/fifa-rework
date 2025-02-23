@@ -41,21 +41,6 @@ body {
   overflow-y: hidden;
 }
 
-.bg-screen {
-  /* background-image: url("/images/test.jpg"); */
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/tevezwalpaper.jpg'); */
-  background-size: cover; /* Asegúrate de que la imagen cubra el fondo */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que se repita */
-}
-
-.bg-screen2 {
-  background-image: url("https://editorial.uefa.com/resources/0280-17bdcdb21a6c-d674bf1e98a0-1000/sevilla_fc_v_getafe_cf_-_laliga_santander.jpeg");
-  background-size: cover; /* Asegúrate de que la imagen cubra el fondo */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que se repita */
-}
-
 
 .custom-carousel-sustainability .slick-list {
   overflow: visible !important;
