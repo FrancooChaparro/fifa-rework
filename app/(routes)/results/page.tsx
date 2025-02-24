@@ -400,7 +400,7 @@ const FilterByNameComponent = ({
   return (
     <div className="w-full flex flex-col gap-3 px-[14px]">
       {Filteres.map((e, index) => (
-        <div className="flex gap-2 justify-start items-center">
+        <div key={index} className="flex gap-2 justify-start items-center">
           <span
             className={`text-[14px] font-geistLight cursor-pointer ${
               selectedText === e ? "text-primaryRed" : "text-white"
