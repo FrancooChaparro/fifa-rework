@@ -292,8 +292,8 @@ export default function Nav() {
         >
           <img
             className="w-[100px] h-[100px] invert"
-            src="https://cdn.iconscout.com/icon/free/png-256/free-espn-logo-icon-download-in-svg-png-gif-file-formats--brand-brands-and-logos-pack-icons-2673814.png?f=webp&w=256"
-            alt=""
+            src="/images/logo_espn.webp"
+            alt="logo"
           />
         </span>
         {/*MID CONTENT*/}
@@ -442,8 +442,8 @@ export default function Nav() {
         <span className="hover:cursor-pointer overflow-hidden h-[40px] w-[100px] ml-[40px] lg:ml-0 hidden lg:flex justify-center items-center tracking-[0.82px] opacity-0 pointer-events-none">
           <img
             className="w-[100px] h-[100px] invert"
-            src="https://cdn.iconscout.com/icon/free/png-256/free-espn-logo-icon-download-in-svg-png-gif-file-formats--brand-brands-and-logos-pack-icons-2673814.png?f=webp&w=256"
-            alt=""
+            src="/images/logo_espn.webp"
+            alt="logo"
           />
         </span>
       </div>
