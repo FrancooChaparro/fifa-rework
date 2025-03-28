@@ -7,6 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { data } from " @/models/db";
 import { Rank } from " @/types/types";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
+
 
 const namesArray = data.ranking;
 
@@ -23,8 +25,8 @@ export default function Nav() {
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRefMobile = useRef<HTMLInputElement>(null);
   const inputFocusDesktop = useRef<HTMLInputElement>(null);
-
-
+  const { data: session } = useSession();
+  console.log(session)
   useEffect(() => {
     //input
     setShowInput(false);
@@ -423,7 +425,11 @@ export default function Nav() {
               </div>
             )}
           </div>
-          <p className="tracking-[0.56px] lg:block hidden">Sing up</p>
+          {
+            session 
+            ? <button onClick={() => signOut()} className="tracking-[0.56px] lg:block hidden">Log out</button>
+            : <Link prefetch={false} href={"/login"} className="tracking-[0.56px] lg:block hidden">Sign in</Link>
+          }
         </div>
 
         {/*RIGHT MOBILE*/}

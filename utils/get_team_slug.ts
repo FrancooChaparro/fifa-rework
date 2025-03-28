@@ -2,8 +2,6 @@ import { data, History, stats_franco, stats_gaston, stats_marcos } from " @/mode
 import { Match, Rank } from " @/types/types";
 
 export const find_team_slug = async (params: string) => {
-  console.log(params, "params");
-  
   const AllTeams: Array<Rank> | [] = data.ranking;
   const Finals: Array<Match> | [] = History.Games;
 
