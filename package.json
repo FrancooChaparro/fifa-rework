@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
     "@vercel/blob": "^0.27.3",
     "next": "14.2.2",
     "next-auth": "^4.24.11",
+    "pg": "^8.14.1",
     "react": "^18",
     "react-dom": "^18",
     "react-slick": "^0.30.3",

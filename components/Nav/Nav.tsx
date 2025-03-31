@@ -25,8 +25,8 @@ export default function Nav() {
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRefMobile = useRef<HTMLInputElement>(null);
   const inputFocusDesktop = useRef<HTMLInputElement>(null);
-  const { data: session } = useSession();
-  console.log(session)
+  const { data: session } = useSession()
+
   useEffect(() => {
     //input
     setShowInput(false);
