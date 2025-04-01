@@ -12,6 +12,7 @@ const Draft = () => {
   let marcos: any | [] = MarcosCopy;
   let roma: any | [] = RomaCopy;
 
+  console.log(franco)
 
   let base = {
     nombre: "",
