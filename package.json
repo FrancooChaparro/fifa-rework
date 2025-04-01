@@ -11,6 +11,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
     "@vercel/blob": "^0.27.3",
+    "bcrypt": "^5.1.1",
     "next": "14.2.2",
     "next-auth": "^4.24.11",
     "pg": "^8.14.1",
@@ -21,6 +22,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/next-auth": "^3.15.0",
     "@types/node": "^20",
     "@types/react": "^18",

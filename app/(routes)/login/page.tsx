@@ -1,20 +1,68 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { EmailIcon, PasswordIcon } from " @/Icons/Icons";
+import { supabase } from " @/lib/supabase";
 
+interface Usuario {
+    id: number;
+    name: string;
+    email: string;
+    password?: string;
+    created_at?: any;
+}
 
 export default function LoginPage() {
     const router = useRouter();
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [variant, setVariant] = useState("Register");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
-
     const { data: session } = useSession();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     setLoading(true);
+    //     setMessage("");
+    //     const formData = new FormData(e.currentTarget);
+    //     const email = formData.get('email') as string;
+    //     const password = formData.get('password') as string;
+
+    //     if (!email || !password) {
+    //         setLoading(false);
+    //         setMessage('Email and Password required');
+    //         setTimeout(() => {
+    //             setMessage("");
+    //         }, 3000)
+    //         return;
+    //     }
+
+    //     const response = await signIn('credentials', {
+    //         email,
+    //         password,
+    //         redirect: false
+    //     });
+
+
+    //     if (!response?.ok || response?.status === 401) {
+    //         setLoading(false);
+    //         setMessage('Credenciales incorrectas');
+    //         setTimeout(() => {
+    //             setMessage("");
+    //         }, 3000)
+    //         return;
+    //     } else {
+    //         setTimeout(() => {
+    //             router.push('/')
+    //             return () => { setLoading(false); }
+    //         }, 2000);
+    //     }
+    // };
+
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
         setMessage("");
@@ -37,10 +85,9 @@ export default function LoginPage() {
             redirect: false
         });
 
-
         if (!response?.ok || response?.status === 401) {
             setLoading(false);
-            setMessage('Credenciales incorrectas');
+            setMessage('incorrect credentials');
             setTimeout(() => {
                 setMessage("");
             }, 3000)
@@ -53,10 +100,85 @@ export default function LoginPage() {
         }
     };
 
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        setMessage("");
+        const formData = new FormData(e.currentTarget);
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+        const name = formData.get("text") as string;
+
+
+        if (!email || !password || !name) {
+            setLoading(false);
+            setMessage("Please fill in the fields");
+            setTimeout(() => setMessage(""), 3000);
+            return;
+        }
+
+        try {
+            const response = await fetch("/api/usuarios/create", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password, name }),
+            });
+
+            const responseData = await response.json();
+
+            if (!response.ok) {
+                setMessage(responseData.error || "incorrect credentials");
+                throw new Error(responseData.error || "incorrect credentials");
+            }
+
+            setMessage("Registration successful, redirecting...");
+            setTimeout(async () => {
+                await setVariant('Login')
+                setMessage('')
+                setName('')
+                setEmail('')
+                setPassword('')
+                setLoading(false);
+            }, 2000);
+        } catch (error) {
+            setLoading(false);
+            setTimeout(() => setMessage(""), 3000);
+        }
+    };
+
+    const toggleVariant = useCallback(() => {
+        setMessage("")
+        setVariant((currentVariant) => currentVariant === "Login" ? "Register" : "Login")
+    }, [])
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-bgGames transition-all duration-200 text-[#ffffff]">
-            <form onSubmit={handleSubmit} className="p-6 w-full md:w-[420px] flex flex-col gap-1">
-                <p className="text-lg h-[50px] pl-4 w-full text-center font-geistRegular">LOGIN</p>
+
+
+            <form onSubmit={variant === "Login" ? handleLogin : handleRegister} className="p-6 w-full md:w-[420px] flex flex-col gap-1">
+                <p className="text-lg h-[50px] pl-4 w-full text-center font-geistRegular">{variant}</p>
+                {
+                    variant === "Register"
+                        ? <>
+                            <div className="relative h-[45px]">
+                                <div className="absolute top-0 left-0 flex h-full justify-center items-center ">
+                                    <EmailIcon />
+                                </div>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder="Name"
+                                    className="w-full px-4 pl-8 py-3 text-center bg-transparent focus:outline-none focus:border-none active:border-none"
+                                    id="text"
+                                    name="text"
+                                    autoComplete="off"
+                                />
+                            </div>
+                            <div className="border-b-[1px] border-gray-700" />
+                        </>
+                        : null
+                }
                 <div className="relative h-[45px]">
                     <div className="absolute top-0 left-0 flex h-full justify-center items-center ">
                         <EmailIcon />
@@ -72,7 +194,7 @@ export default function LoginPage() {
                         autoComplete="off"
                     />
                 </div>
-        <div className="border-b-[1px] border-gray-700" />
+                <div className="border-b-[1px] border-gray-700" />
                 <div className="relative h-[45px]">
                     <div className="absolute top-0 left-0 flex h-full justify-center items-center ">
                         <PasswordIcon />
@@ -91,14 +213,33 @@ export default function LoginPage() {
                 <button disabled={loading} type="submit" className="w-full bg-primaryRed h-[45px] mt-3 p-2 lg:hover:opacity-90 cursor-pointer">
                     {loading ? "LOADING..." : "SIGN IN"}
                 </button>
-                <p className="text-[14px] h-[30px] pt-3 w-full text-center  font-geistRegular">
-                    {
-                        message !== ""
+                <div className="flex flex-col">
+                    <div className="text-[13px] h-[30px] flex items-center justify-center w-full text-center font-geistRegular">
+                       <span>
+                        {
+                            message !== ""
                             ? message
                             : null
+                        }
+                        </span>
+                    </div>
+                    {
+                       <button className="text-[12px] font-geistRegular text-gray-300" onClick={toggleVariant}>
+                       {variant === "Login" ? (
+                         <>
+                           Don't have an account? <span className="text-primaryRed/80 text-[14px]">Sign up</span>
+                         </>
+                       ) : (
+                         <>
+                           Already have an account? <span className="text-primaryRed/80 text-[14px]">Login</span>
+                         </>
+                       )}
+                     </button>
+                     
                     }
-                </p>
+                </div>
             </form>
+
             {/* <button className="h-[40px] bg-red-300 px-3 rounded-sm mt-2 hover:opacity-80" onClick={() => signOut({ callbackUrl: "/" })}>CERRAR SESSION</button> */}
         </div>
     );

@@ -8,11 +8,13 @@
 //     return Response.json({ error: error.message }, { status: 500 });
 //   }
 // }
+//db local PostgresSQL
 
-import { supabase } from " @/lib/supabase"; // Asegúrate de importar el archivo correctamente
+
+import { supabase } from " @/lib/supabase"; 
 
 export async function GET() {
-  const { data, error } = await supabase.from('usuarios').select('*');
+  const { data, error } = await supabase.from('users').select('*');
   
   if (error) {
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });

@@ -1,5 +1,7 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { supabase } from " @/lib/supabase";
+import bcrypt from "bcrypt";
 
 export const authOptions: AuthOptions = {
     providers: [
@@ -12,22 +14,34 @@ export const authOptions: AuthOptions = {
             async authorize(credentials) {
                 try {
                     if (!credentials?.email || !credentials?.password) {
-                        throw new Error("Email y contraseña son obligatorios");
+                        throw new Error("Email and password are required");
                     }
-                    if (credentials?.email !== process.env.AUTH_USER) return null
-                    if (credentials?.password !== process.env.AUTH_PASSWORD) return null
 
-                    //usuario de base de datos
-                    const user = {
-                        id: '1',
-                        email: process.env.AUTH_USER,
-                    };
+                    const { data: user, error } = await supabase
+                        .from("users")
+                        .select("*")
+                        .eq("email", credentials.email)
+                        .single();
 
-                    return user;
+                    if (!user) {
+                        throw new Error("User not found");
+                    }
+                    if (error) {
+                        console.error("Error searching for user:", error);
+                        throw new Error("Error searching for user");
+                    }
+
+                    const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
+
+                    if (!isPasswordCorrect) {
+                        throw new Error("Incorrect password");
+                    }
+
+                    return { id: user.id, name: user.name, email: user.email };
 
                 } catch (error) {
-                    console.error("Error in authorize function:", error);
-                    return null
+                    console.error("Authorization error:", error);
+                    return null;
                 }
             }
         }),
@@ -43,3 +57,11 @@ export const authOptions: AuthOptions = {
 
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
+
+
+// if (credentials?.email !== process.env.AUTH_USER) return null
+// if (credentials?.password !== process.env.AUTH_PASSWORD) return null
+// const user = {
+//     id: '1',
+//     email: process.env.AUTH_USER,
+// };
