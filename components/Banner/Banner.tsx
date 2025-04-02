@@ -12,7 +12,7 @@ const Banner = () => {
         loading="lazy"
         placeholder="blur" 
         blurDataURL='/images/blur.webp'
-        className='w-full h-full object-cover 2xl:h-auto'
+        className='w-full h-full object-cover 2xl:h-auto object-top'
       />
        <div className="absolute md:w-full w-[385px] xs:w-[480px] bottom-[100px] left-[40px] lg:left-[100px] text-white">
         <p className="font-bold text-[1.75rem] mb-[0.8rem] font-geistRegular">KING POGBA</p>

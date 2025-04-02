@@ -9,7 +9,6 @@ import { Rank } from " @/types/types";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 
-
 const namesArray = data.ranking;
 
 export default function Nav() {
@@ -25,13 +24,13 @@ export default function Nav() {
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRefMobile = useRef<HTMLInputElement>(null);
   const inputFocusDesktop = useRef<HTMLInputElement>(null);
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
   useEffect(() => {
     //input
     setShowInput(false);
-    setFilteredNames([])
-    setInputValue("")
+    setFilteredNames([]);
+    setInputValue("");
     //playerslg
     setIsOpen(false);
     //hamburgermenu
@@ -39,10 +38,12 @@ export default function Nav() {
   }, [pathname]);
 
   useEffect(() => {
-    setSelectedIndex(-1)
+    setSelectedIndex(-1);
   }, [pathname, showInput]);
 
-  {/*GENERAL INPUT HANDLECHANGE*/ }
+  {
+    /*GENERAL INPUT HANDLECHANGE*/
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toUpperCase().trimStart(); // Evita espacios al inicio
     setInputValue(value);
@@ -78,7 +79,9 @@ export default function Nav() {
     }
   };
 
-  {/*GENERAL-APLICA BLUR AL BACKGROUND NAV*/ }
+  {
+    /*GENERAL-APLICA BLUR AL BACKGROUND NAV*/
+  }
   useEffect(() => {
     const handleScroll = () => {
       setIsBlurred(window.scrollY > 0); // Aplica blur si el scroll es mayor a 0
@@ -89,7 +92,9 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  {/*DESKTOP CLICKOUTSIDE-PLAYERS*/ }
+  {
+    /*DESKTOP CLICKOUTSIDE-PLAYERS*/
+  }
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -107,7 +112,9 @@ export default function Nav() {
     };
   }, []);
 
-  {/*MOBILE BODY-NO-SCROLL-HAMBURGER-MENU*/ }
+  {
+    /*MOBILE BODY-NO-SCROLL-HAMBURGER-MENU*/
+  }
   useEffect(() => {
     if (isActive) {
       document.body.style.overflow = "hidden"; // Desactivar scroll
@@ -120,7 +127,9 @@ export default function Nav() {
     };
   }, [isActive]);
 
-  {/*DESKTOP FLECHAS PARA ABAJO, ARRIBA & ENTER*/ }
+  {
+    /*DESKTOP FLECHAS PARA ABAJO, ARRIBA & ENTER*/
+  }
   const [selectedIndex, setSelectedIndex] = useState(-1); // -1 significa que nada está seleccionado
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (filteredNames.length === 0) return;
@@ -146,7 +155,9 @@ export default function Nav() {
     }
   };
 
-  {/*DESKTOP CIERRA EL INPUT CLICK OUTSIDE*/ }
+  {
+    /*DESKTOP CIERRA EL INPUT CLICK OUTSIDE*/
+  }
   const inputContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -167,20 +178,23 @@ export default function Nav() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showInput]);;
-
-
-
+  }, [showInput]);
 
   return (
     <div
-      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-20 transition-all ${isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
-        }`}
+      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-20 transition-all ${
+        isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
+      }`}
     >
       <div className="flex justify-between items-center relative h-full w-full px-6">
-
         {/*HAMBURGER MENU*/}
-        <div className={`absolute top-0 left-0 w-full h-[100svh] max-h-[100svh] overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+        <div
+          className={`absolute top-0 left-0 w-full h-[100svh] max-h-[100svh] overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${
+            isActive
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+        >
           <div className="w-full flex justify-end items-center h-[60px]">
             <div
               onClick={() => setIsActive(false)}
@@ -202,9 +216,14 @@ export default function Nav() {
             Trend Teams
           </p>
           <div className="grid grid-cols-2 w-full gap-[10px] gap-y-[10px] ">
-            {
-              namesArray && namesArray.slice(16, 22).map((team, index) => (
-                <Link prefetch={false} href={`/team/${team.name}`} key={index} className="w-full h-[100px] bg-white relative">
+            {namesArray &&
+              namesArray.slice(16, 22).map((team, index) => (
+                <Link
+                  prefetch={false}
+                  href={`/team/${team.name}`}
+                  key={index}
+                  className="w-full h-[100px] bg-white relative"
+                >
                   <Image
                     src={team.cover || "/images/blur.webp"}
                     placeholder="blur"
@@ -214,9 +233,7 @@ export default function Nav() {
                     className="h-full w-full object-cover object-center"
                   />
                 </Link>
-              ))
-            }
-
+              ))}
           </div>
           <p className="text-[24px] font-geistBold text-white tracking-[0.10px] w-full text-center pt-5 pb-3">
             Last Champions
@@ -234,10 +251,11 @@ export default function Nav() {
         {/*SEARCH MOBILE*/}
         <div
           ref={inputContainerRef}
-          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-4  ${showInput
-            ? "opacity-100 pointer-events-auto clip-path-none z-10"
-            : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-            }`}
+          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-4  ${
+            showInput
+              ? "opacity-100 pointer-events-auto clip-path-none z-10"
+              : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+          }`}
         >
           <div className="block lg:hidden relative  transition-all duration-300">
             <input
@@ -250,10 +268,11 @@ export default function Nav() {
             />
             {filteredNames.length > 0 && (
               <ul
-                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300 ${showInput
-                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-                  }`}
+                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300 ${
+                  showInput
+                    ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                    : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                }`}
               >
                 {filteredNames.map((team, index) => (
                   <Link
@@ -285,18 +304,29 @@ export default function Nav() {
           </div>
         </div>
         {/*LEFT CONTENT*/}
-        <div className="flex lg:hidden hover:cursor-pointer" onClick={() => setIsActive(true)}>
+        <div
+          className="flex lg:hidden hover:cursor-pointer"
+          onClick={() => setIsActive(true)}
+        >
           <HamburgerMenuIcon />
         </div>
         <span
           className="hover:cursor-pointer overflow-hidden h-[40px] w-[100px] ml-[40px] lg:ml-0 flex justify-center items-center tracking-[0.82px]"
           onClick={() => router.push("/")}
         >
-          <img
+          <Image
             className="w-[100px] h-[100px] invert"
             src="/images/logo_espn.webp"
             alt="logo"
+            priority
+            width={100}
+            height={100}
           />
+          {/* <img
+            className="w-[100px] h-[100px] invert"
+            src="/images/logo_espn.webp"
+            alt="logo"
+          /> */}
         </span>
         {/*MID CONTENT*/}
         <div className="xl:flex gap-10 text-sm hidden">
@@ -339,13 +369,15 @@ export default function Nav() {
 
             {/* Menú desplegable */}
             <div
-              className={`absolute bottom-[-107px] left-[-12px] flex  px-4  flex-col gap-2 min-h-10 min-w-[90px] py-2 transition-all duration-200    ${isBlurred
-                ? "backdrop-blur-md bg-black/70"
-                : "bg-black/95 select-none"
-                } ${isOpen
+              className={`absolute bottom-[-107px] left-[-12px] flex  px-4  flex-col gap-2 min-h-10 min-w-[90px] py-2 transition-all duration-200    ${
+                isBlurred
+                  ? "backdrop-blur-md bg-black/70"
+                  : "bg-black/95 select-none"
+              } ${
+                isOpen
                   ? "opacity-100 pointer-events-auto"
                   : "opacity-0 pointer-events-none"
-                }
+              }
       `}
             >
               {langs.slice(2, 5).map((item, index) => (
@@ -363,7 +395,8 @@ export default function Nav() {
         </div>
 
         {/*SEARCH DESKTOP*/}
-        <div className="absolute top-0 h-full right-0 flex gap-[20px] lg:gap-6 text-sm items-center justify-end"
+        <div
+          className="absolute top-0 h-full right-0 flex gap-[20px] lg:gap-6 text-sm items-center justify-end"
           ref={inputRef}
         >
           <div className="hidden lg:flex relative w-64 bg-red-200 transition-all duration-300 ">
@@ -374,17 +407,19 @@ export default function Nav() {
               onKeyDown={handleKeyDown}
               onChange={handleChange}
               placeholder="Escribe un nombre..."
-              className={`absolute -translate-y-1/2 w-[256px] h-[35px] placeholder:font-geistLight font-geistLight px-2 outline-none border-none focus:ring-0 focus:outline-none active:outline-none hover:outline-none bg-bgGames transition-all duration-300  ${showInput
-                ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-                }`}
+              className={`absolute -translate-y-1/2 w-[256px] h-[35px] placeholder:font-geistLight font-geistLight px-2 outline-none border-none focus:ring-0 focus:outline-none active:outline-none hover:outline-none bg-bgGames transition-all duration-300  ${
+                showInput
+                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+              }`}
             />
             {filteredNames.length > 0 && (
               <ul
-                className={` absolute w-[256px] bg-bgGames  min-h-[90px] top-[21px] shadow-lg z-50 transition-all duration-300   ${showInput
-                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-                  }`}
+                className={` absolute w-[256px] bg-bgGames  min-h-[90px] top-[21px] shadow-lg z-50 transition-all duration-300   ${
+                  showInput
+                    ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                    : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                }`}
               >
                 {filteredNames.map((team, index) => (
                   <Link
@@ -395,8 +430,9 @@ export default function Nav() {
                     onMouseLeave={() => setSelectedIndex(-1)}
                     // onClick={() => handleSelect(team.name)}
                     // className="p-2 flex items-center gap-3 cursor-pointer hover:bg-hoverCard text-white"
-                    className={`p-2 flex items-center gap-3 cursor-pointer ${selectedIndex === index ? "bg-hoverCard text-white" : ""
-                      }`}
+                    className={`p-2 flex items-center gap-3 cursor-pointer ${
+                      selectedIndex === index ? "bg-hoverCard text-white" : ""
+                    }`}
                   >
                     <Image
                       src={team.logo}
@@ -425,11 +461,22 @@ export default function Nav() {
               </div>
             )}
           </div>
-          {
-            session 
-            ? <button onClick={() => signOut()} className="tracking-[0.56px] lg:block hidden">Log out</button>
-            : <Link prefetch={false} href={"/login"} className="tracking-[0.56px] lg:block hidden">Sign in</Link>
-          }
+          {session ? (
+            <button
+              onClick={() => signOut()}
+              className="tracking-[0.56px] lg:block hidden"
+            >
+              Log out
+            </button>
+          ) : (
+            <Link
+              prefetch={false}
+              href={"/login"}
+              className="tracking-[0.56px] lg:block hidden"
+            >
+              Sign in
+            </Link>
+          )}
         </div>
 
         {/*RIGHT MOBILE*/}
@@ -446,11 +493,19 @@ export default function Nav() {
         </div>
         {/*div fantasma*/}
         <span className="hover:cursor-pointer overflow-hidden h-[40px] w-[100px] ml-[40px] lg:ml-0 hidden lg:flex justify-center items-center tracking-[0.82px] opacity-0 pointer-events-none">
-          <img
+          <Image
             className="w-[100px] h-[100px] invert"
             src="/images/logo_espn.webp"
             alt="logo"
+            width={100}
+            height={100}
+            priority
           />
+          {/* <img
+            className="w-[100px] h-[100px] invert"
+            src="/images/logo_espn.webp"
+            alt="logo"
+          /> */}
         </span>
       </div>
     </div>

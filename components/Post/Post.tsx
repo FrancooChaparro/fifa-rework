@@ -3,18 +3,18 @@ import React, { useEffect, useMemo, useState } from "react";
 import { data } from " @/models/db";
 import { useMyContext } from " @/context/ListContext";
 import { Poster } from " @/types/types";
+import Image from "next/image";
 
-const infoNotice: Poster[] = data.poster
+const infoNotice: Poster[] = data.poster;
 
 export const Post = () => {
   const { isOpenPost, setOpening, indexPost } = useMyContext();
   const [currentIndex, setCurrentIndex] = useState<number>(indexPost);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
-useMemo(()=> {
-  setCurrentIndex(indexPost)
-}, [indexPost])
-
+  useMemo(() => {
+    setCurrentIndex(indexPost);
+  }, [indexPost]);
 
   // Función para moverte a la izquierda
   const handlePrev = () => {
@@ -59,14 +59,11 @@ useMemo(()=> {
     };
   }, [isOpenPost]);
 
-
-
   useEffect(() => {
     return () => {
       document.documentElement.classList.remove("no-scroll");
     };
   }, []);
-
 
   return (
     <div
@@ -92,8 +89,9 @@ useMemo(()=> {
         >
           {`>`}
         </button>
-        <button className="absolute right-4 top-[85px]  bg-bgGames text-white hover:bg-hoverCard px-4 py-2 z-40 rounded-full"
-           onClick={()=> setOpening(false, indexPost)} 
+        <button
+          className="absolute right-4 top-[85px]  bg-bgGames text-white hover:bg-hoverCard px-4 py-2 z-40 rounded-full"
+          onClick={() => setOpening(false, indexPost)}
         >
           X
         </button>
@@ -123,10 +121,12 @@ useMemo(()=> {
               key={index}
               className="h-[calc(100vh-150px)] w-screen flex items-center justify-center bg-gray-800 text-4xl relative"
             >
-              <img
+              <Image
                 src={notice.image}
                 alt={`Imagen ${index + 1}`}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                priority={index === 0} 
               />
               <div className="absolute bottom-[50px] left-[12px] lg:bottom-[100px] lg:left-[75px] p-2 lg:p-8">
                 <div className=" flex flex-col justify-between h-full">

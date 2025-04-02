@@ -113,7 +113,7 @@ export default function PoolPage() {
 
   ];
   let bombo3 = [
-    { nombre: "Milan", escudo: "/images/Milan.png" , rank: "#23"},
+    { nombre: "Milan", escudo: "/images/milan_test.png" , rank: "#23"},
     { nombre: "Tottenham", escudo: "/images/Tottenham.png" , rank: "#7"},
     { nombre: "Arsenal", escudo: "/images/arsenalfc.png" , rank: "#16"},
     { nombre: "Newcastle", escudo: "/images/newcastlee.png" , rank: "#8"},
