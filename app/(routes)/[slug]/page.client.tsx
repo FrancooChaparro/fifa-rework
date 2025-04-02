@@ -122,12 +122,20 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
                 Last Team
               </p>
               <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[80px] h-[80px]">
-                <Image
+              {
+                playerStats.finals.matchs.length ? <Image
+                src={playerStats.finals.matchs[0].LocalEscudo}
+                alt="atl"
+                width={60}
+                height={60}
+              /> : null
+              } 
+               {/* <Image
                   src={playerStats.finals.matchs[0].LocalEscudo}
                   alt="atl"
                   width={60}
                   height={60}
-                />
+                /> */}
               </div>
             </div>
           </div>

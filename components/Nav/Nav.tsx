@@ -180,7 +180,7 @@ export default function Nav() {
       <div className="flex justify-between items-center relative h-full w-full px-6">
 
         {/*HAMBURGER MENU*/}
-        <div className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+        <div className={`absolute top-0 left-0 w-full h-[100svh] max-h-[100svh] overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${isActive ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
           <div className="w-full flex justify-end items-center h-[60px]">
             <div
               onClick={() => setIsActive(false)}

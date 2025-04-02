@@ -1,4 +1,4 @@
-import { data, History, stats_franco, stats_gaston, stats_marcos } from " @/models/db";
+import { data, History, stats_franco, stats_gaston, stats_marcos, stats_roma } from " @/models/db";
 import { Match, Rank } from " @/types/types";
 
 export const find_team_slug = async (params: string) => {
@@ -62,6 +62,7 @@ export const find_user_slug = async (params : string) => {
     franco: stats_franco,
     gaston: stats_gaston,
     marcos: stats_marcos,
+    rodrigo: stats_roma
   }
   if (!(params in dbMap)) {
     return //notfound

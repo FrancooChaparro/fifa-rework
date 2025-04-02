@@ -3,5 +3,6 @@
     { "path": "/results", "label": "Finals & PopularMatchs" },
     { "path": "/franco", "label": "Franco" },
     { "path": "/gaston", "label": "Flaki" },
-    { "path": "/marcos", "label": "Marcos" }
+    { "path": "/marcos", "label": "Marcos" },
+    { "path": "/rodrigo", "label": "Roma" }
   ]

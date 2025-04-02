@@ -3058,6 +3058,41 @@ export const stats_gaston = {
   },
 };
 
+export const stats_roma = {
+  info: {
+    photo_profile: "/images/gaston.jpg",
+    background_profile: "/images/atleticomadrid_cover.webp",
+    rank_profile: "25",
+    shield_profile: "/images/AtleticoMadrid.png",
+    background_blur_profile: "/images/atleticomadrid_cover.webp",
+    photo_blur_profile: "/images/shield_blur.webp",
+    name_profile: "Rodrigo",
+    surname_profile: "Romero",
+    team_id: "ATLETICO",
+    team_profile: "MADRID",
+    trophies: 0,
+  },
+  finals: {
+    matchs: [ 
+    ],
+    stats: {
+      win: 0,
+      loss: 0,
+      porcent: "0%",
+    },
+  },
+  clasics: {
+    matchs: [
+    ],
+    stats: {
+      win: 0,
+      loss: 0,
+      porcent: "0%",
+    },
+  },
+};
+
+
 export const data = {
   poster: [
     {
