@@ -227,7 +227,7 @@ export default function LoginPage() {
                        <button className="text-[12px] font-geistRegular text-gray-300" onClick={toggleVariant}>
                        {variant === "Login" ? (
                          <>
-                           Don't have an account? <span className="text-primaryRed/80 text-[14px]">Sign up</span>
+                            {`Don't have an account?`} <span className="text-primaryRed/80 text-[14px]">Sign up</span>
                          </>
                        ) : (
                          <>

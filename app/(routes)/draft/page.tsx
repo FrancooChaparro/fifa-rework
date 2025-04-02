@@ -134,16 +134,14 @@ const Draft = () => {
   }
 
   function lolo() {
-    if (franco.length === 0 && gaston.length === 0 && marcos.length === 0)
+    if (franco.length === 0 && gaston.length === 0 && marcos.length === 0 && roma.length === 0)
       return;
-
-    if (franco.length === 10) {
-      
-      let indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      let equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
+  
+      let indiceAleatorio = Math.floor(Math.random() * roma.length);
+      let equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
       setA1(equipoAleatorio);
-       indiceAleatorio = Math.floor(Math.random() * gaston.length);
-       equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
+       indiceAleatorio = Math.floor(Math.random() * marcos.length);
+       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
       setA2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * franco.length);
       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
@@ -151,84 +149,84 @@ const Draft = () => {
       indiceAleatorio = Math.floor(Math.random() * gaston.length);
       equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
       setB2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setC1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setC2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * gaston.length);
       equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setD1(equipoAleatorio);
+      setC1(equipoAleatorio);
+      indiceAleatorio = Math.floor(Math.random() * roma.length);
+      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
+      setC2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * marcos.length);
       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
+      setD1(equipoAleatorio);
+      indiceAleatorio = Math.floor(Math.random() * franco.length);
+      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
       setD2(equipoAleatorio);
 
       
       indiceAleatorio = Math.floor(Math.random() * marcos.length);
       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
       setE1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setE2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * gaston.length);
       equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
+      setE2(equipoAleatorio);
+      indiceAleatorio = Math.floor(Math.random() * roma.length);
+      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
       setF1(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * franco.length);
       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
       setF2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setG1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setG2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * franco.length);
       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setH1(equipoAleatorio);
+      setG1(equipoAleatorio);
+      indiceAleatorio = Math.floor(Math.random() * gaston.length);
+      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
+      setG2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * marcos.length);
       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
+      setH1(equipoAleatorio);
+      indiceAleatorio = Math.floor(Math.random() * roma.length);
+      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
       setH2(equipoAleatorio);
 
       indiceAleatorio = Math.floor(Math.random() * franco.length);
       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
       setI1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
+      indiceAleatorio = Math.floor(Math.random() * marcos.length);
+      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
       setI2(equipoAleatorio);   
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setJ1(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * gaston.length);
       equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
+      setJ1(equipoAleatorio);
+      indiceAleatorio = Math.floor(Math.random() * roma.length);
+      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
       setJ2(equipoAleatorio);
+      indiceAleatorio = Math.floor(Math.random() * roma.length);
+      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
+      setK1(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * franco.length);
       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setK1(equipoAleatorio);
+      setK2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * marcos.length);
       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setK2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
       setL1(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * gaston.length);
       equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
       setL2(equipoAleatorio);
 
+      indiceAleatorio = Math.floor(Math.random() * roma.length);
+      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
+      setM1(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * marcos.length);
       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setM1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
       setM2(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * franco.length);
       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
       setN1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
+      indiceAleatorio = Math.floor(Math.random() * gaston.length);
+      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
       setN2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
+      indiceAleatorio = Math.floor(Math.random() * roma.length);
+      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
       setO1(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * gaston.length);
       equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
@@ -236,113 +234,12 @@ const Draft = () => {
       indiceAleatorio = Math.floor(Math.random() * marcos.length);
       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
       setP1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setP2(equipoAleatorio);
-    } else {
-      let indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      let equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setA1(equipoAleatorio);
-       indiceAleatorio = Math.floor(Math.random() * franco.length);
-       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setA2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setB1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setB2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setC1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setC2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setD1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setD2(equipoAleatorio);
-
-      
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setE1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setE2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setF1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setF2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setG1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setG2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setH1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setH2(equipoAleatorio);
-
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setI1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setI2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setJ1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setJ2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setK1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setK2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setL1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setL2(equipoAleatorio);
-
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setM1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setM2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setN1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setN2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setO1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setO2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setP1(equipoAleatorio);
       indiceAleatorio = Math.floor(Math.random() * franco.length);
       equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
       setP2(equipoAleatorio);
-    }
+   
   }
-
+  
   return (
     <>
       <div className={`${styles.containerAll} font-geistRegular overflow-hidden` }>
