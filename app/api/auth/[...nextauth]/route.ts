@@ -2,15 +2,14 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { supabase } from " @/lib/supabase";
 import bcrypt from "bcrypt";
-import { NextApiRequest, NextApiResponse } from "next";
 
 const NEXTAUTH_URL =
     process.env.NODE_ENV === "production"
         ? process.env.NEXTAUTH_URL_PROD
-        : process.env.NEXTAUTH_URL;
+        : process.env.NEXTAUTH_URL_DEV;
 
         console.log(process.env.NODE_ENV); 
-        
+
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
