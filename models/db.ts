@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "G",
+      Player2: "M",
+      isLegit: "L",
+      LocalEscudo: "/images/Internazionale.png",
+      LocalNombre: "INTER",
+      LocalSlug: "INTER",
+      LocalResultado: 1,
+      VisitanteEscudo: "/images/BorussiaDortmund.png",
+      VisitanteNombre: "BORUSSIA DORTMUND",
+      VisitanteSlug: "DORTMUND",
+      VisitanteResultado: 0,
+      Penalty: false,
+    },
+    {
       Player1: "M",
       Player2: "F",
       isLegit: "L",
@@ -809,6 +823,21 @@ export const stats_marcos = {
       {
         isLegit: "L",
         Player1: "M",
+        Player2: "G",
+        Result: "Defeat",
+        LocalEscudo: "/images/BorussiaDortmund.png",
+        LocalNombre: "BORUSSIA DORTMUND",
+        LocalSlug: "DORTMUND",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/Internazionale.png",
+        VisitanteNombre: "INTER",
+        VisitanteSlug: "INTER",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
+        isLegit: "L",
+        Player1: "M",
         Player2: "F",
         Result: "Victory",
         LocalEscudo: "/images/Liverpool.png",
@@ -1297,8 +1326,8 @@ export const stats_marcos = {
     ],
     stats: {
       win: 10,
-      loss: 22,
-      porcent: "31%",
+      loss: 23,
+      porcent: "28%",
     },
   },
   clasics: {
@@ -1406,6 +1435,21 @@ export const stats_marcos = {
         VisitanteNombre: "PARIS SAINT GERMAIN",
         VisitanteSlug: "PSG",
         VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
+        Player1: "M",
+        Player2: "F",
+        Result: "Victory",
+        Raiz: "Octavos de final",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 0,
         Penalty: false,
       },
       {
@@ -1534,10 +1578,10 @@ export const stats_marcos = {
       },
     ],
     stats: {
-      win: 4,
+      win: 5,
       loss: 10,
       draw: 1,
-      porcent: "26%",
+      porcent: "33%",
     },
   },
 };
@@ -2193,6 +2237,21 @@ export const stats_franco = {
       },
       {
         Player1: "F",
+        Player2: "M",
+        Result: "Defeat",
+        Raiz: "Octavos de final",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/Chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
+        Player1: "F",
         Player2: "G",
         Result: "Victory",
         Raiz: "Semifinal",
@@ -2313,9 +2372,9 @@ export const stats_franco = {
       },
     ],
     stats: {
-      porcent: "88%",
+      porcent: "82%",
       win: 12,
-      loss: 2,
+      loss: 3,
     },
   },
 };
@@ -2336,6 +2395,21 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
+      {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "M",
+        Result: "Victory",
+        LocalEscudo: "/images/Internazionale.png",
+        LocalNombre: "INTER",
+        LocalSlug: "INTER",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/BorussiaDortmund.png",
+        VisitanteNombre: "BORUSSIA DORTMUND",
+        VisitanteSlug: "DORTMUND",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "G",
@@ -2794,9 +2868,9 @@ export const stats_gaston = {
       },
     ],
     stats: {
-      win: 18,
+      win: 19,
       loss: 13,
-      porcent: "59%",
+      porcent: "63%",
     },
   },
   clasics: {
@@ -3233,26 +3307,27 @@ export const data = {
       titles: 4,
     },
     {
+      logo: "/images/Internazionale.png",
+      cover: "/images/inter_cover.webp",
+      rank: 4,
+      name: "INTER",
+      titles: 4,
+    },
+    {
       logo: "/images/ManchesterUnited.png",
       cover: "/images/manchesterunited_cover.webp",
-      rank: 4,
+      rank: 5,
       name: "MANCHESTER UNITED",
       titles: 3,
     },
     {
       logo: "/images/RealMadrid.png",
       cover: "/images/realmadrid_cover.webp",
-      rank: 5,
+      rank: 6,
       name: "REAL MADRID",
       titles: 3,
     },
-    {
-      logo: "/images/Internazionale.png",
-      cover: "/images/inter_cover.webp",
-      rank: 6,
-      name: "INTER",
-      titles: 3,
-    },
+
     {
       logo: "/images/Barcelona.webp",
       cover: "/images/barcelona_cover.webp",
