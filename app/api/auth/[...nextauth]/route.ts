@@ -2,7 +2,15 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { supabase } from " @/lib/supabase";
 import bcrypt from "bcrypt";
+import { NextApiRequest, NextApiResponse } from "next";
 
+const NEXTAUTH_URL =
+    process.env.NODE_ENV === "production"
+        ? process.env.NEXTAUTH_URL_PROD
+        : process.env.NEXTAUTH_URL;
+
+        console.log(process.env.NODE_ENV); 
+        
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
@@ -48,7 +56,7 @@ const handler = NextAuth({
     ],
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: "/login",
+        signIn: `${NEXTAUTH_URL}/login`, 
     },
     session: {
         strategy: "jwt",
