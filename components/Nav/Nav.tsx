@@ -471,7 +471,7 @@ export default function Nav() {
           ) : (
             <Link
               prefetch={false}
-              href={"/login"}
+              href={"/auth"}
               className="tracking-[0.56px] lg:block hidden"
             >
               Sign in

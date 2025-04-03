@@ -2,7 +2,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { EmailIcon, PasswordIcon } from " @/Icons/Icons";
+import { EmailIcon, GoogleIcon, PasswordIcon } from " @/Icons/Icons";
 
 
 export default function LoginPage() {
@@ -10,7 +10,7 @@ export default function LoginPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [variant, setVariant] = useState("Register");
+    const [variant, setVariant] = useState("Login");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -200,6 +200,8 @@ export default function LoginPage() {
                        )}
                      </button>
                     }
+
+                <button className="flex justify-center items-center p-1 bg-white mt-2 rounded-full" onClick={()=> signIn('google', { callbackUrl: '/' })}><GoogleIcon /></button>
         </div>
     );
 }
