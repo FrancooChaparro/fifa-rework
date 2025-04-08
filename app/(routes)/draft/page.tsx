@@ -5,14 +5,13 @@ import { useMyContext } from " @/context/ListContext";
 import Image from "next/image";
 
 const Draft = () => {
-    const {  FrancoCopy,  MarcosCopy, GastonCopy, RomaCopy } =
+    const {  FrancoCopy,  MarcosCopy, GastonCopy, RomaCopy, FrancoBombo } =
     useMyContext();
 
   let franco: any | [] = FrancoCopy;
   let gaston: any | [] = GastonCopy;
   let marcos: any | [] = MarcosCopy;
   let roma: any | [] = RomaCopy;
-
 
   let base = {
     nombre: "",

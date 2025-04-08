@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+// import bundleAnalyzer from '@next/bundle-analyzer';
+
+// const withBundleAnalyzer = bundleAnalyzer({
+//   enabled: true,
+// });
+
 const nextConfig = {
     images: {
         unoptimized: false,
@@ -9,7 +15,7 @@ const nextConfig = {
               protocol: "https",
               hostname: "w2sgtlkzlwjdaso7.public.blob.vercel-storage.com",
               port: "",
-              pathname: "/**", // Asegura que se permita cualquier imagen de este dominio
+              pathname: "/**", 
             },
           ],
       },
@@ -29,3 +35,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+// export default withBundleAnalyzer(nextConfig);

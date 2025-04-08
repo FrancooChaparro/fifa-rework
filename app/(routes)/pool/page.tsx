@@ -9,12 +9,6 @@ export default function PoolPage() {
   const { Franco, FrancoBombo, Marcos, MarcosBombo, Gaston, GastonBombo, Roma, RomaBombo } = useMyContext();
   const router = useRouter();
 
-  const [GastonCopy, setGastonCopy] = useState<any>([]);
-  const [FrancoCopy, setFrancoCopy] = useState<any>([]);
-  const [MarcosCopy, setMarcosCopy] = useState<any>([]);
-  const [RomaCopy, setRomaCopy] = useState<any>([]);
-
-
 
   let equiposT = [
     { nombre: "Real Madrid", escudo: "/images/RealMadrid.png", rank: "#5" },
@@ -228,6 +222,7 @@ function alear() {
   }
   alear();
 }
+
 
   // Función para renderizar cada pool
   const renderPool = (poolName: any, bombo: any) => (

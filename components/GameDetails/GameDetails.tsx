@@ -106,7 +106,7 @@ export const GameDetails = () => {
               <div className="w-[60px] h-[60px] overflow-hidden rounded-full ">
             {detailsGame.Player1 &&
                 <Image
-                  src={detailsGame.Player1 === "M" ? "/images/Marcos.webp" : detailsGame.Player1 === "F" ? "/images/Franco.webp" : "/images/flakk.webp"}
+                  src={detailsGame.Player1 === "M" ? "/images/Marcos.webp" : detailsGame.Player1 === "F" ? "/images/Franco.webp" :  detailsGame.Player1 === "G" ? "/images/flakk.webp" : "/images/roma.jpg"  }
                   alt={detailsGame.VisitanteNombre}
                   width={60}
                   height={60}
@@ -115,7 +115,7 @@ export const GameDetails = () => {
                 />
             }
               </div>
-              <p className="font-geistRegular">{detailsGame.Player1 === "M" ? "Marcos Aquino" : detailsGame.Player1 === "F" ? "Franco Chaparro" : "Gaston Chaparro"}</p>
+              <p className="font-geistRegular">{detailsGame.Player1 === "M" ? "Marcos Aquino" : detailsGame.Player1 === "F" ? "Franco Chaparro" : detailsGame.Player1 === "G" ? "Gaston Chaparro" :  "Rodrigo Romero"}</p>
             </div>
           </div>
 
@@ -124,7 +124,7 @@ export const GameDetails = () => {
               <div className="w-[60px] h-[60px] overflow-hidden rounded-full">
               {detailsGame.Player2 &&
                 <Image
-                  src={detailsGame.Player2 === "M" ? "/images/Marcos.webp" : detailsGame.Player2 === "F" ? "/images/Franco.webp" : "/images/flakk.webp"}
+                  src={detailsGame.Player2 === "M" ? "/images/Marcos.webp" : detailsGame.Player2 === "F" ? "/images/Franco.webp" :  detailsGame.Player2 === "G" ? "/images/flakk.webp" : "/images/roma.jpg"}
                   alt={detailsGame.VisitanteNombre}
                   width={60}
                   height={60}
@@ -133,7 +133,7 @@ export const GameDetails = () => {
                 />
               }
               </div>
-              <p className="font-geistRegular">{detailsGame.Player2 === "M" ? "Marcos Aquino" : detailsGame.Player2 === "F" ? "Franco Chaparro" : "Gaston Chaparro"}</p>
+              <p className="font-geistRegular">{detailsGame.Player2 === "M" ? "Marcos Aquino" : detailsGame.Player2 === "F" ? "Franco Chaparro" : detailsGame.Player2 === "G" ? "Gaston Chaparro"  : "Rodrigo Romero"}</p>
             </div>
           </div>
         </div>
