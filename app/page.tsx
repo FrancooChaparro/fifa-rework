@@ -6,9 +6,12 @@ import ContactMeComponent from " @/components/Footer/Footer";
 import Loader from " @/components/Loader/Loader";
 import { News } from " @/components/News/News";
 import { Ranking } from " @/components/Ranking/Ranking";
+import { useMyContext } from " @/context/ListContext";
 
 export default function Home() {
 
+  const { market } = useMyContext();
+  console.log(market)
   const scrollToDetails = () => {
     const target = document.getElementById('target-component');
     if (target) {
@@ -20,7 +23,7 @@ export default function Home() {
     <main className="relative min-h-screen bg-bgPrimary text-fontTitle">
       <Banner />
       <div className="hidden md:block md:absolute md:top-[64px] md:right-[5px]">
-        <ContainerGames scrollToDetails={scrollToDetails}/>
+        <ContainerGames scrollToDetails={scrollToDetails} />
       </div>
       <div className="block md:hidden px-4 pt-10 lg:pt-20 lg:px-20">
         <ContainerGames scrollToDetails={scrollToDetails}
@@ -35,6 +38,18 @@ export default function Home() {
       <div className="md:h-20 h-10 w-full" id={"target-component"} />
       <Ranking />
       <TopPlayers />
+      <div className="w-full grid grid-cols-4 gap-2">
+        {
+          market && market.length > 0 &&
+          market.map((team: string[], index: number) => (
+            <ol key={index} className="border-[1px] border-white ">
+              {team.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ol>
+          ))
+        }
+      </div>
     </main>
   );
 }

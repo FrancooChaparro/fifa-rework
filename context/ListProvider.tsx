@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, FC, ReactNode } from "react";
+import React, { useState, FC, ReactNode, useEffect } from "react";
 import { MyContext, MyContextType } from "./ListContext";
 import { Match } from " @/types/types";
 
@@ -9,6 +9,22 @@ interface MyProviderProps {
 }
 
 const MyProvider: FC<MyProviderProps> = ({ children }) => {
+  const [market, setMarket] = useState([]);
+
+  useEffect(() => {
+    const fetchSheetData = async () => {
+      try {
+        const res = await fetch("/api/sheet");
+        const data = await res.json();
+        setMarket(data);
+      } catch (error) {
+        console.error("Error cargando datos del sheet:", error);
+      }
+    };
+
+    fetchSheetData();
+  }, []);
+
   const [FrancoBombo, setFrancoBombo] = useState<any>([]);
   const [MarcosBombo, setMarcosBombo] = useState<any>([]);
   const [GastonBombo, setGastonBombo] = useState<any>([]);
@@ -104,7 +120,10 @@ const seterGame = (param: boolean, index: Match) => {
     isOpenGame,
     seterGame,
     detailsGame, 
-    setDetailsGame
+    setDetailsGame,
+
+    market,
+    setMarket
   };
 
   return (

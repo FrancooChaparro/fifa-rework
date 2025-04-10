@@ -24,6 +24,9 @@ export type MyContextType = {
   seterGame: (param: boolean, index: Match)=> void;
   detailsGame: Match;
   setDetailsGame: (Match: Match) => void;
+
+  market: any;
+  setMarket: any;
 };
 
 const MyContext = createContext<MyContextType | undefined>(undefined);
