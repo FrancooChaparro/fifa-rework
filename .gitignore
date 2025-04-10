@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+/models/mercado-456418-9e05a7cb6a17.json
 
 # testing
 /coverage
