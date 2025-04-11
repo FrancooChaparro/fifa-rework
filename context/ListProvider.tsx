@@ -11,19 +11,46 @@ interface MyProviderProps {
 const MyProvider: FC<MyProviderProps> = ({ children }) => {
   const [market, setMarket] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchSheetData = async () => {
+  //     try {
+  //       const res = await fetch("/api/sheet");
+  //       const data = await res.json();
+  //       setMarket(data);
+  //     } catch (error) {
+  //       console.error("Error cargando datos del sheet:", error);
+  //     }
+  //   };
+
+  //   fetchSheetData();
+  // }, []);
   useEffect(() => {
     const fetchSheetData = async () => {
       try {
         const res = await fetch("/api/sheet");
-        const data = await res.json();
-        setMarket(data);
+        const data = await res.json(); // data: string[][]
+  
+        const transformed = data.map((row: string[]) =>
+          row.map((item: string) => {
+            const parts = item?.split("-").map((p) => p.trim()) ?? [];
+  
+            return {
+              id: item || "",
+              info: [parts[0], parts[1], parts[2]] as [string, string, string],
+            };
+          })
+        );
+  
+        setMarket(transformed);
       } catch (error) {
         console.error("Error cargando datos del sheet:", error);
       }
     };
-
+  
     fetchSheetData();
   }, []);
+  
+  
 
   const [FrancoBombo, setFrancoBombo] = useState<any>([]);
   const [MarcosBombo, setMarcosBombo] = useState<any>([]);

@@ -46,13 +46,13 @@ export default function RootLayout({
       >
          <AuthProvider>
         <MyProvider>
-          <Nav />
+          {/* <Nav /> */}
           <div className="relative">
             <GameDetails />
             <Post />
           </div>
           {children}
-          <ContactMeComponent />
+          {/* <ContactMeComponent /> */}
         </MyProvider>
         </AuthProvider>
       </body>
