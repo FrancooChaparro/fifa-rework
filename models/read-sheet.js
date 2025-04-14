@@ -6,6 +6,8 @@ function transponer(matriz) {
 }
 
 async function getSheetData() {
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'); // 👈 esto es clav
+  
   const client = new google.auth.JWT(
     process.env.GOOGLE_API_EMAIL,
     null,

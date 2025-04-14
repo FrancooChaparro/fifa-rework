@@ -47,11 +47,11 @@ export default function RootLayout({
       >
          <AuthProvider>
         <MyProvider>
-          {/* <Nav /> */}
+          <Nav />
           <div className="relative">
-            {/* <GameDetails /> */}
+            <GameDetails />
             {/* <AddTeam /> */}
-            {/* <Post /> */}
+            <Post />
           </div>
           {children}
           {/* <ContactMeComponent /> */}
