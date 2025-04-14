@@ -34,9 +34,16 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
           row.map((item: string) => {
             const parts = item?.split("-").map((p) => p.trim()) ?? [];
   
+            // Extraemos los primeros 3 como info
+            const info = [parts[0], parts[1], parts[2]];
+  
+            // Teams: desde el 4to en adelante (sin agregar guión)
+            const teams = parts.length > 3 ? parts.slice(3) : [];
+  
             return {
               id: item || "",
-              info: [parts[0], parts[1], parts[2]] as [string, string, string],
+              info: info as [string, string, string],
+              teams,
             };
           })
         );
@@ -49,6 +56,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
   
     fetchSheetData();
   }, []);
+  
   
   
 
@@ -68,6 +76,8 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
 
   const [isOpenGame, setisOpenGame] = useState<boolean>(false);
   const [indexGame, setIndexGame ] = useState<number>(1);
+
+  const [isOpenAdd, setisOpenAdd] = useState<boolean>(false);
 
   const [detailsGame, setDetailsGame] = useState<Match>({
       isLegit: "",
@@ -150,7 +160,9 @@ const seterGame = (param: boolean, index: Match) => {
     setDetailsGame,
 
     market,
-    setMarket
+    setMarket,
+
+    isOpenAdd, setisOpenAdd
   };
 
   return (

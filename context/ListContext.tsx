@@ -27,6 +27,9 @@ export type MyContextType = {
 
   market: any;
   setMarket: any;
+
+  isOpenAdd: boolean;
+  setisOpenAdd: any
 };
 
 const MyContext = createContext<MyContextType | undefined>(undefined);
