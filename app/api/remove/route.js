@@ -10,7 +10,7 @@ async function getSheetsClient() {
   const client = new google.auth.JWT(
     process.env.GOOGLE_API_EMAIL,
     null,
-    process.env.GOOGLE_PRIVATE_KEY,
+    privateKey,
     ["https://www.googleapis.com/auth/spreadsheets"]
   );
 

@@ -192,7 +192,7 @@ export default function Home() {
     }
   };
 
-  
+
   const getTextColor = (type: string): string => {
     const colorMap: Record<string, string> = {
       SD: "text-red-600",
@@ -246,7 +246,7 @@ export default function Home() {
   
 
   return (
-    <main className="relative min-h-screen bg-bgPrimary text-fontTitle overflow-hidden p-4">
+    <main className="relative min-h-screen pt-[90px] bg-bgPrimary text-fontTitle overflow-hidden p-4">
       <p onClick={() => setIsActive(!isActive)}>FILTERS</p>
       {/* Overlay AddTeam */}
       <div
