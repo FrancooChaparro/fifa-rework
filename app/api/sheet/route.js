@@ -25,7 +25,7 @@ export async function GET() {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: "1SBBdxhbIJnvWcA_lmu9U7uG79Q-jTAKWi7x0chp9lT8",
-      range: "A:Z",
+      range: "A:AF",
     });
 
     const filas = response.data.values || [];

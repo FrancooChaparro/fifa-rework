@@ -3630,7 +3630,7 @@ export const data = {
       titles: 0,
     },
     {
-      logo: "/images/flam.png",
+      logo: "/images/Flamengo.png",
       cover: "/images/bakcground_rank.webp",
       rank: 37,
       name: "FLAMENGO",

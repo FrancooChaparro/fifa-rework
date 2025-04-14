@@ -83,7 +83,7 @@ export async function POST(req) {
     await sleep(500);
 
     return NextResponse.json({
-      message: `ID actualizado de '${currentValue}' a '${updatedValue}' en ${targetCol}${targetRow}`,
+      updatedValue: updatedValue,
     });
 
   } catch (error) {

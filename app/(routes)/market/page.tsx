@@ -9,17 +9,15 @@ import { Rank } from " @/types/types";
 const rankTeams = data.ranking;
 
 export default function Home() {
-  const { market, isOpenAdd, setisOpenAdd } = useMyContext();
+  const { market, isOpenAdd, setisOpenAdd, setMarket } = useMyContext();
   const [loadingIds, setLoadingIds] = useState<string[]>([]);
-  const [localMarket, setLocalMarket] = useState<any[][]>([]);
   const cartRef = useRef<HTMLDivElement>(null);
   const [idPlayer, setIdPlayer] = useState<string>("");
-
-  useEffect(() => {
-    if (market && market.length > 0) {
-      setLocalMarket(market);
-    }
-  }, [market]);
+  const [deletedTeam, setDeletedTeam] = useState<string>("");
+  const [positionFilter, setPositionFilter] = useState<string>("");
+  const [filterPlayers, setFilterPlayers] = useState<any[]>([]);
+  const [isVisible, setIsVisible] = useState(true); // 🔹 Controla la animación de opacidad de los partidos
+  const [isActive, setIsActive] = useState(true); //Active FilterDesktop
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -41,7 +39,7 @@ export default function Home() {
     if (loadingIds.includes(id)) return;
     setLoadingIds((prev) => [...prev, id]);
 
-    const jugadorActual = localMarket
+    const jugadorActual = market
       .flat()
       .find((player: any) => player.id === id);
     if (!jugadorActual) {
@@ -69,19 +67,19 @@ export default function Home() {
 
       console.log("✅", data.message);
 
-      setLocalMarket((prevMarket: any) =>
+      setMarket((prevMarket: any) =>
         prevMarket.map((team: any) =>
           team.map((player: any) =>
             player.id === id
               ? {
-                  ...player,
-                  info: [
-                    player.info[0],
-                    player.info[1],
-                    player.info[2],
-                    yaTieneC ? "" : "C",
-                  ],
-                }
+                ...player,
+                info: [
+                  player.info[0],
+                  player.info[1],
+                  player.info[2],
+                  yaTieneC ? "" : "C",
+                ],
+              }
               : player
           )
         )
@@ -94,16 +92,17 @@ export default function Home() {
   }
 
   const handleAddTeam = async (id: string, teamName: string) => {
-    let eli = id
-    if(idPlayer !== "") {
-        eli = idPlayer
+    let eli = id;
+
+    if (idPlayer !== "") {
+      eli = idPlayer;
     }
-    console.log(eli, "eli")
+
     // Evitamos clics múltiples si ya está cargando este jugador
     if (loadingIds.includes(eli)) return;
-  
+
     setLoadingIds((prev) => [...prev, eli]);
-  
+
     try {
       const res = await fetch("/api/add", {
         method: "POST",
@@ -112,29 +111,31 @@ export default function Home() {
         },
         body: JSON.stringify({ id: eli, teamName }),
       });
-  
+
       if (!res.ok) throw new Error("Error al agregar el team");
-  
+
       const data = await res.json();
       console.log("Team agregado:", data);
-  
-      // Actualizar el localMarket con el nuevo equipo
-      setLocalMarket((prevMarket: any[][]) =>
+
+      // Actualizar el market con el nuevo equipo
+      setMarket((prevMarket: any[][]) =>
         prevMarket.map((team: any[]) =>
           team.map((player: any) =>
-            player.eli === eli
+            player.id === eli
               ? {
-                  ...player,
-                  id: `${idPlayer}${teamName}`,
-                  teams: player.teams?.includes(teamName)
-                    ? player.teams
-                    : [...(player.teams || []), teamName],
-                }
+                ...player,
+                id: `${idPlayer}-${teamName}`,
+                teams: player.teams?.includes(teamName)
+                  ? player.teams
+                  : [...(player.teams || []), teamName],
+              }
               : player
           )
         )
       );
-      setIdPlayer(`${idPlayer}${teamName}`)
+
+      // Solo actualizamos idPlayer si el fetch fue exitoso
+      setIdPlayer(`${idPlayer}${teamName}`);
       setisOpenAdd(false);
     } catch (error) {
       console.error("Error:", error);
@@ -146,55 +147,112 @@ export default function Home() {
 
 
   const handleRemoveTeam = async (id: string, teamName: string) => {
-    if (loadingIds.includes(id)) return;
-  
-    setLoadingIds((prev) => [...prev, id]);
-  
+    let eli = id;
+    if (deletedTeam !== "") {
+      eli = deletedTeam;
+    }
+
+    if (loadingIds.includes(eli)) return;
+
+    setLoadingIds((prev) => [...prev, eli]);
+
     try {
       const res = await fetch("/api/remove", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id, teamName }),
+        body: JSON.stringify({ id: eli, teamName }),
       });
-  
+
       const data = await res.json();
+
       if (!res.ok) throw new Error(data.error || "Error al eliminar equipo");
-  
+
       console.log("✅ Team eliminado:", data.message);
-  
-      // Actualizar el localMarket quitando el team
-      setLocalMarket((prevMarket: any[][]) =>
+      setIdPlayer(data.updatedValue);
+      // Actualizar el market quitando el team
+      setMarket((prevMarket: any[][]) =>
         prevMarket.map((team: any[]) =>
           team.map((player: any) =>
-            player.id === id
+            player.id === eli
               ? {
-                  ...player,
-                  teams: player.teams?.filter((t: string) => t !== teamName),
-                }
+                ...player,
+                id: data.updatedValue,
+                teams: player.teams?.filter((t: string) => t !== teamName),
+              }
               : player
           )
         )
       );
     } catch (error) {
-      console.error("❌ Error eliminando equipo:", error);
+      console.error(" Error eliminando equipo:", error);
     } finally {
-      setLoadingIds((prev) => prev.filter((x) => x !== id));
+      setLoadingIds((prev) => prev.filter((x) => x !== eli));
+    }
+  };
+
+  const getTextColor = (type: string): string => {
+    const colorMap: Record<string, string> = {
+      SD: "text-red-600",
+      CD: "text-red-600",
+      EXD: "text-red-600",
+      EXI: "text-red-600",
+      MC: "text-green-600",
+      MCD: "text-green-600",
+      MO: "text-green-600",
+      MDI: "text-green-600",
+      MDD: "text-green-600",
+      MD: "text-green-600",
+      MDC: "text-green-600",
+      LI: "text-blue-400",
+      LD: "text-blue-400",
+      DEC: "text-blue-400",
+      PT: "text-orange-400",
+    };
+
+    return colorMap[type] || "";
+  };
+
+  const handlePositionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selected = e.target.value;
+    setPositionFilter(selected);
+  
+    // Aplana el array de arrays
+    const flatMarket = market.flat();
+  
+    if (selected === "") {
+      setFilterPlayers(flatMarket);
+    } else {
+      const filtered = flatMarket
+        .filter((item: any) => {
+          return (
+            Array.isArray(item.info) &&
+            typeof item.info[0] === 'string' &&
+            item.info[0].trim() !== '' &&
+            item.info[0] === selected
+          );
+        })
+        .sort((a: any, b: any) => {
+          const ratingA = parseInt(a.info[2], 10);
+          const ratingB = parseInt(b.info[2], 10);
+          return ratingB - ratingA; // Ordena de mayor a menor
+        });
+  
+      setFilterPlayers(filtered);
     }
   };
   
-  console.log(idPlayer)
-  
+
   return (
     <main className="relative min-h-screen bg-bgPrimary text-fontTitle overflow-hidden p-4">
+      <p onClick={() => setIsActive(!isActive)}>FILTERS</p>
       {/* Overlay AddTeam */}
       <div
-        className={`${
-          isOpenAdd
-            ? "opacity-100 pointer-events-auto bg-black/90"
-            : "opacity-0 pointer-events-none"
-        } fixed top-0 left-0 w-full h-screen z-20 flex items-center justify-center transition-all duration-300`}
+        className={`${isOpenAdd
+          ? "opacity-100 pointer-events-auto bg-black/90"
+          : "opacity-0 pointer-events-none"
+          } fixed top-0 left-0 w-full h-screen z-20 flex items-center justify-center transition-all duration-300`}
       >
         <div
           ref={cartRef}
@@ -232,26 +290,50 @@ export default function Home() {
       </div>
 
       {/* Lista de jugadores */}
-      <div className="w-full grid grid-cols-4 gap-5">
-        {localMarket.map((team, index) => (
-          <ol key={index} className="border-[1px] border-white">
-            {team.map((item: any, idx: number) => {
-              if (!item) return null;
+      <div className="mb-4">
+        <label htmlFor="position" className="block text-white font-semibold mb-2">
+          Filtrar por posición:
+        </label>
+        <select
+          id="position-select"
+          value={positionFilter}
+          onChange={handlePositionChange}
+          className="p-2 rounded-md bg-bgGames text-white border border-white"
+        >
+          <option value="">Todas</option>
+          <option value="SD">SD</option>
+          <option value="CD">CD</option>
+          <option value="EXD">EXD</option>
+          <option value="EXI">EXI</option>
+          <option value="MC">MC</option>
+          <option value="MCD">MCD</option>
+          <option value="MO">MO</option>
+          <option value="MDI">MDI</option>
+          <option value="MDD">MDD</option>
+          <option value="MD">MD</option>
+          <option value="MDC">MDC</option>
+          <option value="LI">LI</option>
+          <option value="LD">LD</option>
+          <option value="DEC">DEC</option>
+          <option value="PT">PT</option>
+        </select>
 
-              return (
-                <div
+      </div>
+      {filterPlayers.length > 0 && (
+        <div className="mt-4 grid grid-cols-6 gap-4 pb-6">
+          {filterPlayers.map((item: any, idx: number) => (
+                  <div
                   key={idx}
-                  className={`group w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm ${
-                    item.id
-                      ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
-                      : ""
-                  } xm:text-sm bg-bgGames/95 text-white`}
+                  className={`group w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm ${item.id
+                    ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
+                    : ""
+                    } xm:text-sm bg-bgGames/95 text-white`}
                 >
                   <div className="flex gap-3 items-center hover:cursor-pointer">
                     <div className="min-w-[30px] rounded-md h-full flex justify-center items-center">
-                      <span className="text-lg">{item.info[0]}</span>
+                      <span className={`text-lg ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
                     </div>
-                    <span className="group-hover:text-hoverText text-[16px]">
+                    <span className="group-hover:text-hoverText text-[16px] uppercase">
                       {item.info[1]}
                     </span>
                     <span className="min-w-[30px] flex justify-center items-center text-[22px]">
@@ -277,24 +359,102 @@ export default function Home() {
                         />
                       </div>
                     ))}
-                    {item.id && (
-                      <button
-                        onClick={() => {
-                          setIdPlayer(item.id);
-                          setisOpenAdd(true);
-                        }}
-                        className="text-[22px]"
-                      >
-                        +
-                      </button>
-                    )}
                   </div>
                 </div>
-              );
-            })}
-          </ol>
-        ))}
+          ))}
+        </div>
+      )}
+
+
+      <div className="w-full flex pb-5 transition-all duration-300">
+        <div
+          className={`transition-all  duration-500 ${isVisible ? "opacity-100" : "opacity-0"
+            } h-full w-full overflow-hidden`}
+        >
+          <div
+            className={`grid ${isActive
+              ? "grid-cols-3 "
+              : "grid-cols-3"
+              } gap-6 py-2`}
+          >
+            {market.map((team: any, index: any) => (
+              <ol key={index} className="border-[1px] border-white">
+                {team.map((item: any, idx: number) => {
+                  if (!item) return null;
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`group w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm ${item.id
+                        ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
+                        : ""
+                        } xm:text-sm bg-bgGames/95 text-white`}
+                    >
+                      <div className="flex gap-3 items-center hover:cursor-pointer">
+                        <div className="min-w-[30px] rounded-md h-full flex justify-center items-center">
+                          <span className={`text-lg ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                        </div>
+                        <span className="group-hover:text-hoverText text-[16px] uppercase">
+                          {item.info[1]}
+                        </span>
+                        <span className="min-w-[30px] flex justify-center items-center text-[22px]">
+                          {item.info[2]}
+                        </span>
+                        <span className="min-w-[30px] flex justify-center items-center text-[22px]">
+                          {item.info[3] === "C" ? <PadLockIcon /> : ""}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        {item.teams?.map((team: string, index: number) => (
+                          <div
+                            key={index}
+                            onClick={() => handleRemoveTeam(item.id, team)}
+                            className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
+                          >
+                            <Image
+                              src={team}
+                              alt={`team-${index}`}
+                              width={32}
+                              height={32}
+                            />
+                          </div>
+                        ))}
+                        {item.id && (
+                          <button
+                            onClick={() => {
+                              setIdPlayer(item.id);
+                              setisOpenAdd(true);
+                            }}
+                            className="text-[22px]"
+                          >
+                            +
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </ol>
+            ))}
+          </div>
+        </div>
+        <div
+          className={`hidden lg:block h-auto transition-all min-h-[700px] duration-300 rounded-md relative pb-4  overflow-hidden ${isActive ? "w-[400px] " : "w-0 "
+            }`}
+        >
+          <div
+            className={`top-0  ${isActive ? "right-0 " : "right-[-400px]"
+              } absolute transition-all duration-300 pb-4  z-10 w-full h-full `}
+          >
+
+          </div>
+        </div>
+
+
       </div>
+
+
     </main>
   );
 }
