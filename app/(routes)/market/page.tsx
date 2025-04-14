@@ -192,6 +192,7 @@ export default function Home() {
     }
   };
 
+  
   const getTextColor = (type: string): string => {
     const colorMap: Record<string, string> = {
       SD: "text-red-600",
