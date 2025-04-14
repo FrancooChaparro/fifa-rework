@@ -1,15 +1,14 @@
 // app/api/sheet/route.js
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
-import keys from " @/models/mercado-456418-9e05a7cb6a17.json";
 import { revalidatePath } from "next/cache";
 
 // Función para autorizar el cliente
 async function getSheetsClient() {
   const client = new google.auth.JWT(
-    keys.client_email,
+    process.env.GOOGLE_API_EMAIL,
     null,
-    keys.private_key,
+    process.env.GOOGLE_PRIVATE_KEY,
     ["https://www.googleapis.com/auth/spreadsheets"]
   );
 
@@ -24,7 +23,7 @@ export async function GET() {
     const sheets = await getSheetsClient();
 
     const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: "1SBBdxhbIJnvWcA_lmu9U7uG79Q-jTAKWi7x0chp9lT8",
+      spreadsheetId: process.env.SPREADSHEETID,
       range: "A:AF",
     });
 
@@ -76,7 +75,7 @@ export async function GET() {
 export async function POST(req) {
   try {
     const sheets = await getSheetsClient();
-    const spreadsheetId = "1SBBdxhbIJnvWcA_lmu9U7uG79Q-jTAKWi7x0chp9lT8";
+    const spreadsheetId = process.env.SPREADSHEETID;
 
     // 1. Leemos el body con el ID del jugador
     const body = await req.json();

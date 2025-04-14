@@ -1,6 +1,5 @@
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
-import keys from " @/models/mercado-456418-9e05a7cb6a17.json";
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -8,9 +7,9 @@ function sleep(ms) {
 
 async function getSheetsClient() {
   const client = new google.auth.JWT(
-    keys.client_email,
+    process.env.GOOGLE_API_EMAIL,
     null,
-    keys.private_key,
+    process.env.GOOGLE_PRIVATE_KEY,
     ["https://www.googleapis.com/auth/spreadsheets"]
   );
 
@@ -21,7 +20,7 @@ async function getSheetsClient() {
 export async function POST(req) {
   try {
     const sheets = await getSheetsClient();
-    const spreadsheetId = "1SBBdxhbIJnvWcA_lmu9U7uG79Q-jTAKWi7x0chp9lT8";
+    const spreadsheetId = process.env.SPREADSHEETID;
 
     const body = await req.json();
     const { id, teamName } = body;
