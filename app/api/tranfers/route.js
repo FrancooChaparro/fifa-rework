@@ -13,7 +13,6 @@ async function getLastRowInColumnAG(sheets, spreadsheetId) {
     return rows.length + 1; // La siguiente fila vacía
   }
   
-
   async function appendToColumnAG(sheets, spreadsheetId, value) {
     const nextRow = await getLastRowInColumnAG(sheets, spreadsheetId);
     const range = `AG${nextRow}`;

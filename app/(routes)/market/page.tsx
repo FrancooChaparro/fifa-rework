@@ -19,6 +19,7 @@ export default function Home() {
   const [filterPlayers, setFilterPlayers] = useState<any[]>([]);
   const [isVisible, setIsVisible] = useState(true); // 🔹 Controla la animación de opacidad de los partidos
   const [isActive, setIsActive] = useState(false); //Active FilterDesktop
+  const [loading, setLoading] = useState(false); //Active FilterDesktop
   const [fadeIn, setFadeIn] = useState(false);
 
   useEffect(() => {
@@ -50,63 +51,47 @@ export default function Home() {
     };
   }, [isOpenAdd]);
 
-  async function actualizarJugador(id: string) {
+
+
+
+
+  async function handleTransferPlayer(id: string) {
+    console.log("Transfiriendo jugador:", id);
+  
+    // Evitamos duplicados mientras está en loading
     if (loadingIds.includes(id)) return;
+  
     setLoadingIds((prev) => [...prev, id]);
-
-    const jugadorActual = market
-      .flat()
-      .find((player: any) => player.id === id);
-    if (!jugadorActual) {
-      console.error("Jugador no encontrado");
-      setLoadingIds((prev) => prev.filter((x) => x !== id));
-      return;
-    }
-
-    const yaTieneC = jugadorActual.info[3] === "C";
-
+  
     try {
-      const res = await fetch("/api/sheet", {
+      const res = await fetch("/api/tranfers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          id,
-          hasC: yaTieneC,
-        }),
+        body: JSON.stringify({ value: id }),
       });
-
+  
+      if (!res.ok) throw new Error("Error al transferir el jugador");
+  
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Error desconocido");
-
-      console.log("✅", data.message);
-
-      setMarket((prevMarket: any) =>
-        prevMarket.map((team: any) =>
-          team.map((player: any) =>
-            player.id === id
-              ? {
-                ...player,
-                info: [
-                  player.info[0],
-                  player.info[1],
-                  player.info[2],
-                  yaTieneC ? "" : "C",
-                ],
-              }
-              : player
-          )
-        )
-      );
+      console.log("Transferencia exitosa:", data);
+ 
     } catch (error) {
-      console.error("❌ Error actualizando jugador:", error);
+      console.error("Error:", error);
     } finally {
       setLoadingIds((prev) => prev.filter((x) => x !== id));
     }
   }
+  
+
+
+
+
+
 
   const handleAddTeam = async (id: string, teamName: string) => {
+    setLoading(true);
     let eli = id;
 
     if (idPlayer !== "") {
@@ -130,7 +115,6 @@ export default function Home() {
       if (!res.ok) throw new Error("Error al agregar el team");
 
       const data = await res.json();
-      console.log("Team agregado:", data);
 
       // Actualizar el market con el nuevo equipo
       setMarket((prevMarket: any[][]) =>
@@ -151,17 +135,20 @@ export default function Home() {
 
       // Solo actualizamos idPlayer si el fetch fue exitoso
       setIdPlayer(`${idPlayer}${teamName}`);
+      setLoading(false);
       setisOpenAdd(false);
     } catch (error) {
       console.error("Error:", error);
     } finally {
       // Quitamos el jugador de loading
+      setLoading(false);
       setLoadingIds((prev) => prev.filter((x) => x !== id));
     }
   };
 
 
   const handleRemoveTeam = async (id: string, teamName: string) => {
+    setLoading(true);
     let eli = id;
     if (deletedTeam !== "") {
       eli = deletedTeam;
@@ -184,7 +171,6 @@ export default function Home() {
 
       if (!res.ok) throw new Error(data.error || "Error al eliminar equipo");
 
-      console.log("✅ Team eliminado:", data.message);
       setIdPlayer(data.updatedValue);
       // Actualizar el market quitando el team
       setMarket((prevMarket: any[][]) =>
@@ -200,9 +186,12 @@ export default function Home() {
           )
         )
       );
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error(" Error eliminando equipo:", error);
     } finally {
+      setLoading(false);
       setLoadingIds((prev) => prev.filter((x) => x !== eli));
     }
   };
@@ -259,11 +248,23 @@ export default function Home() {
     }
   };
 
-  console.log(market)
 
   return (
-    <main className="relative min-h-screen pt-[90px] bg-bgPrimary text-fontTitle overflow-hidden p-4">
+    <main className={`relative min-h-screen pt-[90px] bg-bgPrimary text-fontTitle overflow-hidden p-4`}>
       {/* Overlay AddTeam */}
+      <div
+        className={`${loading
+          ? "opacity-100 pointer-events-auto bg-black/50"
+          : "opacity-0 pointer-events-none"
+          } fixed top-0 left-0 w-full min-h-screen max-h-screen z-50 flex items-center justify-center transition-all duration-300`}
+      >
+        <div className="loader flex justify-between w-[60px] gap-2">
+        <div className=""></div>
+        <div className=""></div>
+        <div className=""></div>
+      </div>
+      </div>
+
       <div
         className={`${isOpenAdd
           ? "opacity-100 pointer-events-auto bg-black/90"
@@ -454,7 +455,7 @@ export default function Home() {
                               } xm:text-sm  text-white`}
                           >
                             <div className="flex gap-3 items-center hover:cursor-pointer">
-                              <div className="min-w-[40px] rounded-md h-full flex justify-center items-center">
+                              <div onClick={()=> handleTransferPlayer(item.id)} className="min-w-[40px] rounded-md h-full flex justify-center items-center">
                                 <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
                               </div>
                               <span className="group-hover:text-hoverText text-[16px] uppercase">
@@ -514,11 +515,8 @@ export default function Home() {
             className={`top-0 ${isActive ? "right-0 " : "right-[-400px]"
               } absolute transition-all duration-300 pb-4 z-10 w-full h-full`}
           >
-
-
             <ol className="">
               {lastMarketItem?.length && lastMarketItem?.map((item: any, idx: number) => {
-                console.log(item)
                 if (!item.id) return null;
                 return (
                   <div
@@ -529,16 +527,16 @@ export default function Home() {
                       <div className="min-w-[30px] max-w-[30px]  rounded-md h-full flex justify-center items-center">
                         <span className={`text-[13px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
                       </div>
-                      <span className="text-[12px] min-w-[120px] max-w-[120px] truncate uppercase">
+                      <span className="text-[12px] min-w-[100px] max-w-[100px] xl:min-w-[120px] xl:max-w-[120px] truncate uppercase">
                         {item.info[1]}
                       </span>
                       <span className="min-w-[26px] flex justify-center items-center text-[13px]">
                         {item.info[2]}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center xl:gap-0">
                       <div
-                        className="min-w-[34px]  flex justify-center items-center"
+                        className="min-w-[34px] flex justify-center items-center"
                       >
                         <Image
                           src={item.teams[0]}
@@ -547,12 +545,12 @@ export default function Home() {
                           height={28}
                         />
                       </div>
-                      <span className="min-w-[28px]  flex justify-center items-center text-[14px]">
+                      <span className="min-w-[28px] flex justify-center items-center text-[14px]">
                         <ArrowIcon />
                       </span>
 
                       <div
-                        className="min-w-[34px]  flex justify-center items-center"
+                        className="min-w-[34px] flex justify-center items-center"
                       >
                         <Image
                           src={item.teams[1]}

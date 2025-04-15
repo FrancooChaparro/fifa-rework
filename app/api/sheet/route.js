@@ -18,6 +18,7 @@ export async function GET() {
     const filas = response.data.values || [];
     const columnas = filas[0]?.map((_, i) => filas.map(row => row[i])) || [];
 
+
     // Limpiar los subarrays eliminando celdas vacías
     const columnasLimpias = columnas.map(col => col.filter(celda => celda && celda.trim() !== ''));
 
@@ -27,7 +28,6 @@ export async function GET() {
     return NextResponse.json({ error: "Error interno" }, { status: 500 });
   }
 }
-
 
 
 export async function POST(req) {
