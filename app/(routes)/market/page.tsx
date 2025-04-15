@@ -10,7 +10,7 @@ import Loader from " @/components/Loader/Loader";
 const rankTeams = data.ranking;
 
 export default function Home() {
-  const { market, isOpenAdd, setisOpenAdd, setMarket, lastMarketItem } = useMyContext();
+  const { market, isOpenAdd, setisOpenAdd, setMarket, lastMarketItem, setLastMarketItem } = useMyContext();
   const [loadingIds, setLoadingIds] = useState<string[]>([]);
   const cartRef = useRef<HTMLDivElement>(null);
   const [idPlayer, setIdPlayer] = useState<string>("");
@@ -76,6 +76,58 @@ export default function Home() {
   
       const data = await res.json();
       console.log("Transferencia exitosa:", data);
+
+      // Actualizamos el market solo si fue exitoso
+    setMarket((prevMarket: any[][]) => {
+      // Copiamos el arreglo actual
+      const updatedMarket = [...prevMarket];
+      const lastIndex = updatedMarket.length - 1;
+      console.log({
+        lastIndex, updatedMarket
+      })
+      // Verificamos si el jugador ya está en la última posición
+      const alreadyExists = updatedMarket[lastIndex]?.some(
+        (player) => player?.id === id
+      );
+
+      // Si no está, lo agregamos
+      if (!alreadyExists) {
+        updatedMarket[lastIndex] = [
+          ...updatedMarket[lastIndex],
+          { id, teams: [] }, // podés adaptar el formato según lo que usás
+        ];
+      }
+      console.log({
+        updatedMarket
+      })
+      return updatedMarket;
+    });
+
+    setLastMarketItem((prevMarket: any[][]) => {
+      // Copiamos el arreglo actual
+      const updatedMarket = [...prevMarket];
+      const lastIndex = updatedMarket.length - 1;
+      console.log({
+        lastIndex, updatedMarket
+      })
+      // Verificamos si el jugador ya está en la última posición
+      const alreadyExists = updatedMarket[lastIndex]?.some(
+        (player) => player?.id === id
+      );
+
+      // Si no está, lo agregamos
+      if (!alreadyExists) {
+        updatedMarket[lastIndex] = [
+          ...updatedMarket[lastIndex],
+          { id, teams: [] }, // podés adaptar el formato según lo que usás
+        ];
+      }
+      console.log({
+        updatedMarket
+      })
+      return updatedMarket.length > 0 ? updatedMarket[updatedMarket.length - 1] : null
+    });
+
  
     } catch (error) {
       console.error("Error:", error);
@@ -518,6 +570,7 @@ export default function Home() {
             <ol className="">
               {lastMarketItem?.length && lastMarketItem?.map((item: any, idx: number) => {
                 if (!item.id) return null;
+                console.log(item?.info)
                 return (
                   <div
                     key={idx}
@@ -525,7 +578,7 @@ export default function Home() {
                   >
                     <div className="flex gap-3 items-center hover:cursor-pointer">
                       <div className="min-w-[30px] max-w-[30px]  rounded-md h-full flex justify-center items-center">
-                        <span className={`text-[13px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                        <span className={`text-[13px] ${getTextColor(item?.info[0])}`}>{item?.info[0]}</span>
                       </div>
                       <span className="text-[12px] min-w-[100px] max-w-[100px] xl:min-w-[120px] xl:max-w-[120px] truncate uppercase">
                         {item.info[1]}
@@ -539,8 +592,8 @@ export default function Home() {
                         className="min-w-[34px] flex justify-center items-center"
                       >
                         <Image
-                          src={item.teams[0]}
-                          alt={item.teams[0]}
+                          src={item?.teams[0]}
+                          alt={item?.teams[0]}
                           width={28}
                           height={28}
                         />
@@ -553,8 +606,8 @@ export default function Home() {
                         className="min-w-[34px] flex justify-center items-center"
                       >
                         <Image
-                          src={item.teams[1]}
-                          alt={item.teams[1]}
+                          src={item?.teams[1]}
+                          alt={item?.teams[1]}
                           width={28}
                           height={28}
                         />
