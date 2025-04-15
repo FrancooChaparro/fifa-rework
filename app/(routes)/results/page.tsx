@@ -167,7 +167,7 @@ export default function ResultsPage() {
 
       {/* Contenedor principal con flex */}
       <div className="w-full flex pb-5  transition-all duration-300">
-        {/* *MENU FILTROS DESKTOP */}
+        {/* MENU FILTROS DESKTOP */}
         <div
           className={`hidden lg:block h-auto transition-all min-h-[700px] duration-300 rounded-md relative pb-4  overflow-hidden ${
             isActive ? "w-[400px] " : "w-0 "
@@ -176,19 +176,19 @@ export default function ResultsPage() {
           <div
             className={`top-0  ${
               isActive ? "left-0 " : "left-[-400px]"
-            } absolute transition-all duration-300 pb-4  z-10 w-full h-full `}
+            } absolute transition-all duration-300 pb-4 z-10 w-full h-full `}
           >
             <FilterPlayersComponent
               {...{ selectedPlayers, handleCheckboxChange }}
             />
 
             {/* FILTERS GOLES */}
-            <h3 className="text-lg font-geistBold  text-white mt-4 mb-4 uppercase">
+            <h3 className="text-lg font-geistBold text-white mt-4 mb-4 uppercase">
               Filtrar por Goles Totales
             </h3>
             <SliderGoalsComponent {...{ minGoals, handlerFilterGoals }} />
             {/* FILTERS EQUIPO */}
-            <h3 className="text-lg font-geistBold  uppercase text-white mt-4 mb-4">
+            <h3 className="text-lg font-geistBold uppercase text-white mt-4 mb-4">
               Filtrar por team
             </h3>
             <FilterByNameComponent
@@ -209,8 +209,8 @@ export default function ResultsPage() {
           <div
             className={`grid ${
               isActive
-                ? "grid-cols-2 lg:grid-cols-3 xm:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-6 2.5xl:grid-cols-7"
-                : "grid-cols-2 lg:grid-cols-4 xm:grid-cols-5  xl:grid-cols-5  2xl:grid-cols-7 2.5xl:grid-cols-8"
+                ? "grid-cols-2 lg:grid-cols-3 xm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 2.5xl:grid-cols-7"
+                : "grid-cols-2 lg:grid-cols-4 xm:grid-cols-5  xl:grid-cols-5 2xl:grid-cols-7 2.5xl:grid-cols-8"
             } gap-6 py-2  `}
           >
             {games && games.length ? (

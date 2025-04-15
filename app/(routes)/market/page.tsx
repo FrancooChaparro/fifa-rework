@@ -1,6 +1,6 @@
 "use client";
 import { useMyContext } from " @/context/ListContext";
-import { ArrowIcon, PadLockIcon } from " @/Icons/Icons";
+import { ArrowIcon, EyeIcon, EyeOffIcon, PadLockIcon } from " @/Icons/Icons";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { data } from " @/models/db";
@@ -19,8 +19,20 @@ export default function Home() {
   const [filterPlayers, setFilterPlayers] = useState<any[]>([]);
   const [isVisible, setIsVisible] = useState(true); // 🔹 Controla la animación de opacidad de los partidos
   const [isActive, setIsActive] = useState(false); //Active FilterDesktop
+  const [fadeIn, setFadeIn] = useState(false);
 
-  console.log(lastMarketItem);
+  useEffect(() => {
+    if (filterPlayers.length > 0) {
+      setFadeIn(false); // reiniciamos animación
+      const timeout = setTimeout(() => setFadeIn(true), 10); // volvemos a aplicar fadeIn
+  
+      return () => clearTimeout(timeout); // limpiamos si cambia antes
+    } else {
+      setFadeIn(false);
+    }
+  }, [filterPlayers]);
+  
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -295,7 +307,7 @@ export default function Home() {
       </div>
 
       {/* Lista de jugadores */}
-      <div className="flex justify-between">
+      <div className="flex justify-between font-geistRegular">
         <div className="flex gap-2 mb-4 items-center">
           <label htmlFor="position" className="font-geistRegular text-white">
             ORDENAR
@@ -304,32 +316,46 @@ export default function Home() {
             id="position-select"
             value={positionFilter}
             onChange={handlePositionChange}
-            className="p-2 bg-bgGames text-white border border-white"
+            className="p-1 bg-bgGames/95 text-white border border-gray-600/90 cursor-pointer"
           >
-            <option value="">CLEAN</option>
-            <option value="SD">SD</option>
-            <option value="CD">CD</option>
-            <option value="EXD">EXD</option>
-            <option value="EXI">EXI</option>
-            <option value="MC">MC</option>
-            <option value="MCD">MCD</option>
-            <option value="MO">MO</option>
-            <option value="MDI">MDI</option>
-            <option value="MDD">MDD</option>
-            <option value="MD">MD</option>
-            <option value="MDC">MDC</option>
-            <option value="LI">LI</option>
-            <option value="LD">LD</option>
-            <option value="DEC">DEC</option>
-            <option value="PT">PT</option>
+            <option className="hover:bg-primaryRed" value="SD">SD</option>
+            <option className="hover:bg-primaryRed" value="CD">CD</option>
+            <option className="hover:bg-primaryRed" value="EXD">EXD</option>
+            <option className="hover:bg-primaryRed" value="EXI">EXI</option>
+            <option className="hover:bg-primaryRed" value="MC">MC</option>
+            <option className="hover:bg-primaryRed" value="MCD">MCD</option>
+            <option className="hover:bg-primaryRed" value="MO">MO</option>
+            <option className="hover:bg-primaryRed" value="MDI">MDI</option>
+            <option className="hover:bg-primaryRed" value="MDD">MDD</option>
+            <option className="hover:bg-primaryRed" value="LI">LI</option>
+            <option className="hover:bg-primaryRed" value="LD">LD</option>
+            <option className="hover:bg-primaryRed" value="DEC">DEC</option>
+            <option className="hover:bg-primaryRed" value="PT">PT</option>
           </select>
-          <button className="text-white text-lg" onClick={() => setFilterPlayers([])}>Limpiar filtros</button>
+          {
+            filterPlayers.length > 0
+              ? <button className="text-white text-lg min-w-[30px] h-[30px] rounded-full hover:bg-primaryRed  bg-bgGames/95" onClick={() => setFilterPlayers([])}>X</button>
+              : null
+          }
         </div>
-        <p onClick={() => setIsActive(!isActive)}>TRANFERENCIAS COMPLETADAS</p>
+        <button onClick={() => setIsActive(!isActive)} className="w-[320px]  flex justify-center items-center">
+          <span className="flex gap-2 hover:bg-primaryRed rounded-md p-2">
+            <span >TRANFERENCIAS COMPLETADAS</span>
+            {
+              isActive
+                ? <EyeIcon />
+                : <EyeOffIcon />
+            }
+          </span>
+        </button>
       </div>
 
       {filterPlayers.length > 0 && (
-        <div className="mt-4 grid grid-cols-6 gap-4 pb-6 transition-all duration-300">
+        <div className={`
+          mt-4 grid grid-cols-6 gap-4 pb-6
+          transition-all duration-500 ease-in-out
+          ${fadeIn ? "opacity-100" : "opacity-0"}
+        `}>
           {filterPlayers.map((item: any, idx: number) => (
             <div
               key={idx}
@@ -360,8 +386,8 @@ export default function Home() {
                     <Image
                       src={team}
                       alt={`team-${index}`}
-                      width={32}
-                      height={32}
+                      width={24}
+                      height={24}
                     />
                   </div>
                 ))}
@@ -372,6 +398,9 @@ export default function Home() {
       )}
 
 
+
+
+
       <div className="w-full flex pb-5 transition-all duration-300">
         <div
           className={`transition-all  duration-500 ${isVisible ? "opacity-100" : "opacity-0"
@@ -380,83 +409,110 @@ export default function Home() {
           {
             market.length
               ? <div
-                className={`grid ${isActive
+                className={`grid w-full ${isActive
                   ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3"
                   : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
                   } gap-6 py-2`}
               >
-                {market.map((team: any, index: any) => (
-                  <ol key={index} className="border-[1px] border-white bg-bgGames/95 overflow-hidden">
+                {market.slice(0, -1).map((team: any, index: any) => (
+                  <ol key={index} className="border-[1px] rounded-sm border-gray-700 bg-bgGames/95 overflow-hidden">
                     {team.map((item: any, idx: number) => {
                       if (!item) return null;
-
-                      return (
-                        <div
-                          key={idx}
-                          className={`group w-full flex h-[45px] justify-between gap-2 px-2 font-bold text-sm ${item.id
-                            ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
-                            : ""
-                            } xm:text-sm  text-white`}
-                        >
-                          <div className="flex gap-3 items-center hover:cursor-pointer">
-                            <div className="min-w-[40px] rounded-md h-full flex justify-center items-center">
-                              <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
-                            </div>
-                            <span className="group-hover:text-hoverText text-[16px] uppercase">
-                              {item.info[1]}
-                            </span>
-                            <span className="min-w-[30px] flex justify-center items-center text-[18px]">
-                              {item.info[2]}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            {item.teams?.map((team: string, index: number) => (
+                      if (idx === 0) {
+                        return (
+                          <div
+                            key={idx}
+                            className={`group w-full flex h-[45px] justify-center gap-2 px-2 font-bold text-sm xm:text-sm text-white`}
+                          >
+                            <div className="flex gap-1">
                               <div
                                 key={index}
                                 onClick={() => handleRemoveTeam(item.id, team)}
-                                className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
+                                className="min-w-[40px] flex justify-center items-center"
                               >
                                 <Image
-                                  src={team}
-                                  alt={`team-${index}`}
+                                  src={item?.teams[0]}
+                                  alt={`team-${item?.teams[0]}`}
                                   width={32}
                                   height={32}
                                 />
                               </div>
-                            ))}
-                            {item.id && (
-                              <button
-                                onClick={() => {
-                                  setIdPlayer(item.id);
-                                  setisOpenAdd(true);
-                                }}
-                                className="text-[22px]"
-                              >
-                                +
-                              </button>
-                            )}
+                              <div className="min-w-[40px] rounded-md h-full flex justify-center items-center">
+                                <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                              </div>
+                            </div>
+
                           </div>
-                        </div>
-                      );
+                        )
+                      } else {
+                        return (
+                          <div
+                            key={idx}
+                            className={`group w-full flex h-[45px] justify-between gap-2 px-2 font-bold text-sm ${item.id
+                              ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
+                              : ""
+                              } xm:text-sm  text-white`}
+                          >
+                            <div className="flex gap-3 items-center hover:cursor-pointer">
+                              <div className="min-w-[40px] rounded-md h-full flex justify-center items-center">
+                                <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                              </div>
+                              <span className="group-hover:text-hoverText text-[16px] uppercase">
+                                {item.info[1]}
+                              </span>
+                              <span className="min-w-[30px] flex justify-center items-center text-[18px]">
+                                {item.info[2]}
+                              </span>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              {item.teams?.map((team: string, index: number) => (
+                                <div
+                                  key={index}
+                                  onClick={() => handleRemoveTeam(item.id, team)}
+                                  className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
+                                >
+                                  <Image
+                                    src={team}
+                                    alt={`team-${index}`}
+                                    width={32}
+                                    height={32}
+                                  />
+                                </div>
+                              ))}
+                              {item.id && (
+                                <button
+                                  onClick={() => {
+                                    setIdPlayer(item.id);
+                                    setisOpenAdd(true);
+                                  }}
+                                  className="text-[22px]"
+                                >
+                                  +
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      }
                     })}
                   </ol>
                 ))
                 }
               </div>
               : <div className="flex items-center justify-center h-[400px]">
-              <div className="w-12 h-12 border-4 border-bgPrimary border-t-primaryRed rounded-full animate-spin">
+                <div className="w-12 h-12 border-4 border-bgPrimary border-t-primaryRed rounded-full animate-spin">
+                </div>
               </div>
-          </div>
           }
         </div>
         <div
-          className={`hidden lg:block h-auto transition-all min-h-[700px] duration-300 rounded-md relative pb-4  overflow-hidden ${isActive ? "w-[400px] " : "w-0 "
+          className={`hidden lg:block h-auto transition-all min-h-[700px] duration-300 rounded-md relative pb-4 ${isActive ? "w-[400px]" : "w-0"
             }`}
         >
           <div
-            className={`top-0  ${isActive ? "right-0 " : "right-[-400px]"
-              } absolute transition-all duration-300 pb-4  z-10 w-full h-full `}
+            className={`top-0 ${isActive ? "right-0 " : "right-[-400px]"
+              } absolute transition-all duration-300 pb-4 z-10 w-full h-full`}
           >
 
 
