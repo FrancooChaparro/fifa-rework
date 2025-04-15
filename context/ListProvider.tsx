@@ -10,20 +10,8 @@ interface MyProviderProps {
 
 const MyProvider: FC<MyProviderProps> = ({ children }) => {
   const [market, setMarket] = useState([]);
+  const [lastMarketItem, setLastMarketItem] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchSheetData = async () => {
-  //     try {
-  //       const res = await fetch("/api/sheet");
-  //       const data = await res.json();
-  //       setMarket(data);
-  //     } catch (error) {
-  //       console.error("Error cargando datos del sheet:", error);
-  //     }
-  //   };
-
-  //   fetchSheetData();
-  // }, []);
   useEffect(() => {
     const fetchSheetData = async () => {
       try {
@@ -56,8 +44,6 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
   
     fetchSheetData();
   }, []);
-  
-  
   
 
   const [FrancoBombo, setFrancoBombo] = useState<any>([]);
@@ -137,6 +123,12 @@ const seterGame = (param: boolean, index: Match) => {
   }
 }
 
+
+useEffect(() => {
+  setLastMarketItem(market.length > 0 ? market[market.length - 1] : null);
+}, [market]);
+
+
   const contextValue: MyContextType = {
     Franco,
     Gaston,
@@ -162,7 +154,9 @@ const seterGame = (param: boolean, index: Match) => {
     market,
     setMarket,
 
-    isOpenAdd, setisOpenAdd
+    isOpenAdd, setisOpenAdd,
+
+    lastMarketItem, setLastMarketItem
   };
 
   return (

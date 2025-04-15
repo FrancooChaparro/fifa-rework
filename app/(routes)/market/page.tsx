@@ -1,6 +1,6 @@
 "use client";
 import { useMyContext } from " @/context/ListContext";
-import { PadLockIcon } from " @/Icons/Icons";
+import { ArrowIcon, PadLockIcon } from " @/Icons/Icons";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { data } from " @/models/db";
@@ -9,7 +9,7 @@ import { Rank } from " @/types/types";
 const rankTeams = data.ranking;
 
 export default function Home() {
-  const { market, isOpenAdd, setisOpenAdd, setMarket } = useMyContext();
+  const { market, isOpenAdd, setisOpenAdd, setMarket, lastMarketItem } = useMyContext();
   const [loadingIds, setLoadingIds] = useState<string[]>([]);
   const cartRef = useRef<HTMLDivElement>(null);
   const [idPlayer, setIdPlayer] = useState<string>("");
@@ -17,7 +17,9 @@ export default function Home() {
   const [positionFilter, setPositionFilter] = useState<string>("");
   const [filterPlayers, setFilterPlayers] = useState<any[]>([]);
   const [isVisible, setIsVisible] = useState(true); // 🔹 Controla la animación de opacidad de los partidos
-  const [isActive, setIsActive] = useState(true); //Active FilterDesktop
+  const [isActive, setIsActive] = useState(false); //Active FilterDesktop
+
+  console.log(lastMarketItem);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -218,10 +220,10 @@ export default function Home() {
   const handlePositionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selected = e.target.value;
     setPositionFilter(selected);
-  
+
     // Aplana el array de arrays
     const flatMarket = market.flat();
-  
+
     if (selected === "") {
       setFilterPlayers(flatMarket);
     } else {
@@ -239,15 +241,16 @@ export default function Home() {
           const ratingB = parseInt(b.info[2], 10);
           return ratingB - ratingA; // Ordena de mayor a menor
         });
-  
+
       setFilterPlayers(filtered);
     }
   };
-  
+
+  console.log(market)
 
   return (
     <main className="relative min-h-screen pt-[90px] bg-bgPrimary text-fontTitle overflow-hidden p-4">
-      <p onClick={() => setIsActive(!isActive)}>FILTERS</p>
+      <p onClick={() => setIsActive(!isActive)}>TRANFERENCIAS COMPLETADAS</p>
       {/* Overlay AddTeam */}
       <div
         className={`${isOpenAdd
@@ -277,6 +280,7 @@ export default function Home() {
                 className="group hover:cursor-pointer w-full flex h-[56px] px-2 hover:bg-hoverCard hover:rounded-[4px] bg-bgGames/95"
               >
                 <div className="min-w-[56px] flex justify-center items-center group-hover:bg-hoverCard">
+
                   <Image
                     src={team.logo}
                     alt={team.name}
@@ -323,45 +327,42 @@ export default function Home() {
       {filterPlayers.length > 0 && (
         <div className="mt-4 grid grid-cols-6 gap-4 pb-6">
           {filterPlayers.map((item: any, idx: number) => (
-                  <div
-                  key={idx}
-                  className={`group w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm ${item.id
-                    ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
-                    : ""
-                    } xm:text-sm bg-bgGames/95 text-white`}
-                >
-                  <div className="flex gap-3 items-center hover:cursor-pointer">
-                    <div className="min-w-[30px] rounded-md h-full flex justify-center items-center">
-                      <span className={`text-lg ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
-                    </div>
-                    <span className="group-hover:text-hoverText text-[16px] uppercase">
-                      {item.info[1]}
-                    </span>
-                    <span className="min-w-[30px] flex justify-center items-center text-[22px]">
-                      {item.info[2]}
-                    </span>
-                    <span className="min-w-[30px] flex justify-center items-center text-[22px]">
-                      {item.info[3] === "C" ? <PadLockIcon /> : ""}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    {item.teams?.map((team: string, index: number) => (
-                      <div
-                        key={index}
-                        onClick={() => handleRemoveTeam(item.id, team)}
-                        className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
-                      >
-                        <Image
-                          src={team}
-                          alt={`team-${index}`}
-                          width={32}
-                          height={32}
-                        />
-                      </div>
-                    ))}
-                  </div>
+            <div
+              key={idx}
+              className={`group w-full flex h-[45px] justify-between gap-2 px-2 font-bold text-sm ${item.id
+                ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
+                : ""
+                } xm:text-sm bg-bgGames/95 text-white`}
+            >
+              <div className="flex gap-3 items-center hover:cursor-pointer">
+                <div className="min-w-[30px] rounded-md h-full flex justify-center items-center">
+                  <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
                 </div>
+                <span className="group-hover:text-hoverText text-[14px] uppercase">
+                  {item.info[1]}
+                </span>
+                <span className="min-w-[30px] flex justify-center items-center text-[16px]">
+                  {item.info[2]}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                {item.teams?.map((team: string, index: number) => (
+                  <div
+                    key={index}
+                    onClick={() => handleRemoveTeam(item.id, team)}
+                    className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
+                  >
+                    <Image
+                      src={team}
+                      alt={`team-${index}`}
+                      width={32}
+                      height={32}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       )}
@@ -379,17 +380,17 @@ export default function Home() {
               } gap-6 py-2`}
           >
             {market.map((team: any, index: any) => (
-              <ol key={index} className="border-[1px] border-white">
+              <ol key={index} className="border-[1px] border-white bg-bgGames/95">
                 {team.map((item: any, idx: number) => {
                   if (!item) return null;
 
                   return (
                     <div
                       key={idx}
-                      className={`group w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm ${item.id
+                      className={`group w-full flex h-[50px] justify-between gap-2 px-2 font-bold text-sm ${item.id
                         ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
                         : ""
-                        } xm:text-sm bg-bgGames/95 text-white`}
+                        } xm:text-sm  text-white`}
                     >
                       <div className="flex gap-3 items-center hover:cursor-pointer">
                         <div className="min-w-[30px] rounded-md h-full flex justify-center items-center">
@@ -448,6 +449,71 @@ export default function Home() {
             className={`top-0  ${isActive ? "right-0 " : "right-[-400px]"
               } absolute transition-all duration-300 pb-4  z-10 w-full h-full `}
           >
+
+
+            <ol className="">
+              {lastMarketItem?.length && lastMarketItem?.map((item: any, idx: number) => {
+                console.log(item)
+                if (!item.id) return null;
+                return (
+                  <div
+                    key={idx}
+                    className={`group w-full flex h-[40px] justify-between gap-2 px-2 font-bold text-sm xm:text-sm text-white`}
+                  >
+                    <div className="flex gap-3 items-center hover:cursor-pointer">
+                      <div className="min-w-[30px] max-w-[30px]  rounded-md h-full flex justify-center items-center">
+                        <span className={`text-[13px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                      </div>
+                      <span className="text-[12px] min-w-[120px] max-w-[120px] truncate uppercase">
+                        {item.info[1]}
+                      </span>
+                      <span className="min-w-[26px] flex justify-center items-center text-[13px]">
+                        {item.info[2]}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="min-w-[34px]  flex justify-center items-center"
+                      >
+                        <Image
+                          src={item.teams[0]}
+                          alt={item.teams[0]}
+                          width={28}
+                          height={28}
+                        />
+                      </div>
+                      <span className="min-w-[28px]  flex justify-center items-center text-[14px]">
+                        <ArrowIcon />
+                      </span>
+
+                      <div
+                        className="min-w-[34px]  flex justify-center items-center"
+                      >
+                        <Image
+                          src={item.teams[1]}
+                          alt={item.teams[1]}
+                          width={28}
+                          height={28}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           </div>
         </div>

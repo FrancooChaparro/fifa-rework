@@ -21,7 +21,7 @@ async function getSheetData() {
 
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SPREADSHEETID,
-    range: "A:AF",
+    range: "A:AG",
   });
 
   const filas = res.data.values || [];

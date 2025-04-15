@@ -1,20 +1,6 @@
-import { google } from "googleapis";
 import { NextResponse } from "next/server";
+import { getSheetsClient } from " @/lib/getSheetsClient";
 
-// Función para autorizar el cliente
-async function getSheetsClient() {
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'); // 👈 esto es clav
-  const client = new google.auth.JWT(
-    process.env.GOOGLE_API_EMAIL,
-    null,
-    privateKey,
-    ["https://www.googleapis.com/auth/spreadsheets"]
-  );
-
-  await client.authorize();
-
-  return google.sheets({ version: "v4", auth: client });
-}
 
 export async function POST(req) {
   try {

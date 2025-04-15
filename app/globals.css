@@ -28,12 +28,15 @@ body {
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none; /* Ocultar la barra en navegadores WebKit */
+  display: none;
+  /* Ocultar la barra en navegadores WebKit */
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* Ocultar barra en IE y Edge */
-  scrollbar-width: none; /* Ocultar barra en Firefox */
+  -ms-overflow-style: none;
+  /* Ocultar barra en IE y Edge */
+  scrollbar-width: none;
+  /* Ocultar barra en Firefox */
 }
 
 
@@ -46,6 +49,7 @@ body {
   overflow: visible !important;
   color: #474747;
 }
+
 .clip-left {
   clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 0% 100%);
 }
@@ -54,3 +58,10 @@ body {
   clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
+
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

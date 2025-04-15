@@ -77,7 +77,7 @@ export default function PoolPage() {
     { nombre: "Chelsea", escudo: "/images/Chelsea.png", rank: "#10" },
     {
       nombre: "Juventus",
-      escudo: "/images/da-removebg-preview.png",
+      escudo: "/images/juventud.png",
       rank: "#17",
     },
     {
@@ -206,7 +206,7 @@ function alear() {
 
     marcos = [{ nombre: "Chelsea", escudo: "/images/Chelsea.png", rank: "#10" }, ...marcos];
 
-    gaston = [{ nombre: "Juventus", escudo: "/images/da-removebg-preview.png", rank: "#17" }, ...gaston];
+    gaston = [{ nombre: "Juventus", escudo: "/images/juventud.png", rank: "#17" }, ...gaston];
 
     franco = [{ nombre: "Paris Saint Germain", escudo: "/images/ParisSaintGermain.png", rank: "#1" }, ...franco];
     

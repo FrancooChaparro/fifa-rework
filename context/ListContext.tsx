@@ -28,6 +28,9 @@ export type MyContextType = {
   market: any;
   setMarket: any;
 
+  lastMarketItem: any;
+  setLastMarketItem: any;
+
   isOpenAdd: boolean;
   setisOpenAdd: any
 };
