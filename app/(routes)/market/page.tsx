@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { data } from " @/models/db";
 import { Rank } from " @/types/types";
+import Loader from " @/components/Loader/Loader";
 
 const rankTeams = data.ranking;
 
@@ -225,7 +226,7 @@ export default function Home() {
     const flatMarket = market.flat();
 
     if (selected === "") {
-      setFilterPlayers(flatMarket);
+      setFilterPlayers([]);
     } else {
       const filtered = flatMarket
         .filter((item: any) => {
@@ -239,7 +240,7 @@ export default function Home() {
         .sort((a: any, b: any) => {
           const ratingA = parseInt(a.info[2], 10);
           const ratingB = parseInt(b.info[2], 10);
-          return ratingB - ratingA; // Ordena de mayor a menor
+          return ratingB - ratingA;
         });
 
       setFilterPlayers(filtered);
@@ -250,7 +251,6 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen pt-[90px] bg-bgPrimary text-fontTitle overflow-hidden p-4">
-      <p onClick={() => setIsActive(!isActive)}>TRANFERENCIAS COMPLETADAS</p>
       {/* Overlay AddTeam */}
       <div
         className={`${isOpenAdd
@@ -295,37 +295,41 @@ export default function Home() {
       </div>
 
       {/* Lista de jugadores */}
-      <div className="mb-4">
-        <label htmlFor="position" className="block text-white font-semibold mb-2">
-          Filtrar por posición:
-        </label>
-        <select
-          id="position-select"
-          value={positionFilter}
-          onChange={handlePositionChange}
-          className="p-2 rounded-md bg-bgGames text-white border border-white"
-        >
-          <option value="">Todas</option>
-          <option value="SD">SD</option>
-          <option value="CD">CD</option>
-          <option value="EXD">EXD</option>
-          <option value="EXI">EXI</option>
-          <option value="MC">MC</option>
-          <option value="MCD">MCD</option>
-          <option value="MO">MO</option>
-          <option value="MDI">MDI</option>
-          <option value="MDD">MDD</option>
-          <option value="MD">MD</option>
-          <option value="MDC">MDC</option>
-          <option value="LI">LI</option>
-          <option value="LD">LD</option>
-          <option value="DEC">DEC</option>
-          <option value="PT">PT</option>
-        </select>
-
+      <div className="flex justify-between">
+        <div className="flex gap-2 mb-4 items-center">
+          <label htmlFor="position" className="font-geistRegular text-white">
+            ORDENAR
+          </label>
+          <select
+            id="position-select"
+            value={positionFilter}
+            onChange={handlePositionChange}
+            className="p-2 bg-bgGames text-white border border-white"
+          >
+            <option value="">CLEAN</option>
+            <option value="SD">SD</option>
+            <option value="CD">CD</option>
+            <option value="EXD">EXD</option>
+            <option value="EXI">EXI</option>
+            <option value="MC">MC</option>
+            <option value="MCD">MCD</option>
+            <option value="MO">MO</option>
+            <option value="MDI">MDI</option>
+            <option value="MDD">MDD</option>
+            <option value="MD">MD</option>
+            <option value="MDC">MDC</option>
+            <option value="LI">LI</option>
+            <option value="LD">LD</option>
+            <option value="DEC">DEC</option>
+            <option value="PT">PT</option>
+          </select>
+          <button className="text-white text-lg" onClick={() => setFilterPlayers([])}>Limpiar filtros</button>
+        </div>
+        <p onClick={() => setIsActive(!isActive)}>TRANFERENCIAS COMPLETADAS</p>
       </div>
+
       {filterPlayers.length > 0 && (
-        <div className="mt-4 grid grid-cols-6 gap-4 pb-6">
+        <div className="mt-4 grid grid-cols-6 gap-4 pb-6 transition-all duration-300">
           {filterPlayers.map((item: any, idx: number) => (
             <div
               key={idx}
@@ -373,73 +377,78 @@ export default function Home() {
           className={`transition-all  duration-500 ${isVisible ? "opacity-100" : "opacity-0"
             } h-full w-full overflow-hidden`}
         >
-          <div
-            className={`grid ${isActive
-              ? "grid-cols-3 "
-              : "grid-cols-3"
-              } gap-6 py-2`}
-          >
-            {market.map((team: any, index: any) => (
-              <ol key={index} className="border-[1px] border-white bg-bgGames/95">
-                {team.map((item: any, idx: number) => {
-                  if (!item) return null;
+          {
+            market.length
+              ? <div
+                className={`grid ${isActive
+                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3"
+                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+                  } gap-6 py-2`}
+              >
+                {market.map((team: any, index: any) => (
+                  <ol key={index} className="border-[1px] border-white bg-bgGames/95 overflow-hidden">
+                    {team.map((item: any, idx: number) => {
+                      if (!item) return null;
 
-                  return (
-                    <div
-                      key={idx}
-                      className={`group w-full flex h-[50px] justify-between gap-2 px-2 font-bold text-sm ${item.id
-                        ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
-                        : ""
-                        } xm:text-sm  text-white`}
-                    >
-                      <div className="flex gap-3 items-center hover:cursor-pointer">
-                        <div className="min-w-[30px] rounded-md h-full flex justify-center items-center">
-                          <span className={`text-lg ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
-                        </div>
-                        <span className="group-hover:text-hoverText text-[16px] uppercase">
-                          {item.info[1]}
-                        </span>
-                        <span className="min-w-[30px] flex justify-center items-center text-[22px]">
-                          {item.info[2]}
-                        </span>
-                        <span className="min-w-[30px] flex justify-center items-center text-[22px]">
-                          {item.info[3] === "C" ? <PadLockIcon /> : ""}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        {item.teams?.map((team: string, index: number) => (
-                          <div
-                            key={index}
-                            onClick={() => handleRemoveTeam(item.id, team)}
-                            className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
-                          >
-                            <Image
-                              src={team}
-                              alt={`team-${index}`}
-                              width={32}
-                              height={32}
-                            />
+                      return (
+                        <div
+                          key={idx}
+                          className={`group w-full flex h-[45px] justify-between gap-2 px-2 font-bold text-sm ${item.id
+                            ? "hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
+                            : ""
+                            } xm:text-sm  text-white`}
+                        >
+                          <div className="flex gap-3 items-center hover:cursor-pointer">
+                            <div className="min-w-[40px] rounded-md h-full flex justify-center items-center">
+                              <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                            </div>
+                            <span className="group-hover:text-hoverText text-[16px] uppercase">
+                              {item.info[1]}
+                            </span>
+                            <span className="min-w-[30px] flex justify-center items-center text-[18px]">
+                              {item.info[2]}
+                            </span>
                           </div>
-                        ))}
-                        {item.id && (
-                          <button
-                            onClick={() => {
-                              setIdPlayer(item.id);
-                              setisOpenAdd(true);
-                            }}
-                            className="text-[22px]"
-                          >
-                            +
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </ol>
-            ))}
+
+                          <div className="flex items-center gap-2">
+                            {item.teams?.map((team: string, index: number) => (
+                              <div
+                                key={index}
+                                onClick={() => handleRemoveTeam(item.id, team)}
+                                className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
+                              >
+                                <Image
+                                  src={team}
+                                  alt={`team-${index}`}
+                                  width={32}
+                                  height={32}
+                                />
+                              </div>
+                            ))}
+                            {item.id && (
+                              <button
+                                onClick={() => {
+                                  setIdPlayer(item.id);
+                                  setisOpenAdd(true);
+                                }}
+                                className="text-[22px]"
+                              >
+                                +
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </ol>
+                ))
+                }
+              </div>
+              : <div className="flex items-center justify-center h-[400px]">
+              <div className="w-12 h-12 border-4 border-bgPrimary border-t-primaryRed rounded-full animate-spin">
+              </div>
           </div>
+          }
         </div>
         <div
           className={`hidden lg:block h-auto transition-all min-h-[700px] duration-300 rounded-md relative pb-4  overflow-hidden ${isActive ? "w-[400px] " : "w-0 "
