@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, FC, ReactNode, useEffect } from "react";
 import { MyContext, MyContextType } from "./ListContext";
-import { Match } from " @/types/types";
+import { Match, TeamMarket } from " @/types/types";
 
 
 interface MyProviderProps {
@@ -9,15 +9,14 @@ interface MyProviderProps {
 }
 
 const MyProvider: FC<MyProviderProps> = ({ children }) => {
-  const [market, setMarket] = useState([]);
-  const [lastMarketItem, setLastMarketItem] = useState(null);
+  const [market, setMarket] = useState<TeamMarket[][]>([]);
+  const [lastMarketItem, setLastMarketItem] = useState<TeamMarket[]>([]);
 
   useEffect(() => {
     const fetchSheetData = async () => {
       try {
         const res = await fetch("/api/sheet");
         const data = await res.json(); // data: string[][]
-  
         const transformed = data.map((row: string[]) =>
           row.map((item: string) => {
             const parts = item?.split("-").map((p) => p.trim()) ?? [];
@@ -35,8 +34,8 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
             };
           })
         );
-  
         setMarket(transformed);
+
       } catch (error) {
         console.error("Error cargando datos del sheet:", error);
       }
@@ -44,7 +43,11 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
   
     fetchSheetData();
   }, []);
-  
+
+  useEffect(() => {
+    setLastMarketItem(market.length > 0 ? market[market.length - 1] : []);
+}, [market]);
+
 
   const [FrancoBombo, setFrancoBombo] = useState<any>([]);
   const [MarcosBombo, setMarcosBombo] = useState<any>([]);
@@ -123,9 +126,7 @@ const seterGame = (param: boolean, index: Match) => {
   }
 }
 
-useEffect(() => {
-    setLastMarketItem(market.length > 0 ? market[market.length - 1] : null);
-}, [market]);
+
 
 
   const contextValue: MyContextType = {

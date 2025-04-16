@@ -90,3 +90,9 @@ export interface Data {
   new: Array<poster>;
   ranking: Array<Rank>;
 }
+
+export interface TeamMarket {
+  id: string;
+  info: string[];
+  teams: string[] | []; 
+}

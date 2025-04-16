@@ -1,6 +1,6 @@
 "use client";
-import { Match } from ' @/types/types';
-import { createContext, useContext } from 'react';
+import { Match, TeamMarket } from ' @/types/types';
+import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
 export type MyContextType = {
   Franco: (newValue: any[]) => void;
@@ -25,14 +25,14 @@ export type MyContextType = {
   detailsGame: Match;
   setDetailsGame: (Match: Match) => void;
 
-  market: any;
-  setMarket: any;
+  market: TeamMarket[][] | [];
+  setMarket: Dispatch<SetStateAction<TeamMarket[][]>>;
 
-  lastMarketItem: any;
-  setLastMarketItem: any;
+  lastMarketItem: TeamMarket[] | [];
+  setLastMarketItem: Dispatch<SetStateAction<TeamMarket[]>>;
 
   isOpenAdd: boolean;
-  setisOpenAdd: any
+  setisOpenAdd: Dispatch<SetStateAction<boolean>>;
 };
 
 const MyContext = createContext<MyContextType | undefined>(undefined);
