@@ -47,9 +47,14 @@ export async function POST(req) {
     }
 
     // Evitamos duplicar el teamName si ya está
-    const updatedValue = currentValue.includes(`-${teamName}`)
-      ? currentValue
-      : `${currentValue}-${teamName}`;
+    if (currentValue.includes(`-${teamName}`)) {
+      return NextResponse.json(
+        { error: `El equipo '${teamName}' ya está asignado al jugador` },
+        { status: 400 }
+      );
+    }
+
+    const updatedValue = `${currentValue}-${teamName}`;
 
     await sheets.spreadsheets.values.update({
       spreadsheetId,

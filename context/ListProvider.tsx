@@ -123,9 +123,8 @@ const seterGame = (param: boolean, index: Match) => {
   }
 }
 
-
 useEffect(() => {
-  setLastMarketItem(market.length > 0 ? market[market.length - 1] : null);
+    setLastMarketItem(market.length > 0 ? market[market.length - 1] : null);
 }, [market]);
 
 
