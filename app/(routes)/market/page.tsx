@@ -261,99 +261,13 @@ export default function Home() {
         >
           {
             market.length
-              ? <div
-                className={`grid w-full ${isActive
-                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3"
-                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
-                  } gap-6 py-2`}
-              >
-                {market.slice(0, -1).map((team: TeamMarket[], index: number) => {
-                  return (
-                    <ol key={index} className="border-[1px] rounded-sm border-gray-700 bg-bgGames/95 overflow-hidden">
-                      {team.map((item: TeamMarket, idx: number) => {
-                        if (!item) return null;
-                        if (idx === 0) {
-                          return (
-                            <div
-                              key={idx}
-                              className={`group w-full flex h-[45px] justify-center gap-2 px-2 font-bold text-sm xm:text-sm text-white`}
-                            >
-                              <div className="flex gap-1">
-                                <div
-                                  className="min-w-[40px] flex justify-center items-center"
-                                >
-                                  <Image
-                                    src={item?.teams[0]}
-                                    alt={`team-${item?.teams[0]}`}
-                                    width={32}
-                                    height={32}
-                                  />
-                                </div>
-                                <div className="min-w-[40px] rounded-md h-full flex justify-center items-center">
-                                  <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        } else {
-                          return (
-                            <div
-                              key={idx}
-                              className={`group w-full flex h-[45px] justify-between gap-2 px-2 font-bold text-sm ${item.id
-                                ? "lg:hover:bg-hoverCard lg:hover:rounded-[4px] lg:hover:cursor-pointer"
-                                : ""
-                                } xm:text-sm  text-white`}
-                            >
-                              <div className="flex gap-3 items-center lg:hover:cursor-pointer">
-                                <div onClick={() => handleTransferPlayer(item.id, item)} className="min-w-[40px] rounded-md h-full flex justify-center items-center">
-                                  <span className={`md:text-[16px] text-[12px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
-                                </div>
-                                <span className="group-hover:text-hoverText md:text-[16px] text-[12px] uppercase">
-                                  {item.info[1]}
-                                </span>
-                                <span className="min-w-[30px] flex justify-center items-center md:text-[18px] text-[12px]">
-                                  {item.info[2]}
-                                </span>
-                              </div>
-
-                              <div className="flex items-center gap-2">
-                                {item.teams?.map((team: string, index: number) => (
-                                  <div
-                                    key={index}
-                                    onClick={() => handleRemoveTeam(item.id, team)}
-                                    className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
-                                  >
-                                    <Image
-                                      src={team}
-                                      alt={`team-${index}`}
-                                      width={32}
-                                      height={32}
-                                    />
-                                  </div>
-                                ))}
-                                {item.id && (
-                                  <button
-                                    onClick={() => {
-                                      setIdPlayer(item.id);
-                                      setisOpenAdd(true);
-                                    }}
-                                    className="text-[22px]"
-                                  >
-                                    +
-                                  </button>
-                                )}
-                              </div>
-                            </div>
-                          );
-                        }
-                      })}
-                    </ol>
-                  )
-                }
-
-                )
-                }
-              </div>
+              ? <GridComponent {...{ isActive,
+                market,
+                getTextColor,
+                setIdPlayer,
+                setisOpenAdd,
+                handleRemoveTeam,
+                handleTransferPlayer }} />
               : <Loader />
           }
         </div>
@@ -614,5 +528,118 @@ const TransferComponent = ({ lastMarketItem, getTextColor }: TransferComponentPr
         );
       })}
     </ol>
+  )
+}
+
+type GridComponentProps = {
+  isActive: boolean;
+  market: TeamMarket[][];
+  getTextColor: (position: string) => string;
+  setIdPlayer: React.Dispatch<React.SetStateAction<string>>;
+  setisOpenAdd: React.Dispatch<React.SetStateAction<boolean>>;
+  handleRemoveTeam: (id: string, teamName: string) => Promise<void>;
+  handleTransferPlayer: (id: string, item: TeamMarket) => Promise<void>;
+};
+
+const GridComponent = ({ isActive,
+  market,
+  getTextColor,
+  setIdPlayer,
+  setisOpenAdd,
+  handleRemoveTeam,
+  handleTransferPlayer }: GridComponentProps) => {
+  return (
+    <div
+      className={`grid w-full ${isActive
+        ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3"
+        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+        } gap-6 py-2`}
+    >
+      {market.slice(0, -1).map((team: TeamMarket[], index: number) => {
+        return (
+          <ol key={index} className="border-[1px] rounded-sm border-gray-700 bg-bgGames/95 overflow-hidden">
+            {team.map((item: TeamMarket, idx: number) => {
+              if (!item) return null;
+              if (idx === 0) {
+                return (
+                  <div
+                    key={idx}
+                    className={`group w-full flex h-[45px] justify-center gap-2 px-2 font-bold text-sm xm:text-sm text-white`}
+                  >
+                    <div className="flex gap-1">
+                      <div
+                        className="min-w-[40px] flex justify-center items-center"
+                      >
+                        <Image
+                          src={item?.teams[0]}
+                          alt={`team-${item?.teams[0]}`}
+                          width={32}
+                          height={32}
+                        />
+                      </div>
+                      <div className="min-w-[40px] rounded-md h-full flex justify-center items-center">
+                        <span className={`text-[16px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                      </div>
+                    </div>
+                  </div>
+                )
+              } else {
+                return (
+                  <div
+                    key={idx}
+                    className={`group w-full flex h-[45px] justify-between gap-2 px-2 font-bold text-sm ${item.id
+                      ? "lg:hover:bg-hoverCard lg:hover:rounded-[4px] lg:hover:cursor-pointer"
+                      : ""
+                      } xm:text-sm  text-white`}
+                  >
+                    <div className="flex gap-3 items-center lg:hover:cursor-pointer">
+                      <div onClick={() => handleTransferPlayer(item.id, item)} className="min-w-[40px] rounded-md h-full flex justify-center items-center">
+                        <span className={`md:text-[16px] text-[12px] ${getTextColor(item.info[0])}`}>{item.info[0]}</span>
+                      </div>
+                      <span className="group-hover:text-hoverText md:text-[16px] text-[12px] uppercase">
+                        {item.info[1]}
+                      </span>
+                      <span className="min-w-[30px] flex justify-center items-center md:text-[18px] text-[12px]">
+                        {item.info[2]}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {item.teams?.map((team: string, index: number) => (
+                        <div
+                          key={index}
+                          onClick={() => handleRemoveTeam(item.id, team)}
+                          className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard"
+                        >
+                          <Image
+                            src={team}
+                            alt={`team-${index}`}
+                            width={32}
+                            height={32}
+                          />
+                        </div>
+                      ))}
+                      {item.id && (
+                        <button
+                          onClick={() => {
+                            setIdPlayer(item.id);
+                            setisOpenAdd(true);
+                          }}
+                          className="text-[22px]"
+                        >
+                          +
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              }
+            })}
+          </ol>
+        )
+      }
+      )
+      }
+    </div>
   )
 }
