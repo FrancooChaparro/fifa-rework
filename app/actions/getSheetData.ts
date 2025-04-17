@@ -1,6 +1,5 @@
 "use server"
-import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+const dynamic = "force-dynamic";
 import { getSheetsClient } from " @/lib/getSheetsClient";
 import { TeamMarket } from " @/types/types";
 
@@ -37,10 +36,6 @@ export async function getSheetData(): Promise<TeamMarket[][]> {
         };
       })
     );
-
-
-    // revalidatePath('/market');
-
 
     return transformed
   } catch (error) {

@@ -1,6 +1,5 @@
 // app/api/sheet/route.js
 import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
 import { getSheetsClient } from " @/lib/getSheetsClient";
 
 
@@ -38,7 +37,6 @@ export async function GET() {
         };
       })
     );
-    revalidatePath('/market');
     return NextResponse.json(transformed);
   } catch (error) {
     console.error("Error en GET:", error);
