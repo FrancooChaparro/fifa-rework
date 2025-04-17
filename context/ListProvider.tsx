@@ -17,24 +17,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
       try {
         const res = await fetch("/api/sheet");
         const data = await res.json(); // data: string[][]
-        const transformed = data.map((row: string[]) =>
-          row.map((item: string) => {
-            const parts = item?.split("-").map((p) => p.trim()) ?? [];
-  
-            // Extraemos los primeros 3 como info
-            const info = [parts[0], parts[1], parts[2]];
-  
-            // Teams: desde el 4to en adelante (sin agregar guión)
-            const teams = parts.length > 3 ? parts.slice(3) : [];
-  
-            return {
-              id: item || "",
-              info: info as [string, string, string],
-              teams,
-            };
-          })
-        );
-        setMarket(transformed);
+        setMarket(data);
 
       } catch (error) {
         console.error("Error cargando datos del sheet:", error);
