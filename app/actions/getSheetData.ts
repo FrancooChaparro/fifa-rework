@@ -12,6 +12,8 @@ export async function getSheetData(): Promise<TeamMarket[][]> {
       range: "A:AG",
     });
 
+    
+
     const filas = response.data.values || [];
     const columnas = filas[0]?.map((_, i) => filas.map(row => row[i])) || [];
 
