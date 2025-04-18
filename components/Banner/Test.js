@@ -66,6 +66,7 @@ export default function TopPlayers() {
                         <div className="text-[13px] font-gotham-bold  leading-[14.37px] tracking-[0.52px] text-wine">
                           subtitulo
                         </div> */}
+                        
                           <Image
                             src={data.image || "/images/blur.webp"}
                             alt="atl"
