@@ -9,7 +9,6 @@ import { Rank, TeamMarket } from " @/types/types";
 const rankTeams = data.ranking;
 
 export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
-  console.log(data)
   const { market, isOpenAdd, setisOpenAdd, setMarket, lastMarketItem, setLastMarketItem } = useMyContext();
   const [loadingIds, setLoadingIds] = useState<string[]>([]);
   const cartRef = useRef<HTMLDivElement>(null);
@@ -260,9 +259,9 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
             } h-full w-full overflow-hidden`}
         >
           {
-            data.length
+            market.length
               ? <GridComponent {...{ isActive,
-                data,
+                market,
                 getTextColor,
                 setIdPlayer,
                 setisOpenAdd,
@@ -533,7 +532,7 @@ const TransferComponent = ({ lastMarketItem, getTextColor }: TransferComponentPr
 
 type GridComponentProps = {
   isActive: boolean;
-  data: TeamMarket[][];
+  market: TeamMarket[][];
   getTextColor: (position: string) => string;
   setIdPlayer: React.Dispatch<React.SetStateAction<string>>;
   setisOpenAdd: React.Dispatch<React.SetStateAction<boolean>>;
@@ -542,7 +541,7 @@ type GridComponentProps = {
 };
 
 const GridComponent = ({ isActive,
-  data,
+  market,
   getTextColor,
   setIdPlayer,
   setisOpenAdd,
@@ -555,7 +554,7 @@ const GridComponent = ({ isActive,
         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
         } gap-6 py-2`}
     >
-      {data.slice(0, -1).map((team: TeamMarket[], index: number) => {
+      {market.slice(0, -1).map((team: TeamMarket[], index: number) => {
         return (
           <ol key={index} className="border-[1px] rounded-sm border-gray-700 bg-bgGames/95 overflow-hidden">
             {team.map((item: TeamMarket, idx: number) => {
