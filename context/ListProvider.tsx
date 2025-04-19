@@ -10,7 +10,7 @@ interface MyProviderProps {
 
 const MyProvider: FC<MyProviderProps> = ({ children }) => {
   const [market, setMarket] = useState<TeamMarket[][]>([]);
-  const [lastMarketItem, setLastMarketItem] = useState<TeamMarket[]>([]);
+  // const [lastMarketItem, setLastMarketItem] = useState<TeamMarket[]>([]);
 
   useEffect(() => {
     const fetchSheetData = async () => {
@@ -27,9 +27,9 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
     fetchSheetData();
   }, []);
 
-  useEffect(() => {
-    setLastMarketItem(market.length > 0 ? market[market.length - 1] : []);
-}, [market]);
+//   useEffect(() => {
+//     setLastMarketItem(market.length > 0 ? market[market.length - 1] : []);
+// }, [market]);
 
 
   const [FrancoBombo, setFrancoBombo] = useState<any>([]);
@@ -139,7 +139,7 @@ const seterGame = (param: boolean, index: Match) => {
 
     isOpenAdd, setisOpenAdd,
 
-    lastMarketItem, setLastMarketItem
+    // lastMarketItem, setLastMarketItem
   };
 
   return (

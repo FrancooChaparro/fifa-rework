@@ -5,11 +5,12 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { data } from " @/models/db";
 import { Rank, TeamMarket } from " @/types/types";
+import { agregarEquipo, removerEquipo } from " @/app/actions/getSheetData";
 
 const rankTeams = data.ranking;
 
-export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
-  const { market, isOpenAdd, setisOpenAdd, setMarket, lastMarketItem, setLastMarketItem } = useMyContext();
+export default function MarketComponent({ data, lastRow } : { data: TeamMarket[][] | null, lastRow: TeamMarket[]}) {
+  const { market, isOpenAdd, setisOpenAdd, setMarket} = useMyContext();
   const [loadingIds, setLoadingIds] = useState<string[]>([]);
   const cartRef = useRef<HTMLDivElement>(null);
   const [idPlayer, setIdPlayer] = useState<string>("");
@@ -20,6 +21,8 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
   const [isActive, setIsActive] = useState<boolean>(false); //Active FilterDesktop
   const [loading, setLoading] = useState<boolean>(false); //Active FilterDesktop
   const [fadeIn, setFadeIn] = useState<boolean>(false);
+  const [lastR, setLastR] = useState<TeamMarket[]>(lastRow);
+
 
   useEffect(() => {
     if (filterPlayers.length > 0) {
@@ -67,9 +70,10 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
 
       if (!res.ok) throw new Error("Error al transferir el jugador");
 
-      // const data = await res.json();
 
-      setLastMarketItem((prevState: any) => [...prevState, item]);
+      // setLastMarketItem((prevState: any) => [...prevState, item]);
+      setLastR((prevState: any) => [...prevState, item]);
+
       setLoading(false);
       setIsActive(true)
 
@@ -97,6 +101,11 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
     setLoadingIds((prev) => [...prev, eli]);
 
     try {
+      //SERVER ACTIONS
+      // const data = await agregarEquipo({ id, teamName }); 
+      // if (!data) throw new Error("Error al agregar el team");
+
+      //API
       const res = await fetch("/api/add", {
         method: "POST",
         headers: {
@@ -107,7 +116,6 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
 
       if (!res.ok) throw new Error("Error al agregar el team");
 
-      const data = await res.json();
       // Actualizar el market con el nuevo equipo
       setMarket((prevMarket: any[][]) =>
         prevMarket.map((team: any[]) =>
@@ -140,7 +148,6 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
 
 
   const handleRemoveTeam = async (id: string, teamName: string) => {
-    console.log(teamName);
 
     setLoading(true);
     let eli = id;
@@ -153,6 +160,11 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
     setLoadingIds((prev) => [...prev, eli]);
 
     try {
+      // SERVER ACTIONS
+      // const data = await removerEquipo({ id, teamName });
+      // if (!data) throw new Error("Error al eliminar el team");
+
+      //API
       const res = await fetch("/api/remove", {
         method: "POST",
         headers: {
@@ -165,7 +177,7 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
 
       if (!res.ok) throw new Error(data.error || "Error al eliminar equipo");
 
-      setIdPlayer(data.updatedValue);
+      setIdPlayer(data);
       // Actualizar el market quitando el team
       setMarket((prevMarket: TeamMarket[][]) =>
         prevMarket.map((team: TeamMarket[]) =>
@@ -173,7 +185,7 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
             player.id === eli
               ? {
                 ...player,
-                id: data.updatedValue,
+                id: data,
                 teams: player.teams?.filter((t: string) => t !== teamName),
               }
               : player
@@ -278,7 +290,7 @@ export default function MarketComponent({ data } : { data: TeamMarket[][]}) {
             className={`top-0 ${isActive ? "right-0 " : "right-[-400px]"
               } absolute transition-all duration-300 pb-4 z-10 w-full h-full`}
           >
-            <TransferComponent {...{ lastMarketItem, getTextColor }} />
+            <TransferComponent {...{ lastR, getTextColor }} />
           </div>
         </div>
       </div>
@@ -472,14 +484,14 @@ const Loader = () => (
 )
 
 type TransferComponentProps = {
-  lastMarketItem: TeamMarket[];
+  lastR: TeamMarket[];
   getTextColor: (position: string) => string;
 };
 
-const TransferComponent = ({ lastMarketItem, getTextColor }: TransferComponentProps) => {
+const TransferComponent = ({ lastR, getTextColor }: TransferComponentProps) => {
   return (
     <ol>
-      {lastMarketItem?.length && lastMarketItem?.map((item: TeamMarket, idx: number) => {
+      {lastR?.length && lastR?.map((item: TeamMarket, idx: number) => {
         if (!item.id) return null;
         return (
           <div
@@ -554,7 +566,7 @@ const GridComponent = ({ isActive,
         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
         } gap-6 py-2`}
     >
-      {market.slice(0, -1).map((team: TeamMarket[], index: number) => {
+      {market.map((team: TeamMarket[], index: number) => {
         return (
           <ol key={index} className="border-[1px] rounded-sm border-gray-700 bg-bgGames/95 overflow-hidden">
             {team.map((item: TeamMarket, idx: number) => {

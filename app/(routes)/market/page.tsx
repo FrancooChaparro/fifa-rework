@@ -2,13 +2,15 @@
 import Loader from " @/components/Loader/Loader";
 import { Suspense } from "react";
 import MarketComponent from "./page.client";
-import { getSheetData } from " @/app/actions/getSheetData";
+import { getSheetData, getUltimaColumnaFija } from " @/app/actions/getSheetData";
 
 export default async function ServerPage() {
-  const data = await getSheetData(); // directo, sin fetch
+  // const data = await getSheetData(); // directo, sin fetch
+  const lastRow = await getUltimaColumnaFija(); 
+
   return (
     <Suspense fallback={<Loader />}>
-      <MarketComponent data={data} />
+      <MarketComponent data={null} lastRow={lastRow} />
     </Suspense>
   );
 }

@@ -10,6 +10,7 @@ export async function POST(req) {
     const body = await req.json();
     const { id, teamName } = body;
 
+    console.log({id, teamName})
     if (!id || !teamName) {
       return NextResponse.json({ error: "Faltan datos: id o teamName" }, { status: 400 });
     }

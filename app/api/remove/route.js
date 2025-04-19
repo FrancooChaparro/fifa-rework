@@ -15,6 +15,7 @@ export async function POST(req) {
     const body = await req.json();
     const { id, teamName } = body;
 
+    
     if (!id || !teamName) {
       return NextResponse.json({ error: "Faltan datos: id o teamName" }, { status: 400 });
     }
@@ -71,9 +72,9 @@ export async function POST(req) {
     // Esperar un poco para que Google Sheets procese
     await sleep(500);
 
-    return NextResponse.json({
-      updatedValue: updatedValue,
-    });
+    return NextResponse.json(
+      updatedValue
+  );
 
   } catch (error) {
     console.error("Error en DELETE:", error);
