@@ -230,14 +230,14 @@ function alear() {
       <div className="w-full flex justify-center items-center p-4 font-bold">
         <p>{poolName}</p>
       </div>
-      {poolName === "Oficial Pool" || poolName === "Pool 3" ? (
+      {poolName === "Pool 3" ? (
         <div className="w-full flex justify-around">
           {bombo.map((team: any, index: number) => (
             <Image
               src={team.escudo}
               alt={team.nombre}
-              width={22}
-              height={22}
+              width={23}
+              height={23}
               key={index}
             />
           ))}

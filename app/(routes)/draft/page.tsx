@@ -3,22 +3,24 @@ import { useState } from "react";
 import styles from "./draft.module.css";
 import { useMyContext } from " @/context/ListContext";
 import Image from "next/image";
+import { Team } from " @/types/types";
 
 const Draft = () => {
     const {  FrancoCopy,  MarcosCopy, GastonCopy, RomaCopy, FrancoBombo } =
     useMyContext();
 
-  let franco: any | [] = FrancoCopy;
-  let gaston: any | [] = GastonCopy;
-  let marcos: any | [] = MarcosCopy;
-  let roma: any | [] = RomaCopy;
+  let franco: Team[] | [] = FrancoCopy;
+  let gaston: Team[] | [] = GastonCopy;
+  let marcos: Team[] | [] = MarcosCopy;
+  let roma: Team[] | [] = RomaCopy;
 
-  let base = {
+  let base: Team = {
     nombre: "",
     escudo: "",
     rank: "",
   };
 
+  
   const [A1, setA1] = useState(base);
   const [A2, setA2] = useState(base);
   const [B1, setB1] = useState(base);
@@ -132,113 +134,62 @@ const Draft = () => {
 
     setI6(base);
   }
-
-  function lolo() {
+  function getRandomAndSplice(array: any) {
+    const index = Math.floor(Math.random() * array.length);
+    return array.splice(index, 1)[0];
+  }
+  
+  function delay(ms:any) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+ async function lolo() {
     if (franco.length === 0 && gaston.length === 0 && marcos.length === 0 && roma.length === 0)
       return;
   
-      let indiceAleatorio = Math.floor(Math.random() * roma.length);
-      let equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setA1(equipoAleatorio);
-       indiceAleatorio = Math.floor(Math.random() * marcos.length);
-       equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setA2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setB1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setB2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setC1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * roma.length);
-      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setC2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setD1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setD2(equipoAleatorio);
-
-      
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setE1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setE2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * roma.length);
-      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setF1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setF2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setG1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setG2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setH1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * roma.length);
-      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setH2(equipoAleatorio);
-
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setI1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setI2(equipoAleatorio);   
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setJ1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * roma.length);
-      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setJ2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * roma.length);
-      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setK1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setK2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setL1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setL2(equipoAleatorio);
-
-      indiceAleatorio = Math.floor(Math.random() * roma.length);
-      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setM1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setM2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setN1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setN2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * roma.length);
-      equipoAleatorio = roma.splice(indiceAleatorio, 1)[0];
-      setO1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * gaston.length);
-      equipoAleatorio = gaston.splice(indiceAleatorio, 1)[0];
-      setO2(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * marcos.length);
-      equipoAleatorio = marcos.splice(indiceAleatorio, 1)[0];
-      setP1(equipoAleatorio);
-      indiceAleatorio = Math.floor(Math.random() * franco.length);
-      equipoAleatorio = franco.splice(indiceAleatorio, 1)[0];
-      setP2(equipoAleatorio);
-   
+    const steps = [
+      () => setA1(getRandomAndSplice(roma)),
+      () => setA2(getRandomAndSplice(marcos)),
+      () => setB1(getRandomAndSplice(franco)),
+      () => setB2(getRandomAndSplice(gaston)),
+      () => setC1(getRandomAndSplice(gaston)),
+      () => setC2(getRandomAndSplice(roma)),
+      () => setD1(getRandomAndSplice(marcos)),
+      () => setD2(getRandomAndSplice(franco)),
+  
+      () => setE1(getRandomAndSplice(marcos)),
+      () => setE2(getRandomAndSplice(gaston)),
+      () => setF1(getRandomAndSplice(roma)),
+      () => setF2(getRandomAndSplice(franco)),
+      () => setG1(getRandomAndSplice(franco)),
+      () => setG2(getRandomAndSplice(gaston)),
+      () => setH1(getRandomAndSplice(marcos)),
+      () => setH2(getRandomAndSplice(roma)),
+  
+      () => setI1(getRandomAndSplice(franco)),
+      () => setI2(getRandomAndSplice(marcos)),
+      () => setJ1(getRandomAndSplice(gaston)),
+      () => setJ2(getRandomAndSplice(roma)),
+      () => setK1(getRandomAndSplice(roma)),
+      () => setK2(getRandomAndSplice(franco)),
+      () => setL1(getRandomAndSplice(marcos)),
+      () => setL2(getRandomAndSplice(gaston)),
+  
+      () => setM1(getRandomAndSplice(roma)),
+      () => setM2(getRandomAndSplice(marcos)),
+      () => setN1(getRandomAndSplice(franco)),
+      () => setN2(getRandomAndSplice(gaston)),
+      () => setO1(getRandomAndSplice(roma)),
+      () => setO2(getRandomAndSplice(gaston)),
+      () => setP1(getRandomAndSplice(marcos)),
+      () => setP2(getRandomAndSplice(franco))
+    ];
+  
+    for (let step of steps) {
+      step();
+      await delay(1200); // ajustá el tiempo que quieras (en milisegundos)
+    }
   }
+  
   
   return (
     <>
