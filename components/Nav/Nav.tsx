@@ -240,7 +240,7 @@ export default function Nav() {
           </p>
           <div className="w-full flex justify-center pb-8">
             <Image
-              src={"/images/Liverpool.png"}
+              src={"/images/AstonVilla.png"}
               alt="atl"
               width={55}
               height={55}
