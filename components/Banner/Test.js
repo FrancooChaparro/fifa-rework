@@ -2,27 +2,46 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { top20 } from " @/models/db";
 
 const players = top20.players;
 
 export default function TopPlayers() {
+  // const [currentSlide, setCurrentSlide] = useState(0);
+  // const settings = {
+  //   dots: false,
+  //   infinite: false,
+  //   arrows: false,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   initialSlide: 0,
+  //   afterChange: (index) => setCurrentSlide(index),
+  // };
+  const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentDescription, setCurrentDescription] = useState(players[0]?.name || "");
   const settings = {
     dots: false,
     infinite: false,
     arrows: false,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    // slidesToShow: 1,
+    // slidesToScroll: 1,
+    swipeToSlide: true,
     initialSlide: 0,
-    afterChange: (index) => setCurrentSlide(index),
+    afterChange: (index) => {
+      setCurrentSlide(index);
+      const selectedData = players[index];
+      setCurrentDescription(selectedData?.name || "");
+    },
   };
 
+
   return (
-    <div className="px-4 lg:px-20 w-full overflow-hidden pb-20 pt-20">
+    <div className="px-4 lg:px-20 w-full overflow-hidden pb-20 pt-20 ">
       <p className="text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2">
         Top 20 Players
       </p>
@@ -39,8 +58,9 @@ export default function TopPlayers() {
               {/* maximo de slider para simular el gap  => gap real (30px) + width de la card 400px*/}
 
               <Slider
+                ref={sliderRef}
                 {...settings}
-                // className="w-full max-w-full !overflow-visible [&>div>div]:flex [&>div>div]:xxl:gap-28 [&>div>div]:lg:gap-8 [&>div>div]:gap-10"
+              // className="w-full max-w-full !overflow-visible [&>div>div]:flex [&>div>div]:xxl:gap-28 [&>div>div]:lg:gap-8 [&>div>div]:gap-10"
               >
                 {players &&
                   players.map((data, index) => {
@@ -48,17 +68,19 @@ export default function TopPlayers() {
                       // relative xxl:left-[110px] lg:left-[27px] left-[40px]
 
                       <div
-                        className={`${
-                          index !== 0 ? "" : ""
-                        } w-full text-white cursor-pointer`}
+                        onClick={() => {
+                          sliderRef.current?.slickGoTo(index);
+                          setCurrentDescription(data.description);
+                        }}
+                        className={`${index !== 0 ? "" : ""
+                          } w-full text-white cursor-pointer`}
                         key={index}
                       >
                         <div
-                          className={`relative w-[256px] h-[291px] lg:w-[399px] lg:h-[452px] !rounded-none flex flex-col gap-[12px] items-center justify-end ${
-                            index === currentSlide
+                          className={`relative w-[256px] h-[291px] lg:w-[399px] lg:h-[452px] !rounded-none flex flex-col gap-[12px] items-center justify-end ${index === currentSlide
                               ? "border-[1px] border-wine"
                               : ""
-                          } p-[26px] lg:p-[40px] transition-all `}
+                            } p-[26px] lg:p-[40px] transition-all `}
                         >
                           {/* <div className="font-jjannon-italic italic lg:text-[24px] text-[20px] text-wine tracking-[0.80px] lg:tracking-[0.96px] leading-[24px]">
                           TITULO
@@ -66,7 +88,7 @@ export default function TopPlayers() {
                         <div className="text-[13px] font-gotham-bold  leading-[14.37px] tracking-[0.52px] text-wine">
                           subtitulo
                         </div> */}
-                        
+
                           <Image
                             src={data.image || "/images/blur.webp"}
                             alt="atl"
@@ -85,8 +107,8 @@ export default function TopPlayers() {
           </div>
         </div>
         <div className="w-full max-w-[480px] lg:px-0 px-[25px]">
-          <p className="text-center text-lg font-geistRegular font-medium leading-[20px]">
-            {players[currentSlide].name}
+          <p className="text-center text-lg font-geistRegular font-medium leading-[20px] min-h-[22px]">
+             {currentDescription ? currentDescription : " "}
           </p>
           <p className="text-center text-[13px] tracking-[0.52px] font-gotham-bold mt-2">
             {`${currentSlide + 1} / ${players.length}`}
