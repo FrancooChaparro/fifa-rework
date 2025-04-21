@@ -96,14 +96,6 @@ export default function LoginPage() {
                 setLoading(false);
                 setVariant("Login"); 
             }, 2000);
-            // setTimeout(async () => {
-            //     await setVariant('Login')
-            //     setMessage('')
-            //     setName('')
-            //     setEmail('')
-            //     setPassword('')
-            //     setLoading(false);
-            // }, 2000);
         } catch (error) {
             setLoading(false);
             setTimeout(() => setMessage(""), 3000);

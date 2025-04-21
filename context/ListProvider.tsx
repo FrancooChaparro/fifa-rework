@@ -25,8 +25,9 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
         console.error("Error cargando datos del sheet:", error);
       }
     };
-  
+  if (isMarket) {
     fetchSheetData();
+  }
   }, [isMarket]);
 
 //   useEffect(() => {
