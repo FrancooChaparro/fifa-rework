@@ -2,13 +2,15 @@
 import React, { useState, FC, ReactNode, useEffect } from "react";
 import { MyContext, MyContextType } from "./ListContext";
 import { Match, TeamMarket } from " @/types/types";
-
+import { usePathname } from "next/navigation";
 
 interface MyProviderProps {
   children: ReactNode;
 }
 
 const MyProvider: FC<MyProviderProps> = ({ children }) => {
+  const pathname = usePathname();
+  const isMarket = "/market" === pathname
   const [market, setMarket] = useState<TeamMarket[][]>([]);
   // const [lastMarketItem, setLastMarketItem] = useState<TeamMarket[]>([]);
 
@@ -25,7 +27,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
     };
   
     fetchSheetData();
-  }, []);
+  }, [isMarket]);
 
 //   useEffect(() => {
 //     setLastMarketItem(market.length > 0 ? market[market.length - 1] : []);
