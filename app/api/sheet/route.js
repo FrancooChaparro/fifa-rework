@@ -11,6 +11,7 @@ export async function GET() {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SPREADSHEETID,
       range: "A:AF",
+      range: "A:AF",
     });
 
     const filas = response.data.values || [];
