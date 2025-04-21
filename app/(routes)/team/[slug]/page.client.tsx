@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 export default function UserPage({ data } : { data: any}) {
   const { seterGame } = useMyContext();
   const router = useRouter();
-
+ 
   return (
     <>
       {/* MAIN DATA */}
