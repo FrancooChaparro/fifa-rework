@@ -1,18 +1,10 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import {
-  History,
-  data,
-  stats_franco,
-  stats_gaston,
-  stats_marcos,
-} from " @/models/db";
 import { News } from " @/components/News/News";
 import { CheckIcon, DefeatIcon, DrawIcon } from " @/Icons/Icons";
 import { Match } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
-import { useRouter } from "next/navigation";
 
 export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisitanteFinals, golesFavorClasics, sumarGolesVisitanteClasics }  : { playerStats : any, golesFavorFinals: any,  sumarGolesVisitanteFinals: any, golesFavorClasics: any, sumarGolesVisitanteClasics: any }) {
 

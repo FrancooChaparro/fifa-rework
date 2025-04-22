@@ -1,16 +1,13 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { History, data } from " @/models/db";
+import React from "react";
 import { News } from " @/components/News/News";
 import { CheckIcon, DefeatIcon, DrawIcon } from " @/Icons/Icons";
-import { Match, Rank } from " @/types/types";
+import { Match } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
-import { useRouter } from "next/navigation";
 
 export default function UserPage({ data } : { data: any}) {
   const { seterGame } = useMyContext();
-  const router = useRouter();
  
   return (
     <>

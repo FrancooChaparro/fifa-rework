@@ -24,7 +24,7 @@ export default function ResultsPage() {
   const [allGames] = useState<Match[]>(Games); // Almacena todos los juegos originales
   const [games, setGames] = useState<Match[]>(Games); // Equipos Filtrados
   const [minGoals, setMinGoals] = useState(1); // Valor inicial del slider de Goles
-  const [isVisible, setIsVisible] = useState(true); // 🔹 Controla la animación de opacidad de los partidos
+  const [isVisible, setIsVisible] = useState(true); // Controla la animación de opacidad de los partidos
   const [selectedPlayers, setSelectedPlayers] = useState<string[]>([]); //Filtra los partidos de los jugadores
   const [selectedText, setSelectedText] = useState<string | null>(null); //Filtra por nombre de equipo / torneos / Best Match
   const [filtersMobile, setFiltersMobile] = useState<boolean>(false); // AActive FilterMobile
@@ -169,14 +169,12 @@ export default function ResultsPage() {
       <div className="w-full flex pb-5  transition-all duration-300">
         {/* MENU FILTROS DESKTOP */}
         <div
-          className={`hidden lg:block h-auto transition-all min-h-[700px] duration-300 rounded-md relative pb-4  overflow-hidden ${
-            isActive ? "w-[400px] " : "w-0 "
-          }`}
+          className={`hidden lg:block h-auto transition-all min-h-[700px] duration-300 rounded-md relative pb-4  overflow-hidden ${isActive ? "w-[400px] " : "w-0 "
+            }`}
         >
           <div
-            className={`top-0  ${
-              isActive ? "left-0 " : "left-[-400px]"
-            } absolute transition-all duration-300 pb-4 z-10 w-full h-full `}
+            className={`top-0  ${isActive ? "left-0 " : "left-[-400px]"
+              } absolute transition-all duration-300 pb-4 z-10 w-full h-full `}
           >
             <FilterPlayersComponent
               {...{ selectedPlayers, handleCheckboxChange }}
@@ -202,16 +200,14 @@ export default function ResultsPage() {
         </div>
         {/* Div de contenido principal que ocupa el resto */}
         <div
-          className={`transition-all  duration-500 ${
-            isVisible ? "opacity-100" : "opacity-0"
-          } h-full w-full overflow-hidden`}
+          className={`transition-all  duration-500 ${isVisible ? "opacity-100" : "opacity-0"
+            } h-full w-full overflow-hidden`}
         >
           <div
-            className={`grid ${
-              isActive
+            className={`grid ${isActive
                 ? "grid-cols-2 lg:grid-cols-3 xm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 2.5xl:grid-cols-7"
                 : "grid-cols-2 lg:grid-cols-4 xm:grid-cols-5  xl:grid-cols-5 2xl:grid-cols-7 2.5xl:grid-cols-8"
-            } gap-6 py-2  `}
+              } gap-6 py-2  `}
           >
             {games && games.length ? (
               games.map((_, i) => <MatchCard match={_} key={i} />)
@@ -226,11 +222,10 @@ export default function ResultsPage() {
 
       {/*MENU FILTROS MOBILE*/}
       <div
-        className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${
-          filtersMobile
+        className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${filtersMobile
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        }`}
+          }`}
       >
         <div className="w-full flex justify-end items-center h-[60px]">
           <div
@@ -354,9 +349,8 @@ const FilterBestMatchs = ({
     <>
       <div className="flex gap-[1px] justify-start items-center mt-4 mb-4 ">
         <h3
-          className={`text-lg font-geistBold  uppercase cursor-pointer ${
-            selectedText === "torneos" ? "text-primaryRed" : "text-white"
-          } `}
+          className={`text-lg font-geistBold  uppercase cursor-pointer ${selectedText === "torneos" ? "text-primaryRed" : "text-white"
+            } `}
           onClick={() => {
             setSelectedText("torneos");
             handlerOtherGames(torneosNoOficiales);
@@ -370,9 +364,8 @@ const FilterBestMatchs = ({
       </div>
       <div className="flex gap-[1px] justify-start items-center mt-4 mb-4">
         <h3
-          className={`text-lg font-geistBold  uppercase cursor-pointer ${
-            selectedText === "best" ? "text-primaryRed" : "text-white"
-          } `}
+          className={`text-lg font-geistBold  uppercase cursor-pointer ${selectedText === "best" ? "text-primaryRed" : "text-white"
+            } `}
           onClick={() => {
             setSelectedText("best");
             handlerOtherGames(bestMatchs);
@@ -402,9 +395,8 @@ const FilterByNameComponent = ({
       {Filteres.map((e, index) => (
         <div key={index} className="flex gap-2 justify-start items-center">
           <span
-            className={`text-[14px] font-geistLight cursor-pointer ${
-              selectedText === e ? "text-primaryRed" : "text-white"
-            }`}
+            className={`text-[14px] font-geistLight cursor-pointer ${selectedText === e ? "text-primaryRed" : "text-white"
+              }`}
             key={index}
             onClick={() => {
               setSelectedText(e);
@@ -436,9 +428,8 @@ const SliderGoalsComponent = ({
         {[1, 2, 3, 4, 5, 6, 7].map((num) => (
           <span
             key={num}
-            className={`transition-all ${
-              num <= minGoals ? "text-primaryRed font-bold" : "text-white"
-            }`}
+            className={`transition-all ${num <= minGoals ? "text-primaryRed font-bold" : "text-white"
+              }`}
           >
             {num}
           </span>

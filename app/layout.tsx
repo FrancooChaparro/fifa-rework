@@ -8,7 +8,6 @@ import { Post } from " @/components/Post/Post";
 import { GameDetails } from " @/components/GameDetails/GameDetails";
 import ContactMeComponent from " @/components/Footer/Footer";
 import AuthProvider from " @/context/SessionProvider";
-import { AddTeam } from " @/components/AddTeam/AddTeam";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,17 +44,16 @@ export default function RootLayout({
       <body
         className={`${geistLight.variable} ${geistBold.variable} ${geistRegular.variable} antialiased`}
       >
-         <AuthProvider>
-        <MyProvider>
-          <Nav />
-          <div className="relative">
-            <GameDetails />
-            {/* <AddTeam /> */}
-            <Post />
-          </div>
-          {children}
-          {/* <ContactMeComponent /> */}
-        </MyProvider>
+        <AuthProvider>
+          <MyProvider>
+            <Nav />
+            <div className="relative">
+              <GameDetails />
+              <Post />
+            </div>
+            {children}
+            {/* <ContactMeComponent /> */}
+          </MyProvider>
         </AuthProvider>
       </body>
     </html>

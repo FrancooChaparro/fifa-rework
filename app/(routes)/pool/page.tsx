@@ -9,76 +9,75 @@ export default function PoolPage() {
   const { Franco, FrancoBombo, Marcos, MarcosBombo, Gaston, GastonBombo, Roma, RomaBombo } = useMyContext();
   const router = useRouter();
 
-
   let equiposT = [
-    { nombre: "Real Madrid", escudo: "/images/RealMadrid.png", rank: "#5" },
-    { nombre: "Manchester City", escudo: "/images/mancity.png", rank: "#4" },
+    { nombre: "Real Madrid", escudo: "/images/RealMadrid.png", rank: "#6" },
+    { nombre: "Manchester City", escudo: "/images/mancity.png", rank: "#3" },
     {
       nombre: "Bayern Munich",
       escudo: "/images/BayernMunchen.png",
       rank: "#2",
     },
-    { nombre: "Barcelona", escudo: "/images/Barcelona.webp", rank: "#6" },
+    { nombre: "Barcelona", escudo: "/images/Barcelona.webp", rank: "#7" },
   ];
 
   let bombo2T = [
     {
       nombre: "Manchester United",
       escudo: "/images/ManchesterUnited.png",
-      rank: "#3",
+      rank: "#5",
     },
-    { nombre: "Liverpool", escudo: "/images/Liverpool.png", rank: "#19" },
-    { nombre: "Inter", escudo: "/images/Internazionale.png", rank: "#15" },
+    { nombre: "Liverpool", escudo: "/images/Liverpool.png", rank: "#14" },
+    { nombre: "Inter", escudo: "/images/Internazionale.png", rank: "#14" },
     { nombre: "Dortmund", escudo: "/images/BorussiaDortmund.png", rank: "#22" },
   ];
   let bombo3T = [
-    { nombre: "Milan", escudo: "/images/Milan.png", rank: "#23" },
-    { nombre: "Tottenham", escudo: "/images/Tottenham.png", rank: "#7" },
-    { nombre: "Arsenal", escudo: "/images/arsenalfc.png", rank: "#16" },
-    { nombre: "Newcastle", escudo: "/images/newcastlee.png", rank: "#8" },
+    { nombre: "Milan", escudo: "/images/Milan.png", rank: "#24" },
+    { nombre: "Tottenham", escudo: "/images/Tottenham.png", rank: "#9" },
+    { nombre: "Arsenal", escudo: "/images/arsenalfc.png", rank: "#13" },
+    { nombre: "Newcastle", escudo: "/images/newcastlee.png", rank: "#10" },
   ];
   let bombo4T = [
-    { nombre: "Napoli", escudo: "/images/SSC_Neapel.svg.png", rank: "#13" },
-    { nombre: "Roma", escudo: "/images/ASRoma.png", rank: "#29" },
-    { nombre: "Aston Villa", escudo: "/images/AstonVilla.png", rank: "#12" },
-    { nombre: "Porto", escudo: "/images/oporto.png", rank: "#9" },
+    { nombre: "Napoli", escudo: "/images/SSC_Neapel.svg.png", rank: "#16" },
+    { nombre: "Roma", escudo: "/images/ASRoma.png", rank: "#30" },
+    { nombre: "Aston Villa", escudo: "/images/AstonVilla.png", rank: "#15" },
+    { nombre: "Porto", escudo: "/images/oporto.png", rank: "#11" },
   ];
 
   let bombo5T = [
-    { nombre: "Sevilla", escudo: "/images/sevillaa.png", rank: "#11" },
+    { nombre: "Sevilla", escudo: "/images/sevillaa.png", rank: "#12" },
     {
       nombre: "Bayern 04 Leverkusen",
       escudo: "/images/bayern04.png",
-      rank: "#32",
+      rank: "#21",
     },
-    { nombre: "Zenit", escudo: "/images/Zenit.png", rank: "#21" },
-    { nombre: "Valencia", escudo: "/images/valenciafc.png", rank: "#14" },
+    { nombre: "Zenit", escudo: "/images/Zenit.png", rank: "#23" },
+    { nombre: "Valencia", escudo: "/images/valenciafc.png", rank: "#17" },
   ];
 
   let bombo6T = [
-    { nombre: "Benfica", escudo: "/images/Benfica.png", rank: "#25" },
+    { nombre: "Benfica", escudo: "/images/Benfica.png", rank: "#28" },
     {
       nombre: "Sporting Lisboa",
       escudo: "/images/SportingLisboa.png",
       rank: "#26",
     },
-    { nombre: "Everton", escudo: "/images/evertonfc.png", rank: "#28" },
-    { nombre: "Lazio", escudo: "/images/laziofc.png", rank: "#24" },
+    { nombre: "Everton", escudo: "/images/evertonfc.png", rank: "#29" },
+    { nombre: "Lazio", escudo: "/images/laziofc.png", rank: "#27" },
   ];
 
   let bombo7T = [
-    { nombre: "Villa Real", escudo: "/images/villar.png", rank: "#18" },
-    { nombre: "Wolfburgo", escudo: "/images/wolfburgo.png", rank: "#30" },
-    { nombre: "Lyon", escudo: "/images/Lyon.png", rank: "#31" },
+    { nombre: "Villa Real", escudo: "/images/villar.png", rank: "#19" },
+    { nombre: "Wolfburgo", escudo: "/images/wolfburgo.png", rank: "#31" },
+    { nombre: "Lyon", escudo: "/images/Lyon.png", rank: "#32" },
     { nombre: "Ajax", escudo: "/images/Ajax.png", rank: "#20" },
   ];
 
   let bombo8T = [
-    { nombre: "Chelsea", escudo: "/images/Chelsea.png", rank: "#10" },
+    { nombre: "Chelsea", escudo: "/images/Chelsea.png", rank: "#8" },
     {
       nombre: "Juventus",
       escudo: "/images/juventud.png",
-      rank: "#17",
+      rank: "#18",
     },
     {
       nombre: "Paris Saint Germain",
@@ -88,60 +87,57 @@ export default function PoolPage() {
     {
       nombre: "Atletico Madrid",
       escudo: "/images/AtleticoMadrid.png",
-      rank: "#27",
+      rank: "#25",
     },
   ];
 
   let equipos = [
-    { nombre: "Real Madrid", escudo: "/images/RealMadrid.png" , rank: "#5"},
-    { nombre: "Manchester City", escudo: "/images/mancity.png" , rank: "#4"},
+    { nombre: "Real Madrid", escudo: "/images/RealMadrid.png" , rank: "#6"},
+    { nombre: "Manchester City", escudo: "/images/mancity.png" , rank: "#3"},
     { nombre: "Bayern Munich", escudo: "/images/BayernMunchen.png" , rank: "#2"},
-    { nombre: "Barcelona", escudo: "/images/Barcelona.webp" , rank: "#6"},
+    { nombre: "Barcelona", escudo: "/images/Barcelona.webp" , rank: "#7"},
   ];
 
   let bombo2 = [
-    { nombre: "Manchester United", escudo: "/images/ManchesterUnited.png" , rank: "#3"},
-    { nombre: "Liverpool", escudo:"/images/Liverpool.png" , rank: "#19"},
-    { nombre: "Inter", escudo:"/images/Internazionale.png" , rank: "#15"},
+    { nombre: "Manchester United", escudo: "/images/ManchesterUnited.png" , rank: "#5"},
+    { nombre: "Liverpool", escudo:"/images/Liverpool.png" , rank: "#14"},
+    { nombre: "Inter", escudo:"/images/Internazionale.png" , rank: "#4"},
     { nombre: "Dortmund", escudo: "/images/BorussiaDortmund.png" , rank: "#22"},
-
   ];
+
   let bombo3 = [
-    { nombre: "Milan", escudo: "/images/milan_test.png" , rank: "#23"},
-    { nombre: "Tottenham", escudo: "/images/Tottenham.png" , rank: "#7"},
-    { nombre: "Arsenal", escudo: "/images/arsenalfc.png" , rank: "#16"},
-    { nombre: "Newcastle", escudo: "/images/newcastlee.png" , rank: "#8"},
-
-
+    { nombre: "Milan", escudo: "/images/milan_test.png" , rank: "#24"},
+    { nombre: "Tottenham", escudo: "/images/Tottenham.png" , rank: "#9"},
+    { nombre: "Arsenal", escudo: "/images/arsenalfc.png" , rank: "#13"},
+    { nombre: "Newcastle", escudo: "/images/newcastlee.png" , rank: "#10"},
   ];
-  let bombo4 = [
-    { nombre: "Napoli", escudo:"/images/SSC_Neapel.svg.png", rank: "#13"},
-    { nombre: "Roma", escudo: "/images/ASRoma.png", rank: "#29"},
-    { nombre: "Aston Villa", escudo:  "/images/AstonVilla.png", rank: "#12"},
-    { nombre: "Porto", escudo:"/images/oporto.png" , rank: "#9"},
 
+  let bombo4 = [
+    { nombre: "Napoli", escudo:"/images/SSC_Neapel.svg.png", rank: "#16"},
+    { nombre: "Roma", escudo: "/images/ASRoma.png", rank: "#30"},
+    { nombre: "Aston Villa", escudo:  "/images/AstonVilla.png", rank: "#15"},
+    { nombre: "Porto", escudo:"/images/oporto.png" , rank: "#11"},
   ];
 
   let bombo5 = [
-    { nombre: "Sevilla", escudo: "/images/sevillaa.png", rank: "#11"},
-    { nombre: "Bayern 04 Leverkusen", escudo:  "/images/bayern04.png" , rank: "#32"},
-    { nombre: "Zenit", escudo: "/images/Zenit.png", rank: "#21"},
-    { nombre: "Valencia", escudo:  "/images/valenciafc.png" , rank: "#14"},
+    { nombre: "Sevilla", escudo: "/images/sevillaa.png", rank: "#12"},
+    { nombre: "Bayern 04 Leverkusen", escudo:  "/images/bayern04.png" , rank: "#21"},
+    { nombre: "Zenit", escudo: "/images/Zenit.png", rank: "#23"},
+    { nombre: "Valencia", escudo:  "/images/valenciafc.png" , rank: "#17"},
   ];
   
-
   let bombo6 = [
-    { nombre: "Benfica", escudo: "/images/Benfica.png" , rank: "#25"},
+    { nombre: "Benfica", escudo: "/images/Benfica.png" , rank: "#28"},
     { nombre: "Sporting Lisboa", escudo: "/images/SportingLisboa.png" , rank: "#26"},
-    { nombre: "Everton", escudo:  "/images/evertonfc.png" , rank: "#28"},
-    { nombre: "Lazio", escudo: "/images/laziofc.png" , rank: "#24"}
+    { nombre: "Everton", escudo:  "/images/evertonfc.png" , rank: "#29"},
+    { nombre: "Lazio", escudo: "/images/laziofc.png" , rank: "#27"}
 
   ];
 
   let bombo7 = [
-    { nombre: "Villa Real", escudo: "/images/villar.png" , rank: "#18"},
-    { nombre: "Wolfburgo", escudo:"/images/wolfburgo.png" , rank: "#30"},
-    { nombre: "Lyon", escudo:  "/images/Lyon.png", rank: "#31"},
+    { nombre: "Villa Real", escudo: "/images/villar.png" , rank: "#19"},
+    { nombre: "Wolfburgo", escudo:"/images/wolfburgo.png" , rank: "#31"},
+    { nombre: "Lyon", escudo:  "/images/Lyon.png", rank: "#32"},
     { nombre: "Ajax", escudo: "/images/Ajax.png", rank: "#20" }
   ];
 
@@ -427,14 +423,11 @@ function alear() {
                            height={32}
                          />
                        </div>
-     
                        {/* Nombre */}
                        <span className="group-hover:text-hoverText hidden md:block">
                          {team.nombre}
                        </span>
                      </div>
-     
-                    
                    </div>
                  );
                })}

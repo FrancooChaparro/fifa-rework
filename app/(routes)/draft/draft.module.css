@@ -155,10 +155,11 @@
   }
   
   .number_rank {
-    font-size: 0.625rem;
+    font-size: 0.645rem;
     color: #1a1823;
+    letter-spacing: 0.87px;
     position: absolute;
-    font-weight: bold;
+    font-weight: bolder;
     top: 0;
     right: 0;
   }

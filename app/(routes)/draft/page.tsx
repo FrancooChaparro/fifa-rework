@@ -193,7 +193,7 @@ const Draft = () => {
   
   return (
     <>
-      <div className={`${styles.containerAll} font-geistRegular overflow-hidden` }>
+      <div className={`${styles.containerAll} font-geistRegular overflow-hidden`}>
         <div className={styles.containerBraket}>
           <div style={{ marginTop: "7px" }} onClick={() => setA3(A1)}>
             {A1?.nombre && (

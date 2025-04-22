@@ -80,7 +80,7 @@ export const AddTeam = () => {
             return (
                 <div
                 key={index}
-                onClick={() => handleAddTeam("SD-D.STURRIDGE-82-/images/ParisSaintGermain.png", team.logo)} // 👈 le pasás también el id
+                onClick={() => handleAddTeam("SD-D.STURRIDGE-82-/images/ParisSaintGermain.png", team.logo)} // le pasás también el id
                   className="group hover:cursor-pointer w-full flex h-[56PX] px-2 hover:bg-hoverCard  hover:rounded-[4px] bg-bgGames/95 "
                 >
                     {/* Logo */}
@@ -95,7 +95,7 @@ export const AddTeam = () => {
                 </div>
             );
           })}
-                </div>
+</div>
     
       </div>
     </div>
