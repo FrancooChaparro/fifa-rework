@@ -52,7 +52,7 @@ const Games = ({ ultimateGames }: { ultimateGames: Match[] }) => {
               </div>
 
               {/* Resultado */}
-              <div className="bg-bgPrimary relative text-sm py-2 px-3 rounded-md flex justify-center items-center font-bold w-[60px] active:bg-hoverCard  lg:group-hover:bg-hoverCard">
+              <div className="bg-bgPrimary relative text-sm py-2 px-3 rounded-md flex justify-center items-center font-bold w-[60px] active:bg-hoverCard  group-hover:bg-hoverCard">
                 {game.Penalty ? (
                   <>
                     <span className="opacity-100 group-hover:opacity-0 transition-opacity duration-200 cursor-pointer">
