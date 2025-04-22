@@ -18,17 +18,17 @@ export const Ranking = () => {
             return (
               <Link  key={index} href={`/team/${team.name}`} prefetch={false}>
                 <div
-                  className="group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-bgGames/95  text-[#ffffff] "
+                  className="group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-bgGames/95  text-[#ffffff] "
                 >
                   {/* Sección izquierda */}
                   <div className="flex gap-3 items-center hover:cursor-pointer">
                     {/* Rank */}
-                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
+                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex ">
                       <span className="text-lg">{team.rank}</span>
                     </div>
 
                     {/* Logo */}
-                    <div className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard">
+                    <div className="min-w-[40px] flex justify-center items-center ">
                       <Image
                         src={team.logo}
                         alt={team.name}
@@ -36,7 +36,6 @@ export const Ranking = () => {
                         height={32}
                       />
                     </div>
-
                     {/* Nombre */}
                     <span className="group-hover:text-hoverText ">
                       {team.name}
@@ -45,7 +44,7 @@ export const Ranking = () => {
 
                   {/* Títulos */}
                   <div>
-                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex text-[22px] group-hover:bg-hoverCard">
+                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex text-[22px] ">
                       {team.titles}
                     </span>
                   </div>
@@ -60,17 +59,17 @@ export const Ranking = () => {
             return (
               <Link  key={`${index} - a`} href={`/team/${team.name}`} prefetch={false}>
                 <div
-                  className="group w-full  hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm hover:bg-hoverCard hover:rounded-[4px] xm:text-sm bg-bgGames/95  text-[#ffffff] "
+                  className="group w-full  hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard hover:rounded-[4px] xm:text-sm bg-bgGames/95  text-[#ffffff] "
                 >
                   {/* Sección izquierda */}
                   <div className="flex gap-3 items-center hover:cursor-pointer">
                     {/* Rank */}
-                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
+                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex ">
                       <span className="text-lg">{team.rank}</span>
                     </div>
 
                     {/* Logo */}
-                    <div className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard">
+                    <div className="min-w-[40px] flex justify-center items-center ">
                       <Image
                         src={team.logo}
                         alt={team.name}
@@ -87,7 +86,7 @@ export const Ranking = () => {
 
                   {/* Títulos */}
                   <div>
-                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex text-[22px] group-hover:bg-hoverCard ">
+                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex text-[22px]  ">
                       {team.titles}
                     </span>
                   </div>
@@ -102,17 +101,17 @@ export const Ranking = () => {
             return (
               <Link key={`${index} - b`} href={`/team/${team.name}`} prefetch={false}>
                 <div
-                  className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-bgGames/95 text-[#ffffff] "
+                  className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-bgGames/95 text-[#ffffff] "
                 >
                   {/* Sección izquierda */}
                   <div className="flex gap-3 items-center hover:cursor-pointer">
                     {/* Rank */}
-                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
+                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex ">
                       <span className="text-lg">{team.rank}</span>
                     </div>
 
                     {/* Logo */}
-                    <div className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard">
+                    <div className="min-w-[40px] flex justify-center items-center ">
                       <Image
                         src={team.logo}
                         alt={team.name}
@@ -129,7 +128,7 @@ export const Ranking = () => {
 
                   {/* Títulos */}
                   <div>
-                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex  text-[22px] group-hover:bg-hoverCard">
+                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex  text-[22px] ">
                       {team.titles}
                     </span>
                   </div>

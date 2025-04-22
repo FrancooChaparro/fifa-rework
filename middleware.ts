@@ -18,5 +18,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/auth"], // Rutas donde aplicará el middleware
+  matcher: ["/market"], // Rutas donde aplicará el middleware
 };

@@ -19,7 +19,7 @@ export default function UserPage({ data } : { data: any}) {
         <div className="absolute top-0 left-0 z-[-10] h-full w-full">
           <Image
             src={data.teamID.cover}
-            placeholder="blur" 
+            placeholder="blur"
             blurDataURL="/images/blur.webp"
             alt="atl"
             fill

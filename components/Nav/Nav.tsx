@@ -182,18 +182,16 @@ export default function Nav() {
 
   return (
     <div
-      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-20 transition-all ${
-        isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
-      }`}
+      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-20 transition-all ${isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
+        }`}
     >
       <div className="flex justify-between items-center relative h-full w-full px-6">
         {/*HAMBURGER MENU*/}
         <div
-          className={`absolute top-0 left-0 w-full h-[100svh] max-h-[100svh] overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${
-            isActive
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }`}
+          className={`absolute top-0 left-0 w-full h-[100svh] max-h-[100svh] overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${isActive
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+            }`}
         >
           <div className="w-full flex justify-end items-center h-[60px]">
             <div
@@ -251,11 +249,10 @@ export default function Nav() {
         {/*SEARCH MOBILE*/}
         <div
           ref={inputContainerRef}
-          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-4  ${
-            showInput
-              ? "opacity-100 pointer-events-auto clip-path-none z-10"
-              : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-          }`}
+          className={`absolute bottom-[-65px] h-full w-full  right-0 lg:hidden text-sm px-4  ${showInput
+            ? "opacity-100 pointer-events-auto clip-path-none z-10"
+            : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+            }`}
         >
           <div className="block lg:hidden relative  transition-all duration-300">
             <input
@@ -268,11 +265,10 @@ export default function Nav() {
             />
             {filteredNames.length > 0 && (
               <ul
-                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300 ${
-                  showInput
-                    ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                    : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-                }`}
+                className={` absolute w-full bg-black/95  min-h-[90px] top-[60px] shadow-lg z-50 transition-all duration-300 ${showInput
+                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                  }`}
               >
                 {filteredNames.map((team, index) => (
                   <Link
@@ -369,15 +365,13 @@ export default function Nav() {
 
             {/* Menú desplegable */}
             <div
-              className={`absolute bottom-[-107px] left-[-12px] flex  px-4  flex-col gap-2 min-h-10 min-w-[90px] py-2 transition-all duration-200    ${
-                isBlurred
-                  ? "backdrop-blur-md bg-black/70"
-                  : "bg-black/95 select-none"
-              } ${
-                isOpen
+              className={`absolute bottom-[-107px] left-[-12px] flex  px-4  flex-col gap-2 min-h-10 min-w-[90px] py-2 transition-all duration-200    ${isBlurred
+                ? "backdrop-blur-md bg-black/70"
+                : "bg-black/95 select-none"
+                } ${isOpen
                   ? "opacity-100 pointer-events-auto"
                   : "opacity-0 pointer-events-none"
-              }
+                }
       `}
             >
               {langs.slice(2, 5).map((item, index) => (
@@ -407,19 +401,17 @@ export default function Nav() {
               onKeyDown={handleKeyDown}
               onChange={handleChange}
               placeholder="Escribe un nombre..."
-              className={`absolute -translate-y-1/2 w-[256px] h-[35px] placeholder:font-geistLight font-geistLight px-2 outline-none border-none focus:ring-0 focus:outline-none active:outline-none hover:outline-none bg-bgGames transition-all duration-300  ${
-                showInput
-                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-              }`}
+              className={`absolute -translate-y-1/2 w-[256px] h-[35px] placeholder:font-geistLight font-geistLight px-2 outline-none border-none focus:ring-0 focus:outline-none active:outline-none hover:outline-none bg-bgGames transition-all duration-300  ${showInput
+                ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                }`}
             />
             {filteredNames.length > 0 && (
               <ul
-                className={` absolute w-[256px] bg-bgGames  min-h-[90px] top-[21px] shadow-lg z-50 transition-all duration-300   ${
-                  showInput
-                    ? "opacity-100 pointer-events-auto clip-path-none z-10"
-                    : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
-                }`}
+                className={` absolute w-[256px] bg-bgGames  min-h-[90px] top-[21px] shadow-lg z-50 transition-all duration-300   ${showInput
+                  ? "opacity-100 pointer-events-auto clip-path-none z-10"
+                  : "opacity-0 pointer-events-none z-[-10] clip-path-[inset(0_100%_0_0)]"
+                  }`}
               >
                 {filteredNames.map((team, index) => (
                   <Link
@@ -430,9 +422,8 @@ export default function Nav() {
                     onMouseLeave={() => setSelectedIndex(-1)}
                     // onClick={() => handleSelect(team.name)}
                     // className="p-2 flex items-center gap-3 cursor-pointer hover:bg-hoverCard text-white"
-                    className={`p-2 flex items-center gap-3 cursor-pointer ${
-                      selectedIndex === index ? "bg-hoverCard text-white" : ""
-                    }`}
+                    className={`p-2 flex items-center gap-3 cursor-pointer ${selectedIndex === index ? "bg-hoverCard text-white" : ""
+                      }`}
                   >
                     <Image
                       src={team.logo}
@@ -483,13 +474,19 @@ export default function Nav() {
         <div className="lg:hidden flex gap-4">
           <div
             onClick={() => setShowInput(true)}
-            className="rounded-full bg-[#1a1a1a] hover:bg-hoverCard transition-all duration-150 cursor-pointer flex justify-center items-center h-[30px] w-[30px] z-10"
+            className="rounded-full bg-[#1a1a1a] active:bg-hoverCard lg:hover:bg-hoverCard transition-all duration-150 cursor-pointer flex justify-center items-center h-[30px] w-[30px] z-10"
           >
             <SearchIcon />
           </div>
-          <div className="rounded-full bg-[#1a1a1a] hover:bg-hoverCard transition-all duration-150 cursor-pointer lg:hidden flex justify-center items-center h-[30px] w-[30px]">
+          {session ? (
+            <button onClick={() => signOut()} className="rounded-full bg-[#1a1a1a] active:bg-hoverCard lg:hover:bg-hoverCard transition-all duration-150 cursor-pointer lg:hidden flex justify-center items-center h-[30px] w-[30px]">
+              <UserIcon />
+            </button>
+          ) : (<Link prefetch={false} href={"/auth"} className="rounded-full bg-[#1a1a1a] active:bg-hoverCard lg:hover:bg-hoverCard transition-all duration-150 cursor-pointer lg:hidden flex justify-center items-center h-[30px] w-[30px]">
             <UserIcon />
-          </div>
+          </Link>
+          )
+          }
         </div>
         {/*div fantasma*/}
         <span className="hover:cursor-pointer overflow-hidden h-[40px] w-[100px] ml-[40px] lg:ml-0 hidden lg:flex justify-center items-center tracking-[0.82px] opacity-0 pointer-events-none">

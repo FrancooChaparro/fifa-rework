@@ -3362,7 +3362,6 @@ export const stats_roma = {
   },
 };
 
-
 export const data = {
   poster: [
     {
@@ -3889,24 +3888,3 @@ export const top20 = {
 };
 
 
-export const usuarios =  
-  [
-    {
-      "id": 1,
-      "created_at": "2025-04-01T13:24:36.789562+00:00",
-      "email": "francoo_chaparro@hotmail.co",
-      "nombre": "franco chaparro"
-    },
-    {
-      "id": 2,
-      "created_at": "2025-04-01T13:25:05.151155+00:00",
-      "email": "garbandev@gmail.com",
-      "nombre": "pablo garban"
-    },
-    {
-      "id": 3,
-      "created_at": "2025-04-01T13:25:23.814073+00:00",
-      "email": "tomas@gmail.com",
-      "nombre": "tomas dibacco"
-    }
-  ]

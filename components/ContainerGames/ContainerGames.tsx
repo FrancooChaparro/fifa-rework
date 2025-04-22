@@ -41,7 +41,7 @@ const Games = ({ ultimateGames }: { ultimateGames: Match[] }) => {
               className="group flex justify-between gap-[10px] hover:bg-hoverCard hover:rounded-[4px] hover:cursor-pointer"
             >
               {/* Primer hijo: Local */}
-              <div className="flex justify-end gap-2 items-center overflow-hidden w-[130px] group-hover:bg-hoverCard group-hover:rounded-[4px]">
+              <div className="flex justify-end gap-2 items-center overflow-hidden w-[130px]  group-hover:rounded-[4px]">
                 <span className="text-[11px] font-bold">{game.LocalSlug}</span>
                 <Image
                   src={game.LocalEscudo}
@@ -52,7 +52,7 @@ const Games = ({ ultimateGames }: { ultimateGames: Match[] }) => {
               </div>
 
               {/* Resultado */}
-              <div className="bg-bgPrimary relative text-sm py-2 px-3 rounded-md flex justify-center items-center font-bold w-[60px]  group-hover:bg-hoverCard">
+              <div className="bg-bgPrimary relative text-sm py-2 px-3 rounded-md flex justify-center items-center font-bold w-[60px] active:bg-hoverCard  lg:group-hover:bg-hoverCard">
                 {game.Penalty ? (
                   <>
                     <span className="opacity-100 group-hover:opacity-0 transition-opacity duration-200 cursor-pointer">
@@ -70,7 +70,7 @@ const Games = ({ ultimateGames }: { ultimateGames: Match[] }) => {
               </div>
 
               {/* Tercer hijo: Visitante */}
-              <div className="flex gap-2 items-center overflow-hidden justify-start w-[130px] group-hover:bg-hoverCard group-hover:rounded-[4px]">
+              <div className="flex gap-2 items-center overflow-hidden justify-start w-[130px]  group-hover:rounded-[4px]">
                 <Image
                   src={game.VisitanteEscudo}
                   alt="alt"
@@ -113,17 +113,17 @@ const TopFive = ({
           return (
             <Link key={`${index} - top`} href={`/team/${team.name}`} prefetch={false}>
               <div
-                className="group w-full flex h-[40px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px]"
+                className="group w-full flex h-[40px] justify-between gap-2 px-2 font-bold text-[12px] active:bg-hoverCard lg:hover:bg-hoverCard hover:rounded-[4px]"
               >
                 {/* Sección izquierda */}
                 <div className="flex gap-3 items-center hover:cursor-pointer">
                   {/* Rank */}
-                  <div className="min-w-[30px] rounded-md h-full justify-center items-center flex group-hover:bg-hoverCard">
+                  <div className="min-w-[30px] rounded-md h-full justify-center items-center flex ">
                     <span className="text-sm">{team.rank}</span>
                   </div>
 
                   {/* Logo */}
-                  <div className="min-w-[40px] flex justify-center items-center group-hover:bg-hoverCard">
+                  <div className="min-w-[40px] flex justify-center items-center ">
                     <Image
                       src={team.logo}
                       alt={team.name}
@@ -140,7 +140,7 @@ const TopFive = ({
 
                 {/* Títulos */}
                 <div>
-                  <span className="min-w-[30px] rounded-md h-full justify-center items-center flex bg-bgPrimary text-lg group-hover:bg-hoverCard">
+                  <span className="min-w-[30px] rounded-md h-full justify-center items-center flex bg-bgPrimary text-lg active:bg-hoverCard lg:group-hover:bg-hoverCard">
                     {team.titles}
                   </span>
                 </div>
