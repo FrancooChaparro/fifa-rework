@@ -217,6 +217,23 @@ export default function PoolPage() {
     alear();
   }
 
+  const FrancoRank = FrancoBombo.reduce((total, equipo) => {
+    const numeroRank = parseInt(equipo.rank.replace('#', ''), 10);
+    return total + numeroRank;
+  }, 0);
+  const GastonRank = GastonBombo.reduce((total, equipo) => {
+    const numeroRank = parseInt(equipo.rank.replace('#', ''), 10);
+    return total + numeroRank;
+  }, 0);
+  const MarcosRank = MarcosBombo.reduce((total, equipo) => {
+    const numeroRank = parseInt(equipo.rank.replace('#', ''), 10);
+    return total + numeroRank;
+  }, 0);
+  const RomaRank = RomaBombo.reduce((total, equipo) => {
+    const numeroRank = parseInt(equipo.rank.replace('#', ''), 10);
+    return total + numeroRank;
+  }, 0);
+
 
   // Función para renderizar cada pool
   const renderPool = (poolName: string, bombo: Team[]) => (
@@ -280,7 +297,10 @@ export default function PoolPage() {
       <div className=" px-5 lg:px-5 xl:px-14 w-full select-none pt-10">
         <div className="grid grid-cols-4 gap-3 md:gap-10 xl:gap-20 font-geistRegular">
           <div className="w-full rounded-[4px] bg-bgPrimary">
-            <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">Franco</p>
+            <div className="flex flex-col lg:flex-row justify-between">
+              <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">Franco</p>
+              <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{FrancoRank ? FrancoRank : ""}</p>
+            </div>
 
             {FrancoBombo.length &&
               FrancoBombo.map((team: Team, index: number) => {
@@ -318,7 +338,10 @@ export default function PoolPage() {
               })}
           </div>
           <div className="w-full rounded-[4px] bg-bgPrimary">
-            <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Gaston</p>
+            <div className="flex flex-col lg:flex-row justify-between">
+              <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Gaston</p>
+              <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{GastonRank ? GastonRank : ""}</p>
+            </div>
 
             {" "}
             {GastonBombo.length &&
@@ -357,7 +380,11 @@ export default function PoolPage() {
               })}
           </div>
           <div className="w-full rounded-[4px] bg-bgPrimary">
-            <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Marcos</p>
+            <div className="flex flex-col lg:flex-row justify-between">
+              <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Marcos</p>
+              <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{MarcosRank ? MarcosRank : ""}</p>
+            </div>
+
             {" "}
             {MarcosBombo.length &&
               MarcosBombo.map((team: Team, index: number) => {
@@ -392,7 +419,11 @@ export default function PoolPage() {
               })}
           </div>
           <div className="w-full rounded-[4px] bg-bgPrimary">
-            <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Rodrigo</p>
+            <div className="flex flex-col lg:flex-row justify-between">
+              <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Rodrigo</p>
+              <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{RomaRank ? RomaRank : ""}</p>
+            </div>
+
 
             {RomaBombo.length &&
               RomaBombo.map((team: Team, index: number) => {

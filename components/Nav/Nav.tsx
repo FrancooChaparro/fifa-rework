@@ -182,7 +182,7 @@ export default function Nav() {
 
   return (
     <div
-      className={`w-full fixed top-0 left-0  h-[60px] font-geistLight  text-[#ffffff] items-center px-0 lg:px-14 text-lg z-20 transition-all ${isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
+      className={`w-full fixed top-0 left-0 h-[60px] font-geistLight text-[#ffffff] items-center px-0 lg:px-14 text-lg z-20 transition-all ${isBlurred ? "backdrop-blur-md bg-black/70" : "bg-black/95 select-none"
         }`}
     >
       <div className="flex justify-between items-center relative h-full w-full px-6">
@@ -299,6 +299,7 @@ export default function Nav() {
             </div>
           </div>
         </div>
+
         {/*LEFT CONTENT*/}
         <div
           className="flex lg:hidden hover:cursor-pointer"
@@ -306,6 +307,7 @@ export default function Nav() {
         >
           <HamburgerMenuIcon />
         </div>
+        
         <span
           className="hover:cursor-pointer overflow-hidden h-[40px] w-[100px] ml-[40px] lg:ml-0 flex justify-center items-center tracking-[0.82px]"
           onClick={() => router.push("/")}
