@@ -19,6 +19,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
       try {
         const res = await fetch("/api/sheet");
         const data = await res.json(); // data: string[][]
+        
         setMarket(data);
 
       } catch (error) {
@@ -28,7 +29,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
   if (isMarket) {
     fetchSheetData();
   }
-  }, [isMarket]);
+  }, []);
 
 //   useEffect(() => {
 //     setLastMarketItem(market.length > 0 ? market[market.length - 1] : []);

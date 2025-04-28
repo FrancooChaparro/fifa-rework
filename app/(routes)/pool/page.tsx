@@ -373,8 +373,6 @@ export default function PoolPage() {
                         {team.nombre}
                       </span>
                     </div>
-
-
                   </div>
                 );
               })}
