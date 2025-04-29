@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSheetsClient } from " @/lib/getSheetsClient";
+import { revalidatePath } from "next/cache";
 
 // Función utilitaria para convertir número de columna a letra (A, B, ..., Z, AA, etc.)
 function columnToLetter(column) {
@@ -75,6 +76,8 @@ export async function POST(req) {
       },
     });
 
+    revalidatePath('/market');
+    
     return NextResponse.json({
       message: `ID actualizado de '${currentValue}' a '${updatedValue}' en ${targetCol}${targetRow}`,
     });
