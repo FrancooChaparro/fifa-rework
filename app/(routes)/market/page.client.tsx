@@ -9,7 +9,7 @@ import { agregarEquipo, removerEquipo } from " @/app/actions/getSheetData";
 
 const rankTeams = data.ranking;
 
-export default function MarketComponent({ data, lastRow } : { data: TeamMarket[][] | null, lastRow: TeamMarket[]}) {
+export default function MarketComponent({ data, lastRow } : { data: TeamMarket[][], lastRow: TeamMarket[]}) {
   const { market, isOpenAdd, setisOpenAdd, setMarket} = useMyContext();
   const [loadingIds, setLoadingIds] = useState<string[]>([]);
   const cartRef = useRef<HTMLDivElement>(null);
@@ -101,20 +101,20 @@ export default function MarketComponent({ data, lastRow } : { data: TeamMarket[]
     setLoadingIds((prev) => [...prev, eli]);
 
     try {
-      //SERVER ACTIONS
-      // const data = await agregarEquipo({ id, teamName }); 
-      // if (!data) throw new Error("Error al agregar el team");
+      // SERVER ACTIONS
+      const data = await agregarEquipo({ id, teamName }); 
+      if (!data) throw new Error("Error al agregar el team");
 
       //API
-      const res = await fetch("/api/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: eli, teamName }),
-      });
+      // const res = await fetch("/api/add", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ id: eli, teamName }),
+      // });
 
-      if (!res.ok) throw new Error("Error al agregar el team");
+      // if (!res.ok) throw new Error("Error al agregar el team");
 
       // Actualizar el market con el nuevo equipo
       setMarket((prevMarket: any[][]) =>
@@ -161,21 +161,21 @@ export default function MarketComponent({ data, lastRow } : { data: TeamMarket[]
 
     try {
       // SERVER ACTIONS
-      // const data = await removerEquipo({ id, teamName });
-      // if (!data) throw new Error("Error al eliminar el team");
+      const data = await removerEquipo({ id, teamName });
+      if (!data) throw new Error("Error al eliminar el team");
 
       //API
-      const res = await fetch("/api/remove", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: eli, teamName }),
-      });
+      // const res = await fetch("/api/remove", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ id: eli, teamName }),
+      // });
 
-      const data = await res.json();
+      // const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || "Error al eliminar equipo");
+      // if (!res.ok) throw new Error(data.error || "Error al eliminar equipo");
 
       setIdPlayer(data);
       // Actualizar el market quitando el team
@@ -271,9 +271,9 @@ export default function MarketComponent({ data, lastRow } : { data: TeamMarket[]
             } h-full w-full overflow-hidden`}
         >
           {
-            market.length
+            data.length
               ? <GridComponent {...{ isActive,
-                market,
+                data,
                 getTextColor,
                 setIdPlayer,
                 setisOpenAdd,
@@ -544,7 +544,7 @@ const TransferComponent = ({ lastR, getTextColor }: TransferComponentProps) => {
 
 type GridComponentProps = {
   isActive: boolean;
-  market: TeamMarket[][];
+  data: TeamMarket[][];
   getTextColor: (position: string) => string;
   setIdPlayer: React.Dispatch<React.SetStateAction<string>>;
   setisOpenAdd: React.Dispatch<React.SetStateAction<boolean>>;
@@ -553,7 +553,7 @@ type GridComponentProps = {
 };
 
 const GridComponent = ({ isActive,
-  market,
+  data,
   getTextColor,
   setIdPlayer,
   setisOpenAdd,
@@ -566,7 +566,7 @@ const GridComponent = ({ isActive,
         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
         } gap-6 py-2`}
     >
-      {market.map((team: TeamMarket[], index: number) => {
+      {data.map((team: TeamMarket[], index: number) => {
         return (
           <ol key={index} className="border-[1px] rounded-sm border-gray-700 bg-bgGames/95 overflow-hidden">
             {team.map((item: TeamMarket, idx: number) => {

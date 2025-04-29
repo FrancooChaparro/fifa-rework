@@ -17,9 +17,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
   useEffect(() => {
     const fetchSheetData = async () => {
       try {
-        const res = await fetch("/api/sheet", { 
-          cache: "no-store"
-        });
+        const res = await fetch("/api/sheet");
         const data = await res.json(); // data: string[][]
         
         setMarket(data);
@@ -31,7 +29,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
   if (isMarket) {
     fetchSheetData();
   }
-  }, [market]);
+  }, []);
 
 //   useEffect(() => {
 //     setLastMarketItem(market.length > 0 ? market[market.length - 1] : []);
