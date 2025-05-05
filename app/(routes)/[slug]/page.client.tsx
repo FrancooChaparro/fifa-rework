@@ -25,7 +25,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
     <>
       {/* MAIN DATA */}
       <div
-        className={` relative w-full min-h-screen h-screen px-7 sm:px-10 lg:px-20 pt-16 flex flex-col gap-5 lg:gap-7 overflow-hidden`}
+        className={`relative w-full min-h-screen h-screen px-7 sm:px-10 lg:px-20 pt-16 flex flex-col gap-5 lg:gap-7 overflow-hidden`}
       >
         {/* BACKGROUND */}
         <div className="absolute top-0 left-0 z-[-10] h-full w-full">

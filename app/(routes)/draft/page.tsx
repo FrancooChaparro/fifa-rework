@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Team } from " @/types/types";
 
 const Draft = () => {
-    const {  FrancoCopy,  MarcosCopy, GastonCopy, RomaCopy, FrancoBombo } =
+  const { FrancoCopy, MarcosCopy, GastonCopy, RomaCopy, FrancoBombo } =
     useMyContext();
 
   let franco: Team[] | [] = FrancoCopy;
@@ -19,8 +19,9 @@ const Draft = () => {
     escudo: "",
     rank: "",
   };
+  const [TestTeam, setTestTeam] = useState(base);
 
-  
+
   const [A1, setA1] = useState(base);
   const [A2, setA2] = useState(base);
   const [B1, setB1] = useState(base);
@@ -93,7 +94,7 @@ const Draft = () => {
   const [J5, setJ5] = useState(base);
 
   const [I6, setI6] = useState(base);
-
+  const [baraja, setBaraja] = useState(false);
   function clean() {
     setA3(base);
     setB3(base);
@@ -138,62 +139,210 @@ const Draft = () => {
     const index = Math.floor(Math.random() * array.length);
     return array.splice(index, 1)[0];
   }
-  
-  function delay(ms:any) {
+
+
+  function delay(ms: any) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
- async function lolo() {
+  async function lolo() {
     if (franco.length === 0 && gaston.length === 0 && marcos.length === 0 && roma.length === 0)
       return;
-  
+    setBaraja(true);
+    
     const steps = [
-      () => setA1(getRandomAndSplice(roma)),
-      () => setA2(getRandomAndSplice(marcos)),
-      () => setB1(getRandomAndSplice(franco)),
-      () => setB2(getRandomAndSplice(gaston)),
-      () => setC1(getRandomAndSplice(gaston)),
-      () => setC2(getRandomAndSplice(roma)),
-      () => setD1(getRandomAndSplice(marcos)),
-      () => setD2(getRandomAndSplice(franco)),
-  
-      () => setE1(getRandomAndSplice(marcos)),
-      () => setE2(getRandomAndSplice(gaston)),
-      () => setF1(getRandomAndSplice(roma)),
-      () => setF2(getRandomAndSplice(franco)),
-      () => setG1(getRandomAndSplice(franco)),
-      () => setG2(getRandomAndSplice(gaston)),
-      () => setH1(getRandomAndSplice(marcos)),
-      () => setH2(getRandomAndSplice(roma)),
-  
-      () => setI1(getRandomAndSplice(franco)),
-      () => setI2(getRandomAndSplice(marcos)),
-      () => setJ1(getRandomAndSplice(gaston)),
-      () => setJ2(getRandomAndSplice(roma)),
-      () => setK1(getRandomAndSplice(roma)),
-      () => setK2(getRandomAndSplice(franco)),
-      () => setL1(getRandomAndSplice(marcos)),
-      () => setL2(getRandomAndSplice(gaston)),
-  
-      () => setM1(getRandomAndSplice(roma)),
-      () => setM2(getRandomAndSplice(marcos)),
-      () => setN1(getRandomAndSplice(franco)),
-      () => setN2(getRandomAndSplice(gaston)),
-      () => setO1(getRandomAndSplice(roma)),
-      () => setO2(getRandomAndSplice(gaston)),
-      () => setP1(getRandomAndSplice(marcos)),
-      () => setP2(getRandomAndSplice(franco))
+      () => {
+        const val = getRandomAndSplice(roma);
+        setA1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setA2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setB1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setB2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setC1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setC2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setD1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setD2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setE1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setE2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setF1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setF2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setG1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setG2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setH1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setH2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setI1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setI2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setJ1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setJ2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setK1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setK2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setL1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setL2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setM1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setM2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setN1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setN2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setO1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setO2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setP1(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setP2(val);
+        setTestTeam(val);
+      },
+      ()=> setBaraja(false)
     ];
-  
     for (let step of steps) {
       step();
       await delay(1200); // ajustá el tiempo que quieras (en milisegundos)
     }
   }
-  
-  
+
+
+
   return (
     <>
       <div className={`${styles.containerAll} font-geistRegular overflow-hidden`}>
+        <div className={`${baraja ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            } absolute w-[580px] h-[500px] bg-white left-1/2 -translate-x-1/2 z-40 top-[50%] transition-all duration-150 -translate-y-1/2 p-2`}>
+        <div className="grid grid-cols-4 gap-4 w-full">
+          {
+            [...franco, ...gaston, ...marcos, ...roma].map((team: Team, index: number) => {
+              return (
+                <div className="size-full flex justify-center items-center">
+                  <Image
+                    src={team.escudo}
+                    alt={team.nombre}
+                    width={46}
+                    height={46}
+                    key={index}
+                    />
+                    </div>
+              )
+            })
+          }
+          </div>
+        </div>
         <div className={styles.containerBraket}>
           <div style={{ marginTop: "7px" }} onClick={() => setA3(A1)}>
             {A1?.nombre && (
