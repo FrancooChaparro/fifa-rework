@@ -148,7 +148,7 @@ const Draft = () => {
     if (franco.length === 0 && gaston.length === 0 && marcos.length === 0 && roma.length === 0)
       return;
     setBaraja(true);
-    
+
     const steps = [
       () => {
         const val = getRandomAndSplice(roma);
@@ -310,7 +310,7 @@ const Draft = () => {
         setP2(val);
         setTestTeam(val);
       },
-      ()=> setBaraja(false)
+      () => setBaraja(false)
     ];
     for (let step of steps) {
       step();
@@ -324,23 +324,24 @@ const Draft = () => {
     <>
       <div className={`${styles.containerAll} font-geistRegular overflow-hidden`}>
         <div className={`${baraja ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            } absolute w-[580px] h-[500px] bg-white left-1/2 -translate-x-1/2 z-40 top-[50%] transition-all duration-150 -translate-y-1/2 p-2`}>
-        <div className="grid grid-cols-4 gap-4 w-full">
-          {
-            [...franco, ...gaston, ...marcos, ...roma].map((team: Team, index: number) => {
-              return (
-                <div className="size-full flex justify-center items-center">
-                  <Image
-                    src={team.escudo}
-                    alt={team.nombre}
-                    width={46}
-                    height={46}
+          } absolute w-[580px] h-[500px] bg-white left-1/2 -translate-x-1/2 z-40 top-[50%] transition-all duration-150 -translate-y-1/2 p-2`}>
+          <div className="grid grid-cols-4 gap-4 w-full">
+            {
+              [...franco, ...gaston, ...marcos, ...roma].map((team: Team, index: number) => {
+                return (
+                  <div
                     key={index}
+                    className="size-full flex justify-center items-center">
+                    <Image
+                      src={team.escudo}
+                      alt={team.nombre}
+                      width={46}
+                      height={46}
                     />
-                    </div>
-              )
-            })
-          }
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
         <div className={styles.containerBraket}>
