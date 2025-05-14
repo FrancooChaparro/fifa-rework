@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./draft.module.css";
 import { useMyContext } from " @/context/ListContext";
 import Image from "next/image";
 import { Team } from " @/types/types";
+import gsap from "gsap";
 
 const Draft = () => {
   const { FrancoCopy, MarcosCopy, GastonCopy, RomaCopy, FrancoBombo } =
@@ -20,7 +21,40 @@ const Draft = () => {
     rank: "",
   };
   const [TestTeam, setTestTeam] = useState(base);
+  const A1Ref = useRef<HTMLDivElement>(null);
+  const A2Ref = useRef<HTMLDivElement>(null);
+  const B1Ref = useRef<HTMLDivElement>(null);
+  const B2Ref = useRef<HTMLDivElement>(null);
+  const C1Ref = useRef<HTMLDivElement>(null);
+  const C2Ref = useRef<HTMLDivElement>(null);
+  const D1Ref = useRef<HTMLDivElement>(null);
+  const D2Ref = useRef<HTMLDivElement>(null);
+  const E1Ref = useRef<HTMLDivElement>(null);
+  const E2Ref = useRef<HTMLDivElement>(null);
+  const F1Ref = useRef<HTMLDivElement>(null);
+  const F2Ref = useRef<HTMLDivElement>(null);
+  const G1Ref = useRef<HTMLDivElement>(null);
+  const G2Ref = useRef<HTMLDivElement>(null);
+  const H1Ref = useRef<HTMLDivElement>(null);
+  const H2Ref = useRef<HTMLDivElement>(null);
 
+  const I1Ref = useRef<HTMLDivElement>(null);
+  const I2Ref = useRef<HTMLDivElement>(null);
+  const J1Ref = useRef<HTMLDivElement>(null);
+  const J2Ref = useRef<HTMLDivElement>(null);
+  const K1Ref = useRef<HTMLDivElement>(null);
+  const K2Ref = useRef<HTMLDivElement>(null);
+  const L1Ref = useRef<HTMLDivElement>(null);
+  const L2Ref = useRef<HTMLDivElement>(null);
+  const M1Ref = useRef<HTMLDivElement>(null);
+  const M2Ref = useRef<HTMLDivElement>(null);
+  const N1Ref = useRef<HTMLDivElement>(null);
+  const N2Ref = useRef<HTMLDivElement>(null);
+  const O1Ref = useRef<HTMLDivElement>(null);
+  const O2Ref = useRef<HTMLDivElement>(null);
+  const P1Ref = useRef<HTMLDivElement>(null);
+  const P2Ref = useRef<HTMLDivElement>(null);
+  const teamRef = useRef<HTMLDivElement>(null);
 
   const [A1, setA1] = useState(base);
   const [A2, setA2] = useState(base);
@@ -140,6 +174,30 @@ const Draft = () => {
     return array.splice(index, 1)[0];
   }
 
+  const animateTeamTo = async (targetRef: React.RefObject<HTMLDivElement>) => {
+    const team = teamRef.current;
+    const target = targetRef.current;
+
+    if (!team || !target) return;
+
+    const teamRect = team.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+
+    const deltaX = (targetRect.left + 10) - teamRect.left;
+    const deltaY = (targetRect.top - 5) - teamRect.top;
+
+    await gsap.to(team, {
+      x: deltaX,
+      y: deltaY,
+      rotation: 360,
+      duration: 2,
+      ease: "power2.inOut",
+    });
+
+    // Reset transform para que pueda volver a animarse desde el centro
+    gsap.set(team, { x: 0, y: 0, rotation: 0 });
+  };
+
 
   function delay(ms: any) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -147,312 +205,391 @@ const Draft = () => {
   async function lolo() {
     if (franco.length === 0 && gaston.length === 0 && marcos.length === 0 && roma.length === 0)
       return;
+
     setBaraja(true);
 
     const steps = [
-      () => {
-        const val = getRandomAndSplice(roma);
-        setA1(val);
-        setTestTeam(val);
-      },
-      () => {
+      async () => {
         const val = getRandomAndSplice(franco);
-        setB1(val);
         setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setC1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(marcos);
-        setD1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(marcos);
-        setE1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(roma);
-        setF1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(franco);
+        await delay(300);
+        await animateTeamTo(G1Ref);
         setG1(val);
-        setTestTeam(val);
       },
-      () => {
-        const val = getRandomAndSplice(marcos);
-        setH1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(franco);
-        setI1(val);
-        setTestTeam(val);
-      },
-      () => {
+
+      async () => {
         const val = getRandomAndSplice(gaston);
-        setJ1(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(C1Ref);
+        setC1(val);
       },
-      () => {
+      async () => {
         const val = getRandomAndSplice(roma);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(K1Ref);
         setK1(val);
-        setTestTeam(val);
       },
-      () => {
+
+      async () => {
         const val = getRandomAndSplice(marcos);
-        setL1(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(E1Ref);
+        setE1(val);
       },
-      () => {
+      async () => {
         const val = getRandomAndSplice(roma);
-        setM1(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(F1Ref);
+        setF1(val);
       },
-      () => {
-        const val = getRandomAndSplice(franco);
-        setN1(val);
-        setTestTeam(val);
-      },
-      () => {
+
+      async () => {
         const val = getRandomAndSplice(roma);
-        setO1(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(A1Ref);
+        setA1(val);
       },
-      () => {
+      async () => {
         const val = getRandomAndSplice(marcos);
-        setP1(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(H1Ref);
+        setH1(val);
       },
-      () => {
-        const val = getRandomAndSplice(marcos);
-        setA2(val);
-        setTestTeam(val);
-      },
-      () => {
+
+      async () => {
         const val = getRandomAndSplice(gaston);
-        setB2(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(J1Ref);
+        setJ1(val);
       },
-      () => {
-        const val = getRandomAndSplice(roma);
-        setC2(val);
-        setTestTeam(val);
-      },
-      () => {
+
+      async () => {
         const val = getRandomAndSplice(franco);
-        setD2(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(B1Ref);
+        setB1(val);
       },
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setE2(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(franco);
-        setF2(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setG2(val);
-        setTestTeam(val);
-      },
-      () => {
+
+      async () => {
         const val = getRandomAndSplice(roma);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(H2Ref);
         setH2(val);
-        setTestTeam(val);
       },
-      () => {
+
+      async () => {
         const val = getRandomAndSplice(marcos);
-        setI2(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(L1Ref);
+        setL1(val);
       },
-      () => {
+      async () => {
+        const val = getRandomAndSplice(gaston);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(B2Ref);
+        setB2(val);
+      },
+      async () => {
         const val = getRandomAndSplice(roma);
-        setJ2(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(M1Ref);
+        setM1(val);
       },
-      () => {
+      async () => {
         const val = getRandomAndSplice(franco);
-        setK2(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(N1Ref);
+        setN1(val);
       },
-      () => {
+      async () => {
         const val = getRandomAndSplice(gaston);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(G2Ref);
+        setG2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(gaston);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(L2Ref);
         setL2(val);
-        setTestTeam(val);
       },
-
-      () => {
-        const val = getRandomAndSplice(marcos);
-        setM2(val);
+      async () => {
+        const val = getRandomAndSplice(roma);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(O1Ref);
+        setO1(val);
       },
-
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setN2(val);
-        setTestTeam(val);
-      },
-
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setO2(val);
-        setTestTeam(val);
-      },
-
-      () => {
+      async () => {
         const val = getRandomAndSplice(franco);
-        setP2(val);
         setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(I1Ref);
+        setI1(val);
       },
-      () => setBaraja(false)
+      async () => {
+        const val = getRandomAndSplice(marcos);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(P1Ref);
+        setP1(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(marcos);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(D1Ref);
+        setD1(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(marcos);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(A2Ref);
+        setA2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(franco);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(K2Ref);
+        setK2(val);
+      },
+
+
+      async () => {
+        const val = getRandomAndSplice(franco);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(D2Ref);
+        setD2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(gaston);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(E2Ref);
+        setE2(val);
+      },
+
+
+      async () => {
+        const val = getRandomAndSplice(marcos);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(I2Ref);
+        setI2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(franco);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(P2Ref);
+        setP2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(roma);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(J2Ref);
+        setJ2(val);
+      },
+
+      async () => {
+        const val = getRandomAndSplice(marcos);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(M2Ref);
+        setM2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(gaston);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(N2Ref);
+        setN2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(franco);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(F2Ref);
+        setF2(val);
+      },
+      async () => {
+        const val = getRandomAndSplice(gaston);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(O2Ref);
+        setO2(val);
+      },
+
+
+      async () => {
+        const val = getRandomAndSplice(roma);
+        setTestTeam(val);
+        await delay(300);
+        await animateTeamTo(C2Ref);
+        setC2(val);
+      },
+      async () => {
+        await delay(300);
+        setBaraja(false);
+      }
+
     ];
-    for (let step of steps) {
-      step();
-      await delay(1500); // ajustá el tiempo que quieras (en milisegundos)
+
+
+    for (const step of steps) {
+      await step();
+      await delay(200);
     }
   }
 
 
-
   return (
     <>
-      <div className={`${styles.containerAll} font-geistRegular overflow-hidden`}>
+      <div className={`${styles.containerAll} relative font-geistRegular overflow-hidden`}>
+
         <div className={`${baraja ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          } absolute w-[580px] h-[500px] bg-white left-1/2 -translate-x-1/2 z-40 top-[50%] transition-all duration-150 -translate-y-1/2 p-2`}>
-          <div className="grid grid-cols-4 gap-4 w-full">
-            {
-              [...franco, ...gaston, ...marcos, ...roma].map((team: Team, index: number) => {
-                return (
-                  <div
-                    key={index}
-                    className="size-full flex justify-center items-center">
-                    <Image
-                      src={team.escudo}
-                      alt={team.nombre}
-                      width={46}
-                      height={46}
-                    />
-                  </div>
-                )
-              })
-            }
-          </div>
+          } absolute bg-white left-1/2 -translate-x-1/2 z-40 top-[30%] transition-all duration-150 -translate-y-1/2 size-[140px] flex justify-center items-center rounded-sm`}>
+          {
+            TestTeam.nombre !== ""
+              ?
+              <div
+                className="p-2 z-20"
+                ref={teamRef}>
+                <Image
+                  src={TestTeam.escudo}
+                  alt={TestTeam.nombre}
+                  width={46}
+                  height={46}
+                />
+              </div>
+              : null
+          }
         </div>
+
         <div className={styles.containerBraket}>
-          <div style={{ marginTop: "7px" }} onClick={() => setA3(A1)}>
+          <div style={{ marginTop: "7px" }} ref={A1Ref} onClick={() => setA3(A1)}>
             {A1?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={A1?.escudo} alt={A1?.nombre} />
             )}
             <span className={styles.number_rank}>{A1 && A1.rank}</span>
           </div>
-          <div onClick={() => setA3(A2)}>
+          <div ref={A2Ref} onClick={() => setA3(A2)}>
             {A2?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={A2?.escudo} alt={A2?.nombre} />
             )}
             <span className={styles.number_rank}>{A2 && A2.rank}</span>
           </div>
-          <div onClick={() => setB3(B1)}>
+          <div ref={B1Ref} onClick={() => setB3(B1)}>
             {B1?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={B1?.escudo} alt={B1?.nombre} />
             )}
             <span className={styles.number_rank}>{B1 && B1.rank}</span>
           </div>
 
-          <div onClick={() => setB3(B2)}>
+          <div ref={B2Ref} onClick={() => setB3(B2)}>
             {B2?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={B2?.escudo} alt={B2?.nombre} />
             )}
             <span className={styles.number_rank}>{B2 && B2.rank}</span>
           </div>
 
-          <div onClick={() => setC3(C1)}>
+          <div ref={C1Ref} onClick={() => setC3(C1)}>
             {C1?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={C1?.escudo} alt={C1?.nombre} />
             )}
             <span className={styles.number_rank}>{C1 && C1.rank}</span>
           </div>
 
-          <div onClick={() => setC3(C2)}>
+          <div ref={C2Ref} onClick={() => setC3(C2)}>
             {C2?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={C2?.escudo} alt={C2?.nombre} />
             )}
             <span className={styles.number_rank}>{C2 && C2.rank}</span>
           </div>
 
-          <div onClick={() => setD3(D1)}>
+          <div ref={D1Ref} onClick={() => setD3(D1)}>
             {D1?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={D1?.escudo} alt={D1?.nombre} />
             )}
             <span className={styles.number_rank}>{D1 && D1.rank}</span>
           </div>
 
-          <div onClick={() => setD3(D2)} style={{ marginBottom: "18px" }}>
+          <div ref={D2Ref} onClick={() => setD3(D2)} style={{ marginBottom: "18px" }}>
             {D2?.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={D2?.escudo} alt={D2?.nombre} />
             )}
             <span className={styles.number_rank}>{D2 && D2.rank}</span>
           </div>
 
-          <div onClick={() => setE3(E1)}>
+          <div ref={E1Ref} onClick={() => setE3(E1)}>
             {E1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={E1?.escudo} alt={E1?.nombre} />
             )}
             <span className={styles.number_rank}>{E1 && E1.rank}</span>
           </div>
 
-          <div onClick={() => setE3(E2)}>
+          <div ref={E2Ref} onClick={() => setE3(E2)}>
             {E2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={E2?.escudo} alt={E2?.nombre} />
             )}
             <span className={styles.number_rank}>{E2 && E2.rank}</span>
           </div>
 
-          <div onClick={() => setF3(F1)}>
+          <div ref={F1Ref} onClick={() => setF3(F1)}>
             {F1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={F1?.escudo} alt={F1?.nombre} />
             )}
             <span className={styles.number_rank}>{F1 && F1.rank}</span>
           </div>
 
-          <div onClick={() => setF3(F2)}>
+          <div ref={F2Ref} onClick={() => setF3(F2)}>
             {F2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={F2?.escudo} alt={F2?.nombre} />
             )}
             <span className={styles.number_rank}>{F2 && F2.rank}</span>
           </div>
 
-          <div onClick={() => setG3(G1)}>
+          <div ref={G1Ref} onClick={() => setG3(G1)}>
             {G1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={G1?.escudo} alt={G1?.nombre} />
             )}
             <span className={styles.number_rank}>{G1 && G1.rank}</span>
           </div>
 
-          <div onClick={() => setG3(G2)}>
+          <div ref={G2Ref} onClick={() => setG3(G2)}>
             {G2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={G2?.escudo} alt={G2?.nombre} />
             )}
             <span className={styles.number_rank}>{G2 && G2.rank}</span>
           </div>
 
-          <div onClick={() => setH3(H1)}>
+          <div ref={H1Ref} onClick={() => setH3(H1)}>
             {H1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={H1?.escudo} alt={H1?.nombre} />
             )}
             <span className={styles.number_rank}>{H1 && H1.rank}</span>
           </div>
 
-          <div onClick={() => setH3(H2)}>
+          <div ref={H2Ref} onClick={() => setH3(H2)}>
             {H2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={H2?.escudo} alt={H2?.nombre} />
             )}
@@ -719,97 +856,97 @@ const Draft = () => {
           </div>
         </div>
         <div className={styles.containerBraket}>
-          <div onClick={() => setI3(I1)} style={{ marginTop: "7px" }}>
+          <div ref={I1Ref} onClick={() => setI3(I1)} style={{ marginTop: "7px" }}>
             {I1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={I1?.escudo} alt={I1?.nombre} />
             )}
             <span className={styles.number_rank}>{I1 && I1.rank}</span>
           </div>
-          <div onClick={() => setI3(I2)}>
+          <div ref={I2Ref} onClick={() => setI3(I2)}>
             {I2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={I2?.escudo} alt={I2?.nombre} />
             )}
             <span className={styles.number_rank}>{I2 && I2.rank}</span>
           </div>
-          <div onClick={() => setJ3(J1)}>
+          <div ref={J1Ref} onClick={() => setJ3(J1)}>
             {J1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={J1?.escudo} alt={J1?.nombre} />
             )}
             <span className={styles.number_rank}>{J1 && J1.rank}</span>
           </div>
-          <div onClick={() => setJ3(J2)}>
+          <div ref={J2Ref} onClick={() => setJ3(J2)}>
             {J2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={J2?.escudo} alt={J2?.nombre} />
             )}
             <span className={styles.number_rank}>{J2 && J2.rank}</span>
           </div>
-          <div onClick={() => setK3(K1)}>
+          <div ref={K1Ref} onClick={() => setK3(K1)}>
             {K1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={K1?.escudo} alt={K1?.nombre} />
             )}
             <span className={styles.number_rank}>{K1 && K1.rank}</span>
           </div>
-          <div onClick={() => setK3(K2)}>
+          <div ref={K2Ref} onClick={() => setK3(K2)}>
             {K2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={K2?.escudo} alt={K2?.nombre} />
             )}
             <span className={styles.number_rank}>{K2 && K2.rank}</span>
           </div>
-          <div onClick={() => setL3(L1)}>
+          <div ref={L1Ref} onClick={() => setL3(L1)}>
             {L1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={L1?.escudo} alt={L1?.nombre} />
             )}
             <span className={styles.number_rank}>{L1 && L1.rank}</span>
           </div>
-          <div onClick={() => setL3(L2)} style={{ marginBottom: "18px" }}>
+          <div ref={L2Ref} onClick={() => setL3(L2)} style={{ marginBottom: "18px" }}>
             {L2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={L2?.escudo} alt={L2?.nombre} />
             )}
             <span className={styles.number_rank}>{L2 && L2.rank}</span>
           </div>
-          <div onClick={() => setM3(M1)}>
+          <div ref={M1Ref} onClick={() => setM3(M1)}>
             {M1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={M1?.escudo} alt={M1?.nombre} />
             )}
             <span className={styles.number_rank}>{M1 && M1.rank}</span>
           </div>
-          <div onClick={() => setM3(M2)}>
+          <div ref={M2Ref} onClick={() => setM3(M2)}>
             {M2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={M2?.escudo} alt={M2?.nombre} />
             )}
             <span className={styles.number_rank}>{M2 && M2.rank}</span>
           </div>
-          <div onClick={() => setN3(N1)}>
+          <div ref={N1Ref} onClick={() => setN3(N1)}>
             {N1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={N1?.escudo} alt={N1?.nombre} />
             )}
             <span className={styles.number_rank}>{N1 && N1.rank}</span>
           </div>
-          <div onClick={() => setN3(N2)}>
+          <div ref={N2Ref} onClick={() => setN3(N2)}>
             {N2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={N2?.escudo} alt={N2?.nombre} />
             )}
             <span className={styles.number_rank}>{N2 && N2.rank}</span>
           </div>
-          <div onClick={() => setO3(O1)}>
+          <div ref={O1Ref} onClick={() => setO3(O1)}>
             {O1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={O1?.escudo} alt={O1?.nombre} />
             )}
             <span className={styles.number_rank}>{O1 && O1.rank}</span>
           </div>
-          <div onClick={() => setO3(O2)}>
+          <div ref={O2Ref} onClick={() => setO3(O2)}>
             {O2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={O2?.escudo} alt={O2?.nombre} />
             )}
             <span className={styles.number_rank}>{O2 && O2.rank}</span>
           </div>
-          <div onClick={() => setP3(P1)}>
+          <div ref={P1Ref} onClick={() => setP3(P1)}>
             {P1.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={P1?.escudo} alt={P1?.nombre} />
             )}
             <span className={styles.number_rank}>{P1 && P1.rank}</span>
           </div>
-          <div onClick={() => setP3(P2)}>
+          <div ref={P2Ref} onClick={() => setP3(P2)}>
             {P2.nombre && (
               <Image width={43} height={43} placeholder="blur" blurDataURL="/images/blur-block.png" loading="lazy" src={P2?.escudo} alt={P2?.nombre} />
             )}
