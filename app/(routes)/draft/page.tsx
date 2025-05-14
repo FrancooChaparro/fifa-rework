@@ -156,18 +156,8 @@ const Draft = () => {
         setTestTeam(val);
       },
       () => {
-        const val = getRandomAndSplice(marcos);
-        setA2(val);
-        setTestTeam(val);
-      },
-      () => {
         const val = getRandomAndSplice(franco);
         setB1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setB2(val);
         setTestTeam(val);
       },
       () => {
@@ -176,28 +166,13 @@ const Draft = () => {
         setTestTeam(val);
       },
       () => {
-        const val = getRandomAndSplice(roma);
-        setC2(val);
-        setTestTeam(val);
-      },
-      () => {
         const val = getRandomAndSplice(marcos);
         setD1(val);
         setTestTeam(val);
       },
       () => {
-        const val = getRandomAndSplice(franco);
-        setD2(val);
-        setTestTeam(val);
-      },
-      () => {
         const val = getRandomAndSplice(marcos);
         setE1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setE2(val);
         setTestTeam(val);
       },
       () => {
@@ -207,17 +182,7 @@ const Draft = () => {
       },
       () => {
         const val = getRandomAndSplice(franco);
-        setF2(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(franco);
         setG1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setG2(val);
         setTestTeam(val);
       },
       () => {
@@ -226,18 +191,8 @@ const Draft = () => {
         setTestTeam(val);
       },
       () => {
-        const val = getRandomAndSplice(roma);
-        setH2(val);
-        setTestTeam(val);
-      },
-      () => {
         const val = getRandomAndSplice(franco);
         setI1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(marcos);
-        setI2(val);
         setTestTeam(val);
       },
       () => {
@@ -247,17 +202,7 @@ const Draft = () => {
       },
       () => {
         const val = getRandomAndSplice(roma);
-        setJ2(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(roma);
         setK1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(franco);
-        setK2(val);
         setTestTeam(val);
       },
       () => {
@@ -266,18 +211,8 @@ const Draft = () => {
         setTestTeam(val);
       },
       () => {
-        const val = getRandomAndSplice(gaston);
-        setL2(val);
-        setTestTeam(val);
-      },
-      () => {
         const val = getRandomAndSplice(roma);
         setM1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(marcos);
-        setM2(val);
         setTestTeam(val);
       },
       () => {
@@ -286,18 +221,8 @@ const Draft = () => {
         setTestTeam(val);
       },
       () => {
-        const val = getRandomAndSplice(gaston);
-        setN2(val);
-        setTestTeam(val);
-      },
-      () => {
         const val = getRandomAndSplice(roma);
         setO1(val);
-        setTestTeam(val);
-      },
-      () => {
-        const val = getRandomAndSplice(gaston);
-        setO2(val);
         setTestTeam(val);
       },
       () => {
@@ -305,6 +230,85 @@ const Draft = () => {
         setP1(val);
         setTestTeam(val);
       },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setA2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setB2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setC2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setD2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setE2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setF2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setG2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setH2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setI2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(roma);
+        setJ2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(franco);
+        setK2(val);
+        setTestTeam(val);
+      },
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setL2(val);
+        setTestTeam(val);
+      },
+
+      () => {
+        const val = getRandomAndSplice(marcos);
+        setM2(val);
+        setTestTeam(val);
+      },
+
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setN2(val);
+        setTestTeam(val);
+      },
+
+      () => {
+        const val = getRandomAndSplice(gaston);
+        setO2(val);
+        setTestTeam(val);
+      },
+
       () => {
         const val = getRandomAndSplice(franco);
         setP2(val);
@@ -314,7 +318,7 @@ const Draft = () => {
     ];
     for (let step of steps) {
       step();
-      await delay(1200); // ajustá el tiempo que quieras (en milisegundos)
+      await delay(1500); // ajustá el tiempo que quieras (en milisegundos)
     }
   }
 
@@ -819,3 +823,177 @@ const Draft = () => {
 };
 
 export default Draft;
+
+// async function lolo() {
+//   if (franco.length === 0 && gaston.length === 0 && marcos.length === 0 && roma.length === 0)
+//     return;
+//   setBaraja(true);
+
+//   const steps = [
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setA1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setA2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setB1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setB2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setC1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setC2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setD1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setD2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setE1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setE2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setF1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setF2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setG1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setG2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setH1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setH2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setI1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setI2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setJ1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setJ2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setK1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setK2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setL1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setL2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setM1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setM2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setN1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setN2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(roma);
+//       setO1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(gaston);
+//       setO2(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(marcos);
+//       setP1(val);
+//       setTestTeam(val);
+//     },
+//     () => {
+//       const val = getRandomAndSplice(franco);
+//       setP2(val);
+//       setTestTeam(val);
+//     },
+//     () => setBaraja(false)
+//   ];
+//   for (let step of steps) {
+//     step();
+//     await delay(1200); // ajustá el tiempo que quieras (en milisegundos)
+//   }
+// }
