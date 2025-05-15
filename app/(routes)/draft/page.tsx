@@ -216,7 +216,6 @@ const Draft = () => {
         await animateTeamTo(G1Ref);
         setG1(val);
       },
-
       async () => {
         const val = getRandomAndSplice(gaston);
         setTestTeam(val);
@@ -231,7 +230,6 @@ const Draft = () => {
         await animateTeamTo(K1Ref);
         setK1(val);
       },
-
       async () => {
         const val = getRandomAndSplice(marcos);
         setTestTeam(val);
@@ -246,7 +244,6 @@ const Draft = () => {
         await animateTeamTo(F1Ref);
         setF1(val);
       },
-
       async () => {
         const val = getRandomAndSplice(roma);
         setTestTeam(val);
@@ -261,7 +258,6 @@ const Draft = () => {
         await animateTeamTo(H1Ref);
         setH1(val);
       },
-
       async () => {
         const val = getRandomAndSplice(gaston);
         setTestTeam(val);
@@ -269,7 +265,6 @@ const Draft = () => {
         await animateTeamTo(J1Ref);
         setJ1(val);
       },
-
       async () => {
         const val = getRandomAndSplice(franco);
         setTestTeam(val);
@@ -277,7 +272,6 @@ const Draft = () => {
         await animateTeamTo(B1Ref);
         setB1(val);
       },
-
       async () => {
         const val = getRandomAndSplice(roma);
         setTestTeam(val);
@@ -285,7 +279,6 @@ const Draft = () => {
         await animateTeamTo(H2Ref);
         setH2(val);
       },
-
       async () => {
         const val = getRandomAndSplice(marcos);
         setTestTeam(val);
@@ -370,8 +363,6 @@ const Draft = () => {
         await animateTeamTo(K2Ref);
         setK2(val);
       },
-
-
       async () => {
         const val = getRandomAndSplice(franco);
         setTestTeam(val);
@@ -386,8 +377,6 @@ const Draft = () => {
         await animateTeamTo(E2Ref);
         setE2(val);
       },
-
-
       async () => {
         const val = getRandomAndSplice(marcos);
         setTestTeam(val);
@@ -409,7 +398,6 @@ const Draft = () => {
         await animateTeamTo(J2Ref);
         setJ2(val);
       },
-
       async () => {
         const val = getRandomAndSplice(marcos);
         setTestTeam(val);
@@ -438,8 +426,6 @@ const Draft = () => {
         await animateTeamTo(O2Ref);
         setO2(val);
       },
-
-
       async () => {
         const val = getRandomAndSplice(roma);
         setTestTeam(val);
@@ -451,12 +437,11 @@ const Draft = () => {
         await delay(300);
         setBaraja(false);
       }
-
     ];
-
 
     for (const step of steps) {
       await step();
+      setTestTeam(base);
       await delay(200);
     }
   }
@@ -481,7 +466,16 @@ const Draft = () => {
                   height={46}
                 />
               </div>
-              : null
+              : <div
+                className="p-2 z-20"
+                ref={teamRef}>
+                <Image
+                  src={"/images/blur-block.png"}
+                  alt={"blur"}
+                  width={46}
+                  height={46}
+                />
+              </div>
           }
         </div>
 
