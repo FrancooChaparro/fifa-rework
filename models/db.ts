@@ -1,6 +1,22 @@
 export const History = {
   Games: [
     {
+      Player1: "G",
+      Player2: "M",
+      isLegit: "L",
+      LocalEscudo: "/images/ManchesterUnited.png",
+      LocalNombre: "MANCHESTER UNITED",
+      LocalSlug: "MAN UNITED",
+      LocalResultado: 1,
+      LocalPenalty: 3,
+      VisitanteEscudo: "/images/Chelsea.png",
+      VisitanteNombre: "CHELSEA",
+      VisitanteSlug: "CHELSEA",
+      VisitanteResultado: 1,
+      VisitantePenalty: 4,
+      Penalty: true,
+    },
+    {
       Player1: "F",
       Player2: "G",
       isLegit: "L",
@@ -8,7 +24,7 @@ export const History = {
       LocalNombre: "PARIS SAINT GERMAIN",
       LocalSlug: "PSG",
       LocalResultado: 1,
-      VisitanteEscudo:  "/images/newcastlee.png",
+      VisitanteEscudo: "/images/newcastlee.png",
       VisitanteNombre: "NEWCASTLE",
       VisitanteSlug: "NEWCASTLE",
       VisitanteResultado: 0,
@@ -36,7 +52,7 @@ export const History = {
       LocalNombre: "SPORTING LISBOA",
       LocalSlug: "SPORTING",
       LocalResultado: 0,
-      VisitanteEscudo:  "/images/ParisSaintGermain.png",
+      VisitanteEscudo: "/images/ParisSaintGermain.png",
       VisitanteNombre: "PARIS SAINT GERMAIN",
       VisitanteSlug: "PSG",
       VisitanteResultado: 2,
@@ -50,7 +66,7 @@ export const History = {
       LocalNombre: "CHELSEA",
       LocalSlug: "CHELSEA",
       LocalResultado: 3,
-      VisitanteEscudo:  "/images/Ajax.png",
+      VisitanteEscudo: "/images/Ajax.png",
       VisitanteNombre: "AJAX",
       VisitanteSlug: "AJAX",
       VisitanteResultado: 1,
@@ -864,7 +880,7 @@ export const stats_marcos = {
   info: {
     photo_profile: "/images/Marcos.webp",
     background_profile: "/images/chelsea_cover.webp",
-    rank_profile: "8",
+    rank_profile: "5",
     shield_profile: "/images/Chelsea.png",
     background_blur_profile: "/images/che_blur.webp",
     photo_blur_profile: "/images/shield_blur.webp",
@@ -876,10 +892,27 @@ export const stats_marcos = {
   },
   finals: {
     matchs: [
-      {
+       {
         isLegit: "L",
         Player1: "M",
         Player2: "G",
+        Result: "Victory",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 1,
+        LocalPenalty: 4,
+        VisitanteEscudo: "/images/ManchesterUnited.png",
+        VisitanteNombre: "MANCHESTER UNITED",
+        VisitanteSlug: "MAN UNITED",
+        VisitanteResultado: 1,
+        VisitantePenalty: 3,
+        Penalty: true,
+      },
+      {
+        isLegit: "L",
+        Player1: "M",
+        Player2: "R",
         Result: "Victory",
         LocalEscudo: "/images/Chelsea.png",
         LocalNombre: "CHELSEA",
@@ -1396,9 +1429,9 @@ export const stats_marcos = {
       },
     ],
     stats: {
-      win: 11,
+      win: 12,
       loss: 23,
-      porcent: "33%",
+      porcent: "34%",
     },
   },
   clasics: {
@@ -1662,12 +1695,29 @@ export const stats_marcos = {
         VisitanteResultado: 2,
         Penalty: false,
       },
+      {
+        Player1: "M",
+        Player2: "G",
+        Result: "Victory",
+        Raiz: "Semifinal",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 1,
+        LocalPenalty: 4,
+        VisitanteEscudo: "/images/juventud.png",
+        VisitanteNombre: "JUVENTUS",
+        VisitanteSlug: "JUVENTUS",
+        VisitanteResultado: 1,
+        VisitantePenalty: 2,
+        Penalty: true,
+      },
     ],
     stats: {
-      win: 5,
+      win: 6,
       loss: 11,
       draw: 1,
-      porcent: "29%",
+      porcent: "33%",
     },
   },
 };
@@ -1690,7 +1740,7 @@ export const stats_franco = {
     matchs: [
       {
         isLegit: "L",
-        Player1: "F", 
+        Player1: "F",
         Player2: "G",
         Result: "Victory",
         LocalEscudo: "/images/ParisSaintGermain.png",
@@ -1705,7 +1755,7 @@ export const stats_franco = {
       },
       {
         isLegit: "L",
-        Player1: "F", 
+        Player1: "F",
         Player2: "G",
         Result: "Victory",
         LocalEscudo: "/images/AstonVilla.png",
@@ -1720,7 +1770,7 @@ export const stats_franco = {
       },
       {
         isLegit: "L",
-        Player1: "F", 
+        Player1: "F",
         Player2: "R",
         Result: "Victory",
         LocalEscudo: "/images/ParisSaintGermain.png",
@@ -1735,7 +1785,7 @@ export const stats_franco = {
       },
       {
         isLegit: "L",
-        Player1: "F", 
+        Player1: "F",
         Player2: "G",
         Result: "Defeat",
         LocalEscudo: "/images/ParisSaintGermain.png",
@@ -2189,7 +2239,7 @@ export const stats_franco = {
         VisitanteResultado: 2,
         Penalty: false,
       },
-  
+
       {
         isLegit: "L",
         Player1: "F",
@@ -2541,9 +2591,26 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
+        {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "M",
+        Result: "Defeat",
+        LocalEscudo: "/images/ManchesterUnited.png",
+        LocalNombre: "MANCHESTER UNITED",
+        LocalSlug: "MAN UNITED",
+        LocalResultado: 1,
+        LocalPenalty: 3,
+        VisitanteEscudo: "/images/Chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 1,
+        VisitantePenalty: 4,
+        Penalty: true,
+      },
       {
         isLegit: "L",
-        Player1: "G", 
+        Player1: "G",
         Player2: "F",
         Result: "Defeat",
         LocalEscudo: "/images/newcastlee.png",
@@ -2558,7 +2625,7 @@ export const stats_gaston = {
       },
       {
         isLegit: "L",
-        Player1: "G", 
+        Player1: "G",
         Player2: "F",
         Result: "Defeat",
         LocalEscudo: "/images/juventud.png",
@@ -3045,12 +3112,29 @@ export const stats_gaston = {
     ],
     stats: {
       win: 19,
-      loss: 15,
+      loss: 16,
       porcent: "54%",
     },
   },
   clasics: {
     matchs: [
+       {
+        Player1: "G",
+        Player2: "M",
+        Result: "Defeat",
+        Raiz: "Semifinal",
+        LocalEscudo: "/images/juventud.png",
+        LocalNombre: "JUVENTUS",
+        LocalSlug: "JUVENTUS",
+        LocalResultado: 1,
+        LocalPenalty: 2,
+        VisitanteEscudo: "/images/Chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 1,
+        VisitantePenalty: 4,
+        Penalty: true,
+      },
       {
         Player1: "G",
         Player2: "M",
@@ -3334,8 +3418,8 @@ export const stats_gaston = {
     ],
     stats: {
       win: 8,
-      loss: 8,
-      porcent: "50%",
+      loss: 9,
+      porcent: "47%",
     },
   },
 };
@@ -3355,7 +3439,7 @@ export const stats_roma = {
     trophies: 0,
   },
   finals: {
-    matchs: [ 
+    matchs: [
       {
         isLegit: "L",
         Player1: "R",
@@ -3465,7 +3549,7 @@ export const data = {
       alt: "poster_image",
       title: "¡CHELSEA CAMPEON!",
       description:
-        "SE LE DIO, Chelsea es el nuevo campeon, vence la final por penales a Dortmund, de la mano de Marcos Aquino.",
+        "CHELSEA LOGRA SUMAR LA CUARTA CORONA! El equipo de Marcos Aquino escala al RANK 5",
     },
   ],
   new: [
@@ -3585,16 +3669,23 @@ export const data = {
       titles: 4,
     },
     {
+      logo: "/images/Chelsea.png",
+      cover: "/images/chelsea_cover.webp",
+      rank: 5,
+      name: "CHELSEA",
+      titles: 4,
+    },
+    {
       logo: "/images/ManchesterUnited.png",
       cover: "/images/manchesterunited_cover.webp",
-      rank: 5,
+      rank: 6,
       name: "MANCHESTER UNITED",
       titles: 3,
     },
     {
       logo: "/images/RealMadrid.png",
       cover: "/images/realmadrid_cover.webp",
-      rank: 6,
+      rank: 7,
       name: "REAL MADRID",
       titles: 3,
     },
@@ -3602,15 +3693,8 @@ export const data = {
     {
       logo: "/images/Barcelona.webp",
       cover: "/images/barcelona_cover.webp",
-      rank: 7,
-      name: "BARCELONA",
-      titles: 3,
-    },
-    {
-      logo: "/images/Chelsea.png",
-      cover: "/images/chelsea_cover.webp",
       rank: 8,
-      name: "CHELSEA",
+      name: "BARCELONA",
       titles: 3,
     },
     {
