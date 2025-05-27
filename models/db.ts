@@ -2,6 +2,34 @@ export const History = {
   Games: [
     {
       Player1: "G",
+      Player2: "F",
+      isLegit: "L",
+      LocalEscudo: "/images/BorussiaDortmund.png",
+      LocalNombre: "BORUSSIA DORTMUND",
+      LocalSlug: "DORTMUND",
+      LocalResultado: 0,
+      VisitanteEscudo: "/images/RealMadrid.png",
+      VisitanteNombre: "REAL MADRID",
+      VisitanteSlug: "REAL MADRID",
+      VisitanteResultado: 2,
+      Penalty: false,
+    },
+    {
+      Player1: "G",
+      Player2: "M",
+      isLegit: "L",
+      LocalEscudo: "/images/Liverpool.png",
+      LocalNombre: "LIVERPOOL",
+      LocalSlug: "LIVERPOOL",
+      LocalResultado: 2,
+      VisitanteEscudo: "/images/Benfica.png",
+      VisitanteNombre: "BENFICA",
+      VisitanteSlug: "BENFICA",
+      VisitanteResultado: 0,
+      Penalty: false,
+    },
+    {
+      Player1: "G",
       Player2: "M",
       isLegit: "L",
       LocalEscudo: "/images/ManchesterUnited.png",
@@ -888,11 +916,26 @@ export const stats_marcos = {
     surname_profile: "Aquino",
     team_id: "FC",
     team_profile: "CHELSEA",
-    trophies: 3,
+    trophies: 4,
   },
   finals: {
     matchs: [
-       {
+      {
+        isLegit: "L",
+        Player1: "M",
+        Player2: "G",
+        Result: "Defeat",
+        LocalEscudo: "/images/Benfica.png",
+        LocalNombre: "BENFICA",
+        LocalSlug: "BENFICA",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/Liverpool.png",
+        VisitanteNombre: "LIVERPOOL",
+        VisitanteSlug: "LIVERPOOL",
+        VisitanteResultado: 2,
+        Penalty: false,
+      },
+      {
         isLegit: "L",
         Player1: "M",
         Player2: "G",
@@ -1430,8 +1473,8 @@ export const stats_marcos = {
     ],
     stats: {
       win: 12,
-      loss: 23,
-      porcent: "34%",
+      loss: 24,
+      porcent: "33%",
     },
   },
   clasics: {
@@ -1738,6 +1781,21 @@ export const stats_franco = {
   },
   finals: {
     matchs: [
+      {
+        isLegit: "L",
+        Player1: "F",
+        Player2: "G",
+        Result: "Victory",
+        LocalEscudo: "/images/RealMadrid.png",
+        LocalNombre: "REAL MADRID",
+        LocalSlug: "REAL MADRID",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/BorussiaDortmund.png",
+        VisitanteNombre: "BORUSSIA DORTMUND",
+        VisitanteSlug: "DORTMUND",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "F",
@@ -2304,9 +2362,9 @@ export const stats_franco = {
       },
     ],
     stats: {
-      win: 25,
+      win: 26,
       loss: 13,
-      porcent: "68%",
+      porcent: "69%",
     },
   },
   clasics: {
@@ -2591,7 +2649,37 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
-        {
+      {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "F",
+        Result: "Defeat",
+        LocalEscudo: "/images/BorussiaDortmund.png",
+        LocalNombre: "BORUSSIA DORTMUND",
+        LocalSlug: "DORTMUND",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/RealMadrid.png",
+        VisitanteNombre: "REAL MADRID",
+        VisitanteSlug: "REAL MADRID",
+        VisitanteResultado: 2,
+        Penalty: false,
+      },
+      {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "M",
+        Result: "Victory",
+        LocalEscudo: "/images/Liverpool.png",
+        LocalNombre: "LIVERPOOL",
+        LocalSlug: "LIVERPOOL",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/Benfica.png",
+        VisitanteNombre: "BENFICA",
+        VisitanteSlug: "BENFICA",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
+      {
         isLegit: "L",
         Player1: "G",
         Player2: "M",
@@ -3111,14 +3199,14 @@ export const stats_gaston = {
       },
     ],
     stats: {
-      win: 19,
-      loss: 16,
-      porcent: "54%",
+      win: 20,
+      loss: 17,
+      porcent: "55%",
     },
   },
   clasics: {
     matchs: [
-       {
+      {
         Player1: "G",
         Player2: "M",
         Result: "Defeat",
@@ -3676,20 +3764,19 @@ export const data = {
       titles: 4,
     },
     {
+      logo: "/images/RealMadrid.png",
+      cover: "/images/realmadrid_cover.webp",
+      rank: 6,
+      name: "REAL MADRID",
+      titles: 4,
+    },
+    {
       logo: "/images/ManchesterUnited.png",
       cover: "/images/manchesterunited_cover.webp",
-      rank: 6,
+      rank: 7,
       name: "MANCHESTER UNITED",
       titles: 3,
     },
-    {
-      logo: "/images/RealMadrid.png",
-      cover: "/images/realmadrid_cover.webp",
-      rank: 7,
-      name: "REAL MADRID",
-      titles: 3,
-    },
-
     {
       logo: "/images/Barcelona.webp",
       cover: "/images/barcelona_cover.webp",
@@ -3697,48 +3784,49 @@ export const data = {
       name: "BARCELONA",
       titles: 3,
     },
+       {
+      logo: "/images/Liverpool.png",
+      cover: "/images/liverpool_cover.webp",
+      rank: 9,
+      name: "LIVERPOOL",
+      titles: 3,
+    },
     {
       logo: "/images/Tottenham.png",
       cover: "/images/tottenham_cover.webp",
-      rank: 9,
+      rank: 10,
       name: "TOTTENHAM",
       titles: 2,
     },
     {
       logo: "/images/newcastlee.png",
       cover: "/images/newcastle_cover.webp",
-      rank: 10,
+      rank: 11,
       name: "NEWCASTLE",
       titles: 2,
     },
     {
       logo: "/images/oporto.png",
       cover: "/images/porto_cover.webp",
-      rank: 11,
+      rank: 12,
       name: "PORTO",
       titles: 2,
     },
     {
       logo: "/images/sevillaa.png",
       cover: "/images/sevilla_cover.avif",
-      rank: 12,
+      rank: 13,
       name: "SEVILLA",
       titles: 2,
     },
     {
       logo: "/images/arsenalfc.png",
       cover: "/images/arsenal_cover.webp",
-      rank: 13,
+      rank: 14,
       name: "ARSENAL",
       titles: 2,
     },
-    {
-      logo: "/images/Liverpool.png",
-      cover: "/images/liverpool_cover.webp",
-      rank: 14,
-      name: "LIVERPOOL",
-      titles: 2,
-    },
+ 
     {
       logo: "/images/AstonVilla.png",
       cover: "/images/astonvilla_cover.webp",
