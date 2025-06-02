@@ -102,9 +102,13 @@ const TopFive = ({
   rank: Rank[];
   scrollToDetails?: () => void;
 }) => {
+  const { isShort } = useMyContext();
+
+  if (isShort) return null;
+
   return (
     <>
-      <div className="hidden md:flex flex-col gap-3 w-full md:w-[345px] p-4 mt-8 z-20 bg-bgGames/95 text-sm text-[#ffffff]">
+      <div className={`hidden md:flex flex-col gap-3 w-full md:w-[345px] p-4 mt-8 z-20 bg-bgGames/95 text-sm text-[#ffffff] ${isShort ? "hidden" : ""}`}>
         <div className="w-full flex justify-center">
           <p>TOP FIVE</p>
         </div>

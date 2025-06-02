@@ -6,7 +6,7 @@ import { News } from " @/components/News/News";
 import { Ranking } from " @/components/Ranking/Ranking";
 
 export default function Home() {
-  
+
   const scrollToDetails = () => {
     const target = document.getElementById("target-component");
     if (target) {

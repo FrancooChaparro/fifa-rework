@@ -32,6 +32,8 @@ export type MyContextType = {
 
   isOpenAdd: boolean;
   setisOpenAdd: Dispatch<SetStateAction<boolean>>;
+  isShort: boolean;
+  setIsShort: Dispatch<SetStateAction<boolean>>;
 };
 
 const MyContext = createContext<MyContextType | undefined>(undefined);

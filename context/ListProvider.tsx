@@ -35,6 +35,7 @@ const MyProvider: FC<MyProviderProps> = ({ children }) => {
 //     setLastMarketItem(market.length > 0 ? market[market.length - 1] : []);
 // }, [market]);
 
+ const [isShort, setIsShort] = useState(false);
 
   const [FrancoBombo, setFrancoBombo] = useState<any>([]);
   const [MarcosBombo, setMarcosBombo] = useState<any>([]);
@@ -142,6 +143,7 @@ const seterGame = (param: boolean, index: Match) => {
     setMarket,
 
     isOpenAdd, setisOpenAdd,
+    isShort, setIsShort
 
     // lastMarketItem, setLastMarketItem
   };
