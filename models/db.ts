@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "F",
+      Player2: "G",
+      isLegit: "L",
+      LocalEscudo: "/images/ParisSaintGermain.png",
+      LocalNombre: "PARIS SAINT GERMAIN",
+      LocalSlug: "PSG",
+      LocalResultado: 0,
+      VisitanteEscudo: "/images/ManchesterUnited.png",
+      VisitanteNombre: "MANCHESTER UNITED",
+      VisitanteSlug: "MAN UNITED",
+      VisitanteResultado: 2,
+      Penalty: false,
+    },
+    {
       Player1: "G",
       Player2: "F",
       isLegit: "L",
@@ -1781,6 +1795,21 @@ export const stats_franco = {
   },
   finals: {
     matchs: [
+     {
+        isLegit: "L",
+        Player1: "F",
+        Player2: "G",
+        Result: "Defeat",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/ManchesterUnited.png",
+        VisitanteNombre: "MANCHESTER UNITED",
+        VisitanteSlug: "MAN UNITED",
+        VisitanteResultado: 2,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "F",
@@ -2363,12 +2392,27 @@ export const stats_franco = {
     ],
     stats: {
       win: 26,
-      loss: 13,
-      porcent: "69%",
+      loss: 14,
+      porcent: "68%",
     },
   },
   clasics: {
     matchs: [
+      {
+        Player1: "F",
+        Player2: "R",
+        Result: "Victory",
+        Raiz: "Octavos de Final",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/AtleticoMadrid.png",
+        VisitanteNombre: "ATLETICO MADRID",
+        VisitanteSlug: "ATL MADRID",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
       {
         Player1: "F",
         Player2: "R",
@@ -2626,8 +2670,8 @@ export const stats_franco = {
       },
     ],
     stats: {
-      porcent: "82%",
-      win: 13,
+      porcent: "83%",
+      win: 14,
       loss: 3,
     },
   },
@@ -2649,6 +2693,21 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
+       {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "F",
+        Result: "Victory",
+        LocalEscudo: "/images/ManchesterUnited.png",
+        LocalNombre: "MANCHESTER UNITED",
+        LocalSlug: "MAN UNITED",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "G",
@@ -3199,9 +3258,9 @@ export const stats_gaston = {
       },
     ],
     stats: {
-      win: 20,
+      win: 21,
       loss: 17,
-      porcent: "55%",
+      porcent: "57%",
     },
   },
   clasics: {
@@ -3571,6 +3630,23 @@ export const stats_roma = {
         Player1: "R",
         Player2: "F",
         Result: "Defeat",
+        Raiz: "Octavos de Final",
+        LocalEscudo: "/images/AtleticoMadrid.png",
+        LocalNombre: "ATLETICO MADRID",
+        LocalSlug: "ATL MADRID",
+        LocalResultado: 0,
+        LocalPenalty: 0,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 2,
+        VisitantePenalty: 0,
+        Penalty: false,
+      },
+      {
+        Player1: "R",
+        Player2: "F",
+        Result: "Defeat",
         Raiz: "SemiFinal",
         LocalEscudo: "/images/AtleticoMadrid.png",
         LocalNombre: "ATLETICO MADRID",
@@ -3775,7 +3851,7 @@ export const data = {
       cover: "/images/manchesterunited_cover.webp",
       rank: 7,
       name: "MANCHESTER UNITED",
-      titles: 3,
+      titles: 4,
     },
     {
       logo: "/images/Barcelona.webp",
