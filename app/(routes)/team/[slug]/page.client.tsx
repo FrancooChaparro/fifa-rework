@@ -240,7 +240,11 @@ export default function UserPage({ data } : { data: any}) {
                             <DrawIcon />
                           ) : (
                             <div className="bg-indigo-600 text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">
-                              L
+                              {
+                              game.isLegit === "L" 
+                               ? <div className="bg-indigo-600 text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">L</div>
+                               : <div className="bg-gray-600 text-[11px] text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">NO</div>
+                              }
                             </div>
                           )}
                         </div>

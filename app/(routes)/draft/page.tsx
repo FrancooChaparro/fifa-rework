@@ -708,6 +708,7 @@ const Draft = () => {
             <div className={`${styles.top} gap-4`}>
               <button
                 onClick={() => lolo()}
+                disabled={baraja}
                 className="w-[160px] h-[60px] relative bg-bgPrimary text-white rounded-[8px] font-geistRegular overflow-hidden group"
               >
                 <span className="relative z-10">DRAFT</span>
