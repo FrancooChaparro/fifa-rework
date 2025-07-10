@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "R",
+      Player2: "F",
+      isLegit: "NO",
+      LocalEscudo: "/images/RealMadrid.png",
+      LocalNombre: "REAL MADRID",
+      LocalSlug: "REAL MADRID",
+      LocalResultado: 1,
+      VisitanteEscudo: "/images/Liverpool.png",
+      VisitanteNombre: "LIVERPOOL",
+      VisitanteSlug: "LIVERPOOL",
+      VisitanteResultado: 4,
+      Penalty: false,
+    },
+    {
       Player1: "F",
       Player2: "G",
       isLegit: "L",
@@ -1795,7 +1809,22 @@ export const stats_franco = {
   },
   finals: {
     matchs: [
-     {
+    {
+        isLegit: "NO",
+        Player1: "F",
+        Player2: "R",
+        Result: "Victory",
+        LocalEscudo: "/images/Liverpool.png",
+        LocalNombre: "LIVERPOOL",
+        LocalSlug: "LIVERPOOL",
+        LocalResultado: 4,
+        VisitanteEscudo: "/images/RealMadrid.png",
+        VisitanteNombre: "REAL MADRID",
+        VisitanteSlug: "REAL MADRID",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
         isLegit: "L",
         Player1: "F",
         Player2: "G",
@@ -2391,9 +2420,9 @@ export const stats_franco = {
       },
     ],
     stats: {
-      win: 26,
+      win: 27,
       loss: 14,
-      porcent: "68%",
+      porcent: "69%",
     },
   },
   clasics: {
@@ -2693,7 +2722,7 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
-       {
+      {
         isLegit: "L",
         Player1: "G",
         Player2: "F",
@@ -3587,6 +3616,21 @@ export const stats_roma = {
   },
   finals: {
     matchs: [
+    {
+        isLegit: "NO",
+        Player1: "R",
+        Player2: "F",
+        Result: "Defeat",
+        LocalEscudo: "/images/RealMadrid.png",
+        LocalNombre: "REAL MADRID",
+        LocalSlug: "REAL MADRID",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/Liverpool.png",
+        VisitanteNombre: "LIVERPOOL",
+        VisitanteSlug: "LIVERPOOL",
+        VisitanteResultado: 4,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "R",
@@ -3620,7 +3664,7 @@ export const stats_roma = {
     ],
     stats: {
       win: 0,
-      loss: 2,
+      loss: 3,
       porcent: "0%",
     },
   },
@@ -3853,18 +3897,18 @@ export const data = {
       name: "MANCHESTER UNITED",
       titles: 4,
     },
+     {
+      logo: "/images/Liverpool.png",
+      cover: "/images/liverpool_cover.webp",
+      rank: 8,
+      name: "LIVERPOOL",
+      titles: 4,
+    },
     {
       logo: "/images/Barcelona.webp",
       cover: "/images/barcelona_cover.webp",
-      rank: 8,
-      name: "BARCELONA",
-      titles: 3,
-    },
-       {
-      logo: "/images/Liverpool.png",
-      cover: "/images/liverpool_cover.webp",
       rank: 9,
-      name: "LIVERPOOL",
+      name: "BARCELONA",
       titles: 3,
     },
     {
@@ -3902,7 +3946,7 @@ export const data = {
       name: "ARSENAL",
       titles: 2,
     },
- 
+
     {
       logo: "/images/AstonVilla.png",
       cover: "/images/astonvilla_cover.webp",
@@ -4210,5 +4254,3 @@ export const top20 = {
     },
   ],
 };
-
-
