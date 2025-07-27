@@ -19,6 +19,7 @@ export const CarruselTeam: React.FC = () => {
     setScrollLeft(carrusel.scrollLeft);
   };
 
+  
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging) return;
     const carrusel = carruselRef.current;
