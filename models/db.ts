@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "G",
+      Player2: "F",
+      isLegit: "L",
+      LocalEscudo: "/images/ASRoma.png",
+      LocalNombre: "ROMA",
+      LocalSlug: "ROMA",
+      LocalResultado: 0,
+      VisitanteEscudo: "/images/ParisSaintGermain.png",
+      VisitanteNombre: "PARIS SAINT GERMAIN",
+      VisitanteSlug: "PSG",
+      VisitanteResultado: 4,
+      Penalty: false,
+    },
+    {
       Player1: "R",
       Player2: "F",
       isLegit: "NO",
@@ -1627,6 +1641,21 @@ export const stats_marcos = {
         VisitanteResultado: 0,
         Penalty: false,
       },
+        {
+        Player1: "M",
+        Player2: "F",
+        Result: "Defeat",
+        Raiz: "16Avos de final",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 5,
+        Penalty: false,
+      },
       {
         Player1: "M",
         Player2: "G",
@@ -1786,9 +1815,9 @@ export const stats_marcos = {
     ],
     stats: {
       win: 6,
-      loss: 11,
+      loss: 12,
       draw: 1,
-      porcent: "33%",
+      porcent: "31%",
     },
   },
 };
@@ -1805,11 +1834,26 @@ export const stats_franco = {
     surname_profile: "Chaparro",
     team_id: "PARIS",
     team_profile: "SAINT GERMAIN",
-    trophies: 8,
+    trophies: 9,
   },
   finals: {
     matchs: [
-    {
+      {
+        isLegit: "L",
+        Player1: "F",
+        Player2: "G",
+        Result: "Victory",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 4,
+        VisitanteEscudo: "/images/ASRoma.png",
+        VisitanteNombre: "ROMA",
+        VisitanteSlug: "ROMA",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
+      {
         isLegit: "NO",
         Player1: "F",
         Player2: "R",
@@ -2420,9 +2464,9 @@ export const stats_franco = {
       },
     ],
     stats: {
-      win: 27,
+      win: 28,
       loss: 14,
-      porcent: "69%",
+      porcent: "70%",
     },
   },
   clasics: {
@@ -2577,6 +2621,21 @@ export const stats_franco = {
         VisitanteResultado: 1,
         Penalty: false,
       },
+       {
+        Player1: "F",
+        Player2: "M",
+        Result: "Victory",
+        Raiz: "16Avos de final",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 5,
+        VisitanteEscudo: "/images/Chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
       {
         Player1: "F",
         Player2: "G",
@@ -2699,8 +2758,8 @@ export const stats_franco = {
       },
     ],
     stats: {
-      porcent: "83%",
-      win: 14,
+      porcent: "86%",
+      win: 15,
       loss: 3,
     },
   },
@@ -2722,6 +2781,21 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
+       {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "F",
+        Result: "Defeat",
+        LocalEscudo: "/images/ASRoma.png",
+        LocalNombre: "ROMA",
+        LocalSlug: "ROMA",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 4,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "G",
@@ -3288,8 +3362,8 @@ export const stats_gaston = {
     ],
     stats: {
       win: 21,
-      loss: 17,
-      porcent: "57%",
+      loss: 18,
+      porcent: "55%",
     },
   },
   clasics: {
@@ -3616,7 +3690,7 @@ export const stats_roma = {
   },
   finals: {
     matchs: [
-    {
+      {
         isLegit: "NO",
         Player1: "R",
         Player2: "F",
@@ -3853,7 +3927,7 @@ export const data = {
       cover: "/images/psg_cover.webp",
       rank: 1,
       name: "PARIS SAINT GERMAIN",
-      titles: 8,
+      titles: 9,
     },
     {
       logo: "/images/BayernMunchen.png",
@@ -3897,7 +3971,7 @@ export const data = {
       name: "MANCHESTER UNITED",
       titles: 4,
     },
-     {
+    {
       logo: "/images/Liverpool.png",
       cover: "/images/liverpool_cover.webp",
       rank: 8,

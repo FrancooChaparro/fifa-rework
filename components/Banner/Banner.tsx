@@ -15,7 +15,7 @@ const Banner = () => {
   return (
     <div ref={ref} className='w-full h-screen relative bg-no-repeat bg-center overflow-hidden'>
       <Image
-        src={"https://w2sgtlkzlwjdaso7.public.blob.vercel-storage.com/pogbaaa-1GvUq7zOXIEczk40psDNkNvoETOFjS.avif"}
+        src={"/images/pogbaaa.webp"}
         alt={"alt"}
         fill
         loading="lazy"
