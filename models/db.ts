@@ -3820,7 +3820,7 @@ export const data = {
       description: "Galatasaray desciende a la LIGA B.",
     },
     {
-      image: "/images/inter_new.avif",
+      image: "/images/inter_new.webp",
       alt: "poster_image",
       title: "INTER BICAMPEON",
       description:
