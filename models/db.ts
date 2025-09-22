@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "F",
+      Player2: "M",
+      isLegit: "L",
+      LocalEscudo: "/images/Internazionale.png",
+      LocalNombre: "INTER",
+      LocalSlug: "INTER",
+      LocalResultado: 1,
+      VisitanteEscudo: "/images/Chelsea.png",
+      VisitanteNombre: "CHELSEA",
+      VisitanteSlug: "CHELSEA",
+      VisitanteResultado: 0,
+      Penalty: false,
+    },
+    {
       Player1: "G",
       Player2: "F",
       isLegit: "L",
@@ -965,6 +979,21 @@ export const stats_marcos = {
       {
         isLegit: "L",
         Player1: "M",
+        Player2: "F",
+        Result: "Defeat",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/Internazionale.png",
+        VisitanteNombre: "INTER",
+        VisitanteSlug: "INTER",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
+        isLegit: "L",
+        Player1: "M",
         Player2: "G",
         Result: "Defeat",
         LocalEscudo: "/images/Benfica.png",
@@ -1515,8 +1544,8 @@ export const stats_marcos = {
     ],
     stats: {
       win: 12,
-      loss: 24,
-      porcent: "33%",
+      loss: 25,
+      porcent: "31%",
     },
   },
   clasics: {
@@ -1641,7 +1670,7 @@ export const stats_marcos = {
         VisitanteResultado: 0,
         Penalty: false,
       },
-        {
+      {
         Player1: "M",
         Player2: "F",
         Result: "Defeat",
@@ -1838,6 +1867,21 @@ export const stats_franco = {
   },
   finals: {
     matchs: [
+      {
+        isLegit: "L",
+        Player1: "F",
+        Player2: "M",
+        Result: "Victory",
+        LocalEscudo: "/images/Internazionale.png",
+        LocalNombre: "INTER",
+        LocalSlug: "INTER",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/Chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "F",
@@ -2464,9 +2508,9 @@ export const stats_franco = {
       },
     ],
     stats: {
-      win: 28,
+      win: 29,
       loss: 14,
-      porcent: "70%",
+      porcent: "72%",
     },
   },
   clasics: {
@@ -2621,7 +2665,7 @@ export const stats_franco = {
         VisitanteResultado: 1,
         Penalty: false,
       },
-       {
+      {
         Player1: "F",
         Player2: "M",
         Result: "Victory",
@@ -2756,11 +2800,24 @@ export const stats_franco = {
         VisitantePenalty: 4,
         Penalty: true,
       },
+      {
+        Result: "Defeat",
+        Raiz: "16Avos",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/juventud.png",
+        VisitanteNombre: "JUVENTUS",
+        VisitanteSlug: "JUVENTUS",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
     ],
     stats: {
-      porcent: "86%",
+      porcent: "80%",
       win: 15,
-      loss: 3,
+      loss: 4,
     },
   },
 };
@@ -2781,7 +2838,7 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
-       {
+      {
         isLegit: "L",
         Player1: "G",
         Player2: "F",
@@ -3650,6 +3707,21 @@ export const stats_gaston = {
       },
       {
         Player1: "G",
+        Player2: "F",
+        Result: "Victory",
+        Raiz: "16Avos de Final",
+        LocalEscudo: "/images/juventud.png",
+        LocalNombre: "JUVENTUS",
+        LocalSlug: "JUVENTUS",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
+      {
+        Player1: "G",
         Player2: "R",
         Result: "Victory",
         Raiz: "16Avos de Final",
@@ -3667,9 +3739,9 @@ export const stats_gaston = {
       },
     ],
     stats: {
-      win: 8,
+      win: 9,
       loss: 9,
-      porcent: "47%",
+      porcent: "50%",
     },
   },
 };
@@ -3937,17 +4009,17 @@ export const data = {
       titles: 5,
     },
     {
-      logo: "/images/mancity.png",
-      cover: "/images/manchestercity_cover.webp",
-      rank: 3,
-      name: "MANCHESTER CITY",
-      titles: 4,
-    },
-    {
       logo: "/images/Internazionale.png",
       cover: "/images/inter_cover.webp",
-      rank: 4,
+      rank: 3,
       name: "INTER",
+      titles: 5,
+    },
+    {
+      logo: "/images/mancity.png",
+      cover: "/images/manchestercity_cover.webp",
+      rank: 4,
+      name: "MANCHESTER CITY",
       titles: 4,
     },
     {

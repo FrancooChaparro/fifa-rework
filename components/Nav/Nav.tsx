@@ -237,9 +237,10 @@ export default function Nav() {
             Last Champions
           </p>
           <div className="w-full flex justify-center pb-8">
+            {/* lastchamp */}
             <Image
-              src={"/images/AstonVilla.png"}
-              alt="atl"
+              src={"/images/Internazionale.png"}
+              alt="inter"
               width={55}
               height={55}
             />
