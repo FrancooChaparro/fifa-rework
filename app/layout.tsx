@@ -8,6 +8,7 @@ import { Post } from " @/components/Post/Post";
 import { GameDetails } from " @/components/GameDetails/GameDetails";
 import ContactMeComponent from " @/components/Footer/Footer";
 import AuthProvider from " @/context/SessionProvider";
+import Particles from " @/components/particles";
 
 const inter = Inter({ subsets: ["latin"] });
 

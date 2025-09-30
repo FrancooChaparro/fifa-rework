@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useMyContext } from "../../../context/ListContext";
 import { useRouter } from "next/navigation";
 import { Team } from " @/types/types";
+import Particles from " @/components/particles";
 
 export default function PoolPage() {
   const { Franco, FrancoBombo, Marcos, MarcosBombo, Gaston, GastonBombo, Roma, RomaBombo } = useMyContext();
@@ -270,7 +271,14 @@ export default function PoolPage() {
   );
 
   return (
-    <div className="min-h-screen w-full pt-[60px] bg-bgGames  pb-[80px] overflow-hidden">
+    <div className="min-h-screen w-full pt-[60px] bg-[#18181a] pb-[80px] overflow-hidden">
+          <Particles
+              quantityDesktop={350}
+              quantityMobile={100}
+              ease={80}
+              color={"#F7FF9B"}
+              refresh
+            />
       <div className="w-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-5 px-5 py-10">
         {renderPool("Oficial Pool", bombo8T)}
         {renderPool("Pool 1", equiposT)}
@@ -283,12 +291,12 @@ export default function PoolPage() {
       </div>
 
       <div className="w-full flex justify-center gap-6 py-5 text-lg text-white">
-        <button onClick={() => alear()} className="w-[160px] h-[60px] relative bg-bgPrimary text-white rounded-[8px] font-geistRegular overflow-hidden group">
+        <button onClick={() => alear()} className="w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group">
           <span className="relative z-10" >START</span>
           <div className="absolute inset-0 bg-hoverCard translate-x-[-100%] transition-transform duration-80 ease-out group-hover:translate-x-0"></div>
         </button>
 
-        <button onClick={() => router.push("/draft")} className="w-[160px] h-[60px] relative bg-bgPrimary text-white rounded-[8px] font-geistRegular overflow-hidden group">
+        <button onClick={() => router.push("/draft")} className="w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group">
           <span className="relative z-10">DRAFT</span>
           <div className="absolute inset-0 bg-hoverCard translate-x-[-100%] transition-transform duration-80 ease-out group-hover:translate-x-0"></div>
         </button>
@@ -296,7 +304,7 @@ export default function PoolPage() {
 
       <div className=" px-5 lg:px-5 xl:px-14 w-full select-none pt-10">
         <div className="grid grid-cols-4 gap-3 md:gap-10 xl:gap-20 font-geistRegular">
-          <div className="w-full rounded-[4px] bg-bgPrimary">
+          <div className="w-full rounded-[4px] bg-[#313133]">
             <div className="flex flex-col lg:flex-row justify-between">
               <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">Franco</p>
               <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{FrancoRank ? FrancoRank : ""}</p>
@@ -307,7 +315,7 @@ export default function PoolPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-bgPrimary group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
+                    className="bg-[#313133] group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px]  text-sm text-[#ffffff] "
                   >
                     {/* Sección izquierda */}
                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">
@@ -337,7 +345,7 @@ export default function PoolPage() {
                 );
               })}
           </div>
-          <div className="w-full rounded-[4px] bg-bgPrimary">
+          <div className="w-full rounded-[4px] bg-[#313133]">
             <div className="flex flex-col lg:flex-row justify-between">
               <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Gaston</p>
               <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{GastonRank ? GastonRank : ""}</p>
@@ -349,7 +357,7 @@ export default function PoolPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-bgPrimary group w-full  hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
+                    className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard hover:rounded-[4px] bg-[#313133] text-sm text-[#ffffff] "
                   >
                     {/* Sección izquierda */}
                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">
@@ -377,7 +385,7 @@ export default function PoolPage() {
                 );
               })}
           </div>
-          <div className="w-full rounded-[4px] bg-bgPrimary">
+          <div className="w-full rounded-[4px] bg-[#313133]">
             <div className="flex flex-col lg:flex-row justify-between">
               <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Marcos</p>
               <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{MarcosRank ? MarcosRank : ""}</p>
@@ -389,7 +397,7 @@ export default function PoolPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-bgPrimary group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
+                    className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-[#313133] text-sm text-[#ffffff] "
                   >
                     {/* Sección izquierda */}
                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">
@@ -416,7 +424,7 @@ export default function PoolPage() {
                 );
               })}
           </div>
-          <div className="w-full rounded-[4px] bg-bgPrimary">
+          <div className="w-full rounded-[4px] bg-[#313133]">
             <div className="flex flex-col lg:flex-row justify-between">
               <p className="font-geistBold text-[15px] lg:text-[22px] text-fontTitle px-4 py-3 lg:px-6 lg:py-6">Rodrigo</p>
               <p className="text-center lg:text-start font-geistBold text-[15px] lg:text-[22px] text-fontTitle  px-4 py-3 lg:px-6 lg:py-6">{RomaRank ? RomaRank : ""}</p>
@@ -428,7 +436,7 @@ export default function PoolPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-bgPrimary group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-bgGames/95 text-sm text-[#ffffff] "
+                    className="group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-[12px] hover:bg-hoverCard  hover:rounded-[4px] bg-[#313133] text-sm text-[#ffffff] "
                   >
                     {/* Sección izquierda */}
                     <div className="flex gap-[2px] md:gap-3 items-center hover:cursor-pointer">

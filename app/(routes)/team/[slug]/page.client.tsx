@@ -5,6 +5,7 @@ import { News } from " @/components/News/News";
 import { CheckIcon, DefeatIcon, DrawIcon } from " @/Icons/Icons";
 import { Match } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
+import Particles from " @/components/particles";
 
 export default function UserPage({ data } : { data: any}) {
   const { seterGame } = useMyContext();
@@ -15,6 +16,7 @@ export default function UserPage({ data } : { data: any}) {
       <div
         className={`relative w-full min-h-screen h-screen px-5 sm:px-10 lg:px-20 pt-16 flex flex-col gap-7 overflow-hidden`}
       >
+    
         {/* BACKGROUND */}
         <div className="absolute top-0 left-0 z-[-10] h-full w-full">
           <Image
@@ -168,14 +170,21 @@ export default function UserPage({ data } : { data: any}) {
             })}
         </div>
       </div>
-      <div className="bg-bgGames relative w-full  px-4 sm:px-10 lg:px-20 py-10 flex flex-col justify-center items-center lg:items-start lg:flex-row lg:justify-between gap-4 ">
+      <div className="bg-[#18181a] relative w-full  px-4 sm:px-10 lg:px-20 py-10 flex flex-col justify-center items-center lg:items-start lg:flex-row lg:justify-between gap-4 ">
         {/* FIANLS */}
+          <Particles
+        quantityDesktop={350}
+        quantityMobile={100}
+        ease={80}
+        color={"#F7FF9B"}
+        refresh
+      />
         <div className="flex flex-col gap-1 w-full md:w-[600px] lg:w-[480px] xl:w-[620px] 2xl:w-[680px] mt-2 ">
           <div className="text-[22px] md:text-[38px] lg:text-[22px] xl:text-[38px] font-geistBold w-full text-white flex justify-between items-center tracking-[0.10px] border-b-[1px] border-white pb-2 mb-2">
             <p>Finals</p>
           </div>
           <div>
-            <div className="relative flex flex-col gap-3 text-sm text-[#ffffff] bg-bgGames/95 w-full">
+            <div className="relative flex flex-col gap-3 text-sm text-[#ffffff] bg-transparent w-full">
               {data.finales &&
                 data.finales.map((game: Match, index: number) => {
                   return (
@@ -201,7 +210,7 @@ export default function UserPage({ data } : { data: any}) {
                       </div>
 
                       {/* Resultado */}
-                      <div className="bg-bgPrimary relative text-[14px] xs:text-lg py-2 px-3 rounded-md flex justify-center items-center font-bold w-[100px]  group-hover:bg-hoverCard">
+                      <div className="bg-[#313133] relative text-[14px] xs:text-lg py-2 px-3 rounded-md flex justify-center items-center font-bold w-[100px]  group-hover:bg-hoverCard">
                         {game.Penalty ? (
                           <>
                             <span className="opacity-100 group-hover:opacity-0 transition-opacity duration-200 cursor-pointer">
@@ -330,8 +339,7 @@ export default function UserPage({ data } : { data: any}) {
           </div>
         </div>
       </div>
-
-      <div className="bg-bgGames w-full px-4 sm:px-10 lg:px-20 pb-20 flex justify-center">
+      <div className="bg-[#18181a] w-full px-4 sm:px-10 lg:px-20 pb-20 flex justify-center">
         <div className="w-full md:w-[600px] lg:w-full">
           <p className="text-[22px] md:text-[38px] lg:text-[22px] xl:text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-6">
             Noticias

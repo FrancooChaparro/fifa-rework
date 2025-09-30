@@ -8,7 +8,7 @@ const rankTeams = data.ranking
 
 export const Ranking = () => {
   return (
-    <div className="px-4 lg:px-20 w-full select-none">
+    <div className="px-4 lg:px-20 w-full select-none ">
       <p className="text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-4">
         Rankings
       </p>
@@ -18,7 +18,7 @@ export const Ranking = () => {
             return (
               <Link  key={index} href={`/team/${team.name}`} prefetch={false}>
                 <div
-                  className="group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-bgGames/95  text-[#ffffff] "
+                  className="group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-[#313133]  text-[#ffffff] "
                 >
                   {/* Sección izquierda */}
                   <div className="flex gap-3 items-center hover:cursor-pointer">
@@ -59,7 +59,7 @@ export const Ranking = () => {
             return (
               <Link  key={`${index} - a`} href={`/team/${team.name}`} prefetch={false}>
                 <div
-                  className="group w-full  hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard hover:rounded-[4px] xm:text-sm bg-bgGames/95  text-[#ffffff] "
+                  className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard hover:rounded-[4px] xm:text-sm bg-[#313133] text-[#ffffff] "
                 >
                   {/* Sección izquierda */}
                   <div className="flex gap-3 items-center hover:cursor-pointer">
@@ -101,7 +101,7 @@ export const Ranking = () => {
             return (
               <Link key={`${index} - b`} href={`/team/${team.name}`} prefetch={false}>
                 <div
-                  className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-bgGames/95 text-[#ffffff] "
+                  className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-[#313133] text-[#ffffff] "
                 >
                   {/* Sección izquierda */}
                   <div className="flex gap-3 items-center hover:cursor-pointer">

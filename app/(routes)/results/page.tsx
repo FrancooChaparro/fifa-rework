@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { History } from " @/models/db";
 import { FilterIcon } from " @/Icons/Icons";
 import { useMyContext } from " @/context/ListContext";
+import Particles from " @/components/particles";
 
 const Games = History.Games;
 const bestMatchs = History.best_match;
@@ -145,7 +146,14 @@ export default function ResultsPage() {
   }, [filtersMobile]);
 
   return (
-    <div className="w-full relative flex flex-col min-h-screen bg-bgGames text-white pt-[90px]  px-10">
+    <div className="w-full relative flex flex-col min-h-screen bg-[#18181a] text-white pt-[90px] px-10">
+      <Particles
+        quantityDesktop={350}
+        quantityMobile={100}
+        ease={80}
+        color={"#F7FF9B"}
+        refresh
+      />
       <p className="text-[34px] lg:text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-4">
         Finals & PopularMatchs
       </p>
@@ -205,8 +213,8 @@ export default function ResultsPage() {
         >
           <div
             className={`grid ${isActive
-                ? "grid-cols-2 lg:grid-cols-3 xm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 2.5xl:grid-cols-7"
-                : "grid-cols-2 lg:grid-cols-4 xm:grid-cols-5  xl:grid-cols-5 2xl:grid-cols-7 2.5xl:grid-cols-8"
+              ? "grid-cols-2 lg:grid-cols-3 xm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 2.5xl:grid-cols-7"
+              : "grid-cols-2 lg:grid-cols-4 xm:grid-cols-5  xl:grid-cols-5 2xl:grid-cols-7 2.5xl:grid-cols-8"
               } gap-6 py-2  `}
           >
             {games && games.length ? (
@@ -223,8 +231,8 @@ export default function ResultsPage() {
       {/*MENU FILTROS MOBILE*/}
       <div
         className={`absolute top-0 left-0 w-full h-screen max-h-screen overflow-scroll overflow-y-scroll bg-bgGames z-30 px-7 transition-all duration-300 ${filtersMobile
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
           }`}
       >
         <div className="w-full flex justify-end items-center h-[60px]">
@@ -573,7 +581,7 @@ const MatchCard: React.FC<{ match: Match }> = ({ match }) => {
         </div>
       </div>
 
-      <div className="absolute top-[0] left-[0] size-full flex gap-2 justify-center items-center  bg-bgGames z-10 opacity-0 hover:opacity-100 ">
+      <div className="absolute top-[0] left-[0] size-full flex gap-2 justify-center items-center  bg-[#18181a] z-10 opacity-0 hover:opacity-100 ">
         <div className="absolute top-2 left-0 w-full flex z-10 justify-center ">
           {match.isLegit === "L" ? (
             <span className="text-white font-geistRegular text-[13px] bg-indigo-700 border-sm py-[2px] px-1 rounded-lg">

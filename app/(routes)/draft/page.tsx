@@ -5,6 +5,7 @@ import { useMyContext } from " @/context/ListContext";
 import Image from "next/image";
 import { Team } from " @/types/types";
 import gsap from "gsap";
+import Particles from " @/components/particles";
 
 const Draft = () => {
   const { FrancoCopy, MarcosCopy, GastonCopy, RomaCopy, FrancoBombo } =
@@ -450,7 +451,13 @@ const Draft = () => {
   return (
     <>
       <div className={`${styles.containerAll} relative font-geistRegular overflow-hidden`}>
-
+    <Particles
+              quantityDesktop={350}
+              quantityMobile={100}
+              ease={80}
+              color={"#F7FF9B"}
+              refresh
+            />
         <div className={`${baraja ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           } absolute bg-white left-1/2 -translate-x-1/2 z-40 top-[30%] transition-all duration-150 -translate-y-1/2 size-[140px] flex justify-center items-center rounded-sm`}>
           {
@@ -709,7 +716,7 @@ const Draft = () => {
               <button
                 onClick={() => lolo()}
                 disabled={baraja}
-                className="w-[160px] h-[60px] relative bg-bgPrimary text-white rounded-[8px] font-geistRegular overflow-hidden group"
+                className="w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
               >
                 <span className="relative z-10">DRAFT</span>
                 <div className="absolute inset-0 bg-hoverCard translate-x-[-100%] transition-transform duration-80 ease-out group-hover:translate-x-0"></div>
@@ -717,7 +724,7 @@ const Draft = () => {
 
               <button
                 onClick={() => clean()}
-                className="w-[160px] h-[60px] relative bg-bgPrimary text-white rounded-[8px] font-geistRegular overflow-hidden group"
+                className="w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
               >
                 <span className="relative z-10">CLEAN</span>
                 <div className="absolute inset-0 bg-hoverCard translate-x-[-100%] transition-transform duration-80 ease-out group-hover:translate-x-0"></div>

@@ -3,6 +3,7 @@ import Banner from " @/components/Banner/Banner";
 import TopPlayers from " @/components/Banner/Test";
 import ContainerGames from " @/components/ContainerGames/ContainerGames";
 import { News } from " @/components/News/News";
+import Particles from " @/components/particles";
 import { Ranking } from " @/components/Ranking/Ranking";
 
 export default function Home() {
@@ -15,7 +16,14 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen bg-bgPrimary text-fontTitle overflow-hidden ">
+    <main className="relative min-h-screen bg-[#18181a] text-fontTitle overflow-hidden ">
+      <Particles
+        quantityDesktop={350}
+        quantityMobile={100}
+        ease={80}
+        color={"#F7FF9B"}
+        refresh
+      />
       <Banner />
       <div className="hidden md:block md:absolute md:top-[64px] md:right-[5px]">
         <ContainerGames scrollToDetails={scrollToDetails} />

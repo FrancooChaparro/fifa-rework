@@ -30,6 +30,7 @@ export default async function ServerPage({
           sumarGolesVisitanteClasics,
         }}
       />
+          
     </Suspense>
   );
 }
