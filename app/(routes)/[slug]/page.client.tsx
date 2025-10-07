@@ -36,8 +36,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
             src={playerStats.info.background_profile || "/images/zlatan.webp"}
             alt="atl"
             fill
-            placeholder="blur"
-            blurDataURL="/images/blur.webp"
+            // placeholder="blur"
             priority
             quality={100}
             className="h-full w-full object-cover object-center"

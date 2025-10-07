@@ -931,6 +931,20 @@ export const History = {
   torneos: [
     {
       Player1: "F",
+      Player2: "R",
+      Result: "L",
+      LocalEscudo: "/images/ParisSaintGermain.png",
+      LocalNombre: "PARIS SAINT GERMAIN",
+      LocalSlug: "PSG",
+      LocalResultado: 1,
+      VisitanteEscudo: "/images/BorussiaDortmund.png",
+      VisitanteNombre: "BORUSSIA DORTMUND",
+      VisitanteSlug: "DORTMUND",
+      VisitanteResultado: 0,
+      Penalty: false,
+    },
+    {
+      Player1: "F",
       Player2: "M",
       Result: "L",
       LocalEscudo: "/images/ParisSaintGermain.png",
@@ -1552,6 +1566,21 @@ export const stats_marcos = {
     matchs: [
       {
         Player1: "M",
+        Player2: "R",
+        Result: "Victory",
+        Raiz: "Fase de Grupos",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/AtleticoMadrid.png",
+        VisitanteNombre: "ATLETICO MADRID",
+        VisitanteSlug: "ATLETICO MADRID",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
+      {
+        Player1: "M",
         Player2: "F",
         Result: "Defeat",
         Raiz: "Octavos de final",
@@ -1843,10 +1872,10 @@ export const stats_marcos = {
       },
     ],
     stats: {
-      win: 6,
+      win: 7,
       loss: 12,
       draw: 1,
-      porcent: "31%",
+      porcent: "34%",
     },
   },
 };
@@ -3818,6 +3847,23 @@ export const stats_roma = {
     matchs: [
       {
         Player1: "R",
+        Player2: "M",
+        Result: "Defeat",
+        Raiz: "Fase de Grupos",
+        LocalEscudo: "/images/AtleticoMadrid.png",
+        LocalNombre: "ATLETICO MADRID",
+        LocalSlug: "ATL MADRID",
+        LocalResultado: 0,
+        LocalPenalty: 0,
+        VisitanteEscudo: "/images/Chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 2,
+        VisitantePenalty: 0,
+        Penalty: false,
+      },
+      {
+        Player1: "R",
         Player2: "F",
         Result: "Defeat",
         Raiz: "Octavos de Final",
@@ -3870,7 +3916,7 @@ export const stats_roma = {
     ],
     stats: {
       win: 0,
-      loss: 2,
+      loss: 4,
       porcent: "0%",
     },
   },
