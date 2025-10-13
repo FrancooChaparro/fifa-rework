@@ -4228,7 +4228,7 @@ export const data = {
       rank: 16,
       name: "JUVENTUS",
       titles: 2,
-      increase: 1,
+      increase: 2,
     },
     {
       logo: "/images/SSC_Neapel.svg.png",
