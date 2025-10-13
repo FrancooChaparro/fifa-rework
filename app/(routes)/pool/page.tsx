@@ -180,32 +180,32 @@ export default function PoolPage() {
       indiceAleatorio = Math.floor(Math.random() * equipos.length);
       // Extraer el equipo aleatorio y agregarlo al arreglo correspondiente
       equipoAleatorio = equipos.splice(indiceAleatorio, 1)[0];
-      marcos.push(equipoAleatorio);
+      marcos.push({ player: '/images/Marcos.webp',...equipoAleatorio});
 
       // Repetir el proceso para los otros arreglos
       indiceAleatorio = Math.floor(Math.random() * equipos.length);
       equipoAleatorio = equipos.splice(indiceAleatorio, 1)[0];
-      gaston.push(equipoAleatorio);
+      gaston.push({ player: '/images/flakk.webp',...equipoAleatorio});
 
       indiceAleatorio = Math.floor(Math.random() * equipos.length);
       equipoAleatorio = equipos.splice(indiceAleatorio, 1)[0];
-      franco.push(equipoAleatorio);
+      franco.push({ player: '/images/Franco.webp',...equipoAleatorio});
 
 
       indiceAleatorio = Math.floor(Math.random() * equipos.length);
       equipoAleatorio = equipos.splice(indiceAleatorio, 1)[0];
-      roma.push(equipoAleatorio);
+      roma.push({ player: '/images/roma.jpg',...equipoAleatorio});
     }
 
     if (bombo7.length === 0) {
 
-      marcos = [{ nombre: "Chelsea", escudo: "/images/Chelsea.png", rank: "#10" }, ...marcos];
+      marcos = [{ player: '/images/Marcos.webp', nombre: "Chelsea", escudo: "/images/Chelsea.png", rank: "#10" }, ...marcos];
 
-      gaston = [{ nombre: "Juventus", escudo: "/images/juventud.png", rank: "#17" }, ...gaston];
+      gaston = [{ player: '/images/flakk.webp', nombre: "Juventus", escudo: "/images/juventud.png", rank: "#17" }, ...gaston];
 
-      franco = [{ nombre: "Paris Saint Germain", escudo: "/images/ParisSaintGermain.png", rank: "#1" }, ...franco];
+      franco = [{ player: '/images/Franco.webp', nombre: "Paris Saint Germain", escudo: "/images/ParisSaintGermain.png", rank: "#1" }, ...franco];
 
-      roma = [{ nombre: "Atletico Madrid", escudo: "/images/AtleticoMadrid.png", rank: "#27" }, ...roma];
+      roma = [{ player: '/images/roma.jpg', nombre: "Atletico Madrid", escudo: "/images/AtleticoMadrid.png", rank: "#27" }, ...roma];
 
 
       Franco(franco)

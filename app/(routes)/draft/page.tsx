@@ -8,7 +8,7 @@ import gsap from "gsap";
 import Particles from " @/components/particles";
 
 const Draft = () => {
-  const { FrancoCopy, MarcosCopy, GastonCopy, RomaCopy, FrancoBombo } =
+  const { FrancoCopy, MarcosCopy, GastonCopy, RomaCopy } =
     useMyContext();
 
   let franco: Team[] | [] = FrancoCopy;
@@ -190,8 +190,8 @@ const Draft = () => {
     await gsap.to(team, {
       x: deltaX,
       y: deltaY,
-      rotation: 360,
-      duration: 2,
+      rotation: 0,
+      duration: 1,
       ease: "power2.inOut",
     });
 
