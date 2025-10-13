@@ -83,6 +83,8 @@ export interface Rank {
   name: string;
   rank: number;
   titles: number;
+  increase?: number;
+  decrease?: number;
 }
 export interface Data {
   poster: Array<poster>;

@@ -16,7 +16,7 @@ export const Ranking = () => {
         <div className="w-full rounded-[4px]">
           {rankTeams.slice(0, 10).map((team: Rank, index: number) => {
             return (
-              <Link  key={index} href={`/team/${team.name}`} prefetch={false}>
+              <Link key={index} href={`/team/${team.name}`} prefetch={false}>
                 <div
                   className="group hover:cursor-pointer w-full flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard  hover:rounded-[4px] xm:text-sm bg-[#313133]  text-[#ffffff] "
                 >
@@ -40,6 +40,17 @@ export const Ranking = () => {
                     <span className="group-hover:text-hoverText ">
                       {team.name}
                     </span>
+                      {
+                      team.increase
+                        ? <div className="flex gap-1 justify-center items-center">
+                          <span className="increase text-lg"></span><span className="text-[11px]">{team.increase}</span>
+                        </div>
+                        : team.decrease 
+                        ? <div className="flex gap-1 justify-center items-center">
+                          <span className="decrease text-lg"></span><span className="text-[11px]">{team.decrease}</span>
+                        </div>
+                        : null
+                    }
                   </div>
 
                   {/* Títulos */}
@@ -57,14 +68,14 @@ export const Ranking = () => {
           {" "}
           {rankTeams.slice(10, 20).map((team: Rank, index: number) => {
             return (
-              <Link  key={`${index} - a`} href={`/team/${team.name}`} prefetch={false}>
+              <Link key={`${index} - a`} href={`/team/${team.name}`} prefetch={false}>
                 <div
                   className="group w-full hover:cursor-pointer flex h-[70px] justify-between gap-2 px-2 font-bold text-sm active:bg-hoverCard lg:hover:bg-hoverCard hover:rounded-[4px] xm:text-sm bg-[#313133] text-[#ffffff] "
                 >
                   {/* Sección izquierda */}
                   <div className="flex gap-3 items-center hover:cursor-pointer">
                     {/* Rank */}
-                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex ">
+                    <div className="min-w-[30px] rounded-md h-full justify-center items-center flex">
                       <span className="text-lg">{team.rank}</span>
                     </div>
 
@@ -82,11 +93,22 @@ export const Ranking = () => {
                     <span className="group-hover:text-hoverText">
                       {team.name}
                     </span>
+                    {
+                      team.increase
+                        ? <div className="flex gap-1 justify-center items-center">
+                          <span className="increase text-lg"></span><span className="text-[11px]">{team.increase}</span>
+                        </div>
+                        : team.decrease 
+                        ? <div className="flex gap-1 justify-center items-center">
+                          <span className="decrease text-lg"></span><span className="text-[11px]">{team.decrease}</span>
+                        </div>
+                        : null
+                    }
                   </div>
 
                   {/* Títulos */}
                   <div>
-                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex text-[22px]  ">
+                    <span className="min-w-[30px] rounded-md h-full justify-center items-center flex text-[22px]">
                       {team.titles}
                     </span>
                   </div>
@@ -124,6 +146,17 @@ export const Ranking = () => {
                     <span className="group-hover:text-hoverText">
                       {team.name}
                     </span>
+                      {
+                      team.increase
+                        ? <div className="flex gap-1 justify-center items-center">
+                          <span className="increase text-lg"></span><span className="text-[11px]">{team.increase}</span>
+                        </div>
+                        : team.decrease 
+                        ? <div className="flex gap-1 justify-center items-center">
+                          <span className="decrease text-lg"></span><span className="text-[11px]">{team.decrease}</span>
+                        </div>
+                        : null
+                    }
                   </div>
 
                   {/* Títulos */}
