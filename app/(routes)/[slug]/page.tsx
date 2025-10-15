@@ -18,6 +18,9 @@ export default async function ServerPage({
   const sumarGolesVisitanteFinals = data.sumarGolesVisitanteFinals;
   const golesFavorClasics = data.golesFavorClasics;
   const sumarGolesVisitanteClasics = data.sumarGolesVisitanteClasics;
+  const cantidadPenales = data.cantidadPenales;
+  const penalesGanados = data.penalesGanados;
+
 
   return (
     <Suspense key={null} fallback={<Loader />}>
@@ -28,6 +31,8 @@ export default async function ServerPage({
           sumarGolesVisitanteFinals,
           golesFavorClasics,
           sumarGolesVisitanteClasics,
+          cantidadPenales,
+          penalesGanados
         }}
       />
           

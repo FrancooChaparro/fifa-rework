@@ -8,50 +8,67 @@ export const find_team_slug = async (params: string) => {
   const teamID = await AllTeams.find(
     (e) => e.name.toLowerCase() === decodeURI(params.toLowerCase())
   );
-  if (teamID) {
-    const finales = await Finals.filter(
-      (e) => teamID.name === e.LocalNombre || teamID.name === e.VisitanteNombre
-    );
 
-    let golesFavor = 0;
-    let golesRecibidos = 0;
-  
-    finales?.forEach((match) => {
-      if (
-        match.LocalNombre.toLocaleLowerCase() ===
-        decodeURI(params.toLowerCase())
-      ) {
-        golesFavor += match.LocalResultado;
-        golesRecibidos += match.VisitanteResultado;
-      } else if (
-        match.VisitanteNombre.toLocaleLowerCase() ===
-        decodeURI(params.toLowerCase())
-      ) {
-        golesFavor += match.VisitanteResultado;
-        golesRecibidos += match.LocalResultado;
-      }
-    });
+  if (!teamID) return;
 
+  // 🔹 Buscar todas las finales del equipo
+  const finales = Finals.filter(
+    (e) => teamID.name === e.LocalNombre || teamID.name === e.VisitanteNombre
+  );
 
-    const titles = teamID.titles;
-    const finalsLength = finales?.length || 0;
-    const get_porcent = (100 / (titles + (finalsLength - titles))) * titles;
-    const por =  !isNaN(get_porcent) ? Math.round(get_porcent) + "%" : "0%"
+  let golesFavor = 0;
+  let golesRecibidos = 0;
+  let penalesJugados = 0;
+  let penalesGanados = 0;
 
-    return { 
-        teamID, 
-        finales,
-        titles,
-        finalsLength,
-        por,
-        golesFavor,
-        golesRecibidos
+  finales.forEach((match) => {
+    const esLocal =
+      match.LocalNombre.toLowerCase() === decodeURI(params.toLowerCase());
+    const esVisitante =
+      match.VisitanteNombre.toLowerCase() === decodeURI(params.toLowerCase());
+
+    // ⚽ Goles normales
+    if (esLocal) {
+      golesFavor += match.LocalResultado;
+      golesRecibidos += match.VisitanteResultado;
+    } else if (esVisitante) {
+      golesFavor += match.VisitanteResultado;
+      golesRecibidos += match.LocalResultado;
     }
 
-  } else {
-    return
-    //not found
-  }
+    // 🧤 Si hubo penales
+    if (match.Penalty) {
+      penalesJugados++;
+
+      const localPenales = match.LocalPenalty ?? 0;
+      const visitantePenales = match.VisitantePenalty ?? 0;
+
+      const ganoPorPenales =
+        (esLocal && localPenales > visitantePenales) ||
+        (esVisitante && visitantePenales > localPenales);
+
+      if (ganoPorPenales) penalesGanados++;
+    }
+  });
+
+  // 🏆 Cálculo de títulos y porcentaje
+  const titles = teamID.titles;
+  const finalsLength = finales.length;
+  const get_porcent = (100 / (titles + (finalsLength - titles))) * titles;
+  const por = !isNaN(get_porcent) ? Math.round(get_porcent) + "%" : "0%";
+
+
+  return {
+    teamID,
+    finales,
+    titles,
+    finalsLength,
+    por,
+    golesFavor,
+    golesRecibidos,
+    penalesJugados,
+    penalesGanados,
+  };
 };
 
 
@@ -90,11 +107,28 @@ export const find_user_slug = async (params : string) => {
       0
     );
 
+    
+ // 👉 Filtrar los partidos con penales
+  const partidosConPenales = playerStats.finals.matchs.filter(
+    (match: any) => match.Penalty === true
+  );
+
+  // 👉 Contar cuántos partidos tuvieron penales
+  const cantidadPenales = partidosConPenales.length;
+
+  // 👉 Contar cuántos de esos penales se ganaron
+  // (suponiendo que Result === "Victory" significa que el jugador ganó)
+  const penalesGanados = partidosConPenales.filter(
+    (match: any) => match.Result === "Victory"
+  ).length;
+
   return {playerStats,
     golesFavorFinals,
     sumarGolesVisitanteFinals,
     golesFavorClasics,
-    sumarGolesVisitanteClasics
+    sumarGolesVisitanteClasics,
+    cantidadPenales,
+    penalesGanados
   }
 
 

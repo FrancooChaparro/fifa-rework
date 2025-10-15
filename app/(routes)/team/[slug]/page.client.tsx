@@ -6,17 +6,18 @@ import { CheckIcon, DefeatIcon, DrawIcon } from " @/Icons/Icons";
 import { Match } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
 import Particles from " @/components/particles";
+import { PenaltyRadialChart } from " @/components/graphis";
 
-export default function UserPage({ data } : { data: any}) {
+export default function UserPage({ data }: { data: any }) {
   const { seterGame } = useMyContext();
- 
+
   return (
     <>
       {/* MAIN DATA */}
       <div
         className={`relative w-full min-h-screen h-screen px-5 sm:px-10 lg:px-20 pt-16 flex flex-col gap-7 overflow-hidden`}
       >
-    
+
         {/* BACKGROUND */}
         <div className="absolute top-0 left-0 z-[-10] h-full w-full">
           <Image
@@ -29,7 +30,7 @@ export default function UserPage({ data } : { data: any}) {
             quality={100}
             className="h-full w-full object-cover object-center"
           />
-        </div> 
+        </div>
         <div className="flex flex-col gap-4">
           <div className="border-b-[1px] border-white pb-4 w-full md:w-[480px]">
             <p className="text-white font-geistBold text-[28px] tracking-[0.10px]">
@@ -122,7 +123,7 @@ export default function UserPage({ data } : { data: any}) {
                   {/* Primer hijo: Local */}
                   <div className="flex justify-end gap-2 items-center overflow-hidden  ">
                     <span className="hidden xs:block  text-lg text-white">{game.LocalSlug}</span>
-                    <span className="block xs:hidden text-lg text-white">{game.LocalSlug?.slice(0,3)}</span>
+                    <span className="block xs:hidden text-lg text-white">{game.LocalSlug?.slice(0, 3)}</span>
 
                     <Image
                       src={game.LocalEscudo}
@@ -162,7 +163,7 @@ export default function UserPage({ data } : { data: any}) {
                       {game.VisitanteSlug}
                     </span>
                     <span className="block xs:hidden text-lg text-white">
-                      {game.VisitanteSlug?.slice(0,3)}
+                      {game.VisitanteSlug?.slice(0, 3)}
                     </span>
                   </div>
                 </div>
@@ -172,13 +173,13 @@ export default function UserPage({ data } : { data: any}) {
       </div>
       <div className="bg-[#18181a] relative w-full  px-4 sm:px-10 lg:px-20 py-10 flex flex-col justify-center items-center lg:items-start lg:flex-row lg:justify-between gap-4 ">
         {/* FIANLS */}
-          <Particles
-        quantityDesktop={350}
-        quantityMobile={100}
-        ease={80}
-        color={"#F7FF9B"}
-        refresh
-      />
+        <Particles
+          quantityDesktop={350}
+          quantityMobile={100}
+          ease={80}
+          color={"#F7FF9B"}
+          refresh
+        />
         <div className="flex flex-col gap-1 w-full md:w-[600px] lg:w-[480px] xl:w-[620px] 2xl:w-[680px] mt-2 ">
           <div className="text-[22px] md:text-[38px] lg:text-[22px] xl:text-[38px] font-geistBold w-full text-white flex justify-between items-center tracking-[0.10px] border-b-[1px] border-white pb-2 mb-2">
             <p>Finals</p>
@@ -250,9 +251,9 @@ export default function UserPage({ data } : { data: any}) {
                           ) : (
                             <div className="bg-indigo-600 text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">
                               {
-                              game.isLegit === "L" 
-                               ? <div className="bg-indigo-600 text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">L</div>
-                               : <div className="bg-gray-600 text-[11px] text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">NO</div>
+                                game.isLegit === "L"
+                                  ? <div className="bg-indigo-600 text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">L</div>
+                                  : <div className="bg-gray-600 text-[11px] text-white font-geistRegular flex justify-center text-center items-center size-6 rounded-full">NO</div>
                               }
                             </div>
                           )}
@@ -327,15 +328,13 @@ export default function UserPage({ data } : { data: any}) {
                 </div>
               </div>
             </div>
-            <div className="w-full flex flex-col items-center justify-center text-lg font-geistBold">
-              <p className="text-white pb-1">EFECTIVIDAD PENALES</p>
-              <div className="grid grid-cols-4 h-[45px] w-200px border-[1px] border-white">
-                <PenaltyDiv />
-                <PenaltyDiv />
-                <PenaltyDiv />
-                <div></div>
-              </div>
+            {
+              data.penalesJugados &&  <div className="w-full flex flex-col items-center justify-center text-lg font-geistBold">
+              <p className="text-white pb-1">{`EFECTIVIDAD PENALES ${data.penalesGanados}/${data.penalesJugados}`}</p>
+              <PenaltyRadialChart penalesJugados={data.penalesJugados} penalesGanados={data.penalesGanados} />
             </div>
+            }
+           
           </div>
         </div>
       </div>
@@ -351,8 +350,3 @@ export default function UserPage({ data } : { data: any}) {
   );
 }
 
-const PenaltyDiv = () => {
-  return (
-    <div className="w-[30px] border-[1px] border-black h-full bg-green-500"></div>
-  );
-};

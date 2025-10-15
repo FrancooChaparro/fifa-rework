@@ -6,13 +6,14 @@ import { CheckIcon, DefeatIcon, DrawIcon } from " @/Icons/Icons";
 import { Match } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
 import Particles from " @/components/particles";
+import { PenaltyRadialChart } from " @/components/graphis";
 
-export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisitanteFinals, golesFavorClasics, sumarGolesVisitanteClasics }  : { playerStats : any, golesFavorFinals: any,  sumarGolesVisitanteFinals: any, golesFavorClasics: any, sumarGolesVisitanteClasics: any }) {
+export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisitanteFinals, golesFavorClasics, sumarGolesVisitanteClasics, cantidadPenales, penalesGanados }: { playerStats: any, golesFavorFinals: any, sumarGolesVisitanteFinals: any, golesFavorClasics: any, sumarGolesVisitanteClasics: any, cantidadPenales: any, penalesGanados: any }) {
 
   const { seterGame } = useMyContext();
   const [isOn, setIsOn] = useState(false);
   const [variable, setVariable] = useState("finals");
-
+  const penalesArray = Array.from({ length: cantidadPenales }, (_, i) => i);
   function changeGames(isOn: boolean) {
     setIsOn(isOn);
     if (isOn) {
@@ -21,11 +22,11 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
       setVariable("finals");
     }
   }
-  
+
   return (
     <>
       {/* MAIN DATA */}
-       
+
       <div
         className={`relative w-full min-h-screen h-screen px-7 sm:px-10 lg:px-20 pt-16 flex flex-col gap-5 lg:gap-7 overflow-hidden`}
       >
@@ -116,15 +117,15 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
                 Last Team
               </p>
               <div className="rounded-full flex justify-center items-center border-[2px] border-white w-[80px] h-[80px]">
-              {
-                playerStats.finals.matchs.length ? <Image
-                src={playerStats.finals.matchs[0].LocalEscudo}
-                alt="atl"
-                width={60}
-                height={60}
-              /> : null
-              } 
-               {/* <Image
+                {
+                  playerStats.finals.matchs.length ? <Image
+                    src={playerStats.finals.matchs[0].LocalEscudo}
+                    alt="atl"
+                    width={60}
+                    height={60}
+                  /> : null
+                }
+                {/* <Image
                   src={playerStats.finals.matchs[0].LocalEscudo}
                   alt="atl"
                   width={60}
@@ -145,8 +146,8 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
                 >
                   {/* Primer hijo: Local */}
                   <div className="flex justify-end gap-2 items-center overflow-hidden  ">
-                  <span className="hidden xs:block  text-lg text-white">{game.LocalSlug}</span>
-                  <span className="block xs:hidden text-lg text-white">{game.LocalSlug?.slice(0,3)}</span>
+                    <span className="hidden xs:block  text-lg text-white">{game.LocalSlug}</span>
+                    <span className="block xs:hidden text-lg text-white">{game.LocalSlug?.slice(0, 3)}</span>
                     <Image
                       src={game.LocalEscudo}
                       alt="alt"
@@ -185,7 +186,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
                       {game.VisitanteSlug}
                     </span>
                     <span className="block xs:hidden text-lg text-white">
-                      {game.VisitanteSlug?.slice(0,3)}
+                      {game.VisitanteSlug?.slice(0, 3)}
                     </span>
                   </div>
                 </div>
@@ -194,27 +195,25 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
         </div>
       </div>
       <div className="bg-[#18181a] relative w-full  px-4 sm:px-10 lg:px-20 py-10 flex flex-col justify-center items-center lg:items-start lg:flex-row lg:justify-between gap-4 ">
-      {/* FIANLS */}
+        {/* FIANLS */}
         <Particles
-        quantityDesktop={350}
-        quantityMobile={100}
-        ease={80}
-        color={"#F7FF9B"}
-        refresh
-      />
+          quantityDesktop={350}
+          quantityMobile={100}
+          ease={80}
+          color={"#F7FF9B"}
+          refresh
+        />
         <div className="flex flex-col gap-1 w-full md:w-[600px] lg:w-[480px] xl:w-[620px] 2xl:w-[680px] mt-2 ">
           <div className="text-[22px] md:text-[38px] lg:text-[22px] xl:text-[38px] font-geistBold w-full text-white flex justify-between items-center tracking-[0.10px] border-b-[1px] border-white pb-2 mb-2">
             {isOn ? <p>Clasics</p> : <p>Finals</p>}
             <div
-              className={`w-16 h-8 flex items-center px-1 bg-[#313133] rounded-full cursor-pointer transition-all duration-300 ${
-                isOn ? "bg-primaryRed" : "bg-gray-400"
-              }`}
+              className={`w-16 h-8 flex items-center px-1 bg-[#313133] rounded-full cursor-pointer transition-all duration-300 ${isOn ? "bg-primaryRed" : "bg-gray-400"
+                }`}
               onClick={() => changeGames(!isOn)}
             >
               <div
-                className={`w-6 h-6 bg-white rounded-full shadow-md transform transition-all duration-300 ${
-                  isOn ? "translate-x-8" : "translate-x-0"
-                }`}
+                className={`w-6 h-6 bg-white rounded-full shadow-md transform transition-all duration-300 ${isOn ? "translate-x-8" : "translate-x-0"
+                  }`}
               />
             </div>
           </div>
@@ -339,7 +338,7 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[70px] size-[90px]  md:size-[110px] xl:size-[110px] 2xl:size-[130px]">
                   <p className=" font-geistBold text-[30px] lg:text-[20px] xl:text-[38px] text-white tracking-[0.10px]">
-                  {variable === "finals" ?  golesFavorFinals : golesFavorClasics }
+                    {variable === "finals" ? golesFavorFinals : golesFavorClasics}
                   </p>
                 </div>
               </div>
@@ -355,33 +354,37 @@ export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisi
                 </div>
               </div>
             </div>
-            <div className="w-full flex flex-col items-center justify-center text-lg font-geistBold">
-              <p className="text-white pb-1">EFECTIVIDAD PENALES</p>
-              <div className="grid grid-cols-4 h-[45px] w-200px border-[1px] border-white">
-                <PenaltyDiv />
-                <PenaltyDiv />
-                <PenaltyDiv />
-                <div></div>
+            {
+              cantidadPenales && <div className="w-full flex flex-col items-center justify-center text-lg font-geistBold">
+                <p className="text-white pb-1">{`EFECTIVIDAD PENALES ${penalesGanados}/${cantidadPenales}`}</p>
+                <PenaltyRadialChart penalesJugados={cantidadPenales} penalesGanados={penalesGanados} />
               </div>
-            </div>
+            }
           </div>
         </div>
       </div>
 
       <div className="bg-[#18181a] w-full px-4 sm:px-10 lg:px-20 pb-20 flex justify-center">
         <div className="w-full md:w-[600px] lg:w-full" >
-        <p className="text-[22px] md:text-[38px] lg:text-[22px] xl:text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-6">
-          Noticias
-        </p>
-        <News />
+          <p className="text-[22px] md:text-[38px] lg:text-[22px] xl:text-[38px] font-geistBold text-white tracking-[0.10px] border-b-[1px] border-white pb-2 mb-6">
+            Noticias
+          </p>
+          <News />
         </div>
       </div>
     </>
   );
 }
 
-const PenaltyDiv = () => {
+type PenaltyDivProps = {
+  isWon: boolean;
+};
+
+const PenaltyDiv: React.FC<PenaltyDivProps> = ({ isWon }) => {
   return (
-    <div className="w-[30px] border-[1px] border-black h-full bg-green-500"></div>
+    <div
+      className={`w-full h-full ${isWon ? "bg-green-500" : "bg-red-500"} border border-white`}
+    ></div>
   );
 };
+

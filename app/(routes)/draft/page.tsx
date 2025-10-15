@@ -130,6 +130,469 @@ const Draft = () => {
 
   const [I6, setI6] = useState(base);
   const [baraja, setBaraja] = useState(false);
+
+  const steps = [
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(G1Ref);
+      setG1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(C1Ref);
+      setC1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(K1Ref);
+      setK1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(E1Ref);
+      setE1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(F1Ref);
+      setF1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(A1Ref);
+      setA1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(H1Ref);
+      setH1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(J1Ref);
+      setJ1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(B1Ref);
+      setB1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(H2Ref);
+      setH2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(L1Ref);
+      setL1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(B2Ref);
+      setB2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(M1Ref);
+      setM1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(N1Ref);
+      setN1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(G2Ref);
+      setG2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(L2Ref);
+      setL2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(O1Ref);
+      setO1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(I1Ref);
+      setI1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(P1Ref);
+      setP1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(D1Ref);
+      setD1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(A2Ref);
+      setA2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(K2Ref);
+      setK2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(D2Ref);
+      setD2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(E2Ref);
+      setE2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(I2Ref);
+      setI2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(P2Ref);
+      setP2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(J2Ref);
+      setJ2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(M2Ref);
+      setM2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(N2Ref);
+      setN2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(F2Ref);
+      setF2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(O2Ref);
+      setO2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(C2Ref);
+      setC2(val);
+    },
+    async () => {
+      await delay(300);
+      setBaraja(false);
+    }
+  ];
+  const steps_two = [
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(G1Ref);
+      setG1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(C1Ref);
+      setC1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(K1Ref);
+      setK1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(E1Ref);
+      setE1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(F1Ref);
+      setF1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(A1Ref);
+      setA1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(H1Ref);
+      setH1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(J1Ref);
+      setJ1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(B1Ref);
+      setB1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(H2Ref);
+      setH2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(L1Ref);
+      setL1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(B2Ref);
+      setB2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(M1Ref);
+      setM1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(N1Ref);
+      setN1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(G2Ref);
+      setG2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(L2Ref);
+      setL2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(O1Ref);
+      setO1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(I1Ref);
+      setI1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(P1Ref);
+      setP1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(D1Ref);
+      setD1(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(A2Ref);
+      setA2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(K2Ref);
+      setK2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(D2Ref);
+      setD2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(E2Ref);
+      setE2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(I2Ref);
+      setI2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(P2Ref);
+      setP2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(J2Ref);
+      setJ2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(gaston);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(M2Ref);
+      setM2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(marcos);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(N2Ref);
+      setN2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(roma);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(F2Ref);
+      setF2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(O2Ref);
+      setO2(val);
+    },
+    async () => {
+      const val = getRandomAndSplice(franco);
+      setTestTeam(val);
+      await delay(300);
+      await animateTeamTo(C2Ref);
+      setC2(val);
+    },
+    async () => {
+      await delay(300);
+      setBaraja(false);
+    }
+  ];
+
+
   function clean() {
     setA3(base);
     setB3(base);
@@ -203,242 +666,13 @@ const Draft = () => {
   function delay(ms: any) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  async function lolo() {
+  async function lolo(param: any) {
     if (franco.length === 0 && gaston.length === 0 && marcos.length === 0 && roma.length === 0)
       return;
 
     setBaraja(true);
 
-    const steps = [
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(G1Ref);
-        setG1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(C1Ref);
-        setC1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(K1Ref);
-        setK1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(E1Ref);
-        setE1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(F1Ref);
-        setF1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(A1Ref);
-        setA1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(H1Ref);
-        setH1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(J1Ref);
-        setJ1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(B1Ref);
-        setB1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(H2Ref);
-        setH2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(L1Ref);
-        setL1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(B2Ref);
-        setB2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(M1Ref);
-        setM1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(N1Ref);
-        setN1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(G2Ref);
-        setG2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(L2Ref);
-        setL2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(O1Ref);
-        setO1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(I1Ref);
-        setI1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(P1Ref);
-        setP1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(D1Ref);
-        setD1(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(A2Ref);
-        setA2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(K2Ref);
-        setK2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(D2Ref);
-        setD2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(E2Ref);
-        setE2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(I2Ref);
-        setI2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(P2Ref);
-        setP2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(J2Ref);
-        setJ2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(marcos);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(M2Ref);
-        setM2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(N2Ref);
-        setN2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(franco);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(F2Ref);
-        setF2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(gaston);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(O2Ref);
-        setO2(val);
-      },
-      async () => {
-        const val = getRandomAndSplice(roma);
-        setTestTeam(val);
-        await delay(300);
-        await animateTeamTo(C2Ref);
-        setC2(val);
-      },
-      async () => {
-        await delay(300);
-        setBaraja(false);
-      }
-    ];
+    const steps = param
 
     for (const step of steps) {
       await step();
@@ -451,13 +685,13 @@ const Draft = () => {
   return (
     <>
       <div className={`${styles.containerAll} relative font-geistRegular overflow-hidden`}>
-    <Particles
-              quantityDesktop={350}
-              quantityMobile={100}
-              ease={80}
-              color={"#F7FF9B"}
-              refresh
-            />
+        <Particles
+          quantityDesktop={350}
+          quantityMobile={100}
+          ease={80}
+          color={"#F7FF9B"}
+          refresh
+        />
         <div className={`${baraja ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           } absolute bg-white left-1/2 -translate-x-1/2 z-40 top-[30%] transition-all duration-150 -translate-y-1/2 size-[140px] flex justify-center items-center rounded-sm`}>
           {
@@ -714,7 +948,7 @@ const Draft = () => {
           <div className={styles.arooba}>
             <div className={`${styles.top} gap-4`}>
               <button
-                onClick={() => lolo()}
+                onClick={() => lolo(steps_two)}
                 disabled={baraja}
                 className="w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
               >

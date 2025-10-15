@@ -1,97 +1,92 @@
-"use client";
+"use client"
 
-import { RadialBarChart, RadialBar, PolarGrid, PolarRadiusAxis, Label } from "recharts";
+import {
+  RadialBarChart,
+  RadialBar,
+  PolarGrid,
+  PolarRadiusAxis,
+  Label,
+} from "recharts"
+import { ChartContainer, ChartConfig } from " @/components/ui/chart"
 
-interface ProgressCircleProps {
-  value: number;
-  max: number;
-  size?: number;
-  color?: string;
+type PenaltyRadialChartProps = {
+  penalesJugados: number
+  penalesGanados: number
+  color?: string // 👉 color opcional del arco
 }
 
-export default function ProgressCircle({
-  value,
-  max,
-  size = 250,
-  color = "#00bcd4",
-}: ProgressCircleProps) {
-  const percent = (value / max) * 100;
+export function PenaltyRadialChart({
+  penalesJugados,
+  penalesGanados,
+  color = "#22c55e",
+}: PenaltyRadialChartProps) {
+  const efectividad =
+    penalesJugados > 0 ? (penalesGanados / penalesJugados) * 100 : 0
 
-  const chartData = [
-    { name: "progress", value: percent, fill: color },
-  ];
+  // 🔸 Calcular el ángulo dinámico
+  const startAngle = 90
+  const endAngle = 90 - (360 * efectividad) / 100
+
+  const chartData = [{ name: "efectividad", value: efectividad, fill: color }]
+
+  const chartConfig = {
+    efectividad: { label: "Efectividad", color },
+  } satisfies ChartConfig
 
   return (
-    <div
-      style={{
-        width: size,
-        height: size,
-      }}
-      className="flex justify-center items-center"
-    >
-      <RadialBarChart
-        data={chartData}
-        startAngle={90}
-        endAngle={-270}
-        innerRadius="70%"
-        outerRadius="100%"
-        barSize={15}
+      <ChartContainer
+        config={chartConfig}
+        className="mx-auto aspect-square w-[170px] h-[170px]" // 👈 tamaño fijo para evitar recortes
       >
-        {/* Círculo de fondo */}
-        <PolarGrid
-          gridType="circle"
-          radialLines={false}
-          stroke="none"
-          className="first:fill-muted last:fill-background"
-          polarRadius={[90, 100]}
-        />
-
-        {/* Barra de progreso */}
-        <RadialBar
-          dataKey="value"
-          cornerRadius={15}
-          background
-          fill={color}
-        />
-
-        {/* Texto central */}
-        <PolarRadiusAxis
-          domain={[0, 100]}
-          tick={false}
-          tickLine={false}
-          axisLine={false}
+        <RadialBarChart
+          data={chartData}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          innerRadius={70}
+          outerRadius={100}
         >
-          <Label
-            content={({ viewBox }) => {
-              if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                return (
-                  <text
-                    x={viewBox.cx}
-                    y={viewBox.cy}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                  >
-                    <tspan
+   
+
+          {/* ✅ Arco verde con fondo transparente */}
+          <RadialBar
+            dataKey="value"
+            fill={color}
+            cornerRadius={10}
+            background={{ fill: "rgba(255,255,255,0.1)" }}
+          />
+
+          <PolarRadiusAxis tick={false} axisLine={false} domain={[0, 100]}>
+            <Label
+              content={({ viewBox }) => {
+                if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                  return (
+                    <text
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className="fill-white text-4xl font-bold"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
                     >
-                      {value}
-                    </tspan>
-                    <tspan
-                      x={viewBox.cx}
-                      y={(viewBox.cy || 0) + 24}
-                      className="fill-gray-400 text-sm"
-                    >
-                      de {max}
-                    </tspan>
-                  </text>
-                );
-              }
-            }}
-          />
-        </PolarRadiusAxis>
-      </RadialBarChart>
-    </div>
-  );
+                      <tspan
+                        x={viewBox.cx}
+                        y={viewBox.cy}
+                        className="text-4xl font-bold fill-white"
+                      >
+                        {Math.round(efectividad)}%
+                      </tspan>
+                      <tspan
+                        x={viewBox.cx}
+                        y={(viewBox.cy || 0) + 22}
+                        className="text-sm fill-gray-300"
+                      >
+                        efectividad
+                      </tspan>
+                    </text>
+                  )
+                }
+              }}
+            />
+          </PolarRadiusAxis>
+        </RadialBarChart>
+      </ChartContainer>
+  )
 }
