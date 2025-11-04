@@ -3,12 +3,13 @@ import Image from "next/image";
 import React from "react";
 import { News } from " @/components/News/News";
 import { CheckIcon, DefeatIcon, DrawIcon } from " @/Icons/Icons";
-import { Match } from " @/types/types";
+import { DataSlug, Match } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
 import Particles from " @/components/particles";
 import { PenaltyRadialChart } from " @/components/graphis";
 
-export default function UserPage({ data }: { data: any }) {
+export default function UserPage({ data }: { data: DataSlug }) {
+  
   const { seterGame } = useMyContext();
 
   return (

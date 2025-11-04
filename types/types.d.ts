@@ -55,6 +55,12 @@ export interface Person {
     matchs: Match[];
     stats: MatchStats;
   }
+  // cantidadPenales: number;
+  // golesFavorClasics: number;
+  // golesFavorFinals: number;
+  // penalesGanados: number;
+  // sumarGolesVisitanteClasics: number;
+  // sumarGolesVisitanteFinals: number;
 }
 
 export interface Externals {
@@ -98,3 +104,16 @@ export interface TeamMarket {
   info: string[];
   teams: string[] | [];
 }
+
+export interface DataSlug {
+  finales: Match[];
+  finalsLength: number;
+  golesFavor: number;
+  golesRecibidos: number;
+  penalesGanados: number;
+  penalesJugados: number;
+  por: string;
+  teamID: Rank;
+  titles: number;
+}
+

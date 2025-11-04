@@ -3,12 +3,12 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { News } from " @/components/News/News";
 import { CheckIcon, DefeatIcon, DrawIcon } from " @/Icons/Icons";
-import { Match } from " @/types/types";
+import { Match, Person } from " @/types/types";
 import { useMyContext } from " @/context/ListContext";
 import Particles from " @/components/particles";
 import { PenaltyRadialChart } from " @/components/graphis";
 
-export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisitanteFinals, golesFavorClasics, sumarGolesVisitanteClasics, cantidadPenales, penalesGanados }: { playerStats: any, golesFavorFinals: any, sumarGolesVisitanteFinals: any, golesFavorClasics: any, sumarGolesVisitanteClasics: any, cantidadPenales: any, penalesGanados: any }) {
+export default function UserPage({ playerStats, golesFavorFinals, sumarGolesVisitanteFinals, golesFavorClasics, sumarGolesVisitanteClasics, cantidadPenales, penalesGanados }: { playerStats: any, golesFavorFinals: number, sumarGolesVisitanteFinals: number, golesFavorClasics: number, sumarGolesVisitanteClasics: number, cantidadPenales: number, penalesGanados: number }) {
 
   const { seterGame } = useMyContext();
   const [isOn, setIsOn] = useState(false);

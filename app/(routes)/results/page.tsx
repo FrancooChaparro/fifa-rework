@@ -427,7 +427,7 @@ const SliderGoalsComponent = ({
   handlerFilterGoals,
 }: {
   minGoals: number;
-  handlerFilterGoals: (param: any) => void;
+  handlerFilterGoals: (param: number) => void;
 }) => {
   return (
     <div className="relative w-full px-[14px] pr-20 flex flex-col items-center">
