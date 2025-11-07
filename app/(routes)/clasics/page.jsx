@@ -54,7 +54,7 @@ export default function ClasicsPage() {
     return { wins, losses, draws, goalsFor, goalsAgainst };
   }, [matchups, player1]);
 
-  
+
 
 
   // Filtramos todos los clásicos entre esos dos jugadores
@@ -90,94 +90,99 @@ export default function ClasicsPage() {
     return { wins, losses, draws, goalsFor, goalsAgainst };
   }, [matchups_clasics, player1]);
 
-    return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-bgGames text-white py-20">
-   {/* <div className="flex gap-4 mb-10">
-        <select
-          value={player1}
-          onChange={(e) => setPlayer1(e.target.value)}
-          className="text-black p-2 rounded"
-        >
-          <option value="F">Franco</option>
-          <option value="M">Marcos</option>
-          <option value="R">Roma</option>
-          <option value="G">Gaston</option>
-        </select>
-        <span className="font-bold text-2xl">VS</span>
-        <select
-          value={player2}
-          onChange={(e) => setPlayer2(e.target.value)}
-          className="text-black p-2 rounded"
-        >
-          <option value="F">Franco</option>
-          <option value="M">Marcos</option>
-          <option value="R">Roma</option>
-          <option value="G">Gaston</option>
-        </select>
-      </div> */}
-            <div className="w-[1224px]  h-[724px] flex">
-                <img
-                    src={"https://wallpapers.com/images/hd/lionel-messi-barcelona-kit-rzhcz7kau48sosh1.png"}
-                    alt="image"
-                    className="bg-transparent h-full w-[320px]"
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center bg-bgGames text-white py-20">
+      <div className="w-[1224px]  h-[724px] flex">
+        <div className="relative h-full w-[320px] flex items-center justify-center">
+          <img
+            src={"https://wallpapers.com/images/hd/lionel-messi-barcelona-kit-rzhcz7kau48sosh1.png"}
+            alt="player1"
+            className="bg-transparent h-full w-[320px] object-contain"
+          />
+          {/* Flecha Izquierda */}
+          <button
+            onClick={() => {
+              const keys = Object.keys(PLAYERS).filter((k) => k !== player2);
+              const currentIndex = keys.indexOf(player1);
+              const nextIndex = (currentIndex - 1 + keys.length) % keys.length;
+              setPlayer1(keys[nextIndex]);
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-[54px] font-bold hover:scale-110 transition-transform"
+          >
+            ‹
+          </button>
+          {/* Flecha Derecha */}
+          <button
+            onClick={() => {
+              const keys = Object.keys(PLAYERS).filter((k) => k !== player2);
+              const currentIndex = keys.indexOf(player1);
+              const nextIndex = (currentIndex + 1) % keys.length;
+              setPlayer1(keys[nextIndex]);
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-[54px] font-bold hover:scale-110 transition-transform"
+          >
+            ›
+          </button>
+        </div>
+
+
+        <div className="w-[584px] flex flex-col gap-5 h-full">
+
+          <div className="w-full flex justify-center flex-col gap-[-10px] items-center relative border-b-[1px] border-b-[white]">
+            <div className="absolute top-[8px] left-[43%] translate-x-[43%] font-geistBold text-[40px] tracking-[0.10px]">
+              Vs
+            </div>
+            <p className="font-geistBold text-[38px] tracking-[0.10px] mr-[240px]">{data1.info.name_profile}</p>
+            <p className="font-geistBold text-[38px] tracking-[0.10px] ml-[240px]">{data2.info.name_profile}</p>
+          </div>
+
+          <div className="flex justify-center gap-10">
+            <div className="flex flex-col justify-center items-center">
+              <div className="flex justify-center items-center min-w-[90px] min-h-[90px] max-w-[90px] max-h-[90px]">
+
+                <Image
+                  src={data1.info.shield_profile}
+                  alt="atl"
+                  width={80}
+                  height={80}
                 />
-                <div className="w-[584px] flex flex-col gap-5 h-full">
+              </div>
 
-                    <div className="w-full flex justify-center flex-col gap-[-10px] items-center relative border-b-[1px] border-b-[white]">
-                        <div className="absolute top-[8px] left-[43%] translate-x-[43%] font-geistBold text-[40px] tracking-[0.10px]">
-                            Vs
-                        </div>
-                        <p className="font-geistBold text-[38px] tracking-[0.10px] mr-[240px]">{data1.info.name_profile}</p>
-                        <p className="font-geistBold text-[38px] tracking-[0.10px] ml-[240px]">{data2.info.name_profile}</p>
-                    </div>
+              <p className="text-white font-geistBold text-[39px] tracking-[0.10px]">
+                {stats_clasics.wins}
+              </p>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <div className="flex justify-center items-center min-w-[90px] min-h-[90px] max-w-[90px] max-h-[90px]">
+                <Image
+                  src={"/images/Chelsea.png"}
+                  alt="atl"
+                  width={80}
+                  height={80}
+                  className="opacity-0"
+                />
+              </div>
 
-                    <div className="flex justify-center gap-10">
-                        <div className="flex flex-col justify-center items-center">
-                          <div className="flex justify-center items-center min-w-[90px] min-h-[90px] max-w-[90px] max-h-[90px]">
+              <p className="text-white font-geistBold text-[39px] tracking-[0.10px]">
+                {stats_clasics.draws}
+              </p></div>
+            <div className="flex flex-col justify-center items-center">
+              <div className="flex justify-center items-center min-w-[90px] min-h-[90px] max-w-[90px] max-h-[90px]">
+                <Image
+                  src={data2.info.shield_profile}
+                  alt="atl"
+                  width={80}
+                  height={80}
+                />
+              </div>
 
-                          <Image
-                            src={data1.info.shield_profile}
-                            alt="atl"
-                            width={80}
-                            height={80}
-                        />
-                          </div>
-
-                        <p className="text-white font-geistBold text-[39px] tracking-[0.10px]">
-                            {stats_clasics.wins}
-                        </p>
-                        </div> 
-                         <div className="flex flex-col justify-center items-center">
-                          <div className="flex justify-center items-center min-w-[90px] min-h-[90px] max-w-[90px] max-h-[90px]">
-                          <Image
-                            src={"/images/Chelsea.png"}
-                            alt="atl"
-                            width={80}
-                            height={80}
-                            className="opacity-0"
-                        />
-                        </div> 
-
-                         <p className="text-white font-geistBold text-[39px] tracking-[0.10px]">
-                              {stats_clasics.draws}
-                        </p></div>
-                        <div className="flex flex-col justify-center items-center">
-                          <div className="flex justify-center items-center min-w-[90px] min-h-[90px] max-w-[90px] max-h-[90px]">
-                          <Image
-                             src={data2.info.shield_profile}
-                            alt="atl"
-                            width={80}
-                            height={80}
-                        />
-                        </div> 
-
-                         <p className="text-white font-geistBold text-[39px] tracking-[0.10px]">
-                             {stats_clasics.losses}
-                        </p></div>
-                    </div>
+              <p className="text-white font-geistBold text-[39px] tracking-[0.10px]">
+                {stats_clasics.losses}
+              </p></div>
+          </div>
 
 
-  <div className="w-full flex justify-between items-center">
+          <div className="w-full flex justify-between items-center">
             <div className="flex gap-3 justify-center pb-6">
               <div className="flex flex-col gap-2 justify-center items-center">
                 <p className="text-white font-geistRegular text-[14px] tracking-[0.10px]">
@@ -185,7 +190,7 @@ export default function ClasicsPage() {
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                      {Math.round(parseInt(stats_clasics.wins) / (parseInt(stats_clasics.wins) + parseInt(stats_clasics.losses) +  parseInt(stats_clasics.draws)) * 100)}%
+                    {Math.round(parseInt(stats_clasics.wins) / (parseInt(stats_clasics.wins) + parseInt(stats_clasics.losses) + parseInt(stats_clasics.draws)) * 100)}%
                   </p>
                 </div>
               </div>
@@ -196,19 +201,19 @@ export default function ClasicsPage() {
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                     {stats_clasics.goalsFor}
+                    {stats_clasics.goalsFor}
                   </p>
                 </div>
               </div>
             </div>
-           <div className="flex gap-5 justify-center pb-6">
+            <div className="flex gap-5 justify-center pb-6">
               <div className="flex flex-col gap-2 justify-center items-center">
                 <p className="text-white font-geistRegular text-[14px] tracking-[0.10px]">
                   Eficacia
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                    {Math.round(parseInt(stats_clasics.losses) / (parseInt(stats_clasics.wins) + parseInt(stats_clasics.losses) +  parseInt(stats_clasics.draws)) * 100)}%
+                    {Math.round(parseInt(stats_clasics.losses) / (parseInt(stats_clasics.wins) + parseInt(stats_clasics.losses) + parseInt(stats_clasics.draws)) * 100)}%
                   </p>
                 </div>
               </div>
@@ -219,7 +224,7 @@ export default function ClasicsPage() {
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                     {stats_clasics.goalsAgainst}
+                    {stats_clasics.goalsAgainst}
                   </p>
                 </div>
               </div>
@@ -227,32 +232,32 @@ export default function ClasicsPage() {
           </div>
 
           <p className="font-geistBold text-[15px] pt-5 tracking-[0.10px] mx-auto">DOMINANCIA COMPLETA</p>
-  
-  
-  
-   <div className="flex justify-center gap-10 ">
-                        <div className="flex flex-col justify-center items-center text-white font-geistBold text-[24px] tracking-[0.10px]">
-                        <p>
-                            {stats.wins}
-                        </p>
-                        <p className="text-sm">Victorias</p>
-                        </div> 
-                          <div className="flex flex-col justify-center items-center text-white font-geistBold text-[24px] tracking-[0.10px]">
-                        <p >
-                           -
-                        </p>
-                        <p className="text-sm">Empates</p>
-                        </div> 
-                         <div className="flex flex-col justify-center items-center text-white font-geistBold text-[24px] tracking-[0.10px]">
-                        <p >
-                            {stats.losses}
-                        </p>
-                        <p className="text-sm">Victorias</p>
-                        </div> 
-                    </div>
 
 
-  <div className="w-full flex justify-between items-center">
+
+          <div className="flex justify-center gap-10 ">
+            <div className="flex flex-col justify-center items-center text-white font-geistBold text-[24px] tracking-[0.10px]">
+              <p>
+                {stats.wins}
+              </p>
+              <p className="text-sm">Victorias</p>
+            </div>
+            <div className="flex flex-col justify-center items-center text-white font-geistBold text-[24px] tracking-[0.10px]">
+              <p >
+                -
+              </p>
+              <p className="text-sm">Empates</p>
+            </div>
+            <div className="flex flex-col justify-center items-center text-white font-geistBold text-[24px] tracking-[0.10px]">
+              <p >
+                {stats.losses}
+              </p>
+              <p className="text-sm">Victorias</p>
+            </div>
+          </div>
+
+
+          <div className="w-full flex justify-between items-center">
             <div className="flex gap-3 justify-center pb-6">
               <div className="flex flex-col gap-2 justify-center items-center">
                 <p className="text-white font-geistRegular text-[14px] tracking-[0.10px]">
@@ -260,7 +265,10 @@ export default function ClasicsPage() {
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                    {Math.round(parseInt(stats.wins) / (parseInt(stats.wins) + parseInt(stats.losses)) * 100)}%
+                    {isNaN(Math.round((parseInt(stats_clasics.losses) / (parseInt(stats_clasics.wins) + parseInt(stats_clasics.losses) + parseInt(stats_clasics.draws)) * 100)))
+                      ? 0
+                      : Math.round((parseInt(stats_clasics.losses) / (parseInt(stats_clasics.wins) + parseInt(stats_clasics.losses) + parseInt(stats_clasics.draws)) * 100))
+                    }%
                   </p>
                 </div>
               </div>
@@ -271,30 +279,33 @@ export default function ClasicsPage() {
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                     {stats.goalsFor}
+                    {stats.goalsFor}
                   </p>
                 </div>
               </div>
             </div>
-           <div className="flex gap-3 justify-center pb-6">
+            <div className="flex gap-3 justify-center pb-6">
               <div className="flex flex-col gap-2 justify-center items-center">
                 <p className="text-white font-geistRegular text-[14px] tracking-[0.10px]">
                   Eficacia
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                     {Math.round(parseInt(stats.losses) / (parseInt(stats.wins) + parseInt(stats.losses)) * 100)}%
+                    {isNaN(Math.round((parseInt(stats.losses) / (parseInt(stats.wins) + parseInt(stats.losses)) * 100)))
+                      ? 0
+                      : Math.round((parseInt(stats.losses) / (parseInt(stats.wins) + parseInt(stats.losses)) * 100))
+                    }%
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 justify-center items-center">
                 <p className="text-white font-geistRegular text-[14px] tracking-[0.10px]">
-                  Goles 
+                  Goles
                 </p>
                 <div className="rounded-full flex justify-center items-center border-[2px] border-white lg:size-[60px] size-[60px] md:size-[60px] xl:size-[60px] 2xl:size-[60px]">
                   <p className="font-geistBold text-[20px] lg:text-[20px] xl:text-[20px] text-white tracking-[0.10px]">
-                     {stats.goalsAgainst}
+                    {stats.goalsAgainst}
                   </p>
                 </div>
               </div>
@@ -302,15 +313,41 @@ export default function ClasicsPage() {
           </div>
 
 
-                </div>
-                <img
-                    src={"https://wallpapers.com/images/hd/lionel-messi-barcelona-kit-rzhcz7kau48sosh1.png"}
-                    alt="image"
-                    className="bg-transparent h-full w-[320px]"
-                />
-            </div>
         </div>
-    )
+        <div className="relative h-full w-[320px] flex items-center justify-center">
+          <img
+            src={"https://wallpapers.com/images/hd/lionel-messi-barcelona-kit-rzhcz7kau48sosh1.png"}
+            alt="player2"
+            className="bg-transparent h-full w-[320px] object-contain"
+          />
+          {/* Flecha Izquierda */}
+          <button
+            onClick={() => {
+              const keys = Object.keys(PLAYERS).filter((k) => k !== player1);
+              const currentIndex = keys.indexOf(player2);
+              const nextIndex = (currentIndex - 1 + keys.length) % keys.length;
+              setPlayer2(keys[nextIndex]);
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-[54px] font-bold hover:scale-110 transition-transform"
+          >
+            ‹
+          </button>
+          {/* Flecha Derecha */}
+          <button
+            onClick={() => {
+              const keys = Object.keys(PLAYERS).filter((k) => k !== player1);
+              const currentIndex = keys.indexOf(player2);
+              const nextIndex = (currentIndex + 1) % keys.length;
+              setPlayer2(keys[nextIndex]);
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-[54px] font-bold hover:scale-110 transition-transform"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 //   {
