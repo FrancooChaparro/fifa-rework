@@ -31,6 +31,7 @@ export interface Info {
   shield_profile: string;
   background_blur_profile: string;
   photo_blur_profile: string;
+  photo_clasics: string;
   name_profile: string;
   surname_profile: string;
   team_profile: string;

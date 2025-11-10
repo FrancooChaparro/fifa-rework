@@ -92,12 +92,12 @@ export default function ClasicsPage() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-bgGames text-white py-20">
-      <div className="w-[1224px]  h-[724px] flex">
+      <div className="w-[1224px] h-[724px] flex">
         <div className="relative h-full w-[320px] flex items-center justify-center">
           <img
-            src={"https://wallpapers.com/images/hd/lionel-messi-barcelona-kit-rzhcz7kau48sosh1.png"}
+            src={data1.info.photo_clasics}
             alt="player1"
-            className="bg-transparent h-full w-[320px] object-contain"
+            className="bg-transparent h-[720px] w-[320px]"
           />
           {/* Flecha Izquierda */}
           <button
@@ -316,9 +316,11 @@ export default function ClasicsPage() {
         </div>
         <div className="relative h-full w-[320px] flex items-center justify-center">
           <img
-            src={"https://wallpapers.com/images/hd/lionel-messi-barcelona-kit-rzhcz7kau48sosh1.png"}
+            src={data2.info.photo_clasics}
+            // src={"https://wallpapers.com/images/hd/lionel-messi-barcelona-kit-rzhcz7kau48sosh1.png"}
             alt="player2"
-            className="bg-transparent h-full w-[320px] object-contain"
+            className="bg-transparent h-[720px] w-[320px]"
+            
           />
           {/* Flecha Izquierda */}
           <button
