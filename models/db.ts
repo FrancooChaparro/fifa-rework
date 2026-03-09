@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "G",
+      Player2: "F",
+      isLegit: "L",
+      LocalEscudo: "/images/juventud.png",
+      LocalNombre: "JUVENTUS",
+      LocalSlug: "JUVENTUS",
+      LocalResultado: 1,
+      VisitanteEscudo: "/images/BayernMunchen.png",
+      VisitanteNombre: "BAYERN MUNICH",
+      VisitanteSlug: "BAYERN",
+      VisitanteResultado: 2,
+      Penalty: false,
+    },
+    {
       Player1: "R",
       Player2: "G",
       isLegit: "L",
@@ -2045,6 +2059,21 @@ export const stats_franco = {
   },
   finals: {
     matchs: [
+            {
+        isLegit: "L",
+        Player1: "F",
+        Player2: "G",
+        Result: "Victory",
+        LocalEscudo: "/images/BayernMunchen.png",
+        LocalNombre: "BAYERN MUNICH",
+        LocalSlug: "BAYERN",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/juventud.png",
+        VisitanteNombre: "JUVENTUS",
+        VisitanteSlug: "JUVENTUS",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "F",
@@ -2701,9 +2730,9 @@ export const stats_franco = {
       },
     ],
     stats: {
-      win: 29,
+      win: 30,
       loss: 15,
-      porcent: "70%",
+      porcent: "71%",
     },
   },
   clasics: {
@@ -3077,6 +3106,21 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
+      {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "F",
+        Result: "Defeat",
+        LocalEscudo: "/images/juventud.png",
+        LocalNombre: "JUVENTUS",
+        LocalSlug: "JUVENTUS",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/BayernMunchen.png",
+        VisitanteNombre: "BAYERN MUNICH",
+        VisitanteSlug: "BAYERN",
+        VisitanteResultado: 2,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "G",
@@ -3688,8 +3732,8 @@ export const stats_gaston = {
     ],
     stats: {
       win: 23,
-      loss: 18,
-      porcent: "59%",
+      loss: 19,
+      porcent: "56%",
     },
   },
   clasics: {
@@ -4393,7 +4437,7 @@ export const data = {
       cover: "/images/bayernmunich_cover.avif",
       rank: 2,
       name: "BAYERN MUNICH",
-      titles: 5,
+      titles: 6,
     },
     {
       logo: "/images/Internazionale.png",
