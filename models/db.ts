@@ -3194,6 +3194,7 @@ export const stats_gaston = {
         VisitanteEscudo: "/images/BorussiaDortmund.png",
         VisitanteNombre: "BORUSSIA DORTMUND",
         VisitanteSlug: "DORTMUND",
+        VisitanteResultado: 1,
         VisitantePenalty: 3,
       Penalty: true,
       },
