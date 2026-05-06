@@ -2,6 +2,20 @@ export const History = {
   Games: [
     {
       Player1: "G",
+      Player2: "M",
+      isLegit: "NO",
+      LocalEscudo: "/images/BorussiaDortmund.png",
+      LocalNombre: "BORUSSIA DORTMUND",
+      LocalSlug: "DORTMUND",
+      LocalResultado: 1,
+      VisitanteEscudo: "/images/SportingLisboa.png",
+      VisitanteNombre: "SPORTING LISBOA",
+      VisitanteSlug: "SPORTING",
+      VisitanteResultado: 0,
+      Penalty: false,
+    },
+    {
+      Player1: "G",
       Player2: "F",
       isLegit: "NO",
       LocalEscudo: "/images/juventud.png",
@@ -1078,6 +1092,21 @@ export const stats_marcos = {
   finals: {
     matchs: [
       {
+        isLegit: "NO",
+        Player1: "M",
+        Player2: "G",
+        Result: "Defeat",
+        LocalEscudo: "/images/SportingLisboa.png",
+        LocalNombre: "SPORTING LISBOA",
+        LocalSlug: "SPORTING",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/BorussiaDortmund.png",
+        VisitanteNombre: "BORUSSIA DORTMUND",
+        VisitanteSlug: "DORTMUND",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
         isLegit: "L",
         Player1: "M",
         Player2: "F",
@@ -1645,8 +1674,8 @@ export const stats_marcos = {
     ],
     stats: {
       win: 12,
-      loss: 25,
-      porcent: "31%",
+      loss: 26,
+      porcent: "30%",
     },
   },
   clasics: {
@@ -1846,7 +1875,7 @@ export const stats_marcos = {
         VisitanteResultado: 5,
         Penalty: false,
       },
-       {
+      {
         Player1: "M",
         Player2: "F",
         Result: "Defeat",
@@ -2062,7 +2091,7 @@ export const stats_marcos = {
         VisitanteResultado: 2,
         Penalty: false,
       },
-            {
+      {
         Player1: "M",
         Player2: "G",
         Result: "Defeat",
@@ -2104,7 +2133,7 @@ export const stats_franco = {
   },
   finals: {
     matchs: [
-            {
+      {
         isLegit: "L",
         Player1: "F",
         Player2: "G",
@@ -2979,7 +3008,7 @@ export const stats_franco = {
         VisitanteResultado: 0,
         Penalty: false,
       },
-           {
+      {
         Player1: "F",
         Player2: "M",
         Result: "Victory",
@@ -2994,7 +3023,7 @@ export const stats_franco = {
         VisitanteResultado: 0,
         Penalty: false,
       },
-                 {
+      {
         Player1: "F",
         Player2: "M",
         Result: "Defeat",
@@ -3181,7 +3210,22 @@ export const stats_gaston = {
   },
   finals: {
     matchs: [
-    {
+      {
+        isLegit: "NO",
+        Player1: "G",
+        Player2: "M",
+        Result: "Victory",
+        LocalEscudo: "/images/BorussiaDortmund.png",
+        LocalNombre: "BORUSSIA DORTMUND",
+        LocalSlug: "DORTMUND",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/SportingLisboa.png",
+        VisitanteNombre: "SPORTING LISBOA",
+        VisitanteSlug: "SPORTING",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
+      {
         isLegit: "NO",
         Player1: "G",
         Player2: "F",
@@ -3196,7 +3240,7 @@ export const stats_gaston = {
         VisitanteSlug: "DORTMUND",
         VisitanteResultado: 1,
         VisitantePenalty: 3,
-      Penalty: true,
+        Penalty: true,
       },
       {
         isLegit: "L",
@@ -3823,9 +3867,9 @@ export const stats_gaston = {
       },
     ],
     stats: {
-      win: 23,
+      win: 24,
       loss: 20,
-      porcent: "53%",
+      porcent: "55%",
     },
   },
   clasics: {
@@ -4357,7 +4401,7 @@ export const stats_roma = {
         VisitanteResultado: 2,
         Penalty: false,
       },
-        {
+      {
         Player1: "R",
         Player2: "F",
         Result: "Victory",
@@ -4616,70 +4660,78 @@ export const data = {
       titles: 3,
     },
     {
+      logo: "/images/BorussiaDortmund.png",
+      cover: "/images/dortmund_cover.avif",
+      rank: 10,
+      name: "BORUSSIA DORTMUND",
+      titles: 3,
+      increase: 11,
+    },
+    {
       logo: "/images/Tottenham.png",
       cover: "/images/tottenham_cover.webp",
-      rank: 10,
+      rank: 11,
       name: "TOTTENHAM",
       titles: 2,
+      decrease: 1,
     },
     {
       logo: "/images/newcastlee.png",
       cover: "/images/newcastle_cover.webp",
-      rank: 11,
+      rank: 12,
       name: "NEWCASTLE",
       titles: 2,
+      decrease: 1,
     },
     {
       logo: "/images/oporto.png",
       cover: "/images/porto_cover.webp",
-      rank: 12,
+      rank: 13,
       name: "PORTO",
       titles: 2,
+      decrease: 1,
     },
     {
       logo: "/images/sevillaa.png",
       cover: "/images/sevilla_cover.avif",
-      rank: 13,
+      rank: 14,
       name: "SEVILLA",
       titles: 2,
+      decrease: 1,
     },
     {
       logo: "/images/arsenalfc.png",
       cover: "/images/arsenal_cover.webp",
-      rank: 14,
+      rank: 15,
       name: "ARSENAL",
       titles: 2,
+      decrease: 1,
     },
 
     {
       logo: "/images/AstonVilla.png",
       cover: "/images/astonvilla_cover.webp",
-      rank: 15,
+      rank: 16,
       name: "ASTON VILLA",
       titles: 2,
+      decrease: 1,
     },
     {
       logo: "/images/juventud.png",
       cover: "/images/juventus_cover.webp",
-      rank: 16,
+      rank: 17,
       name: "JUVENTUS",
       titles: 2,
+      decrease: 1,
     },
-    {
-      logo: "/images/BorussiaDortmund.png",
-      cover: "/images/dortmund_cover.avif",
-      rank: 17,
-      name: "BORUSSIA DORTMUND",
-      titles: 2,
-      increase: 5,
-    },
+
     {
       logo: "/images/SSC_Neapel.svg.png",
       cover: "/images/napoli_cover.webp",
       rank: 18,
       name: "NAPOLI",
       titles: 1,
-      decrease: 1,
+
     },
     {
       logo: "/images/valenciafc.png",
@@ -4687,7 +4739,6 @@ export const data = {
       rank: 19,
       name: "VALENCIA",
       titles: 1,
-      decrease: 1,
     },
     {
       logo: "/images/villar.png",
@@ -4695,7 +4746,6 @@ export const data = {
       rank: 20,
       name: "VILLA REAL",
       titles: 1,
-      decrease: 1,
     },
     {
       logo: "/images/Ajax.png",
@@ -4703,7 +4753,6 @@ export const data = {
       rank: 21,
       name: "AJAX",
       titles: 1,
-      decrease: 1,
     },
     {
       logo: "/images/bayern04.png",
@@ -4711,7 +4760,6 @@ export const data = {
       rank: 22,
       name: "BAYERN 04 LEVERKUSEN",
       titles: 1,
-      decrease: 1,
     },
 
     {
