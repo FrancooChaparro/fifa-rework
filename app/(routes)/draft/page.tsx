@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "./draft.module.css";
 import { useMyContext } from " @/context/ListContext";
 import Image from "next/image";
@@ -16,12 +16,30 @@ const Draft = () => {
   let marcos: Team[] | [] = MarcosCopy;
   let roma: Team[] | [] = RomaCopy;
 
+  const remainingTeams = [...franco, ...gaston, ...marcos, ...roma];
+
   let base: Team = {
     nombre: "",
     escudo: "",
     rank: "",
   };
-  const [TestTeam, setTestTeam] = useState(base);
+  const [forceRender, setForceRender] = useState(0);
+  const setTestTeam = (val: any) => setForceRender(p => p + 1);
+
+  const [showTeamsPopup, setShowTeamsPopup] = useState(false);
+  const [initialTeams, setInitialTeams] = useState<any>({
+    franco: [], gaston: [], marcos: [], roma: []
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const f = JSON.parse(localStorage.getItem('francoTeams') || '[]');
+      const g = JSON.parse(localStorage.getItem('gastonTeams') || '[]');
+      const m = JSON.parse(localStorage.getItem('marcosTeams') || '[]');
+      const r = JSON.parse(localStorage.getItem('romaTeams') || '[]');
+      setInitialTeams({ franco: f, gaston: g, marcos: m, roma: r });
+    }
+  }, []);
   const A1Ref = useRef<HTMLDivElement>(null);
   const A2Ref = useRef<HTMLDivElement>(null);
   const B1Ref = useRef<HTMLDivElement>(null);
@@ -55,41 +73,120 @@ const Draft = () => {
   const O2Ref = useRef<HTMLDivElement>(null);
   const P1Ref = useRef<HTMLDivElement>(null);
   const P2Ref = useRef<HTMLDivElement>(null);
-  const teamRef = useRef<HTMLDivElement>(null);
+  const pileRef = useRef<HTMLDivElement>(null);
 
-  const [A1, setA1] = useState(base);
-  const [A2, setA2] = useState(base);
-  const [B1, setB1] = useState(base);
-  const [B2, setB2] = useState(base);
-  const [C1, setC1] = useState(base);
-  const [C2, setC2] = useState(base);
-  const [D1, setD1] = useState(base);
-  const [D2, setD2] = useState(base);
-  const [E1, setE1] = useState(base);
-  const [E2, setE2] = useState(base);
-  const [F1, setF1] = useState(base);
-  const [F2, setF2] = useState(base);
-  const [G1, setG1] = useState(base);
-  const [G2, setG2] = useState(base);
-  const [H1, setH1] = useState(base);
-  const [H2, setH2] = useState(base);
+  const shootTeamAndSet = (team: any, targetRef: React.RefObject<HTMLDivElement>, setter: Function) => {
+    setForceRender(prev => prev + 1);
 
-  const [I1, setI1] = useState(base);
-  const [I2, setI2] = useState(base);
-  const [J1, setJ1] = useState(base);
-  const [J2, setJ2] = useState(base);
-  const [K1, setK1] = useState(base);
-  const [K2, setK2] = useState(base);
-  const [L1, setL1] = useState(base);
-  const [L2, setL2] = useState(base);
-  const [M1, setM1] = useState(base);
-  const [M2, setM2] = useState(base);
-  const [N1, setN1] = useState(base);
-  const [N2, setN2] = useState(base);
-  const [O1, setO1] = useState(base);
-  const [O2, setO2] = useState(base);
-  const [P1, setP1] = useState(base);
-  const [P2, setP2] = useState(base);
+    const pileBox = pileRef.current;
+    const target = targetRef.current;
+    if (!pileBox || !target) {
+      setter(team);
+      return;
+    }
+
+    const flyingDiv = document.createElement("div");
+    flyingDiv.className = "fixed top-0 left-0 z-50 pointer-events-none";
+
+    const img = document.createElement("img");
+    img.src = team.escudo;
+    img.alt = team.nombre;
+    img.width = 40;
+    img.height = 40;
+    img.className = "object-contain";
+
+    flyingDiv.appendChild(img);
+    document.body.appendChild(flyingDiv);
+
+    const pileRect = pileBox.getBoundingClientRect();
+    const startX = pileRect.left + pileRect.width / 2 - 20;
+    const startY = pileRect.top + pileRect.height / 2 - 20;
+
+    gsap.set(flyingDiv, { x: startX, y: startY, scale: 0.5, opacity: 0 });
+
+    const targetRect = target.getBoundingClientRect();
+    const endX = targetRect.left + 10;
+    const endY = targetRect.top - 5;
+
+    gsap.to(flyingDiv, {
+      x: endX,
+      y: endY,
+      scale: 1,
+      opacity: 1,
+      duration: 1.1,
+      ease: "power2.out",
+      onComplete: () => {
+        flyingDiv.remove();
+        setter(team);
+      }
+    });
+  };
+
+  const [A1, _setA1] = useState(base);
+  const setA1 = (val: any) => shootTeamAndSet(val, A1Ref, _setA1);
+  const [A2, _setA2] = useState(base);
+  const setA2 = (val: any) => shootTeamAndSet(val, A2Ref, _setA2);
+  const [B1, _setB1] = useState(base);
+  const setB1 = (val: any) => shootTeamAndSet(val, B1Ref, _setB1);
+  const [B2, _setB2] = useState(base);
+  const setB2 = (val: any) => shootTeamAndSet(val, B2Ref, _setB2);
+  const [C1, _setC1] = useState(base);
+  const setC1 = (val: any) => shootTeamAndSet(val, C1Ref, _setC1);
+  const [C2, _setC2] = useState(base);
+  const setC2 = (val: any) => shootTeamAndSet(val, C2Ref, _setC2);
+  const [D1, _setD1] = useState(base);
+  const setD1 = (val: any) => shootTeamAndSet(val, D1Ref, _setD1);
+  const [D2, _setD2] = useState(base);
+  const setD2 = (val: any) => shootTeamAndSet(val, D2Ref, _setD2);
+  const [E1, _setE1] = useState(base);
+  const setE1 = (val: any) => shootTeamAndSet(val, E1Ref, _setE1);
+  const [E2, _setE2] = useState(base);
+  const setE2 = (val: any) => shootTeamAndSet(val, E2Ref, _setE2);
+  const [F1, _setF1] = useState(base);
+  const setF1 = (val: any) => shootTeamAndSet(val, F1Ref, _setF1);
+  const [F2, _setF2] = useState(base);
+  const setF2 = (val: any) => shootTeamAndSet(val, F2Ref, _setF2);
+  const [G1, _setG1] = useState(base);
+  const setG1 = (val: any) => shootTeamAndSet(val, G1Ref, _setG1);
+  const [G2, _setG2] = useState(base);
+  const setG2 = (val: any) => shootTeamAndSet(val, G2Ref, _setG2);
+  const [H1, _setH1] = useState(base);
+  const setH1 = (val: any) => shootTeamAndSet(val, H1Ref, _setH1);
+  const [H2, _setH2] = useState(base);
+  const setH2 = (val: any) => shootTeamAndSet(val, H2Ref, _setH2);
+
+  const [I1, _setI1] = useState(base);
+  const setI1 = (val: any) => shootTeamAndSet(val, I1Ref, _setI1);
+  const [I2, _setI2] = useState(base);
+  const setI2 = (val: any) => shootTeamAndSet(val, I2Ref, _setI2);
+  const [J1, _setJ1] = useState(base);
+  const setJ1 = (val: any) => shootTeamAndSet(val, J1Ref, _setJ1);
+  const [J2, _setJ2] = useState(base);
+  const setJ2 = (val: any) => shootTeamAndSet(val, J2Ref, _setJ2);
+  const [K1, _setK1] = useState(base);
+  const setK1 = (val: any) => shootTeamAndSet(val, K1Ref, _setK1);
+  const [K2, _setK2] = useState(base);
+  const setK2 = (val: any) => shootTeamAndSet(val, K2Ref, _setK2);
+  const [L1, _setL1] = useState(base);
+  const setL1 = (val: any) => shootTeamAndSet(val, L1Ref, _setL1);
+  const [L2, _setL2] = useState(base);
+  const setL2 = (val: any) => shootTeamAndSet(val, L2Ref, _setL2);
+  const [M1, _setM1] = useState(base);
+  const setM1 = (val: any) => shootTeamAndSet(val, M1Ref, _setM1);
+  const [M2, _setM2] = useState(base);
+  const setM2 = (val: any) => shootTeamAndSet(val, M2Ref, _setM2);
+  const [N1, _setN1] = useState(base);
+  const setN1 = (val: any) => shootTeamAndSet(val, N1Ref, _setN1);
+  const [N2, _setN2] = useState(base);
+  const setN2 = (val: any) => shootTeamAndSet(val, N2Ref, _setN2);
+  const [O1, _setO1] = useState(base);
+  const setO1 = (val: any) => shootTeamAndSet(val, O1Ref, _setO1);
+  const [O2, _setO2] = useState(base);
+  const setO2 = (val: any) => shootTeamAndSet(val, O2Ref, _setO2);
+  const [P1, _setP1] = useState(base);
+  const setP1 = (val: any) => shootTeamAndSet(val, P1Ref, _setP1);
+  const [P2, _setP2] = useState(base);
+  const setP2 = (val: any) => shootTeamAndSet(val, P2Ref, _setP2);
 
   const [A3, setA3] = useState(base);
   const [B3, setB3] = useState(base);
@@ -869,27 +966,7 @@ const Draft = () => {
   }
 
   const animateTeamTo = async (targetRef: React.RefObject<HTMLDivElement>) => {
-    const team = teamRef.current;
-    const target = targetRef.current;
-
-    if (!team || !target) return;
-
-    const teamRect = team.getBoundingClientRect();
-    const targetRect = target.getBoundingClientRect();
-
-    const deltaX = (targetRect.left + 10) - teamRect.left;
-    const deltaY = (targetRect.top - 5) - teamRect.top;
-
-    await gsap.to(team, {
-      x: deltaX,
-      y: deltaY,
-      rotation: 0,
-      duration: 1,
-      ease: "power2.inOut",
-    });
-
-    // Reset transform para que pueda volver a animarse desde el centro
-    gsap.set(team, { x: 0, y: 0, rotation: 0 });
+    // We do nothing! The wrapped setter does the work!
   };
 
 
@@ -914,9 +991,8 @@ function delay(ms: number): Promise<void> {
 
   // 🔹 Ejecutamos los pasos
   for (const step of chosenSteps) {
-    await step();
-    setTestTeam(base);
-    await delay(200);
+    step();
+    await delay(500);
   }
   }
 
@@ -931,32 +1007,13 @@ function delay(ms: number): Promise<void> {
           color={"#F7FF9B"}
           refresh
         />
-        <div className={`${baraja ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          } absolute bg-white left-1/2 -translate-x-1/2 z-40 top-[30%] transition-all duration-150 -translate-y-1/2 size-[140px] flex justify-center items-center rounded-sm`}>
-          {
-            TestTeam.nombre !== ""
-              ?
-              <div
-                className="p-2 z-20"
-                ref={teamRef}>
-                <Image
-                  src={TestTeam.escudo}
-                  alt={TestTeam.nombre}
-                  width={46}
-                  height={46}
-                />
-              </div>
-              : <div
-                className="p-2 z-20"
-                ref={teamRef}>
-                <Image
-                  src={"/images/blur-block.png"}
-                  alt={"blur"}
-                  width={46}
-                  height={46}
-                />
-              </div>
-          }
+        {/* Cuadrado blanco con los 32 equipos restantes */}
+        <div ref={pileRef} className={`absolute bg-white left-1/2 -translate-x-1/2 z-30 top-[30%] -translate-y-1/2 w-[340px] sm:w-[400px] h-[260px] sm:h-[300px] p-5 flex flex-wrap justify-center content-center gap-2 sm:gap-3 rounded-xl shadow-2xl transition-opacity duration-500 ${remainingTeams.length > 0 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+          {remainingTeams.map((team: any, idx: number) => (
+            <div key={`${team.nombre}-${idx}`} className="w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center transition-all duration-300">
+              {team.escudo && <Image src={team.escudo} alt={team.nombre} width={40} height={40} className="object-contain" />}
+            </div>
+          ))}
         </div>
 
         <div className={styles.containerBraket}>
@@ -1189,7 +1246,7 @@ function delay(ms: number): Promise<void> {
               <button
                 onClick={() => lolo()}
                 disabled={baraja}
-                className="w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
+                className="w-[120px] xl:w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
               >
                 <span className="relative z-10">DRAFT</span>
                 <div className="absolute inset-0 bg-hoverCard translate-x-[-100%] transition-transform duration-80 ease-out group-hover:translate-x-0"></div>
@@ -1197,9 +1254,17 @@ function delay(ms: number): Promise<void> {
 
               <button
                 onClick={() => clean()}
-                className="w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
+                className="w-[120px] xl:w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
               >
                 <span className="relative z-10">CLEAN</span>
+                <div className="absolute inset-0 bg-hoverCard translate-x-[-100%] transition-transform duration-80 ease-out group-hover:translate-x-0"></div>
+              </button>
+
+              <button
+                onClick={() => setShowTeamsPopup(true)}
+                className="w-[120px] xl:w-[160px] h-[60px] relative bg-[#313133] text-white rounded-[8px] font-geistRegular overflow-hidden group"
+              >
+                <span className="relative z-10">TEAMS</span>
                 <div className="absolute inset-0 bg-hoverCard translate-x-[-100%] transition-transform duration-80 ease-out group-hover:translate-x-0"></div>
               </button>
             </div>
@@ -1429,7 +1494,44 @@ function delay(ms: number): Promise<void> {
           </div>
         </div>
       </div>
-      <div />
+
+      {showTeamsPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={() => setShowTeamsPopup(false)}>
+          <div className="bg-[#18181a] p-6 lg:p-8 rounded-xl w-[95%] max-w-6xl max-h-[90vh] overflow-y-auto text-white shadow-2xl border border-[#313133]" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold font-geistBold text-fontTitle">Assigned Teams</h2>
+              <button onClick={() => setShowTeamsPopup(false)} className="text-gray-400 hover:text-white transition p-1 bg-[#313133] rounded-full hover:bg-[#3f3f46]">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 font-geistRegular">
+              {Object.entries(initialTeams).map(([player, teams]: [string, any]) => (
+                <div key={player} className="bg-[#2a2a2d] rounded-lg overflow-hidden flex flex-col shadow-lg border border-[#313133]">
+                  <div className="p-4 bg-[#232325] flex justify-between items-center border-b border-[#3f3f46]">
+                    <h3 className="capitalize font-geistBold text-lg">{player === 'roma' ? 'Rodrigo' : player}</h3>
+                    <span className="font-geistBold text-sm text-gray-400">
+                      {teams.reduce((acc: number, t: any) => acc + parseInt(t.rank.replace('#', '') || '0', 10), 0)}
+                    </span>
+                  </div>
+                  <div className="p-2 flex flex-col gap-1 h-full">
+                    {teams.map((team: any, i: number) => (
+                      <div key={i} className="flex items-center gap-3 p-2 hover:bg-[#313133] rounded transition group">
+                        <span className="w-8 font-bold text-gray-500 text-sm group-hover:text-gray-300 transition">{team.rank}</span>
+                        <div className="min-w-[32px] min-h-[32px] flex justify-center items-center">
+                          {team.escudo && <Image src={team.escudo} alt={team.nombre} width={32} height={32} className="object-contain" />}
+                        </div>
+                        <span className="text-sm font-semibold flex-1 truncate group-hover:text-white transition">{team.nombre}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

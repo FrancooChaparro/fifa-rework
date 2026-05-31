@@ -184,6 +184,11 @@ export default function PoolPage() {
       Marcos(marcos)
       Roma(roma)
 
+      localStorage.setItem('francoTeams', JSON.stringify(franco));
+      localStorage.setItem('gastonTeams', JSON.stringify(gaston));
+      localStorage.setItem('marcosTeams', JSON.stringify(marcos));
+      localStorage.setItem('romaTeams', JSON.stringify(roma));
+
       return;
     }
     alear();

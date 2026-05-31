@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "R",
+      Player2: "M",
+      isLegit: "NO",
+      LocalEscudo: "/images/Zenit.png",
+      LocalNombre: "ZENIT",
+      LocalSlug: "ZENIT",
+      LocalResultado: 2,
+      VisitanteEscudo: "/images/ASRoma.png",
+      VisitanteNombre: "ROMA",
+      VisitanteSlug: "ROMA",
+      VisitanteResultado: 4,
+      Penalty: false,
+    },
+    {
       Player1: "G",
       Player2: "M",
       isLegit: "NO",
@@ -1091,6 +1105,21 @@ export const stats_marcos = {
   },
   finals: {
     matchs: [
+        {
+        isLegit: "NO",
+        Player1: "M",
+        Player2: "R",
+        Result: "Victory",
+        LocalEscudo: "/images/ASRoma.png",
+        LocalNombre: "ROMA",
+        LocalSlug: "ROMA",
+        LocalResultado: 4,
+        VisitanteEscudo: "/images/Zenit.png",
+        VisitanteNombre: "ZENIT",
+        VisitanteSlug: "ZENIT",
+        VisitanteResultado: 2,
+        Penalty: false,
+      },
       {
         isLegit: "NO",
         Player1: "M",
@@ -1673,9 +1702,9 @@ export const stats_marcos = {
       },
     ],
     stats: {
-      win: 12,
+      win: 13,
       loss: 26,
-      porcent: "30%",
+      porcent: "32%",
     },
   },
   clasics: {
@@ -3184,10 +3213,23 @@ export const stats_franco = {
         VisitanteResultado: 5,
         Penalty: false,
       },
+      {
+        Result: "Victory",
+        Raiz: "16Avos",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/juventud.png",
+        VisitanteNombre: "JUVENTUS",
+        VisitanteSlug: "JUVENTUS",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
     ],
     stats: {
-      porcent: "68%",
-      win: 15,
+      porcent: "70%",
+      win: 16,
       loss: 7,
     },
   },
@@ -4231,6 +4273,21 @@ export const stats_gaston = {
       },
       {
         Player1: "G",
+        Player2: "F",
+        Result: "Defeat",
+        Raiz: "16Avos de Final",
+        LocalEscudo: "/images/juventud.png",
+        LocalNombre: "JUVENTUS",
+        LocalSlug: "JUVENTUS",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
+        Player1: "G",
         Player2: "R",
         Result: "Victory",
         Raiz: "16Avos de Final",
@@ -4249,8 +4306,8 @@ export const stats_gaston = {
     ],
     stats: {
       win: 11,
-      loss: 9,
-      porcent: "55%",
+      loss: 10,
+      porcent: "51%",
     },
   },
 };
@@ -4272,6 +4329,21 @@ export const stats_roma = {
   },
   finals: {
     matchs: [
+      {
+        isLegit: "NO",
+        Player1: "R",
+        Player2: "M",
+        Result: "Defeat",
+        LocalEscudo: "/images/Zenit.png",
+        LocalNombre: "ZENIT",
+        LocalSlug: "ZENIT",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/ASRoma.png",
+        VisitanteNombre: "ROMA",
+        VisitanteSlug: "ROMA",
+        VisitanteResultado: 4,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "R",
@@ -4335,7 +4407,7 @@ export const stats_roma = {
     ],
     stats: {
       win: 0,
-      loss: 4,
+      loss: 5,
       porcent: "0%",
     },
   },
@@ -4673,7 +4745,6 @@ export const data = {
       rank: 11,
       name: "TOTTENHAM",
       titles: 2,
-      decrease: 1,
     },
     {
       logo: "/images/newcastlee.png",
@@ -4681,7 +4752,6 @@ export const data = {
       rank: 12,
       name: "NEWCASTLE",
       titles: 2,
-      decrease: 1,
     },
     {
       logo: "/images/oporto.png",
@@ -4689,7 +4759,6 @@ export const data = {
       rank: 13,
       name: "PORTO",
       titles: 2,
-      decrease: 1,
     },
     {
       logo: "/images/sevillaa.png",
@@ -4697,7 +4766,6 @@ export const data = {
       rank: 14,
       name: "SEVILLA",
       titles: 2,
-      decrease: 1,
     },
     {
       logo: "/images/arsenalfc.png",
@@ -4705,16 +4773,13 @@ export const data = {
       rank: 15,
       name: "ARSENAL",
       titles: 2,
-      decrease: 1,
     },
-
     {
       logo: "/images/AstonVilla.png",
       cover: "/images/astonvilla_cover.webp",
       rank: 16,
       name: "ASTON VILLA",
       titles: 2,
-      decrease: 1,
     },
     {
       logo: "/images/juventud.png",
@@ -4722,16 +4787,13 @@ export const data = {
       rank: 17,
       name: "JUVENTUS",
       titles: 2,
-      decrease: 1,
     },
-
     {
       logo: "/images/SSC_Neapel.svg.png",
       cover: "/images/napoli_cover.webp",
       rank: 18,
       name: "NAPOLI",
       titles: 1,
-
     },
     {
       logo: "/images/valenciafc.png",
@@ -4761,65 +4823,70 @@ export const data = {
       name: "BAYERN 04 LEVERKUSEN",
       titles: 1,
     },
-
+    {
+      logo: "/images/ASRoma.png",
+      cover: "/images/roma_cover.webp",
+      rank: 23,
+      name: "ROMA",
+      titles: 1,
+      increase: 7,
+    },
     {
       logo: "/images/Zenit.png",
       cover: "/images/zenit_cover.webp",
-      rank: 23,
+      rank: 24,
       name: "ZENIT",
       titles: 0,
+      decrease: 1,
     },
-
     {
       logo: "/images/milan_test.png",
       cover: "/images/milan_cover.webp",
-      rank: 24,
+      rank: 25,
       name: "AC MILAN",
       titles: 0,
+       decrease: 1,
     },
     {
       logo: "/images/AtleticoMadrid.png",
       cover: "/images/atleticomadrid_cover.webp",
-      rank: 25,
+      rank: 26,
       name: "ATLETICO MADRID",
       titles: 0,
+       decrease: 1,
     },
     {
       logo: "/images/SportingLisboa.png",
       cover: "/images/sporting_cover.webp",
-      rank: 26,
+      rank: 27,
       name: "SPORTING LISBOA",
       titles: 0,
+       decrease: 1,
     },
     {
       logo: "/images/laziofc.png",
       cover: "/images/lazio_cover.webp",
-      rank: 27,
+      rank: 28,
       name: "LAZIO",
       titles: 0,
+       decrease: 1,
     },
     {
       logo: "/images/Benfica.png",
       cover: "/images/benfica_cover.webp",
-      rank: 28,
+      rank: 29,
       name: "BENFICA",
       titles: 0,
+       decrease: 1,
     },
     {
       logo: "/images/evertonfc.png",
       cover: "/images/everton_cover.webp",
-      rank: 29,
+      rank: 30,
       name: "EVERTON",
       titles: 0,
+       decrease: 1,
     },
-    {
-      logo: "/images/ASRoma.png",
-      cover: "/images/roma_cover.webp",
-      rank: 30,
-      name: "AS ROMA",
-      titles: 0,
-    },
-
     {
       logo: "/images/wolfburgo.png",
       cover: "/images/wolfburgo_cover.webp",
@@ -4834,7 +4901,6 @@ export const data = {
       name: "OLYMPIQUE LYON",
       titles: 0,
     },
-
     {
       logo: "/images/galatasaray.png",
       cover: "/images/bakcground_rank.webp",
