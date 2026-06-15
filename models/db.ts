@@ -1,6 +1,20 @@
 export const History = {
   Games: [
     {
+      Player1: "M",
+      Player2: "G",
+      isLegit: "L",
+      LocalEscudo: "/images/Chelsea.png",
+      LocalNombre: "CHELSEA",
+      LocalSlug: "CHELSEA",
+      LocalResultado: 1,
+      VisitanteEscudo: "/images/SSC_Neapel.svg.png",
+      VisitanteNombre: "NAPOLI",
+      VisitanteSlug: "NAPOLI",
+      VisitanteResultado: 0,
+      Penalty: false,
+    },
+    {
       Player1: "R",
       Player2: "M",
       isLegit: "NO",
@@ -1092,7 +1106,7 @@ export const stats_marcos = {
   info: {
     photo_profile: "/images/Marcos.webp",
     background_profile: "/images/chelsea_cover.webp",
-    rank_profile: "6",
+    rank_profile: "5",
     shield_profile: "/images/Chelsea.png",
     background_blur_profile: "/images/che_blur.webp",
     photo_blur_profile: "/images/shield_blur.webp",
@@ -1101,11 +1115,26 @@ export const stats_marcos = {
     surname_profile: "Aquino",
     team_id: "FC",
     team_profile: "CHELSEA",
-    trophies: 4,
+    trophies: 5,
   },
   finals: {
     matchs: [
-        {
+      {
+        isLegit: "L",
+        Player1: "M",
+        Player2: "G",
+        Result: "Victory",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/SSC_Neapel.svg.png",
+        VisitanteNombre: "NAPOLI",
+        VisitanteSlug: "NAPOLI",
+        VisitanteResultado: 0,
+        Penalty: false,
+      },
+      {
         isLegit: "NO",
         Player1: "M",
         Player2: "R",
@@ -1702,9 +1731,9 @@ export const stats_marcos = {
       },
     ],
     stats: {
-      win: 13,
+      win: 14,
       loss: 26,
-      porcent: "32%",
+      porcent: "33%",
     },
   },
   clasics: {
@@ -2135,12 +2164,29 @@ export const stats_marcos = {
         VisitanteResultado: 1,
         Penalty: false,
       },
+      {
+        Player1: "M",
+        Player2: "G",
+        Result: "Victory",
+        Raiz: "Semifinal",
+        LocalEscudo: "/images/Chelsea.png",
+        LocalNombre: "CHELSEA",
+        LocalSlug: "CHELSEA",
+        LocalResultado: 1,
+        LocalPenalty: 4,
+        VisitanteEscudo: "/images/juventud.png",
+        VisitanteNombre: "JUVENTUS",
+        VisitanteSlug: "JUVENTUS",
+        VisitanteResultado: 1,
+        VisitantePenalty: 2,
+        Penalty: true,
+      },
     ],
     stats: {
-      win: 9,
+      win: 10,
       loss: 14,
       draw: 2,
-      porcent: "36%",
+      porcent: "38%",
     },
   },
 };
@@ -3253,6 +3299,21 @@ export const stats_gaston = {
   finals: {
     matchs: [
       {
+        isLegit: "L",
+        Player1: "G",
+        Player2: "M",
+        Result: "Defeat",
+        LocalEscudo: "/images/SSC_Neapel.svg.png",
+        LocalNombre: "NAPOLI",
+        LocalSlug: "NAPOLI",
+        LocalResultado: 0,
+        VisitanteEscudo: "/images/chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
         isLegit: "NO",
         Player1: "G",
         Player2: "M",
@@ -3910,12 +3971,29 @@ export const stats_gaston = {
     ],
     stats: {
       win: 24,
-      loss: 20,
-      porcent: "55%",
+      loss: 21,
+      porcent: "53%",
     },
   },
   clasics: {
     matchs: [
+            {
+        Player1: "G",
+        Player2: "M",
+        Result: "Defeat",
+        Raiz: "Semifinal",
+        LocalEscudo: "/images/juventud.png",
+        LocalNombre: "JUVENTUS",
+        LocalSlug: "JUVENTUS",
+        LocalResultado: 1,
+        LocalPenalty: 2,
+        VisitanteEscudo: "/images/Chelsea.png",
+        VisitanteNombre: "CHELSEA",
+        VisitanteSlug: "CHELSEA",
+        VisitanteResultado: 1,
+        VisitantePenalty: 4,
+        Penalty: true,
+      },
       {
         Player1: "G",
         Player2: "M",
@@ -4306,8 +4384,8 @@ export const stats_gaston = {
     ],
     stats: {
       win: 11,
-      loss: 10,
-      porcent: "51%",
+      loss: 11,
+      porcent: "50%",
     },
   },
 };
@@ -4693,20 +4771,20 @@ export const data = {
       increase: 4,
     },
     {
-      logo: "/images/mancity.png",
-      cover: "/images/manchestercity_cover.webp",
-      rank: 5,
-      name: "MANCHESTER CITY",
-      titles: 4,
-      decrease: 1,
-    },
-    {
       logo: "/images/Chelsea.png",
       cover: "/images/chelsea_cover.webp",
-      rank: 6,
+      rank: 5,
       name: "CHELSEA",
+      titles: 5,
+      increase: 1,
+    },
+    {
+      logo: "/images/mancity.png",
+      cover: "/images/manchestercity_cover.webp",
+      rank: 6,
+      name: "MANCHESTER CITY",
       titles: 4,
-      decrease: 1,
+      decrease: 2,
     },
     {
       logo: "/images/RealMadrid.png",
