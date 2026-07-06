@@ -239,7 +239,7 @@ export default function Nav() {
           <div className="w-full flex justify-center pb-8">
             {/* lastchamp */}
             <Image
-              src={"/images/ASRoma.png"}
+              src={"/images/BayernMunchen.png"}
               alt="BayernMunchen"
               width={55}
               height={55}

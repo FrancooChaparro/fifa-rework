@@ -2,6 +2,20 @@ export const History = {
   Games: [
     {
       Player1: "M",
+      Player2: "F",
+      isLegit: "NO",
+      LocalEscudo: "/images/BayernMunchen.png",
+      LocalNombre: "BAYERN MUNICH",
+      LocalSlug: "BAYERN",
+      LocalResultado: 2,
+      VisitanteEscudo: "/images/ParisSaintGermain.png",
+      VisitanteNombre: "PARIS SAINT GERMAIN",
+      VisitanteSlug: "PSG",
+      VisitanteResultado: 1,
+      Penalty: false,
+    },
+    {
+      Player1: "M",
       Player2: "G",
       isLegit: "L",
       LocalEscudo: "/images/Chelsea.png",
@@ -1120,6 +1134,21 @@ export const stats_marcos = {
   finals: {
     matchs: [
       {
+        isLegit: "NO",
+        Player1: "M",
+        Player2: "F",
+        Result: "Victory",
+        LocalEscudo: "/images/BayernMunchen.png",
+        LocalNombre: "BAYERN MUNICH",
+        LocalSlug: "BAYERN",
+        LocalResultado: 2,
+        VisitanteEscudo: "/images/ParisSaintGermain.png",
+        VisitanteNombre: "PARIS SAINT GERMAIN",
+        VisitanteSlug: "PSG",
+        VisitanteResultado: 1,
+        Penalty: false,
+      },
+      {
         isLegit: "L",
         Player1: "M",
         Player2: "G",
@@ -1731,9 +1760,9 @@ export const stats_marcos = {
       },
     ],
     stats: {
-      win: 14,
+      win: 15,
       loss: 26,
-      porcent: "33%",
+      porcent: "35%",
     },
   },
   clasics: {
@@ -2208,6 +2237,21 @@ export const stats_franco = {
   },
   finals: {
     matchs: [
+      {
+        isLegit: "NO",
+        Player1: "F",
+        Player2: "M",
+        Result: "Defeat",
+        LocalEscudo: "/images/ParisSaintGermain.png",
+        LocalNombre: "PARIS SAINT GERMAIN",
+        LocalSlug: "PSG",
+        LocalResultado: 1,
+        VisitanteEscudo: "/images/BayernMunchen.png",
+        VisitanteNombre: "BAYERN MUNICH",
+        VisitanteSlug: "BAYERN",
+        VisitantePenalty: 2,
+        Penalty: false,
+      },
       {
         isLegit: "L",
         Player1: "F",
@@ -2897,8 +2941,8 @@ export const stats_franco = {
     ],
     stats: {
       win: 31,
-      loss: 15,
-      porcent: "67%",
+      loss: 16,
+      porcent: "65%",
     },
   },
   clasics: {
@@ -4753,7 +4797,7 @@ export const data = {
       cover: "/images/bayernmunich_cover.avif",
       rank: 2,
       name: "BAYERN MUNICH",
-      titles: 6,
+      titles: 7,
     },
     {
       logo: "/images/Internazionale.png",
